@@ -1,0 +1,10 @@
+type User {
+  id: ID! @id
+  username: String! @unique
+  email: String! @unique
+  password: String!
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
+  reviews: [Review!]! @relation(name: "OwnReviews", onDelete: CASCADE)
+  likedReviews: [Review!]! @relation(name: "LikedReviews", onDelete: CASCADE)
+}

@@ -1,0 +1,7 @@
+type Review {
+  id: ID! @id
+  text: String!
+  upVote: Int!
+  downVote: Int!
+  author: User! @relation(name: "OwnReviews", onDelete: SET_NULL)
+}

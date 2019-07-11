@@ -1,0 +1,6 @@
+type Course {
+  id: ID! @id
+  name: String!
+  isElective: Boolean
+  audience: String
+}
