@@ -5,7 +5,9 @@ endpoint: http://localhost:4466
 datamodel:
   - user.prisma
   - course.prisma
+  - prof.prisma
   - review.prisma
+  - position.prisma
 
 # Specifies the language and directory for the generated Prisma client.
 generate:

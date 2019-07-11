@@ -1,0 +1,8 @@
+type Dept {
+  id: ID! @id
+  shortname: String!
+  longname: String!
+  alias: String
+  icon: String
+
+}

@@ -13,7 +13,15 @@ var models = [
     embedded: false
   },
   {
+    name: "Prof",
+    embedded: false
+  },
+  {
     name: "Review",
+    embedded: false
+  },
+  {
+    name: "position",
     embedded: false
   }
 ];

@@ -1,0 +1,46 @@
+type Prof {
+  name: ID! @id
+  code: String!
+  gender: Boolean
+  birth: Int
+  hometown: String
+  motto: String
+  email: String
+  phone: String
+  exp: Int
+  researchGroup: String
+  intro: String
+  education: String
+  research: String
+  achievement: String
+
+  "core stats"
+  scoreOverall: Float
+  scoreProfessional: Float
+  scoreExpressive: Float
+  scoreKind: Float
+
+  "secondary stats"
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasyYes: Int
+  countExamEasyNo: Int
+
+}

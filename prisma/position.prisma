@@ -1,0 +1,4 @@
+type position {
+  id: ID! @id
+  name: String!
+}
