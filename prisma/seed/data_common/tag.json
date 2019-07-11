@@ -1,0 +1,89 @@
+[{
+  "name": "照本宣科",
+  "isPositive": false,
+  "category": "course"
+}, {
+  "name": "枯燥无味",
+  "isPositive": false,
+  "category": "course"
+}, {
+  "name": "引人入胜",
+  "isPositive": true,
+  "category": "course"
+}, {
+  "name": "富有创新",
+  "isPositive": true,
+  "category": "course"
+}, {
+  "name": "氛围轻松",
+  "isPositive": true,
+  "category": "course"
+}, {
+  "name": "水课一门",
+  "isPositive": false,
+  "category": "course"
+}, {
+  "name": "治学严谨",
+  "isPositive": true,
+  "category": "prof"
+}, {
+  "name": "耐心",
+  "isPositive": true,
+  "category": "prof"
+}, {
+  "name": "幽默",
+  "isPositive": true,
+  "category": "prof"
+}, {
+  "name": "僵化刻板",
+  "isPositive": false,
+  "category": "prof"
+}, {
+  "name": "低调",
+  "isPositive": true,
+  "category": "prof"
+}, {
+  "name": "仁慈",
+  "isPositive": true,
+  "category": "prof"
+}, {
+  "name": "认真负责",
+  "isPositive": true,
+  "category": "prof"
+}, {
+  "name": "冷酷无情",
+  "isPositive": false,
+  "category": "prof"
+}, {
+  "name": "热情",
+  "isPositive": true,
+  "category": "prof"
+}, {
+  "name": "和蔼",
+  "isPositive": true,
+  "category": "prof"
+}, {
+  "name": "冷淡",
+  "isPositive": false,
+  "category": "prof"
+}, {
+  "name": "博学",
+  "isPositive": true,
+  "category": "prof"
+}, {
+  "name": "健谈",
+  "isPositive": true,
+  "category": "prof"
+}, {
+  "name": "浮夸",
+  "isPositive": false,
+  "category": "prof"
+}, {
+  "name": "深邃",
+  "isPositive": true,
+  "category": "prof"
+}, {
+  "name": "张扬",
+  "isPositive": false,
+  "category": "prof"
+}]

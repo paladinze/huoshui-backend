@@ -1,0 +1,6 @@
+type Tag {
+  id: ID! @id
+  name: String!
+  isPositive: Boolean!
+  category: String
+}
