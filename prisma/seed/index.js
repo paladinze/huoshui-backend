@@ -70,21 +70,6 @@ const createTags = async () => {
   console.log("seeding tags: Done!");
 };
 
-const createCourses = async () => {
-  console.log("seeding courses...");
-  const datapath = path.resolve(__dirname, "./leancloud/Courses.json");
-  const courses = JSON.parse(fs.readFileSync(datapath)).results;
-  for (const course of courses) {
-    const { name, isElective, audience } = course;
-    await prisma.createCourse({
-      name,
-      isElective,
-      audience
-    });
-  }
-  console.log("seeding courses: Done!");
-};
-
 const createProfs = async () => {
   console.log("seeding profs...");
 
@@ -183,38 +168,77 @@ const createProfs = async () => {
 
     const newProf = await prisma.createProf(args);
   }
-
   console.log("seeding profs: Done!");
 };
 
 const createCourses = async () => {
-  console.log("seeding users...");
-  const datapath = path.resolve(__dirname, "./leancloud/_User.json");
-  const lc_users = JSON.parse(fs.readFileSync(datapath)).results;
-  for (const lc_user of lc_users) {
-    const { username, email, year, dept, password, salt } = lc_user;
-    const deptFound = await prisma.dept({ shortname: dept });
-    if (deptFound) {
-      const user = await prisma.createUser({
-        email,
-        username,
-        firstYear: year,
-        isLcUser: true,
-        lcSalt: salt,
-        password,
-        dept: {
+  console.log("seeding courses...");
+  const datapath = path.resolve(__dirname, "./leancloud/Courses.json");
+  const lc_courses = JSON.parse(fs.readFileSync(datapath)).results;
+  for (const lc_course of lc_courses) {
+    const {
+      name,
+      dept,
+      prof,
+      rate1: professional,
+      rate2: expressive,
+      rate3: kind,
+      rateOverall: scoreOverall,
+      reviewCount: countReview,
+      reviewGoodCount: countGoodReview
+    } = lc_course;
+
+    let args = {
+      name,
+      professional,
+      expressive,
+      kind,
+      scoreOverall,
+      countReview,
+      countGoodReview
+    };
+
+    let deptFound = null;
+    if (dept) {
+      const deptFound = await prisma.dept({ shortname: dept });
+      if (deptFound) {
+        args.dept = {
           connect: {
-            shortname: dept
+            id: deptFound.id
           }
+        };
+      } else {
+        console.log("dept not found for: " + name + " : " + dept);
+      }
+    }
+
+    let profFound = null;
+    if (prof) {
+      profFound = await prisma.profs({
+        where: {
+          name: prof
         }
       });
-    } else {
-      console.log("dept no found for: " + username + " : " + dept);
+      if (profFound.length) {
+        profFound = profFound[0];
+        args.prof = {
+          connect: {
+            id: profFound.id
+          }
+        };
+      } else {
+        const newProf = await prisma.createProf({ name: prof });
+        args.prof = {
+          connect: {
+            id: newProf.id
+          }
+        };
+      }
     }
+    const newCourse = await prisma.createCourse(args);
   }
-  console.log("seeding users: Done!");
+  console.log("seeding courses: Done!");
 };
-
 
 async function main() {
   console.log("starts seeding!");
@@ -223,10 +247,8 @@ async function main() {
   await createPositions();
   await createTags();
   await createProfs();
-  // await createCourses();
-  // await createUsers();
-
-
+  await createCourses();
+  await createUsers();
 
   console.log("All Done!");
 }

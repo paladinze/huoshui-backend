@@ -367,74 +367,6 @@ export type ReviewOrderByInput =
   | "downVote_ASC"
   | "downVote_DESC";
 
-export type CourseOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "professional_ASC"
-  | "professional_DESC"
-  | "expressive_ASC"
-  | "expressive_DESC"
-  | "kind_ASC"
-  | "kind_DESC"
-  | "scoreOverall_ASC"
-  | "scoreOverall_DESC"
-  | "scoreHot_ASC"
-  | "scoreHot_DESC"
-  | "scoreRepute_ASC"
-  | "scoreRepute_DESC"
-  | "scoreBirdy_ASC"
-  | "scoreBirdy_DESC"
-  | "scoreAttend_ASC"
-  | "scoreAttend_DESC"
-  | "scoreExam_ASC"
-  | "scoreExam_DESC"
-  | "scoreHomework_ASC"
-  | "scoreHomework_DESC"
-  | "meanHomework_ASC"
-  | "meanHomework_DESC"
-  | "meanAttend_ASC"
-  | "meanAttend_DESC"
-  | "meanBirdy_ASC"
-  | "meanBirdy_DESC"
-  | "meanExam_ASC"
-  | "meanExam_DESC"
-  | "countReview_ASC"
-  | "countReview_DESC"
-  | "countGoodReview_ASC"
-  | "countGoodReview_DESC"
-  | "countAverageReview_ASC"
-  | "countAverageReview_DESC"
-  | "countBadReview_ASC"
-  | "countBadReview_DESC"
-  | "countHomework_ASC"
-  | "countHomework_DESC"
-  | "countAttend_ASC"
-  | "countAttend_DESC"
-  | "countBirdy_ASC"
-  | "countBirdy_DESC"
-  | "countExam_ASC"
-  | "countExam_DESC"
-  | "countExamDetails_ASC"
-  | "countExamDetails_DESC"
-  | "countExamPrepYes_ASC"
-  | "countExamPrepYes_DESC"
-  | "countExamPrepNo_ASC"
-  | "countExamPrepNo_DESC"
-  | "countExamOpenbookYes_ASC"
-  | "countExamOpenbookYes_DESC"
-  | "countExamOpenbookNo_ASC"
-  | "countExamOpenbookNo_DESC"
-  | "countExamOldquestionYes_ASC"
-  | "countExamOldquestionYes_DESC"
-  | "countExamOldquestionNo_ASC"
-  | "countExamOldquestionNo_DESC"
-  | "countExamEasymarkYes_ASC"
-  | "countExamEasymarkYes_DESC"
-  | "countExamEasymarkNo_ASC"
-  | "countExamEasymarkNo_DESC";
-
 export type ProfOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -517,6 +449,76 @@ export type ProfOrderByInput =
   | "countExamEasyNo_ASC"
   | "countExamEasyNo_DESC";
 
+export type CourseOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "likedCount_ASC"
+  | "likedCount_DESC"
+  | "professional_ASC"
+  | "professional_DESC"
+  | "expressive_ASC"
+  | "expressive_DESC"
+  | "kind_ASC"
+  | "kind_DESC"
+  | "scoreOverall_ASC"
+  | "scoreOverall_DESC"
+  | "scoreHot_ASC"
+  | "scoreHot_DESC"
+  | "scoreRepute_ASC"
+  | "scoreRepute_DESC"
+  | "scoreBirdy_ASC"
+  | "scoreBirdy_DESC"
+  | "scoreAttend_ASC"
+  | "scoreAttend_DESC"
+  | "scoreExam_ASC"
+  | "scoreExam_DESC"
+  | "scoreHomework_ASC"
+  | "scoreHomework_DESC"
+  | "meanHomework_ASC"
+  | "meanHomework_DESC"
+  | "meanAttend_ASC"
+  | "meanAttend_DESC"
+  | "meanBirdy_ASC"
+  | "meanBirdy_DESC"
+  | "meanExam_ASC"
+  | "meanExam_DESC"
+  | "countReview_ASC"
+  | "countReview_DESC"
+  | "countGoodReview_ASC"
+  | "countGoodReview_DESC"
+  | "countAverageReview_ASC"
+  | "countAverageReview_DESC"
+  | "countBadReview_ASC"
+  | "countBadReview_DESC"
+  | "countHomework_ASC"
+  | "countHomework_DESC"
+  | "countAttend_ASC"
+  | "countAttend_DESC"
+  | "countBirdy_ASC"
+  | "countBirdy_DESC"
+  | "countExam_ASC"
+  | "countExam_DESC"
+  | "countExamDetails_ASC"
+  | "countExamDetails_DESC"
+  | "countExamPrepYes_ASC"
+  | "countExamPrepYes_DESC"
+  | "countExamPrepNo_ASC"
+  | "countExamPrepNo_DESC"
+  | "countExamOpenbookYes_ASC"
+  | "countExamOpenbookYes_DESC"
+  | "countExamOpenbookNo_ASC"
+  | "countExamOpenbookNo_DESC"
+  | "countExamOldquestionYes_ASC"
+  | "countExamOldquestionYes_DESC"
+  | "countExamOldquestionNo_ASC"
+  | "countExamOldquestionNo_DESC"
+  | "countExamEasymarkYes_ASC"
+  | "countExamEasymarkYes_DESC"
+  | "countExamEasymarkNo_ASC"
+  | "countExamEasymarkNo_DESC";
+
 export type DeptOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -546,130 +548,6 @@ export type TagOrderByInput =
   | "category_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
-
-export interface UserUpdateWithWhereUniqueWithoutDeptInput {
-  where: UserWhereUniqueInput;
-  data: UserUpdateWithoutDeptDataInput;
-}
-
-export type CourseWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface PositionCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  profs?: Maybe<ProfCreateManyWithoutPositionInput>;
-}
-
-export interface UserScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  username?: Maybe<String>;
-  username_not?: Maybe<String>;
-  username_in?: Maybe<String[] | String>;
-  username_not_in?: Maybe<String[] | String>;
-  username_lt?: Maybe<String>;
-  username_lte?: Maybe<String>;
-  username_gt?: Maybe<String>;
-  username_gte?: Maybe<String>;
-  username_contains?: Maybe<String>;
-  username_not_contains?: Maybe<String>;
-  username_starts_with?: Maybe<String>;
-  username_not_starts_with?: Maybe<String>;
-  username_ends_with?: Maybe<String>;
-  username_not_ends_with?: Maybe<String>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  isLcUser?: Maybe<Boolean>;
-  isLcUser_not?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  lcSalt_not?: Maybe<String>;
-  lcSalt_in?: Maybe<String[] | String>;
-  lcSalt_not_in?: Maybe<String[] | String>;
-  lcSalt_lt?: Maybe<String>;
-  lcSalt_lte?: Maybe<String>;
-  lcSalt_gt?: Maybe<String>;
-  lcSalt_gte?: Maybe<String>;
-  lcSalt_contains?: Maybe<String>;
-  lcSalt_not_contains?: Maybe<String>;
-  lcSalt_starts_with?: Maybe<String>;
-  lcSalt_not_starts_with?: Maybe<String>;
-  lcSalt_ends_with?: Maybe<String>;
-  lcSalt_not_ends_with?: Maybe<String>;
-  password?: Maybe<String>;
-  password_not?: Maybe<String>;
-  password_in?: Maybe<String[] | String>;
-  password_not_in?: Maybe<String[] | String>;
-  password_lt?: Maybe<String>;
-  password_lte?: Maybe<String>;
-  password_gt?: Maybe<String>;
-  password_gte?: Maybe<String>;
-  password_contains?: Maybe<String>;
-  password_not_contains?: Maybe<String>;
-  password_starts_with?: Maybe<String>;
-  password_not_starts_with?: Maybe<String>;
-  password_ends_with?: Maybe<String>;
-  password_not_ends_with?: Maybe<String>;
-  firstYear?: Maybe<Int>;
-  firstYear_not?: Maybe<Int>;
-  firstYear_in?: Maybe<Int[] | Int>;
-  firstYear_not_in?: Maybe<Int[] | Int>;
-  firstYear_lt?: Maybe<Int>;
-  firstYear_lte?: Maybe<Int>;
-  firstYear_gt?: Maybe<Int>;
-  firstYear_gte?: Maybe<Int>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-}
-
-export interface DeptUpdateManyMutationInput {
-  shortname?: Maybe<String>;
-  longname?: Maybe<String>;
-  alias?: Maybe<String>;
-  icon?: Maybe<String>;
-}
 
 export interface ReviewScalarWhereInput {
   id?: Maybe<ID_Input>;
@@ -721,53 +599,15 @@ export interface ReviewScalarWhereInput {
   NOT?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
 }
 
-export interface DeptCreateInput {
-  id?: Maybe<ID_Input>;
-  shortname: String;
-  longname: String;
-  alias?: Maybe<String>;
-  icon?: Maybe<String>;
-  students?: Maybe<UserCreateManyWithoutDeptInput>;
-  profs?: Maybe<ProfCreateManyWithoutDeptInput>;
-}
+export type CourseWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
-export interface UserSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserWhereInput>;
-  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-}
-
-export interface UserCreateManyWithoutDeptInput {
-  create?: Maybe<UserCreateWithoutDeptInput[] | UserCreateWithoutDeptInput>;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-}
-
-export interface TagSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<TagWhereInput>;
-  AND?: Maybe<TagSubscriptionWhereInput[] | TagSubscriptionWhereInput>;
-  OR?: Maybe<TagSubscriptionWhereInput[] | TagSubscriptionWhereInput>;
-  NOT?: Maybe<TagSubscriptionWhereInput[] | TagSubscriptionWhereInput>;
-}
-
-export interface UserCreateWithoutDeptInput {
-  id?: Maybe<ID_Input>;
-  username: String;
-  email: String;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password: String;
-  firstYear: Int;
-  reviews?: Maybe<ReviewCreateManyWithoutAuthorInput>;
-  likedReviews?: Maybe<ReviewCreateManyInput>;
+export interface ReviewUpdateDataInput {
+  text?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  author?: Maybe<UserUpdateOneRequiredWithoutReviewsInput>;
 }
 
 export interface ProfWhereInput {
@@ -961,6 +801,9 @@ export interface ProfWhereInput {
   achievement_not_ends_with?: Maybe<String>;
   dept?: Maybe<DeptWhereInput>;
   position?: Maybe<PositionWhereInput>;
+  courses_every?: Maybe<CourseWhereInput>;
+  courses_some?: Maybe<CourseWhereInput>;
+  courses_none?: Maybe<CourseWhereInput>;
   scoreOverall?: Maybe<Float>;
   scoreOverall_not?: Maybe<Float>;
   scoreOverall_in?: Maybe<Float[] | Float>;
@@ -1166,90 +1009,11 @@ export interface ProfWhereInput {
   NOT?: Maybe<ProfWhereInput[] | ProfWhereInput>;
 }
 
-export interface ReviewCreateManyWithoutAuthorInput {
-  create?: Maybe<
-    ReviewCreateWithoutAuthorInput[] | ReviewCreateWithoutAuthorInput
-  >;
-  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-}
-
-export interface PositionWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  profs_every?: Maybe<ProfWhereInput>;
-  profs_some?: Maybe<ProfWhereInput>;
-  profs_none?: Maybe<ProfWhereInput>;
-  AND?: Maybe<PositionWhereInput[] | PositionWhereInput>;
-  OR?: Maybe<PositionWhereInput[] | PositionWhereInput>;
-  NOT?: Maybe<PositionWhereInput[] | PositionWhereInput>;
-}
-
-export interface ReviewCreateWithoutAuthorInput {
-  id?: Maybe<ID_Input>;
-  text: String;
-  upVote: Int;
-  downVote: Int;
-}
-
-export interface ProfSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<ProfWhereInput>;
-  AND?: Maybe<ProfSubscriptionWhereInput[] | ProfSubscriptionWhereInput>;
-  OR?: Maybe<ProfSubscriptionWhereInput[] | ProfSubscriptionWhereInput>;
-  NOT?: Maybe<ProfSubscriptionWhereInput[] | ProfSubscriptionWhereInput>;
-}
-
-export interface ReviewCreateManyInput {
-  create?: Maybe<ReviewCreateInput[] | ReviewCreateInput>;
-  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-}
-
-export interface DeptSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<DeptWhereInput>;
-  AND?: Maybe<DeptSubscriptionWhereInput[] | DeptSubscriptionWhereInput>;
-  OR?: Maybe<DeptSubscriptionWhereInput[] | DeptSubscriptionWhereInput>;
-  NOT?: Maybe<DeptSubscriptionWhereInput[] | DeptSubscriptionWhereInput>;
-}
-
-export interface ReviewCreateInput {
-  id?: Maybe<ID_Input>;
-  text: String;
-  upVote: Int;
-  downVote: Int;
-  author: UserCreateOneWithoutReviewsInput;
+export interface UserUpdateOneRequiredWithoutReviewsInput {
+  create?: Maybe<UserCreateWithoutReviewsInput>;
+  update?: Maybe<UserUpdateWithoutReviewsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutReviewsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
 }
 
 export interface CourseWhereInput {
@@ -1281,6 +1045,16 @@ export interface CourseWhereInput {
   name_not_starts_with?: Maybe<String>;
   name_ends_with?: Maybe<String>;
   name_not_ends_with?: Maybe<String>;
+  likedCount?: Maybe<Int>;
+  likedCount_not?: Maybe<Int>;
+  likedCount_in?: Maybe<Int[] | Int>;
+  likedCount_not_in?: Maybe<Int[] | Int>;
+  likedCount_lt?: Maybe<Int>;
+  likedCount_lte?: Maybe<Int>;
+  likedCount_gt?: Maybe<Int>;
+  likedCount_gte?: Maybe<Int>;
+  dept?: Maybe<DeptWhereInput>;
+  prof?: Maybe<ProfWhereInput>;
   professional?: Maybe<Float>;
   professional_not?: Maybe<Float>;
   professional_in?: Maybe<Float[] | Float>;
@@ -1534,12 +1308,7 @@ export interface CourseWhereInput {
   NOT?: Maybe<CourseWhereInput[] | CourseWhereInput>;
 }
 
-export interface UserCreateOneWithoutReviewsInput {
-  create?: Maybe<UserCreateWithoutReviewsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserUpdateInput {
+export interface UserUpdateWithoutReviewsDataInput {
   username?: Maybe<String>;
   email?: Maybe<String>;
   isLcUser?: Maybe<Boolean>;
@@ -1547,79 +1316,85 @@ export interface UserUpdateInput {
   password?: Maybe<String>;
   firstYear?: Maybe<Int>;
   dept?: Maybe<DeptUpdateOneRequiredWithoutStudentsInput>;
-  reviews?: Maybe<ReviewUpdateManyWithoutAuthorInput>;
   likedReviews?: Maybe<ReviewUpdateManyInput>;
 }
 
-export interface UserCreateWithoutReviewsInput {
+export interface ReviewWhereInput {
   id?: Maybe<ID_Input>;
-  username: String;
-  email: String;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password: String;
-  firstYear: Int;
-  dept: DeptCreateOneWithoutStudentsInput;
-  likedReviews?: Maybe<ReviewCreateManyInput>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  text?: Maybe<String>;
+  text_not?: Maybe<String>;
+  text_in?: Maybe<String[] | String>;
+  text_not_in?: Maybe<String[] | String>;
+  text_lt?: Maybe<String>;
+  text_lte?: Maybe<String>;
+  text_gt?: Maybe<String>;
+  text_gte?: Maybe<String>;
+  text_contains?: Maybe<String>;
+  text_not_contains?: Maybe<String>;
+  text_starts_with?: Maybe<String>;
+  text_not_starts_with?: Maybe<String>;
+  text_ends_with?: Maybe<String>;
+  text_not_ends_with?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  upVote_not?: Maybe<Int>;
+  upVote_in?: Maybe<Int[] | Int>;
+  upVote_not_in?: Maybe<Int[] | Int>;
+  upVote_lt?: Maybe<Int>;
+  upVote_lte?: Maybe<Int>;
+  upVote_gt?: Maybe<Int>;
+  upVote_gte?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  downVote_not?: Maybe<Int>;
+  downVote_in?: Maybe<Int[] | Int>;
+  downVote_not_in?: Maybe<Int[] | Int>;
+  downVote_lt?: Maybe<Int>;
+  downVote_lte?: Maybe<Int>;
+  downVote_gt?: Maybe<Int>;
+  downVote_gte?: Maybe<Int>;
+  author?: Maybe<UserWhereInput>;
+  AND?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
+  OR?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
+  NOT?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
 }
 
-export interface TagUpdateManyMutationInput {
-  name?: Maybe<String>;
-  isPositive?: Maybe<Boolean>;
-  category?: Maybe<String>;
+export interface CourseCreateManyWithoutDeptInput {
+  create?: Maybe<CourseCreateWithoutDeptInput[] | CourseCreateWithoutDeptInput>;
+  connect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
 }
 
-export interface DeptCreateOneWithoutStudentsInput {
-  create?: Maybe<DeptCreateWithoutStudentsInput>;
-  connect?: Maybe<DeptWhereUniqueInput>;
+export interface UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput;
+  data: UserUpdateManyDataInput;
 }
 
-export interface TagCreateInput {
+export interface CourseCreateWithoutDeptInput {
   id?: Maybe<ID_Input>;
   name: String;
-  isPositive: Boolean;
-  category?: Maybe<String>;
-}
-
-export interface DeptCreateWithoutStudentsInput {
-  id?: Maybe<ID_Input>;
-  shortname: String;
-  longname: String;
-  alias?: Maybe<String>;
-  icon?: Maybe<String>;
-  profs?: Maybe<ProfCreateManyWithoutDeptInput>;
-}
-
-export interface ReviewUpdateManyMutationInput {
-  text?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-}
-
-export interface ProfCreateManyWithoutDeptInput {
-  create?: Maybe<ProfCreateWithoutDeptInput[] | ProfCreateWithoutDeptInput>;
-  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-}
-
-export interface ProfUpdateManyMutationInput {
-  name?: Maybe<String>;
-  code?: Maybe<String>;
-  gender?: Maybe<Sex>;
-  birth?: Maybe<Int>;
-  hometown?: Maybe<String>;
-  motto?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  exp?: Maybe<Int>;
-  group?: Maybe<String>;
-  intro?: Maybe<String>;
-  education?: Maybe<String>;
-  research?: Maybe<String>;
-  achievement?: Maybe<String>;
+  likedCount?: Maybe<Int>;
+  prof?: Maybe<ProfCreateOneWithoutCoursesInput>;
+  professional?: Maybe<Float>;
+  expressive?: Maybe<Float>;
+  kind?: Maybe<Float>;
   scoreOverall?: Maybe<Float>;
-  scoreProfessional?: Maybe<Float>;
-  scoreExpressive?: Maybe<Float>;
-  scoreKind?: Maybe<Float>;
+  scoreHot?: Maybe<Float>;
+  scoreRepute?: Maybe<Float>;
+  scoreBirdy?: Maybe<Float>;
+  scoreAttend?: Maybe<Float>;
+  scoreExam?: Maybe<Float>;
+  scoreHomework?: Maybe<Float>;
   meanHomework?: Maybe<Float>;
   meanAttend?: Maybe<Float>;
   meanBirdy?: Maybe<Float>;
@@ -1639,11 +1414,34 @@ export interface ProfUpdateManyMutationInput {
   countExamOpenbookNo?: Maybe<Int>;
   countExamOldquestionYes?: Maybe<Int>;
   countExamOldquestionNo?: Maybe<Int>;
-  countExamEasyYes?: Maybe<Int>;
-  countExamEasyNo?: Maybe<Int>;
+  countExamEasymarkYes?: Maybe<Int>;
+  countExamEasymarkNo?: Maybe<Int>;
 }
 
-export interface ProfCreateWithoutDeptInput {
+export interface DeptUpdateOneRequiredWithoutStudentsInput {
+  create?: Maybe<DeptCreateWithoutStudentsInput>;
+  update?: Maybe<DeptUpdateWithoutStudentsDataInput>;
+  upsert?: Maybe<DeptUpsertWithoutStudentsInput>;
+  connect?: Maybe<DeptWhereUniqueInput>;
+}
+
+export interface ProfCreateOneWithoutCoursesInput {
+  create?: Maybe<ProfCreateWithoutCoursesInput>;
+  connect?: Maybe<ProfWhereUniqueInput>;
+}
+
+export interface TagSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TagWhereInput>;
+  AND?: Maybe<TagSubscriptionWhereInput[] | TagSubscriptionWhereInput>;
+  OR?: Maybe<TagSubscriptionWhereInput[] | TagSubscriptionWhereInput>;
+  NOT?: Maybe<TagSubscriptionWhereInput[] | TagSubscriptionWhereInput>;
+}
+
+export interface ProfCreateWithoutCoursesInput {
   id?: Maybe<ID_Input>;
   name: String;
   code?: Maybe<String>;
@@ -1659,6 +1457,7 @@ export interface ProfCreateWithoutDeptInput {
   education?: Maybe<String>;
   research?: Maybe<String>;
   achievement?: Maybe<String>;
+  dept?: Maybe<DeptCreateOneWithoutProfsInput>;
   position?: Maybe<PositionCreateOneWithoutProfsInput>;
   scoreOverall?: Maybe<Float>;
   scoreProfessional?: Maybe<Float>;
@@ -1687,29 +1486,125 @@ export interface ProfCreateWithoutDeptInput {
   countExamEasyNo?: Maybe<Int>;
 }
 
-export type ProfWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface PositionCreateOneWithoutProfsInput {
-  create?: Maybe<PositionCreateWithoutProfsInput>;
-  connect?: Maybe<PositionWhereUniqueInput>;
+export interface ProfSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<ProfWhereInput>;
+  AND?: Maybe<ProfSubscriptionWhereInput[] | ProfSubscriptionWhereInput>;
+  OR?: Maybe<ProfSubscriptionWhereInput[] | ProfSubscriptionWhereInput>;
+  NOT?: Maybe<ProfSubscriptionWhereInput[] | ProfSubscriptionWhereInput>;
 }
 
-export interface PositionUpdateManyMutationInput {
-  name?: Maybe<String>;
+export interface DeptCreateOneWithoutProfsInput {
+  create?: Maybe<DeptCreateWithoutProfsInput>;
+  connect?: Maybe<DeptWhereUniqueInput>;
 }
 
-export interface PositionCreateWithoutProfsInput {
+export interface PositionSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PositionWhereInput>;
+  AND?: Maybe<
+    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
+  >;
+  OR?: Maybe<PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput>;
+  NOT?: Maybe<
+    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
+  >;
+}
+
+export interface DeptCreateWithoutProfsInput {
   id?: Maybe<ID_Input>;
-  name: String;
+  shortname: String;
+  longname: String;
+  alias?: Maybe<String>;
+  icon?: Maybe<String>;
+  students?: Maybe<UserCreateManyWithoutDeptInput>;
+  courses?: Maybe<CourseCreateManyWithoutDeptInput>;
 }
 
-export type ReviewWhereUniqueInput = AtLeastOne<{
+export interface CourseSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CourseWhereInput>;
+  AND?: Maybe<CourseSubscriptionWhereInput[] | CourseSubscriptionWhereInput>;
+  OR?: Maybe<CourseSubscriptionWhereInput[] | CourseSubscriptionWhereInput>;
+  NOT?: Maybe<CourseSubscriptionWhereInput[] | CourseSubscriptionWhereInput>;
+}
+
+export interface CourseUpdateInput {
+  name?: Maybe<String>;
+  likedCount?: Maybe<Int>;
+  dept?: Maybe<DeptUpdateOneWithoutCoursesInput>;
+  prof?: Maybe<ProfUpdateOneWithoutCoursesInput>;
+  professional?: Maybe<Float>;
+  expressive?: Maybe<Float>;
+  kind?: Maybe<Float>;
+  scoreOverall?: Maybe<Float>;
+  scoreHot?: Maybe<Float>;
+  scoreRepute?: Maybe<Float>;
+  scoreBirdy?: Maybe<Float>;
+  scoreAttend?: Maybe<Float>;
+  scoreExam?: Maybe<Float>;
+  scoreHomework?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasymarkYes?: Maybe<Int>;
+  countExamEasymarkNo?: Maybe<Int>;
+}
+
+export type DeptWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
+  shortname?: Maybe<String>;
+  longname?: Maybe<String>;
 }>;
 
-export interface DeptUpdateInput {
+export interface DeptUpdateOneWithoutCoursesInput {
+  create?: Maybe<DeptCreateWithoutCoursesInput>;
+  update?: Maybe<DeptUpdateWithoutCoursesDataInput>;
+  upsert?: Maybe<DeptUpsertWithoutCoursesInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<DeptWhereUniqueInput>;
+}
+
+export interface UserCreateInput {
+  id?: Maybe<ID_Input>;
+  username: String;
+  email: String;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password: String;
+  firstYear: Int;
+  dept: DeptCreateOneWithoutStudentsInput;
+  reviews?: Maybe<ReviewCreateManyWithoutAuthorInput>;
+  likedReviews?: Maybe<ReviewCreateManyInput>;
+}
+
+export interface DeptUpdateWithoutCoursesDataInput {
   shortname?: Maybe<String>;
   longname?: Maybe<String>;
   alias?: Maybe<String>;
@@ -1718,12 +1613,10 @@ export interface DeptUpdateInput {
   profs?: Maybe<ProfUpdateManyWithoutDeptInput>;
 }
 
-export interface DeptUpdateWithoutProfsDataInput {
-  shortname?: Maybe<String>;
-  longname?: Maybe<String>;
-  alias?: Maybe<String>;
-  icon?: Maybe<String>;
-  students?: Maybe<UserUpdateManyWithoutDeptInput>;
+export interface TagUpdateInput {
+  name?: Maybe<String>;
+  isPositive?: Maybe<Boolean>;
+  category?: Maybe<String>;
 }
 
 export interface UserUpdateManyWithoutDeptInput {
@@ -1746,17 +1639,212 @@ export interface UserUpdateManyWithoutDeptInput {
   >;
 }
 
-export type TagWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
+export interface TagCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  isPositive: Boolean;
+  category?: Maybe<String>;
+}
 
-export interface UserUpdateManyDataInput {
+export interface UserUpdateWithWhereUniqueWithoutDeptInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateWithoutDeptDataInput;
+}
+
+export interface ReviewUpdateInput {
+  text?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  author?: Maybe<UserUpdateOneRequiredWithoutReviewsInput>;
+}
+
+export interface UserUpdateWithoutDeptDataInput {
   username?: Maybe<String>;
   email?: Maybe<String>;
   isLcUser?: Maybe<Boolean>;
   lcSalt?: Maybe<String>;
   password?: Maybe<String>;
   firstYear?: Maybe<Int>;
+  reviews?: Maybe<ReviewUpdateManyWithoutAuthorInput>;
+  likedReviews?: Maybe<ReviewUpdateManyInput>;
+}
+
+export type ProfWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ReviewUpdateManyWithoutAuthorInput {
+  create?: Maybe<
+    ReviewCreateWithoutAuthorInput[] | ReviewCreateWithoutAuthorInput
+  >;
+  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  update?: Maybe<
+    | ReviewUpdateWithWhereUniqueWithoutAuthorInput[]
+    | ReviewUpdateWithWhereUniqueWithoutAuthorInput
+  >;
+  upsert?: Maybe<
+    | ReviewUpsertWithWhereUniqueWithoutAuthorInput[]
+    | ReviewUpsertWithWhereUniqueWithoutAuthorInput
+  >;
+  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  updateMany?: Maybe<
+    | ReviewUpdateManyWithWhereNestedInput[]
+    | ReviewUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ProfCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  gender?: Maybe<Sex>;
+  birth?: Maybe<Int>;
+  hometown?: Maybe<String>;
+  motto?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  exp?: Maybe<Int>;
+  group?: Maybe<String>;
+  intro?: Maybe<String>;
+  education?: Maybe<String>;
+  research?: Maybe<String>;
+  achievement?: Maybe<String>;
+  dept?: Maybe<DeptCreateOneWithoutProfsInput>;
+  position?: Maybe<PositionCreateOneWithoutProfsInput>;
+  courses?: Maybe<CourseCreateManyWithoutProfInput>;
+  scoreOverall?: Maybe<Float>;
+  scoreProfessional?: Maybe<Float>;
+  scoreExpressive?: Maybe<Float>;
+  scoreKind?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasyYes?: Maybe<Int>;
+  countExamEasyNo?: Maybe<Int>;
+}
+
+export interface ReviewUpdateWithWhereUniqueWithoutAuthorInput {
+  where: ReviewWhereUniqueInput;
+  data: ReviewUpdateWithoutAuthorDataInput;
+}
+
+export type ReviewWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ReviewUpdateWithoutAuthorDataInput {
+  text?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+}
+
+export interface ProfUpdateWithoutPositionDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  gender?: Maybe<Sex>;
+  birth?: Maybe<Int>;
+  hometown?: Maybe<String>;
+  motto?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  exp?: Maybe<Int>;
+  group?: Maybe<String>;
+  intro?: Maybe<String>;
+  education?: Maybe<String>;
+  research?: Maybe<String>;
+  achievement?: Maybe<String>;
+  dept?: Maybe<DeptUpdateOneWithoutProfsInput>;
+  courses?: Maybe<CourseUpdateManyWithoutProfInput>;
+  scoreOverall?: Maybe<Float>;
+  scoreProfessional?: Maybe<Float>;
+  scoreExpressive?: Maybe<Float>;
+  scoreKind?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasyYes?: Maybe<Int>;
+  countExamEasyNo?: Maybe<Int>;
+}
+
+export interface ReviewUpsertWithWhereUniqueWithoutAuthorInput {
+  where: ReviewWhereUniqueInput;
+  update: ReviewUpdateWithoutAuthorDataInput;
+  create: ReviewCreateWithoutAuthorInput;
+}
+
+export type TagWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface CourseUpdateManyMutationInput {
+  name?: Maybe<String>;
+  likedCount?: Maybe<Int>;
+  professional?: Maybe<Float>;
+  expressive?: Maybe<Float>;
+  kind?: Maybe<Float>;
+  scoreOverall?: Maybe<Float>;
+  scoreHot?: Maybe<Float>;
+  scoreRepute?: Maybe<Float>;
+  scoreBirdy?: Maybe<Float>;
+  scoreAttend?: Maybe<Float>;
+  scoreExam?: Maybe<Float>;
+  scoreHomework?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasymarkYes?: Maybe<Int>;
+  countExamEasymarkNo?: Maybe<Int>;
 }
 
 export interface TagWhereInput {
@@ -1809,288 +1897,54 @@ export interface TagWhereInput {
   NOT?: Maybe<TagWhereInput[] | TagWhereInput>;
 }
 
-export interface UserUpdateWithoutDeptDataInput {
-  username?: Maybe<String>;
-  email?: Maybe<String>;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password?: Maybe<String>;
-  firstYear?: Maybe<Int>;
-  reviews?: Maybe<ReviewUpdateManyWithoutAuthorInput>;
-  likedReviews?: Maybe<ReviewUpdateManyInput>;
-}
-
-export interface ProfUpdateManyWithoutPositionInput {
-  create?: Maybe<
-    ProfCreateWithoutPositionInput[] | ProfCreateWithoutPositionInput
-  >;
-  delete?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  set?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  disconnect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  update?: Maybe<
-    | ProfUpdateWithWhereUniqueWithoutPositionInput[]
-    | ProfUpdateWithWhereUniqueWithoutPositionInput
-  >;
-  upsert?: Maybe<
-    | ProfUpsertWithWhereUniqueWithoutPositionInput[]
-    | ProfUpsertWithWhereUniqueWithoutPositionInput
-  >;
-  deleteMany?: Maybe<ProfScalarWhereInput[] | ProfScalarWhereInput>;
-  updateMany?: Maybe<
-    ProfUpdateManyWithWhereNestedInput[] | ProfUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface ReviewUpdateManyWithoutAuthorInput {
-  create?: Maybe<
-    ReviewCreateWithoutAuthorInput[] | ReviewCreateWithoutAuthorInput
-  >;
-  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  update?: Maybe<
-    | ReviewUpdateWithWhereUniqueWithoutAuthorInput[]
-    | ReviewUpdateWithWhereUniqueWithoutAuthorInput
-  >;
-  upsert?: Maybe<
-    | ReviewUpsertWithWhereUniqueWithoutAuthorInput[]
-    | ReviewUpsertWithWhereUniqueWithoutAuthorInput
-  >;
-  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-  updateMany?: Maybe<
-    | ReviewUpdateManyWithWhereNestedInput[]
-    | ReviewUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface DeptCreateWithoutProfsInput {
-  id?: Maybe<ID_Input>;
-  shortname: String;
-  longname: String;
-  alias?: Maybe<String>;
-  icon?: Maybe<String>;
-  students?: Maybe<UserCreateManyWithoutDeptInput>;
-}
-
-export interface ReviewUpdateWithWhereUniqueWithoutAuthorInput {
-  where: ReviewWhereUniqueInput;
-  data: ReviewUpdateWithoutAuthorDataInput;
-}
-
-export interface DeptCreateOneWithoutProfsInput {
-  create?: Maybe<DeptCreateWithoutProfsInput>;
-  connect?: Maybe<DeptWhereUniqueInput>;
-}
-
-export interface ReviewUpdateWithoutAuthorDataInput {
-  text?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-}
-
-export interface ProfCreateManyWithoutPositionInput {
-  create?: Maybe<
-    ProfCreateWithoutPositionInput[] | ProfCreateWithoutPositionInput
-  >;
-  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-}
-
-export interface ReviewUpsertWithWhereUniqueWithoutAuthorInput {
-  where: ReviewWhereUniqueInput;
-  update: ReviewUpdateWithoutAuthorDataInput;
-  create: ReviewCreateWithoutAuthorInput;
-}
-
-export interface CourseCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  professional?: Maybe<Float>;
-  expressive?: Maybe<Float>;
-  kind?: Maybe<Float>;
-  scoreOverall?: Maybe<Float>;
-  scoreHot?: Maybe<Float>;
-  scoreRepute?: Maybe<Float>;
-  scoreBirdy?: Maybe<Float>;
-  scoreAttend?: Maybe<Float>;
-  scoreExam?: Maybe<Float>;
-  scoreHomework?: Maybe<Float>;
-  meanHomework?: Maybe<Float>;
-  meanAttend?: Maybe<Float>;
-  meanBirdy?: Maybe<Float>;
-  meanExam?: Maybe<Float>;
-  countReview?: Maybe<Int>;
-  countGoodReview?: Maybe<Int>;
-  countAverageReview?: Maybe<Int>;
-  countBadReview?: Maybe<Int>;
-  countHomework?: Maybe<Int>;
-  countAttend?: Maybe<Int>;
-  countBirdy?: Maybe<Int>;
-  countExam?: Maybe<Int>;
-  countExamDetails?: Maybe<Int>;
-  countExamPrepYes?: Maybe<Int>;
-  countExamPrepNo?: Maybe<Int>;
-  countExamOpenbookYes?: Maybe<Int>;
-  countExamOpenbookNo?: Maybe<Int>;
-  countExamOldquestionYes?: Maybe<Int>;
-  countExamOldquestionNo?: Maybe<Int>;
-  countExamEasymarkYes?: Maybe<Int>;
-  countExamEasymarkNo?: Maybe<Int>;
-}
-
-export interface UserUpdateManyWithWhereNestedInput {
-  where: UserScalarWhereInput;
-  data: UserUpdateManyDataInput;
-}
-
-export interface CourseUpdateManyMutationInput {
-  name?: Maybe<String>;
-  professional?: Maybe<Float>;
-  expressive?: Maybe<Float>;
-  kind?: Maybe<Float>;
-  scoreOverall?: Maybe<Float>;
-  scoreHot?: Maybe<Float>;
-  scoreRepute?: Maybe<Float>;
-  scoreBirdy?: Maybe<Float>;
-  scoreAttend?: Maybe<Float>;
-  scoreExam?: Maybe<Float>;
-  scoreHomework?: Maybe<Float>;
-  meanHomework?: Maybe<Float>;
-  meanAttend?: Maybe<Float>;
-  meanBirdy?: Maybe<Float>;
-  meanExam?: Maybe<Float>;
-  countReview?: Maybe<Int>;
-  countGoodReview?: Maybe<Int>;
-  countAverageReview?: Maybe<Int>;
-  countBadReview?: Maybe<Int>;
-  countHomework?: Maybe<Int>;
-  countAttend?: Maybe<Int>;
-  countBirdy?: Maybe<Int>;
-  countExam?: Maybe<Int>;
-  countExamDetails?: Maybe<Int>;
-  countExamPrepYes?: Maybe<Int>;
-  countExamPrepNo?: Maybe<Int>;
-  countExamOpenbookYes?: Maybe<Int>;
-  countExamOpenbookNo?: Maybe<Int>;
-  countExamOldquestionYes?: Maybe<Int>;
-  countExamOldquestionNo?: Maybe<Int>;
-  countExamEasymarkYes?: Maybe<Int>;
-  countExamEasymarkNo?: Maybe<Int>;
-}
-
 export interface ReviewUpdateManyWithWhereNestedInput {
   where: ReviewScalarWhereInput;
   data: ReviewUpdateManyDataInput;
 }
 
-export interface UserWhereInput {
+export interface ProfCreateWithoutPositionInput {
   id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  username?: Maybe<String>;
-  username_not?: Maybe<String>;
-  username_in?: Maybe<String[] | String>;
-  username_not_in?: Maybe<String[] | String>;
-  username_lt?: Maybe<String>;
-  username_lte?: Maybe<String>;
-  username_gt?: Maybe<String>;
-  username_gte?: Maybe<String>;
-  username_contains?: Maybe<String>;
-  username_not_contains?: Maybe<String>;
-  username_starts_with?: Maybe<String>;
-  username_not_starts_with?: Maybe<String>;
-  username_ends_with?: Maybe<String>;
-  username_not_ends_with?: Maybe<String>;
+  name: String;
+  code?: Maybe<String>;
+  gender?: Maybe<Sex>;
+  birth?: Maybe<Int>;
+  hometown?: Maybe<String>;
+  motto?: Maybe<String>;
   email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  isLcUser?: Maybe<Boolean>;
-  isLcUser_not?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  lcSalt_not?: Maybe<String>;
-  lcSalt_in?: Maybe<String[] | String>;
-  lcSalt_not_in?: Maybe<String[] | String>;
-  lcSalt_lt?: Maybe<String>;
-  lcSalt_lte?: Maybe<String>;
-  lcSalt_gt?: Maybe<String>;
-  lcSalt_gte?: Maybe<String>;
-  lcSalt_contains?: Maybe<String>;
-  lcSalt_not_contains?: Maybe<String>;
-  lcSalt_starts_with?: Maybe<String>;
-  lcSalt_not_starts_with?: Maybe<String>;
-  lcSalt_ends_with?: Maybe<String>;
-  lcSalt_not_ends_with?: Maybe<String>;
-  password?: Maybe<String>;
-  password_not?: Maybe<String>;
-  password_in?: Maybe<String[] | String>;
-  password_not_in?: Maybe<String[] | String>;
-  password_lt?: Maybe<String>;
-  password_lte?: Maybe<String>;
-  password_gt?: Maybe<String>;
-  password_gte?: Maybe<String>;
-  password_contains?: Maybe<String>;
-  password_not_contains?: Maybe<String>;
-  password_starts_with?: Maybe<String>;
-  password_not_starts_with?: Maybe<String>;
-  password_ends_with?: Maybe<String>;
-  password_not_ends_with?: Maybe<String>;
-  firstYear?: Maybe<Int>;
-  firstYear_not?: Maybe<Int>;
-  firstYear_in?: Maybe<Int[] | Int>;
-  firstYear_not_in?: Maybe<Int[] | Int>;
-  firstYear_lt?: Maybe<Int>;
-  firstYear_lte?: Maybe<Int>;
-  firstYear_gt?: Maybe<Int>;
-  firstYear_gte?: Maybe<Int>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  dept?: Maybe<DeptWhereInput>;
-  reviews_every?: Maybe<ReviewWhereInput>;
-  reviews_some?: Maybe<ReviewWhereInput>;
-  reviews_none?: Maybe<ReviewWhereInput>;
-  likedReviews_every?: Maybe<ReviewWhereInput>;
-  likedReviews_some?: Maybe<ReviewWhereInput>;
-  likedReviews_none?: Maybe<ReviewWhereInput>;
-  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
-  OR?: Maybe<UserWhereInput[] | UserWhereInput>;
-  NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
+  phone?: Maybe<String>;
+  exp?: Maybe<Int>;
+  group?: Maybe<String>;
+  intro?: Maybe<String>;
+  education?: Maybe<String>;
+  research?: Maybe<String>;
+  achievement?: Maybe<String>;
+  dept?: Maybe<DeptCreateOneWithoutProfsInput>;
+  courses?: Maybe<CourseCreateManyWithoutProfInput>;
+  scoreOverall?: Maybe<Float>;
+  scoreProfessional?: Maybe<Float>;
+  scoreExpressive?: Maybe<Float>;
+  scoreKind?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasyYes?: Maybe<Int>;
+  countExamEasyNo?: Maybe<Int>;
 }
 
 export interface ReviewUpdateManyDataInput {
@@ -2099,15 +1953,10 @@ export interface ReviewUpdateManyDataInput {
   downVote?: Maybe<Int>;
 }
 
-export interface ReviewSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<ReviewWhereInput>;
-  AND?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
-  OR?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
-  NOT?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
+export interface PositionCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  profs?: Maybe<ProfCreateManyWithoutPositionInput>;
 }
 
 export interface ReviewUpdateManyInput {
@@ -2131,19 +1980,11 @@ export interface ReviewUpdateManyInput {
   >;
 }
 
-export interface PositionSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PositionWhereInput>;
-  AND?: Maybe<
-    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
-  >;
-  OR?: Maybe<PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput>;
-  NOT?: Maybe<
-    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
-  >;
+export interface DeptUpdateManyMutationInput {
+  shortname?: Maybe<String>;
+  longname?: Maybe<String>;
+  alias?: Maybe<String>;
+  icon?: Maybe<String>;
 }
 
 export interface ReviewUpdateWithWhereUniqueNestedInput {
@@ -2151,280 +1992,60 @@ export interface ReviewUpdateWithWhereUniqueNestedInput {
   data: ReviewUpdateDataInput;
 }
 
-export interface UserUpdateManyMutationInput {
-  username?: Maybe<String>;
-  email?: Maybe<String>;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password?: Maybe<String>;
-  firstYear?: Maybe<Int>;
-}
-
-export interface ReviewUpdateDataInput {
-  text?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  author?: Maybe<UserUpdateOneRequiredWithoutReviewsInput>;
-}
-
-export interface TagUpdateInput {
-  name?: Maybe<String>;
-  isPositive?: Maybe<Boolean>;
-  category?: Maybe<String>;
-}
-
-export interface UserUpdateOneRequiredWithoutReviewsInput {
-  create?: Maybe<UserCreateWithoutReviewsInput>;
-  update?: Maybe<UserUpdateWithoutReviewsDataInput>;
-  upsert?: Maybe<UserUpsertWithoutReviewsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface ReviewUpdateInput {
-  text?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  author?: Maybe<UserUpdateOneRequiredWithoutReviewsInput>;
-}
-
-export interface UserUpdateWithoutReviewsDataInput {
-  username?: Maybe<String>;
-  email?: Maybe<String>;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password?: Maybe<String>;
-  firstYear?: Maybe<Int>;
-  dept?: Maybe<DeptUpdateOneRequiredWithoutStudentsInput>;
-  likedReviews?: Maybe<ReviewUpdateManyInput>;
-}
-
-export interface ProfCreateInput {
+export interface DeptCreateInput {
   id?: Maybe<ID_Input>;
-  name: String;
-  code?: Maybe<String>;
-  gender?: Maybe<Sex>;
-  birth?: Maybe<Int>;
-  hometown?: Maybe<String>;
-  motto?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  exp?: Maybe<Int>;
-  group?: Maybe<String>;
-  intro?: Maybe<String>;
-  education?: Maybe<String>;
-  research?: Maybe<String>;
-  achievement?: Maybe<String>;
-  dept?: Maybe<DeptCreateOneWithoutProfsInput>;
-  position?: Maybe<PositionCreateOneWithoutProfsInput>;
-  scoreOverall?: Maybe<Float>;
-  scoreProfessional?: Maybe<Float>;
-  scoreExpressive?: Maybe<Float>;
-  scoreKind?: Maybe<Float>;
-  meanHomework?: Maybe<Float>;
-  meanAttend?: Maybe<Float>;
-  meanBirdy?: Maybe<Float>;
-  meanExam?: Maybe<Float>;
-  countReview?: Maybe<Int>;
-  countGoodReview?: Maybe<Int>;
-  countAverageReview?: Maybe<Int>;
-  countBadReview?: Maybe<Int>;
-  countHomework?: Maybe<Int>;
-  countAttend?: Maybe<Int>;
-  countBirdy?: Maybe<Int>;
-  countExam?: Maybe<Int>;
-  countExamDetails?: Maybe<Int>;
-  countExamPrepYes?: Maybe<Int>;
-  countExamPrepNo?: Maybe<Int>;
-  countExamOpenbookYes?: Maybe<Int>;
-  countExamOpenbookNo?: Maybe<Int>;
-  countExamOldquestionYes?: Maybe<Int>;
-  countExamOldquestionNo?: Maybe<Int>;
-  countExamEasyYes?: Maybe<Int>;
-  countExamEasyNo?: Maybe<Int>;
-}
-
-export interface DeptUpdateOneRequiredWithoutStudentsInput {
-  create?: Maybe<DeptCreateWithoutStudentsInput>;
-  update?: Maybe<DeptUpdateWithoutStudentsDataInput>;
-  upsert?: Maybe<DeptUpsertWithoutStudentsInput>;
-  connect?: Maybe<DeptWhereUniqueInput>;
-}
-
-export interface DeptUpsertWithoutProfsInput {
-  update: DeptUpdateWithoutProfsDataInput;
-  create: DeptCreateWithoutProfsInput;
-}
-
-export interface DeptUpdateWithoutStudentsDataInput {
-  shortname?: Maybe<String>;
-  longname?: Maybe<String>;
+  shortname: String;
+  longname: String;
   alias?: Maybe<String>;
   icon?: Maybe<String>;
-  profs?: Maybe<ProfUpdateManyWithoutDeptInput>;
+  students?: Maybe<UserCreateManyWithoutDeptInput>;
+  profs?: Maybe<ProfCreateManyWithoutDeptInput>;
+  courses?: Maybe<CourseCreateManyWithoutDeptInput>;
 }
 
-export interface ProfUpdateWithoutPositionDataInput {
+export interface PositionWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
   name?: Maybe<String>;
-  code?: Maybe<String>;
-  gender?: Maybe<Sex>;
-  birth?: Maybe<Int>;
-  hometown?: Maybe<String>;
-  motto?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  exp?: Maybe<Int>;
-  group?: Maybe<String>;
-  intro?: Maybe<String>;
-  education?: Maybe<String>;
-  research?: Maybe<String>;
-  achievement?: Maybe<String>;
-  dept?: Maybe<DeptUpdateOneWithoutProfsInput>;
-  scoreOverall?: Maybe<Float>;
-  scoreProfessional?: Maybe<Float>;
-  scoreExpressive?: Maybe<Float>;
-  scoreKind?: Maybe<Float>;
-  meanHomework?: Maybe<Float>;
-  meanAttend?: Maybe<Float>;
-  meanBirdy?: Maybe<Float>;
-  meanExam?: Maybe<Float>;
-  countReview?: Maybe<Int>;
-  countGoodReview?: Maybe<Int>;
-  countAverageReview?: Maybe<Int>;
-  countBadReview?: Maybe<Int>;
-  countHomework?: Maybe<Int>;
-  countAttend?: Maybe<Int>;
-  countBirdy?: Maybe<Int>;
-  countExam?: Maybe<Int>;
-  countExamDetails?: Maybe<Int>;
-  countExamPrepYes?: Maybe<Int>;
-  countExamPrepNo?: Maybe<Int>;
-  countExamOpenbookYes?: Maybe<Int>;
-  countExamOpenbookNo?: Maybe<Int>;
-  countExamOldquestionYes?: Maybe<Int>;
-  countExamOldquestionNo?: Maybe<Int>;
-  countExamEasyYes?: Maybe<Int>;
-  countExamEasyNo?: Maybe<Int>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  profs_every?: Maybe<ProfWhereInput>;
+  profs_some?: Maybe<ProfWhereInput>;
+  profs_none?: Maybe<ProfWhereInput>;
+  AND?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+  OR?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+  NOT?: Maybe<PositionWhereInput[] | PositionWhereInput>;
 }
 
-export interface ProfUpdateManyWithoutDeptInput {
-  create?: Maybe<ProfCreateWithoutDeptInput[] | ProfCreateWithoutDeptInput>;
-  delete?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  set?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  disconnect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  update?: Maybe<
-    | ProfUpdateWithWhereUniqueWithoutDeptInput[]
-    | ProfUpdateWithWhereUniqueWithoutDeptInput
-  >;
-  upsert?: Maybe<
-    | ProfUpsertWithWhereUniqueWithoutDeptInput[]
-    | ProfUpsertWithWhereUniqueWithoutDeptInput
-  >;
-  deleteMany?: Maybe<ProfScalarWhereInput[] | ProfScalarWhereInput>;
-  updateMany?: Maybe<
-    ProfUpdateManyWithWhereNestedInput[] | ProfUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface PositionUpdateInput {
-  name?: Maybe<String>;
-  profs?: Maybe<ProfUpdateManyWithoutPositionInput>;
-}
-
-export interface ProfUpdateWithWhereUniqueWithoutDeptInput {
-  where: ProfWhereUniqueInput;
-  data: ProfUpdateWithoutDeptDataInput;
-}
-
-export interface ProfCreateWithoutPositionInput {
+export interface CourseCreateInput {
   id?: Maybe<ID_Input>;
   name: String;
-  code?: Maybe<String>;
-  gender?: Maybe<Sex>;
-  birth?: Maybe<Int>;
-  hometown?: Maybe<String>;
-  motto?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  exp?: Maybe<Int>;
-  group?: Maybe<String>;
-  intro?: Maybe<String>;
-  education?: Maybe<String>;
-  research?: Maybe<String>;
-  achievement?: Maybe<String>;
-  dept?: Maybe<DeptCreateOneWithoutProfsInput>;
-  scoreOverall?: Maybe<Float>;
-  scoreProfessional?: Maybe<Float>;
-  scoreExpressive?: Maybe<Float>;
-  scoreKind?: Maybe<Float>;
-  meanHomework?: Maybe<Float>;
-  meanAttend?: Maybe<Float>;
-  meanBirdy?: Maybe<Float>;
-  meanExam?: Maybe<Float>;
-  countReview?: Maybe<Int>;
-  countGoodReview?: Maybe<Int>;
-  countAverageReview?: Maybe<Int>;
-  countBadReview?: Maybe<Int>;
-  countHomework?: Maybe<Int>;
-  countAttend?: Maybe<Int>;
-  countBirdy?: Maybe<Int>;
-  countExam?: Maybe<Int>;
-  countExamDetails?: Maybe<Int>;
-  countExamPrepYes?: Maybe<Int>;
-  countExamPrepNo?: Maybe<Int>;
-  countExamOpenbookYes?: Maybe<Int>;
-  countExamOpenbookNo?: Maybe<Int>;
-  countExamOldquestionYes?: Maybe<Int>;
-  countExamOldquestionNo?: Maybe<Int>;
-  countExamEasyYes?: Maybe<Int>;
-  countExamEasyNo?: Maybe<Int>;
-}
-
-export interface ProfUpdateWithoutDeptDataInput {
-  name?: Maybe<String>;
-  code?: Maybe<String>;
-  gender?: Maybe<Sex>;
-  birth?: Maybe<Int>;
-  hometown?: Maybe<String>;
-  motto?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  exp?: Maybe<Int>;
-  group?: Maybe<String>;
-  intro?: Maybe<String>;
-  education?: Maybe<String>;
-  research?: Maybe<String>;
-  achievement?: Maybe<String>;
-  position?: Maybe<PositionUpdateOneWithoutProfsInput>;
-  scoreOverall?: Maybe<Float>;
-  scoreProfessional?: Maybe<Float>;
-  scoreExpressive?: Maybe<Float>;
-  scoreKind?: Maybe<Float>;
-  meanHomework?: Maybe<Float>;
-  meanAttend?: Maybe<Float>;
-  meanBirdy?: Maybe<Float>;
-  meanExam?: Maybe<Float>;
-  countReview?: Maybe<Int>;
-  countGoodReview?: Maybe<Int>;
-  countAverageReview?: Maybe<Int>;
-  countBadReview?: Maybe<Int>;
-  countHomework?: Maybe<Int>;
-  countAttend?: Maybe<Int>;
-  countBirdy?: Maybe<Int>;
-  countExam?: Maybe<Int>;
-  countExamDetails?: Maybe<Int>;
-  countExamPrepYes?: Maybe<Int>;
-  countExamPrepNo?: Maybe<Int>;
-  countExamOpenbookYes?: Maybe<Int>;
-  countExamOpenbookNo?: Maybe<Int>;
-  countExamOldquestionYes?: Maybe<Int>;
-  countExamOldquestionNo?: Maybe<Int>;
-  countExamEasyYes?: Maybe<Int>;
-  countExamEasyNo?: Maybe<Int>;
-}
-
-export interface CourseUpdateInput {
-  name?: Maybe<String>;
+  likedCount?: Maybe<Int>;
+  dept?: Maybe<DeptCreateOneWithoutCoursesInput>;
+  prof?: Maybe<ProfCreateOneWithoutCoursesInput>;
   professional?: Maybe<Float>;
   expressive?: Maybe<Float>;
   kind?: Maybe<Float>;
@@ -2458,13 +2079,19 @@ export interface CourseUpdateInput {
   countExamEasymarkNo?: Maybe<Int>;
 }
 
-export interface PositionUpdateOneWithoutProfsInput {
-  create?: Maybe<PositionCreateWithoutProfsInput>;
-  update?: Maybe<PositionUpdateWithoutProfsDataInput>;
-  upsert?: Maybe<PositionUpsertWithoutProfsInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<PositionWhereUniqueInput>;
+export interface DeptUpsertWithoutCoursesInput {
+  update: DeptUpdateWithoutCoursesDataInput;
+  create: DeptCreateWithoutCoursesInput;
+}
+
+export interface DeptCreateWithoutCoursesInput {
+  id?: Maybe<ID_Input>;
+  shortname: String;
+  longname: String;
+  alias?: Maybe<String>;
+  icon?: Maybe<String>;
+  students?: Maybe<UserCreateManyWithoutDeptInput>;
+  profs?: Maybe<ProfCreateManyWithoutDeptInput>;
 }
 
 export interface DeptWhereInput {
@@ -2544,24 +2171,249 @@ export interface DeptWhereInput {
   profs_every?: Maybe<ProfWhereInput>;
   profs_some?: Maybe<ProfWhereInput>;
   profs_none?: Maybe<ProfWhereInput>;
+  courses_every?: Maybe<CourseWhereInput>;
+  courses_some?: Maybe<CourseWhereInput>;
+  courses_none?: Maybe<CourseWhereInput>;
   AND?: Maybe<DeptWhereInput[] | DeptWhereInput>;
   OR?: Maybe<DeptWhereInput[] | DeptWhereInput>;
   NOT?: Maybe<DeptWhereInput[] | DeptWhereInput>;
+}
+
+export interface UserCreateWithoutDeptInput {
+  id?: Maybe<ID_Input>;
+  username: String;
+  email: String;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password: String;
+  firstYear: Int;
+  reviews?: Maybe<ReviewCreateManyWithoutAuthorInput>;
+  likedReviews?: Maybe<ReviewCreateManyInput>;
+}
+
+export interface UserUpdateManyDataInput {
+  username?: Maybe<String>;
+  email?: Maybe<String>;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password?: Maybe<String>;
+  firstYear?: Maybe<Int>;
+}
+
+export interface ReviewCreateWithoutAuthorInput {
+  id?: Maybe<ID_Input>;
+  text: String;
+  upVote: Int;
+  downVote: Int;
+}
+
+export interface DeptUpdateWithoutStudentsDataInput {
+  shortname?: Maybe<String>;
+  longname?: Maybe<String>;
+  alias?: Maybe<String>;
+  icon?: Maybe<String>;
+  profs?: Maybe<ProfUpdateManyWithoutDeptInput>;
+  courses?: Maybe<CourseUpdateManyWithoutDeptInput>;
+}
+
+export interface ReviewCreateInput {
+  id?: Maybe<ID_Input>;
+  text: String;
+  upVote: Int;
+  downVote: Int;
+  author: UserCreateOneWithoutReviewsInput;
+}
+
+export interface ProfUpdateManyWithoutDeptInput {
+  create?: Maybe<ProfCreateWithoutDeptInput[] | ProfCreateWithoutDeptInput>;
+  delete?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  set?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  disconnect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  update?: Maybe<
+    | ProfUpdateWithWhereUniqueWithoutDeptInput[]
+    | ProfUpdateWithWhereUniqueWithoutDeptInput
+  >;
+  upsert?: Maybe<
+    | ProfUpsertWithWhereUniqueWithoutDeptInput[]
+    | ProfUpsertWithWhereUniqueWithoutDeptInput
+  >;
+  deleteMany?: Maybe<ProfScalarWhereInput[] | ProfScalarWhereInput>;
+  updateMany?: Maybe<
+    ProfUpdateManyWithWhereNestedInput[] | ProfUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface UserCreateWithoutReviewsInput {
+  id?: Maybe<ID_Input>;
+  username: String;
+  email: String;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password: String;
+  firstYear: Int;
+  dept: DeptCreateOneWithoutStudentsInput;
+  likedReviews?: Maybe<ReviewCreateManyInput>;
+}
+
+export interface ProfUpdateWithWhereUniqueWithoutDeptInput {
+  where: ProfWhereUniqueInput;
+  data: ProfUpdateWithoutDeptDataInput;
+}
+
+export interface DeptCreateWithoutStudentsInput {
+  id?: Maybe<ID_Input>;
+  shortname: String;
+  longname: String;
+  alias?: Maybe<String>;
+  icon?: Maybe<String>;
+  profs?: Maybe<ProfCreateManyWithoutDeptInput>;
+  courses?: Maybe<CourseCreateManyWithoutDeptInput>;
+}
+
+export interface ProfUpdateWithoutDeptDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  gender?: Maybe<Sex>;
+  birth?: Maybe<Int>;
+  hometown?: Maybe<String>;
+  motto?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  exp?: Maybe<Int>;
+  group?: Maybe<String>;
+  intro?: Maybe<String>;
+  education?: Maybe<String>;
+  research?: Maybe<String>;
+  achievement?: Maybe<String>;
+  position?: Maybe<PositionUpdateOneWithoutProfsInput>;
+  courses?: Maybe<CourseUpdateManyWithoutProfInput>;
+  scoreOverall?: Maybe<Float>;
+  scoreProfessional?: Maybe<Float>;
+  scoreExpressive?: Maybe<Float>;
+  scoreKind?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasyYes?: Maybe<Int>;
+  countExamEasyNo?: Maybe<Int>;
+}
+
+export interface ProfCreateWithoutDeptInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  gender?: Maybe<Sex>;
+  birth?: Maybe<Int>;
+  hometown?: Maybe<String>;
+  motto?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  exp?: Maybe<Int>;
+  group?: Maybe<String>;
+  intro?: Maybe<String>;
+  education?: Maybe<String>;
+  research?: Maybe<String>;
+  achievement?: Maybe<String>;
+  position?: Maybe<PositionCreateOneWithoutProfsInput>;
+  courses?: Maybe<CourseCreateManyWithoutProfInput>;
+  scoreOverall?: Maybe<Float>;
+  scoreProfessional?: Maybe<Float>;
+  scoreExpressive?: Maybe<Float>;
+  scoreKind?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasyYes?: Maybe<Int>;
+  countExamEasyNo?: Maybe<Int>;
+}
+
+export interface PositionUpdateOneWithoutProfsInput {
+  create?: Maybe<PositionCreateWithoutProfsInput>;
+  update?: Maybe<PositionUpdateWithoutProfsDataInput>;
+  upsert?: Maybe<PositionUpsertWithoutProfsInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<PositionWhereUniqueInput>;
+}
+
+export interface PositionCreateWithoutProfsInput {
+  id?: Maybe<ID_Input>;
+  name: String;
 }
 
 export interface PositionUpdateWithoutProfsDataInput {
   name?: Maybe<String>;
 }
 
-export interface CourseSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<CourseWhereInput>;
-  AND?: Maybe<CourseSubscriptionWhereInput[] | CourseSubscriptionWhereInput>;
-  OR?: Maybe<CourseSubscriptionWhereInput[] | CourseSubscriptionWhereInput>;
-  NOT?: Maybe<CourseSubscriptionWhereInput[] | CourseSubscriptionWhereInput>;
+export interface CourseCreateWithoutProfInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  likedCount?: Maybe<Int>;
+  dept?: Maybe<DeptCreateOneWithoutCoursesInput>;
+  professional?: Maybe<Float>;
+  expressive?: Maybe<Float>;
+  kind?: Maybe<Float>;
+  scoreOverall?: Maybe<Float>;
+  scoreHot?: Maybe<Float>;
+  scoreRepute?: Maybe<Float>;
+  scoreBirdy?: Maybe<Float>;
+  scoreAttend?: Maybe<Float>;
+  scoreExam?: Maybe<Float>;
+  scoreHomework?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasymarkYes?: Maybe<Int>;
+  countExamEasymarkNo?: Maybe<Int>;
 }
 
 export interface PositionUpsertWithoutProfsInput {
@@ -2569,10 +2421,500 @@ export interface PositionUpsertWithoutProfsInput {
   create: PositionCreateWithoutProfsInput;
 }
 
+export interface ReviewSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<ReviewWhereInput>;
+  AND?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
+  OR?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
+  NOT?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
+}
+
+export interface CourseUpdateManyWithoutProfInput {
+  create?: Maybe<CourseCreateWithoutProfInput[] | CourseCreateWithoutProfInput>;
+  delete?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+  connect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+  set?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+  disconnect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+  update?: Maybe<
+    | CourseUpdateWithWhereUniqueWithoutProfInput[]
+    | CourseUpdateWithWhereUniqueWithoutProfInput
+  >;
+  upsert?: Maybe<
+    | CourseUpsertWithWhereUniqueWithoutProfInput[]
+    | CourseUpsertWithWhereUniqueWithoutProfInput
+  >;
+  deleteMany?: Maybe<CourseScalarWhereInput[] | CourseScalarWhereInput>;
+  updateMany?: Maybe<
+    | CourseUpdateManyWithWhereNestedInput[]
+    | CourseUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface DeptSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<DeptWhereInput>;
+  AND?: Maybe<DeptSubscriptionWhereInput[] | DeptSubscriptionWhereInput>;
+  OR?: Maybe<DeptSubscriptionWhereInput[] | DeptSubscriptionWhereInput>;
+  NOT?: Maybe<DeptSubscriptionWhereInput[] | DeptSubscriptionWhereInput>;
+}
+
+export interface CourseUpdateWithWhereUniqueWithoutProfInput {
+  where: CourseWhereUniqueInput;
+  data: CourseUpdateWithoutProfDataInput;
+}
+
+export interface UserUpdateInput {
+  username?: Maybe<String>;
+  email?: Maybe<String>;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password?: Maybe<String>;
+  firstYear?: Maybe<Int>;
+  dept?: Maybe<DeptUpdateOneRequiredWithoutStudentsInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutAuthorInput>;
+  likedReviews?: Maybe<ReviewUpdateManyInput>;
+}
+
+export interface CourseUpdateWithoutProfDataInput {
+  name?: Maybe<String>;
+  likedCount?: Maybe<Int>;
+  dept?: Maybe<DeptUpdateOneWithoutCoursesInput>;
+  professional?: Maybe<Float>;
+  expressive?: Maybe<Float>;
+  kind?: Maybe<Float>;
+  scoreOverall?: Maybe<Float>;
+  scoreHot?: Maybe<Float>;
+  scoreRepute?: Maybe<Float>;
+  scoreBirdy?: Maybe<Float>;
+  scoreAttend?: Maybe<Float>;
+  scoreExam?: Maybe<Float>;
+  scoreHomework?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasymarkYes?: Maybe<Int>;
+  countExamEasymarkNo?: Maybe<Int>;
+}
+
 export type PositionWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
   name?: Maybe<String>;
 }>;
+
+export interface CourseUpsertWithWhereUniqueWithoutProfInput {
+  where: CourseWhereUniqueInput;
+  update: CourseUpdateWithoutProfDataInput;
+  create: CourseCreateWithoutProfInput;
+}
+
+export interface ProfUpdateManyMutationInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  gender?: Maybe<Sex>;
+  birth?: Maybe<Int>;
+  hometown?: Maybe<String>;
+  motto?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  exp?: Maybe<Int>;
+  group?: Maybe<String>;
+  intro?: Maybe<String>;
+  education?: Maybe<String>;
+  research?: Maybe<String>;
+  achievement?: Maybe<String>;
+  scoreOverall?: Maybe<Float>;
+  scoreProfessional?: Maybe<Float>;
+  scoreExpressive?: Maybe<Float>;
+  scoreKind?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasyYes?: Maybe<Int>;
+  countExamEasyNo?: Maybe<Int>;
+}
+
+export interface CourseScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  likedCount?: Maybe<Int>;
+  likedCount_not?: Maybe<Int>;
+  likedCount_in?: Maybe<Int[] | Int>;
+  likedCount_not_in?: Maybe<Int[] | Int>;
+  likedCount_lt?: Maybe<Int>;
+  likedCount_lte?: Maybe<Int>;
+  likedCount_gt?: Maybe<Int>;
+  likedCount_gte?: Maybe<Int>;
+  professional?: Maybe<Float>;
+  professional_not?: Maybe<Float>;
+  professional_in?: Maybe<Float[] | Float>;
+  professional_not_in?: Maybe<Float[] | Float>;
+  professional_lt?: Maybe<Float>;
+  professional_lte?: Maybe<Float>;
+  professional_gt?: Maybe<Float>;
+  professional_gte?: Maybe<Float>;
+  expressive?: Maybe<Float>;
+  expressive_not?: Maybe<Float>;
+  expressive_in?: Maybe<Float[] | Float>;
+  expressive_not_in?: Maybe<Float[] | Float>;
+  expressive_lt?: Maybe<Float>;
+  expressive_lte?: Maybe<Float>;
+  expressive_gt?: Maybe<Float>;
+  expressive_gte?: Maybe<Float>;
+  kind?: Maybe<Float>;
+  kind_not?: Maybe<Float>;
+  kind_in?: Maybe<Float[] | Float>;
+  kind_not_in?: Maybe<Float[] | Float>;
+  kind_lt?: Maybe<Float>;
+  kind_lte?: Maybe<Float>;
+  kind_gt?: Maybe<Float>;
+  kind_gte?: Maybe<Float>;
+  scoreOverall?: Maybe<Float>;
+  scoreOverall_not?: Maybe<Float>;
+  scoreOverall_in?: Maybe<Float[] | Float>;
+  scoreOverall_not_in?: Maybe<Float[] | Float>;
+  scoreOverall_lt?: Maybe<Float>;
+  scoreOverall_lte?: Maybe<Float>;
+  scoreOverall_gt?: Maybe<Float>;
+  scoreOverall_gte?: Maybe<Float>;
+  scoreHot?: Maybe<Float>;
+  scoreHot_not?: Maybe<Float>;
+  scoreHot_in?: Maybe<Float[] | Float>;
+  scoreHot_not_in?: Maybe<Float[] | Float>;
+  scoreHot_lt?: Maybe<Float>;
+  scoreHot_lte?: Maybe<Float>;
+  scoreHot_gt?: Maybe<Float>;
+  scoreHot_gte?: Maybe<Float>;
+  scoreRepute?: Maybe<Float>;
+  scoreRepute_not?: Maybe<Float>;
+  scoreRepute_in?: Maybe<Float[] | Float>;
+  scoreRepute_not_in?: Maybe<Float[] | Float>;
+  scoreRepute_lt?: Maybe<Float>;
+  scoreRepute_lte?: Maybe<Float>;
+  scoreRepute_gt?: Maybe<Float>;
+  scoreRepute_gte?: Maybe<Float>;
+  scoreBirdy?: Maybe<Float>;
+  scoreBirdy_not?: Maybe<Float>;
+  scoreBirdy_in?: Maybe<Float[] | Float>;
+  scoreBirdy_not_in?: Maybe<Float[] | Float>;
+  scoreBirdy_lt?: Maybe<Float>;
+  scoreBirdy_lte?: Maybe<Float>;
+  scoreBirdy_gt?: Maybe<Float>;
+  scoreBirdy_gte?: Maybe<Float>;
+  scoreAttend?: Maybe<Float>;
+  scoreAttend_not?: Maybe<Float>;
+  scoreAttend_in?: Maybe<Float[] | Float>;
+  scoreAttend_not_in?: Maybe<Float[] | Float>;
+  scoreAttend_lt?: Maybe<Float>;
+  scoreAttend_lte?: Maybe<Float>;
+  scoreAttend_gt?: Maybe<Float>;
+  scoreAttend_gte?: Maybe<Float>;
+  scoreExam?: Maybe<Float>;
+  scoreExam_not?: Maybe<Float>;
+  scoreExam_in?: Maybe<Float[] | Float>;
+  scoreExam_not_in?: Maybe<Float[] | Float>;
+  scoreExam_lt?: Maybe<Float>;
+  scoreExam_lte?: Maybe<Float>;
+  scoreExam_gt?: Maybe<Float>;
+  scoreExam_gte?: Maybe<Float>;
+  scoreHomework?: Maybe<Float>;
+  scoreHomework_not?: Maybe<Float>;
+  scoreHomework_in?: Maybe<Float[] | Float>;
+  scoreHomework_not_in?: Maybe<Float[] | Float>;
+  scoreHomework_lt?: Maybe<Float>;
+  scoreHomework_lte?: Maybe<Float>;
+  scoreHomework_gt?: Maybe<Float>;
+  scoreHomework_gte?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanHomework_not?: Maybe<Float>;
+  meanHomework_in?: Maybe<Float[] | Float>;
+  meanHomework_not_in?: Maybe<Float[] | Float>;
+  meanHomework_lt?: Maybe<Float>;
+  meanHomework_lte?: Maybe<Float>;
+  meanHomework_gt?: Maybe<Float>;
+  meanHomework_gte?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanAttend_not?: Maybe<Float>;
+  meanAttend_in?: Maybe<Float[] | Float>;
+  meanAttend_not_in?: Maybe<Float[] | Float>;
+  meanAttend_lt?: Maybe<Float>;
+  meanAttend_lte?: Maybe<Float>;
+  meanAttend_gt?: Maybe<Float>;
+  meanAttend_gte?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanBirdy_not?: Maybe<Float>;
+  meanBirdy_in?: Maybe<Float[] | Float>;
+  meanBirdy_not_in?: Maybe<Float[] | Float>;
+  meanBirdy_lt?: Maybe<Float>;
+  meanBirdy_lte?: Maybe<Float>;
+  meanBirdy_gt?: Maybe<Float>;
+  meanBirdy_gte?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  meanExam_not?: Maybe<Float>;
+  meanExam_in?: Maybe<Float[] | Float>;
+  meanExam_not_in?: Maybe<Float[] | Float>;
+  meanExam_lt?: Maybe<Float>;
+  meanExam_lte?: Maybe<Float>;
+  meanExam_gt?: Maybe<Float>;
+  meanExam_gte?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countReview_not?: Maybe<Int>;
+  countReview_in?: Maybe<Int[] | Int>;
+  countReview_not_in?: Maybe<Int[] | Int>;
+  countReview_lt?: Maybe<Int>;
+  countReview_lte?: Maybe<Int>;
+  countReview_gt?: Maybe<Int>;
+  countReview_gte?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countGoodReview_not?: Maybe<Int>;
+  countGoodReview_in?: Maybe<Int[] | Int>;
+  countGoodReview_not_in?: Maybe<Int[] | Int>;
+  countGoodReview_lt?: Maybe<Int>;
+  countGoodReview_lte?: Maybe<Int>;
+  countGoodReview_gt?: Maybe<Int>;
+  countGoodReview_gte?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countAverageReview_not?: Maybe<Int>;
+  countAverageReview_in?: Maybe<Int[] | Int>;
+  countAverageReview_not_in?: Maybe<Int[] | Int>;
+  countAverageReview_lt?: Maybe<Int>;
+  countAverageReview_lte?: Maybe<Int>;
+  countAverageReview_gt?: Maybe<Int>;
+  countAverageReview_gte?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countBadReview_not?: Maybe<Int>;
+  countBadReview_in?: Maybe<Int[] | Int>;
+  countBadReview_not_in?: Maybe<Int[] | Int>;
+  countBadReview_lt?: Maybe<Int>;
+  countBadReview_lte?: Maybe<Int>;
+  countBadReview_gt?: Maybe<Int>;
+  countBadReview_gte?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countHomework_not?: Maybe<Int>;
+  countHomework_in?: Maybe<Int[] | Int>;
+  countHomework_not_in?: Maybe<Int[] | Int>;
+  countHomework_lt?: Maybe<Int>;
+  countHomework_lte?: Maybe<Int>;
+  countHomework_gt?: Maybe<Int>;
+  countHomework_gte?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countAttend_not?: Maybe<Int>;
+  countAttend_in?: Maybe<Int[] | Int>;
+  countAttend_not_in?: Maybe<Int[] | Int>;
+  countAttend_lt?: Maybe<Int>;
+  countAttend_lte?: Maybe<Int>;
+  countAttend_gt?: Maybe<Int>;
+  countAttend_gte?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countBirdy_not?: Maybe<Int>;
+  countBirdy_in?: Maybe<Int[] | Int>;
+  countBirdy_not_in?: Maybe<Int[] | Int>;
+  countBirdy_lt?: Maybe<Int>;
+  countBirdy_lte?: Maybe<Int>;
+  countBirdy_gt?: Maybe<Int>;
+  countBirdy_gte?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExam_not?: Maybe<Int>;
+  countExam_in?: Maybe<Int[] | Int>;
+  countExam_not_in?: Maybe<Int[] | Int>;
+  countExam_lt?: Maybe<Int>;
+  countExam_lte?: Maybe<Int>;
+  countExam_gt?: Maybe<Int>;
+  countExam_gte?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamDetails_not?: Maybe<Int>;
+  countExamDetails_in?: Maybe<Int[] | Int>;
+  countExamDetails_not_in?: Maybe<Int[] | Int>;
+  countExamDetails_lt?: Maybe<Int>;
+  countExamDetails_lte?: Maybe<Int>;
+  countExamDetails_gt?: Maybe<Int>;
+  countExamDetails_gte?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepYes_not?: Maybe<Int>;
+  countExamPrepYes_in?: Maybe<Int[] | Int>;
+  countExamPrepYes_not_in?: Maybe<Int[] | Int>;
+  countExamPrepYes_lt?: Maybe<Int>;
+  countExamPrepYes_lte?: Maybe<Int>;
+  countExamPrepYes_gt?: Maybe<Int>;
+  countExamPrepYes_gte?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamPrepNo_not?: Maybe<Int>;
+  countExamPrepNo_in?: Maybe<Int[] | Int>;
+  countExamPrepNo_not_in?: Maybe<Int[] | Int>;
+  countExamPrepNo_lt?: Maybe<Int>;
+  countExamPrepNo_lte?: Maybe<Int>;
+  countExamPrepNo_gt?: Maybe<Int>;
+  countExamPrepNo_gte?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookYes_not?: Maybe<Int>;
+  countExamOpenbookYes_in?: Maybe<Int[] | Int>;
+  countExamOpenbookYes_not_in?: Maybe<Int[] | Int>;
+  countExamOpenbookYes_lt?: Maybe<Int>;
+  countExamOpenbookYes_lte?: Maybe<Int>;
+  countExamOpenbookYes_gt?: Maybe<Int>;
+  countExamOpenbookYes_gte?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOpenbookNo_not?: Maybe<Int>;
+  countExamOpenbookNo_in?: Maybe<Int[] | Int>;
+  countExamOpenbookNo_not_in?: Maybe<Int[] | Int>;
+  countExamOpenbookNo_lt?: Maybe<Int>;
+  countExamOpenbookNo_lte?: Maybe<Int>;
+  countExamOpenbookNo_gt?: Maybe<Int>;
+  countExamOpenbookNo_gte?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionYes_not?: Maybe<Int>;
+  countExamOldquestionYes_in?: Maybe<Int[] | Int>;
+  countExamOldquestionYes_not_in?: Maybe<Int[] | Int>;
+  countExamOldquestionYes_lt?: Maybe<Int>;
+  countExamOldquestionYes_lte?: Maybe<Int>;
+  countExamOldquestionYes_gt?: Maybe<Int>;
+  countExamOldquestionYes_gte?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamOldquestionNo_not?: Maybe<Int>;
+  countExamOldquestionNo_in?: Maybe<Int[] | Int>;
+  countExamOldquestionNo_not_in?: Maybe<Int[] | Int>;
+  countExamOldquestionNo_lt?: Maybe<Int>;
+  countExamOldquestionNo_lte?: Maybe<Int>;
+  countExamOldquestionNo_gt?: Maybe<Int>;
+  countExamOldquestionNo_gte?: Maybe<Int>;
+  countExamEasymarkYes?: Maybe<Int>;
+  countExamEasymarkYes_not?: Maybe<Int>;
+  countExamEasymarkYes_in?: Maybe<Int[] | Int>;
+  countExamEasymarkYes_not_in?: Maybe<Int[] | Int>;
+  countExamEasymarkYes_lt?: Maybe<Int>;
+  countExamEasymarkYes_lte?: Maybe<Int>;
+  countExamEasymarkYes_gt?: Maybe<Int>;
+  countExamEasymarkYes_gte?: Maybe<Int>;
+  countExamEasymarkNo?: Maybe<Int>;
+  countExamEasymarkNo_not?: Maybe<Int>;
+  countExamEasymarkNo_in?: Maybe<Int[] | Int>;
+  countExamEasymarkNo_not_in?: Maybe<Int[] | Int>;
+  countExamEasymarkNo_lt?: Maybe<Int>;
+  countExamEasymarkNo_lte?: Maybe<Int>;
+  countExamEasymarkNo_gt?: Maybe<Int>;
+  countExamEasymarkNo_gte?: Maybe<Int>;
+  AND?: Maybe<CourseScalarWhereInput[] | CourseScalarWhereInput>;
+  OR?: Maybe<CourseScalarWhereInput[] | CourseScalarWhereInput>;
+  NOT?: Maybe<CourseScalarWhereInput[] | CourseScalarWhereInput>;
+}
+
+export interface PositionUpdateManyMutationInput {
+  name?: Maybe<String>;
+}
+
+export interface CourseUpdateManyWithWhereNestedInput {
+  where: CourseScalarWhereInput;
+  data: CourseUpdateManyDataInput;
+}
+
+export interface ProfUpdateWithWhereUniqueWithoutPositionInput {
+  where: ProfWhereUniqueInput;
+  data: ProfUpdateWithoutPositionDataInput;
+}
+
+export interface CourseUpdateManyDataInput {
+  name?: Maybe<String>;
+  likedCount?: Maybe<Int>;
+  professional?: Maybe<Float>;
+  expressive?: Maybe<Float>;
+  kind?: Maybe<Float>;
+  scoreOverall?: Maybe<Float>;
+  scoreHot?: Maybe<Float>;
+  scoreRepute?: Maybe<Float>;
+  scoreBirdy?: Maybe<Float>;
+  scoreAttend?: Maybe<Float>;
+  scoreExam?: Maybe<Float>;
+  scoreHomework?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasymarkYes?: Maybe<Int>;
+  countExamEasymarkNo?: Maybe<Int>;
+}
+
+export interface PositionUpdateInput {
+  name?: Maybe<String>;
+  profs?: Maybe<ProfUpdateManyWithoutPositionInput>;
+}
 
 export interface ProfUpsertWithWhereUniqueWithoutDeptInput {
   where: ProfWhereUniqueInput;
@@ -2580,11 +2922,11 @@ export interface ProfUpsertWithWhereUniqueWithoutDeptInput {
   create: ProfCreateWithoutDeptInput;
 }
 
-export interface ProfUpsertWithWhereUniqueWithoutPositionInput {
-  where: ProfWhereUniqueInput;
-  update: ProfUpdateWithoutPositionDataInput;
-  create: ProfCreateWithoutPositionInput;
-}
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  username?: Maybe<String>;
+  email?: Maybe<String>;
+}>;
 
 export interface ProfScalarWhereInput {
   id?: Maybe<ID_Input>;
@@ -2980,9 +3322,9 @@ export interface ProfScalarWhereInput {
   NOT?: Maybe<ProfScalarWhereInput[] | ProfScalarWhereInput>;
 }
 
-export interface ProfUpdateWithWhereUniqueWithoutPositionInput {
-  where: ProfWhereUniqueInput;
-  data: ProfUpdateWithoutPositionDataInput;
+export interface UserCreateManyWithoutDeptInput {
+  create?: Maybe<UserCreateWithoutDeptInput[] | UserCreateWithoutDeptInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
 }
 
 export interface ProfUpdateManyWithWhereNestedInput {
@@ -2990,55 +3332,9 @@ export interface ProfUpdateManyWithWhereNestedInput {
   data: ProfUpdateManyDataInput;
 }
 
-export interface ReviewWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  text?: Maybe<String>;
-  text_not?: Maybe<String>;
-  text_in?: Maybe<String[] | String>;
-  text_not_in?: Maybe<String[] | String>;
-  text_lt?: Maybe<String>;
-  text_lte?: Maybe<String>;
-  text_gt?: Maybe<String>;
-  text_gte?: Maybe<String>;
-  text_contains?: Maybe<String>;
-  text_not_contains?: Maybe<String>;
-  text_starts_with?: Maybe<String>;
-  text_not_starts_with?: Maybe<String>;
-  text_ends_with?: Maybe<String>;
-  text_not_ends_with?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  upVote_not?: Maybe<Int>;
-  upVote_in?: Maybe<Int[] | Int>;
-  upVote_not_in?: Maybe<Int[] | Int>;
-  upVote_lt?: Maybe<Int>;
-  upVote_lte?: Maybe<Int>;
-  upVote_gt?: Maybe<Int>;
-  upVote_gte?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  downVote_not?: Maybe<Int>;
-  downVote_in?: Maybe<Int[] | Int>;
-  downVote_not_in?: Maybe<Int[] | Int>;
-  downVote_lt?: Maybe<Int>;
-  downVote_lte?: Maybe<Int>;
-  downVote_gt?: Maybe<Int>;
-  downVote_gte?: Maybe<Int>;
-  author?: Maybe<UserWhereInput>;
-  AND?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
-  OR?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
-  NOT?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
+export interface ReviewCreateManyInput {
+  create?: Maybe<ReviewCreateInput[] | ReviewCreateInput>;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
 }
 
 export interface ProfUpdateManyDataInput {
@@ -3083,7 +3379,115 @@ export interface ProfUpdateManyDataInput {
   countExamEasyNo?: Maybe<Int>;
 }
 
-export interface ProfUpdateInput {
+export interface DeptCreateOneWithoutStudentsInput {
+  create?: Maybe<DeptCreateWithoutStudentsInput>;
+  connect?: Maybe<DeptWhereUniqueInput>;
+}
+
+export interface CourseUpdateManyWithoutDeptInput {
+  create?: Maybe<CourseCreateWithoutDeptInput[] | CourseCreateWithoutDeptInput>;
+  delete?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+  connect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+  set?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+  disconnect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+  update?: Maybe<
+    | CourseUpdateWithWhereUniqueWithoutDeptInput[]
+    | CourseUpdateWithWhereUniqueWithoutDeptInput
+  >;
+  upsert?: Maybe<
+    | CourseUpsertWithWhereUniqueWithoutDeptInput[]
+    | CourseUpsertWithWhereUniqueWithoutDeptInput
+  >;
+  deleteMany?: Maybe<CourseScalarWhereInput[] | CourseScalarWhereInput>;
+  updateMany?: Maybe<
+    | CourseUpdateManyWithWhereNestedInput[]
+    | CourseUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface PositionCreateOneWithoutProfsInput {
+  create?: Maybe<PositionCreateWithoutProfsInput>;
+  connect?: Maybe<PositionWhereUniqueInput>;
+}
+
+export interface CourseUpdateWithWhereUniqueWithoutDeptInput {
+  where: CourseWhereUniqueInput;
+  data: CourseUpdateWithoutDeptDataInput;
+}
+
+export interface UserSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserWhereInput>;
+  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+}
+
+export interface CourseUpdateWithoutDeptDataInput {
+  name?: Maybe<String>;
+  likedCount?: Maybe<Int>;
+  prof?: Maybe<ProfUpdateOneWithoutCoursesInput>;
+  professional?: Maybe<Float>;
+  expressive?: Maybe<Float>;
+  kind?: Maybe<Float>;
+  scoreOverall?: Maybe<Float>;
+  scoreHot?: Maybe<Float>;
+  scoreRepute?: Maybe<Float>;
+  scoreBirdy?: Maybe<Float>;
+  scoreAttend?: Maybe<Float>;
+  scoreExam?: Maybe<Float>;
+  scoreHomework?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasymarkYes?: Maybe<Int>;
+  countExamEasymarkNo?: Maybe<Int>;
+}
+
+export interface UserUpdateManyMutationInput {
+  username?: Maybe<String>;
+  email?: Maybe<String>;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password?: Maybe<String>;
+  firstYear?: Maybe<Int>;
+}
+
+export interface ProfUpdateOneWithoutCoursesInput {
+  create?: Maybe<ProfCreateWithoutCoursesInput>;
+  update?: Maybe<ProfUpdateWithoutCoursesDataInput>;
+  upsert?: Maybe<ProfUpsertWithoutCoursesInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<ProfWhereUniqueInput>;
+}
+
+export interface ReviewUpdateManyMutationInput {
+  text?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+}
+
+export interface ProfUpdateWithoutCoursesDataInput {
   name?: Maybe<String>;
   code?: Maybe<String>;
   gender?: Maybe<Sex>;
@@ -3127,6 +3531,203 @@ export interface ProfUpdateInput {
   countExamEasyNo?: Maybe<Int>;
 }
 
+export interface ProfUpsertWithWhereUniqueWithoutPositionInput {
+  where: ProfWhereUniqueInput;
+  update: ProfUpdateWithoutPositionDataInput;
+  create: ProfCreateWithoutPositionInput;
+}
+
+export interface DeptUpdateOneWithoutProfsInput {
+  create?: Maybe<DeptCreateWithoutProfsInput>;
+  update?: Maybe<DeptUpdateWithoutProfsDataInput>;
+  upsert?: Maybe<DeptUpsertWithoutProfsInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<DeptWhereUniqueInput>;
+}
+
+export interface ProfCreateManyWithoutPositionInput {
+  create?: Maybe<
+    ProfCreateWithoutPositionInput[] | ProfCreateWithoutPositionInput
+  >;
+  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+}
+
+export interface DeptUpdateWithoutProfsDataInput {
+  shortname?: Maybe<String>;
+  longname?: Maybe<String>;
+  alias?: Maybe<String>;
+  icon?: Maybe<String>;
+  students?: Maybe<UserUpdateManyWithoutDeptInput>;
+  courses?: Maybe<CourseUpdateManyWithoutDeptInput>;
+}
+
+export interface DeptCreateOneWithoutCoursesInput {
+  create?: Maybe<DeptCreateWithoutCoursesInput>;
+  connect?: Maybe<DeptWhereUniqueInput>;
+}
+
+export interface DeptUpsertWithoutProfsInput {
+  update: DeptUpdateWithoutProfsDataInput;
+  create: DeptCreateWithoutProfsInput;
+}
+
+export interface UserCreateOneWithoutReviewsInput {
+  create?: Maybe<UserCreateWithoutReviewsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface ProfUpsertWithoutCoursesInput {
+  update: ProfUpdateWithoutCoursesDataInput;
+  create: ProfCreateWithoutCoursesInput;
+}
+
+export interface CourseCreateManyWithoutProfInput {
+  create?: Maybe<CourseCreateWithoutProfInput[] | CourseCreateWithoutProfInput>;
+  connect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+}
+
+export interface CourseUpsertWithWhereUniqueWithoutDeptInput {
+  where: CourseWhereUniqueInput;
+  update: CourseUpdateWithoutDeptDataInput;
+  create: CourseCreateWithoutDeptInput;
+}
+
+export interface TagUpdateManyMutationInput {
+  name?: Maybe<String>;
+  isPositive?: Maybe<Boolean>;
+  category?: Maybe<String>;
+}
+
+export interface DeptUpsertWithoutStudentsInput {
+  update: DeptUpdateWithoutStudentsDataInput;
+  create: DeptCreateWithoutStudentsInput;
+}
+
+export interface ProfUpdateManyWithoutPositionInput {
+  create?: Maybe<
+    ProfCreateWithoutPositionInput[] | ProfCreateWithoutPositionInput
+  >;
+  delete?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  set?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  disconnect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  update?: Maybe<
+    | ProfUpdateWithWhereUniqueWithoutPositionInput[]
+    | ProfUpdateWithWhereUniqueWithoutPositionInput
+  >;
+  upsert?: Maybe<
+    | ProfUpsertWithWhereUniqueWithoutPositionInput[]
+    | ProfUpsertWithWhereUniqueWithoutPositionInput
+  >;
+  deleteMany?: Maybe<ProfScalarWhereInput[] | ProfScalarWhereInput>;
+  updateMany?: Maybe<
+    ProfUpdateManyWithWhereNestedInput[] | ProfUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface UserScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  username?: Maybe<String>;
+  username_not?: Maybe<String>;
+  username_in?: Maybe<String[] | String>;
+  username_not_in?: Maybe<String[] | String>;
+  username_lt?: Maybe<String>;
+  username_lte?: Maybe<String>;
+  username_gt?: Maybe<String>;
+  username_gte?: Maybe<String>;
+  username_contains?: Maybe<String>;
+  username_not_contains?: Maybe<String>;
+  username_starts_with?: Maybe<String>;
+  username_not_starts_with?: Maybe<String>;
+  username_ends_with?: Maybe<String>;
+  username_not_ends_with?: Maybe<String>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  isLcUser?: Maybe<Boolean>;
+  isLcUser_not?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  lcSalt_not?: Maybe<String>;
+  lcSalt_in?: Maybe<String[] | String>;
+  lcSalt_not_in?: Maybe<String[] | String>;
+  lcSalt_lt?: Maybe<String>;
+  lcSalt_lte?: Maybe<String>;
+  lcSalt_gt?: Maybe<String>;
+  lcSalt_gte?: Maybe<String>;
+  lcSalt_contains?: Maybe<String>;
+  lcSalt_not_contains?: Maybe<String>;
+  lcSalt_starts_with?: Maybe<String>;
+  lcSalt_not_starts_with?: Maybe<String>;
+  lcSalt_ends_with?: Maybe<String>;
+  lcSalt_not_ends_with?: Maybe<String>;
+  password?: Maybe<String>;
+  password_not?: Maybe<String>;
+  password_in?: Maybe<String[] | String>;
+  password_not_in?: Maybe<String[] | String>;
+  password_lt?: Maybe<String>;
+  password_lte?: Maybe<String>;
+  password_gt?: Maybe<String>;
+  password_gte?: Maybe<String>;
+  password_contains?: Maybe<String>;
+  password_not_contains?: Maybe<String>;
+  password_starts_with?: Maybe<String>;
+  password_not_starts_with?: Maybe<String>;
+  password_ends_with?: Maybe<String>;
+  password_not_ends_with?: Maybe<String>;
+  firstYear?: Maybe<Int>;
+  firstYear_not?: Maybe<Int>;
+  firstYear_in?: Maybe<Int[] | Int>;
+  firstYear_not_in?: Maybe<Int[] | Int>;
+  firstYear_lt?: Maybe<Int>;
+  firstYear_lte?: Maybe<Int>;
+  firstYear_gt?: Maybe<Int>;
+  firstYear_gte?: Maybe<Int>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+}
+
 export interface UserUpsertWithWhereUniqueWithoutDeptInput {
   where: UserWhereUniqueInput;
   update: UserUpdateWithoutDeptDataInput;
@@ -3144,44 +3745,181 @@ export interface UserUpsertWithoutReviewsInput {
   create: UserCreateWithoutReviewsInput;
 }
 
-export interface DeptUpsertWithoutStudentsInput {
-  update: DeptUpdateWithoutStudentsDataInput;
-  create: DeptCreateWithoutStudentsInput;
-}
-
-export interface DeptUpdateOneWithoutProfsInput {
-  create?: Maybe<DeptCreateWithoutProfsInput>;
-  update?: Maybe<DeptUpdateWithoutProfsDataInput>;
-  upsert?: Maybe<DeptUpsertWithoutProfsInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<DeptWhereUniqueInput>;
-}
-
-export interface UserCreateInput {
-  id?: Maybe<ID_Input>;
-  username: String;
-  email: String;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password: String;
-  firstYear: Int;
-  dept: DeptCreateOneWithoutStudentsInput;
-  reviews?: Maybe<ReviewCreateManyWithoutAuthorInput>;
-  likedReviews?: Maybe<ReviewCreateManyInput>;
-}
-
-export type DeptWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
+export interface DeptUpdateInput {
   shortname?: Maybe<String>;
   longname?: Maybe<String>;
-}>;
+  alias?: Maybe<String>;
+  icon?: Maybe<String>;
+  students?: Maybe<UserUpdateManyWithoutDeptInput>;
+  profs?: Maybe<ProfUpdateManyWithoutDeptInput>;
+  courses?: Maybe<CourseUpdateManyWithoutDeptInput>;
+}
 
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  username?: Maybe<String>;
+export interface ProfUpdateInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  gender?: Maybe<Sex>;
+  birth?: Maybe<Int>;
+  hometown?: Maybe<String>;
+  motto?: Maybe<String>;
   email?: Maybe<String>;
-}>;
+  phone?: Maybe<String>;
+  exp?: Maybe<Int>;
+  group?: Maybe<String>;
+  intro?: Maybe<String>;
+  education?: Maybe<String>;
+  research?: Maybe<String>;
+  achievement?: Maybe<String>;
+  dept?: Maybe<DeptUpdateOneWithoutProfsInput>;
+  position?: Maybe<PositionUpdateOneWithoutProfsInput>;
+  courses?: Maybe<CourseUpdateManyWithoutProfInput>;
+  scoreOverall?: Maybe<Float>;
+  scoreProfessional?: Maybe<Float>;
+  scoreExpressive?: Maybe<Float>;
+  scoreKind?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasyYes?: Maybe<Int>;
+  countExamEasyNo?: Maybe<Int>;
+}
+
+export interface UserWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  username?: Maybe<String>;
+  username_not?: Maybe<String>;
+  username_in?: Maybe<String[] | String>;
+  username_not_in?: Maybe<String[] | String>;
+  username_lt?: Maybe<String>;
+  username_lte?: Maybe<String>;
+  username_gt?: Maybe<String>;
+  username_gte?: Maybe<String>;
+  username_contains?: Maybe<String>;
+  username_not_contains?: Maybe<String>;
+  username_starts_with?: Maybe<String>;
+  username_not_starts_with?: Maybe<String>;
+  username_ends_with?: Maybe<String>;
+  username_not_ends_with?: Maybe<String>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  isLcUser?: Maybe<Boolean>;
+  isLcUser_not?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  lcSalt_not?: Maybe<String>;
+  lcSalt_in?: Maybe<String[] | String>;
+  lcSalt_not_in?: Maybe<String[] | String>;
+  lcSalt_lt?: Maybe<String>;
+  lcSalt_lte?: Maybe<String>;
+  lcSalt_gt?: Maybe<String>;
+  lcSalt_gte?: Maybe<String>;
+  lcSalt_contains?: Maybe<String>;
+  lcSalt_not_contains?: Maybe<String>;
+  lcSalt_starts_with?: Maybe<String>;
+  lcSalt_not_starts_with?: Maybe<String>;
+  lcSalt_ends_with?: Maybe<String>;
+  lcSalt_not_ends_with?: Maybe<String>;
+  password?: Maybe<String>;
+  password_not?: Maybe<String>;
+  password_in?: Maybe<String[] | String>;
+  password_not_in?: Maybe<String[] | String>;
+  password_lt?: Maybe<String>;
+  password_lte?: Maybe<String>;
+  password_gt?: Maybe<String>;
+  password_gte?: Maybe<String>;
+  password_contains?: Maybe<String>;
+  password_not_contains?: Maybe<String>;
+  password_starts_with?: Maybe<String>;
+  password_not_starts_with?: Maybe<String>;
+  password_ends_with?: Maybe<String>;
+  password_not_ends_with?: Maybe<String>;
+  firstYear?: Maybe<Int>;
+  firstYear_not?: Maybe<Int>;
+  firstYear_in?: Maybe<Int[] | Int>;
+  firstYear_not_in?: Maybe<Int[] | Int>;
+  firstYear_lt?: Maybe<Int>;
+  firstYear_lte?: Maybe<Int>;
+  firstYear_gt?: Maybe<Int>;
+  firstYear_gte?: Maybe<Int>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  dept?: Maybe<DeptWhereInput>;
+  reviews_every?: Maybe<ReviewWhereInput>;
+  reviews_some?: Maybe<ReviewWhereInput>;
+  reviews_none?: Maybe<ReviewWhereInput>;
+  likedReviews_every?: Maybe<ReviewWhereInput>;
+  likedReviews_some?: Maybe<ReviewWhereInput>;
+  likedReviews_none?: Maybe<ReviewWhereInput>;
+  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
+  OR?: Maybe<UserWhereInput[] | UserWhereInput>;
+  NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
+}
+
+export interface ProfCreateManyWithoutDeptInput {
+  create?: Maybe<ProfCreateWithoutDeptInput[] | ProfCreateWithoutDeptInput>;
+  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+}
+
+export interface ReviewCreateManyWithoutAuthorInput {
+  create?: Maybe<
+    ReviewCreateWithoutAuthorInput[] | ReviewCreateWithoutAuthorInput
+  >;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+}
 
 export interface NodeNode {
   id: ID_Output;
@@ -3227,81 +3965,6 @@ export interface UserPreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface CourseEdge {
-  node: Course;
-  cursor: String;
-}
-
-export interface CourseEdgePromise extends Promise<CourseEdge>, Fragmentable {
-  node: <T = CoursePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface CourseEdgeSubscription
-  extends Promise<AsyncIterator<CourseEdge>>,
-    Fragmentable {
-  node: <T = CourseSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateCourse {
-  count: Int;
-}
-
-export interface AggregateCoursePromise
-  extends Promise<AggregateCourse>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateCourseSubscription
-  extends Promise<AsyncIterator<AggregateCourse>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface DeptEdge {
-  node: Dept;
-  cursor: String;
-}
-
-export interface DeptEdgePromise extends Promise<DeptEdge>, Fragmentable {
-  node: <T = DeptPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface DeptEdgeSubscription
-  extends Promise<AsyncIterator<DeptEdge>>,
-    Fragmentable {
-  node: <T = DeptSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface ReviewPreviousValues {
-  id: ID_Output;
-  text: String;
-  upVote: Int;
-  downVote: Int;
-}
-
-export interface ReviewPreviousValuesPromise
-  extends Promise<ReviewPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  text: () => Promise<String>;
-  upVote: () => Promise<Int>;
-  downVote: () => Promise<Int>;
-}
-
-export interface ReviewPreviousValuesSubscription
-  extends Promise<AsyncIterator<ReviewPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  text: () => Promise<AsyncIterator<String>>;
-  upVote: () => Promise<AsyncIterator<Int>>;
-  downVote: () => Promise<AsyncIterator<Int>>;
-}
-
 export interface DeptConnection {
   pageInfo: PageInfo;
   edges: DeptEdge[];
@@ -3321,937 +3984,6 @@ export interface DeptConnectionSubscription
   pageInfo: <T = PageInfoSubscription>() => T;
   edges: <T = Promise<AsyncIterator<DeptEdgeSubscription>>>() => T;
   aggregate: <T = AggregateDeptSubscription>() => T;
-}
-
-export interface Position {
-  id: ID_Output;
-  name: String;
-}
-
-export interface PositionPromise extends Promise<Position>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  profs: <T = FragmentableArray<Prof>>(args?: {
-    where?: ProfWhereInput;
-    orderBy?: ProfOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface PositionSubscription
-  extends Promise<AsyncIterator<Position>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  profs: <T = Promise<AsyncIterator<ProfSubscription>>>(args?: {
-    where?: ProfWhereInput;
-    orderBy?: ProfOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface PositionNullablePromise
-  extends Promise<Position | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  profs: <T = FragmentableArray<Prof>>(args?: {
-    where?: ProfWhereInput;
-    orderBy?: ProfOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface TagPreviousValues {
-  id: ID_Output;
-  name: String;
-  isPositive: Boolean;
-  category?: String;
-}
-
-export interface TagPreviousValuesPromise
-  extends Promise<TagPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  isPositive: () => Promise<Boolean>;
-  category: () => Promise<String>;
-}
-
-export interface TagPreviousValuesSubscription
-  extends Promise<AsyncIterator<TagPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  isPositive: () => Promise<AsyncIterator<Boolean>>;
-  category: () => Promise<AsyncIterator<String>>;
-}
-
-export interface UserEdge {
-  node: User;
-  cursor: String;
-}
-
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface AggregateTag {
-  count: Int;
-}
-
-export interface AggregateTagPromise
-  extends Promise<AggregateTag>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateTagSubscription
-  extends Promise<AsyncIterator<AggregateTag>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface Prof {
-  id: ID_Output;
-  name: String;
-  code?: String;
-  gender?: Sex;
-  birth?: Int;
-  hometown?: String;
-  motto?: String;
-  email?: String;
-  phone?: String;
-  exp?: Int;
-  group?: String;
-  intro?: String;
-  education?: String;
-  research?: String;
-  achievement?: String;
-  scoreOverall?: Float;
-  scoreProfessional?: Float;
-  scoreExpressive?: Float;
-  scoreKind?: Float;
-  meanHomework?: Float;
-  meanAttend?: Float;
-  meanBirdy?: Float;
-  meanExam?: Float;
-  countReview?: Int;
-  countGoodReview?: Int;
-  countAverageReview?: Int;
-  countBadReview?: Int;
-  countHomework?: Int;
-  countAttend?: Int;
-  countBirdy?: Int;
-  countExam?: Int;
-  countExamDetails?: Int;
-  countExamPrepYes?: Int;
-  countExamPrepNo?: Int;
-  countExamOpenbookYes?: Int;
-  countExamOpenbookNo?: Int;
-  countExamOldquestionYes?: Int;
-  countExamOldquestionNo?: Int;
-  countExamEasyYes?: Int;
-  countExamEasyNo?: Int;
-}
-
-export interface ProfPromise extends Promise<Prof>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  code: () => Promise<String>;
-  gender: () => Promise<Sex>;
-  birth: () => Promise<Int>;
-  hometown: () => Promise<String>;
-  motto: () => Promise<String>;
-  email: () => Promise<String>;
-  phone: () => Promise<String>;
-  exp: () => Promise<Int>;
-  group: () => Promise<String>;
-  intro: () => Promise<String>;
-  education: () => Promise<String>;
-  research: () => Promise<String>;
-  achievement: () => Promise<String>;
-  dept: <T = DeptPromise>() => T;
-  position: <T = PositionPromise>() => T;
-  scoreOverall: () => Promise<Float>;
-  scoreProfessional: () => Promise<Float>;
-  scoreExpressive: () => Promise<Float>;
-  scoreKind: () => Promise<Float>;
-  meanHomework: () => Promise<Float>;
-  meanAttend: () => Promise<Float>;
-  meanBirdy: () => Promise<Float>;
-  meanExam: () => Promise<Float>;
-  countReview: () => Promise<Int>;
-  countGoodReview: () => Promise<Int>;
-  countAverageReview: () => Promise<Int>;
-  countBadReview: () => Promise<Int>;
-  countHomework: () => Promise<Int>;
-  countAttend: () => Promise<Int>;
-  countBirdy: () => Promise<Int>;
-  countExam: () => Promise<Int>;
-  countExamDetails: () => Promise<Int>;
-  countExamPrepYes: () => Promise<Int>;
-  countExamPrepNo: () => Promise<Int>;
-  countExamOpenbookYes: () => Promise<Int>;
-  countExamOpenbookNo: () => Promise<Int>;
-  countExamOldquestionYes: () => Promise<Int>;
-  countExamOldquestionNo: () => Promise<Int>;
-  countExamEasyYes: () => Promise<Int>;
-  countExamEasyNo: () => Promise<Int>;
-}
-
-export interface ProfSubscription
-  extends Promise<AsyncIterator<Prof>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  code: () => Promise<AsyncIterator<String>>;
-  gender: () => Promise<AsyncIterator<Sex>>;
-  birth: () => Promise<AsyncIterator<Int>>;
-  hometown: () => Promise<AsyncIterator<String>>;
-  motto: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  phone: () => Promise<AsyncIterator<String>>;
-  exp: () => Promise<AsyncIterator<Int>>;
-  group: () => Promise<AsyncIterator<String>>;
-  intro: () => Promise<AsyncIterator<String>>;
-  education: () => Promise<AsyncIterator<String>>;
-  research: () => Promise<AsyncIterator<String>>;
-  achievement: () => Promise<AsyncIterator<String>>;
-  dept: <T = DeptSubscription>() => T;
-  position: <T = PositionSubscription>() => T;
-  scoreOverall: () => Promise<AsyncIterator<Float>>;
-  scoreProfessional: () => Promise<AsyncIterator<Float>>;
-  scoreExpressive: () => Promise<AsyncIterator<Float>>;
-  scoreKind: () => Promise<AsyncIterator<Float>>;
-  meanHomework: () => Promise<AsyncIterator<Float>>;
-  meanAttend: () => Promise<AsyncIterator<Float>>;
-  meanBirdy: () => Promise<AsyncIterator<Float>>;
-  meanExam: () => Promise<AsyncIterator<Float>>;
-  countReview: () => Promise<AsyncIterator<Int>>;
-  countGoodReview: () => Promise<AsyncIterator<Int>>;
-  countAverageReview: () => Promise<AsyncIterator<Int>>;
-  countBadReview: () => Promise<AsyncIterator<Int>>;
-  countHomework: () => Promise<AsyncIterator<Int>>;
-  countAttend: () => Promise<AsyncIterator<Int>>;
-  countBirdy: () => Promise<AsyncIterator<Int>>;
-  countExam: () => Promise<AsyncIterator<Int>>;
-  countExamDetails: () => Promise<AsyncIterator<Int>>;
-  countExamPrepYes: () => Promise<AsyncIterator<Int>>;
-  countExamPrepNo: () => Promise<AsyncIterator<Int>>;
-  countExamOpenbookYes: () => Promise<AsyncIterator<Int>>;
-  countExamOpenbookNo: () => Promise<AsyncIterator<Int>>;
-  countExamOldquestionYes: () => Promise<AsyncIterator<Int>>;
-  countExamOldquestionNo: () => Promise<AsyncIterator<Int>>;
-  countExamEasyYes: () => Promise<AsyncIterator<Int>>;
-  countExamEasyNo: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface ProfNullablePromise
-  extends Promise<Prof | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  code: () => Promise<String>;
-  gender: () => Promise<Sex>;
-  birth: () => Promise<Int>;
-  hometown: () => Promise<String>;
-  motto: () => Promise<String>;
-  email: () => Promise<String>;
-  phone: () => Promise<String>;
-  exp: () => Promise<Int>;
-  group: () => Promise<String>;
-  intro: () => Promise<String>;
-  education: () => Promise<String>;
-  research: () => Promise<String>;
-  achievement: () => Promise<String>;
-  dept: <T = DeptPromise>() => T;
-  position: <T = PositionPromise>() => T;
-  scoreOverall: () => Promise<Float>;
-  scoreProfessional: () => Promise<Float>;
-  scoreExpressive: () => Promise<Float>;
-  scoreKind: () => Promise<Float>;
-  meanHomework: () => Promise<Float>;
-  meanAttend: () => Promise<Float>;
-  meanBirdy: () => Promise<Float>;
-  meanExam: () => Promise<Float>;
-  countReview: () => Promise<Int>;
-  countGoodReview: () => Promise<Int>;
-  countAverageReview: () => Promise<Int>;
-  countBadReview: () => Promise<Int>;
-  countHomework: () => Promise<Int>;
-  countAttend: () => Promise<Int>;
-  countBirdy: () => Promise<Int>;
-  countExam: () => Promise<Int>;
-  countExamDetails: () => Promise<Int>;
-  countExamPrepYes: () => Promise<Int>;
-  countExamPrepNo: () => Promise<Int>;
-  countExamOpenbookYes: () => Promise<Int>;
-  countExamOpenbookNo: () => Promise<Int>;
-  countExamOldquestionYes: () => Promise<Int>;
-  countExamOldquestionNo: () => Promise<Int>;
-  countExamEasyYes: () => Promise<Int>;
-  countExamEasyNo: () => Promise<Int>;
-}
-
-export interface TagConnection {
-  pageInfo: PageInfo;
-  edges: TagEdge[];
-}
-
-export interface TagConnectionPromise
-  extends Promise<TagConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<TagEdge>>() => T;
-  aggregate: <T = AggregateTagPromise>() => T;
-}
-
-export interface TagConnectionSubscription
-  extends Promise<AsyncIterator<TagConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<TagEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateTagSubscription>() => T;
-}
-
-export interface Review {
-  id: ID_Output;
-  text: String;
-  upVote: Int;
-  downVote: Int;
-}
-
-export interface ReviewPromise extends Promise<Review>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  text: () => Promise<String>;
-  upVote: () => Promise<Int>;
-  downVote: () => Promise<Int>;
-  author: <T = UserPromise>() => T;
-}
-
-export interface ReviewSubscription
-  extends Promise<AsyncIterator<Review>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  text: () => Promise<AsyncIterator<String>>;
-  upVote: () => Promise<AsyncIterator<Int>>;
-  downVote: () => Promise<AsyncIterator<Int>>;
-  author: <T = UserSubscription>() => T;
-}
-
-export interface ReviewNullablePromise
-  extends Promise<Review | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  text: () => Promise<String>;
-  upVote: () => Promise<Int>;
-  downVote: () => Promise<Int>;
-  author: <T = UserPromise>() => T;
-}
-
-export interface Tag {
-  id: ID_Output;
-  name: String;
-  isPositive: Boolean;
-  category?: String;
-}
-
-export interface TagPromise extends Promise<Tag>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  isPositive: () => Promise<Boolean>;
-  category: () => Promise<String>;
-}
-
-export interface TagSubscription
-  extends Promise<AsyncIterator<Tag>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  isPositive: () => Promise<AsyncIterator<Boolean>>;
-  category: () => Promise<AsyncIterator<String>>;
-}
-
-export interface TagNullablePromise extends Promise<Tag | null>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  isPositive: () => Promise<Boolean>;
-  category: () => Promise<String>;
-}
-
-export interface Course {
-  id: ID_Output;
-  name: String;
-  professional?: Float;
-  expressive?: Float;
-  kind?: Float;
-  scoreOverall?: Float;
-  scoreHot?: Float;
-  scoreRepute?: Float;
-  scoreBirdy?: Float;
-  scoreAttend?: Float;
-  scoreExam?: Float;
-  scoreHomework?: Float;
-  meanHomework?: Float;
-  meanAttend?: Float;
-  meanBirdy?: Float;
-  meanExam?: Float;
-  countReview?: Int;
-  countGoodReview?: Int;
-  countAverageReview?: Int;
-  countBadReview?: Int;
-  countHomework?: Int;
-  countAttend?: Int;
-  countBirdy?: Int;
-  countExam?: Int;
-  countExamDetails?: Int;
-  countExamPrepYes?: Int;
-  countExamPrepNo?: Int;
-  countExamOpenbookYes?: Int;
-  countExamOpenbookNo?: Int;
-  countExamOldquestionYes?: Int;
-  countExamOldquestionNo?: Int;
-  countExamEasymarkYes?: Int;
-  countExamEasymarkNo?: Int;
-}
-
-export interface CoursePromise extends Promise<Course>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  professional: () => Promise<Float>;
-  expressive: () => Promise<Float>;
-  kind: () => Promise<Float>;
-  scoreOverall: () => Promise<Float>;
-  scoreHot: () => Promise<Float>;
-  scoreRepute: () => Promise<Float>;
-  scoreBirdy: () => Promise<Float>;
-  scoreAttend: () => Promise<Float>;
-  scoreExam: () => Promise<Float>;
-  scoreHomework: () => Promise<Float>;
-  meanHomework: () => Promise<Float>;
-  meanAttend: () => Promise<Float>;
-  meanBirdy: () => Promise<Float>;
-  meanExam: () => Promise<Float>;
-  countReview: () => Promise<Int>;
-  countGoodReview: () => Promise<Int>;
-  countAverageReview: () => Promise<Int>;
-  countBadReview: () => Promise<Int>;
-  countHomework: () => Promise<Int>;
-  countAttend: () => Promise<Int>;
-  countBirdy: () => Promise<Int>;
-  countExam: () => Promise<Int>;
-  countExamDetails: () => Promise<Int>;
-  countExamPrepYes: () => Promise<Int>;
-  countExamPrepNo: () => Promise<Int>;
-  countExamOpenbookYes: () => Promise<Int>;
-  countExamOpenbookNo: () => Promise<Int>;
-  countExamOldquestionYes: () => Promise<Int>;
-  countExamOldquestionNo: () => Promise<Int>;
-  countExamEasymarkYes: () => Promise<Int>;
-  countExamEasymarkNo: () => Promise<Int>;
-}
-
-export interface CourseSubscription
-  extends Promise<AsyncIterator<Course>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  professional: () => Promise<AsyncIterator<Float>>;
-  expressive: () => Promise<AsyncIterator<Float>>;
-  kind: () => Promise<AsyncIterator<Float>>;
-  scoreOverall: () => Promise<AsyncIterator<Float>>;
-  scoreHot: () => Promise<AsyncIterator<Float>>;
-  scoreRepute: () => Promise<AsyncIterator<Float>>;
-  scoreBirdy: () => Promise<AsyncIterator<Float>>;
-  scoreAttend: () => Promise<AsyncIterator<Float>>;
-  scoreExam: () => Promise<AsyncIterator<Float>>;
-  scoreHomework: () => Promise<AsyncIterator<Float>>;
-  meanHomework: () => Promise<AsyncIterator<Float>>;
-  meanAttend: () => Promise<AsyncIterator<Float>>;
-  meanBirdy: () => Promise<AsyncIterator<Float>>;
-  meanExam: () => Promise<AsyncIterator<Float>>;
-  countReview: () => Promise<AsyncIterator<Int>>;
-  countGoodReview: () => Promise<AsyncIterator<Int>>;
-  countAverageReview: () => Promise<AsyncIterator<Int>>;
-  countBadReview: () => Promise<AsyncIterator<Int>>;
-  countHomework: () => Promise<AsyncIterator<Int>>;
-  countAttend: () => Promise<AsyncIterator<Int>>;
-  countBirdy: () => Promise<AsyncIterator<Int>>;
-  countExam: () => Promise<AsyncIterator<Int>>;
-  countExamDetails: () => Promise<AsyncIterator<Int>>;
-  countExamPrepYes: () => Promise<AsyncIterator<Int>>;
-  countExamPrepNo: () => Promise<AsyncIterator<Int>>;
-  countExamOpenbookYes: () => Promise<AsyncIterator<Int>>;
-  countExamOpenbookNo: () => Promise<AsyncIterator<Int>>;
-  countExamOldquestionYes: () => Promise<AsyncIterator<Int>>;
-  countExamOldquestionNo: () => Promise<AsyncIterator<Int>>;
-  countExamEasymarkYes: () => Promise<AsyncIterator<Int>>;
-  countExamEasymarkNo: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface CourseNullablePromise
-  extends Promise<Course | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  professional: () => Promise<Float>;
-  expressive: () => Promise<Float>;
-  kind: () => Promise<Float>;
-  scoreOverall: () => Promise<Float>;
-  scoreHot: () => Promise<Float>;
-  scoreRepute: () => Promise<Float>;
-  scoreBirdy: () => Promise<Float>;
-  scoreAttend: () => Promise<Float>;
-  scoreExam: () => Promise<Float>;
-  scoreHomework: () => Promise<Float>;
-  meanHomework: () => Promise<Float>;
-  meanAttend: () => Promise<Float>;
-  meanBirdy: () => Promise<Float>;
-  meanExam: () => Promise<Float>;
-  countReview: () => Promise<Int>;
-  countGoodReview: () => Promise<Int>;
-  countAverageReview: () => Promise<Int>;
-  countBadReview: () => Promise<Int>;
-  countHomework: () => Promise<Int>;
-  countAttend: () => Promise<Int>;
-  countBirdy: () => Promise<Int>;
-  countExam: () => Promise<Int>;
-  countExamDetails: () => Promise<Int>;
-  countExamPrepYes: () => Promise<Int>;
-  countExamPrepNo: () => Promise<Int>;
-  countExamOpenbookYes: () => Promise<Int>;
-  countExamOpenbookNo: () => Promise<Int>;
-  countExamOldquestionYes: () => Promise<Int>;
-  countExamOldquestionNo: () => Promise<Int>;
-  countExamEasymarkYes: () => Promise<Int>;
-  countExamEasymarkNo: () => Promise<Int>;
-}
-
-export interface ReviewEdge {
-  node: Review;
-  cursor: String;
-}
-
-export interface ReviewEdgePromise extends Promise<ReviewEdge>, Fragmentable {
-  node: <T = ReviewPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ReviewEdgeSubscription
-  extends Promise<AsyncIterator<ReviewEdge>>,
-    Fragmentable {
-  node: <T = ReviewSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface CourseSubscriptionPayload {
-  mutation: MutationType;
-  node: Course;
-  updatedFields: String[];
-  previousValues: CoursePreviousValues;
-}
-
-export interface CourseSubscriptionPayloadPromise
-  extends Promise<CourseSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = CoursePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = CoursePreviousValuesPromise>() => T;
-}
-
-export interface CourseSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<CourseSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = CourseSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = CoursePreviousValuesSubscription>() => T;
-}
-
-export interface AggregateProf {
-  count: Int;
-}
-
-export interface AggregateProfPromise
-  extends Promise<AggregateProf>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateProfSubscription
-  extends Promise<AsyncIterator<AggregateProf>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface CoursePreviousValues {
-  id: ID_Output;
-  name: String;
-  professional?: Float;
-  expressive?: Float;
-  kind?: Float;
-  scoreOverall?: Float;
-  scoreHot?: Float;
-  scoreRepute?: Float;
-  scoreBirdy?: Float;
-  scoreAttend?: Float;
-  scoreExam?: Float;
-  scoreHomework?: Float;
-  meanHomework?: Float;
-  meanAttend?: Float;
-  meanBirdy?: Float;
-  meanExam?: Float;
-  countReview?: Int;
-  countGoodReview?: Int;
-  countAverageReview?: Int;
-  countBadReview?: Int;
-  countHomework?: Int;
-  countAttend?: Int;
-  countBirdy?: Int;
-  countExam?: Int;
-  countExamDetails?: Int;
-  countExamPrepYes?: Int;
-  countExamPrepNo?: Int;
-  countExamOpenbookYes?: Int;
-  countExamOpenbookNo?: Int;
-  countExamOldquestionYes?: Int;
-  countExamOldquestionNo?: Int;
-  countExamEasymarkYes?: Int;
-  countExamEasymarkNo?: Int;
-}
-
-export interface CoursePreviousValuesPromise
-  extends Promise<CoursePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  professional: () => Promise<Float>;
-  expressive: () => Promise<Float>;
-  kind: () => Promise<Float>;
-  scoreOverall: () => Promise<Float>;
-  scoreHot: () => Promise<Float>;
-  scoreRepute: () => Promise<Float>;
-  scoreBirdy: () => Promise<Float>;
-  scoreAttend: () => Promise<Float>;
-  scoreExam: () => Promise<Float>;
-  scoreHomework: () => Promise<Float>;
-  meanHomework: () => Promise<Float>;
-  meanAttend: () => Promise<Float>;
-  meanBirdy: () => Promise<Float>;
-  meanExam: () => Promise<Float>;
-  countReview: () => Promise<Int>;
-  countGoodReview: () => Promise<Int>;
-  countAverageReview: () => Promise<Int>;
-  countBadReview: () => Promise<Int>;
-  countHomework: () => Promise<Int>;
-  countAttend: () => Promise<Int>;
-  countBirdy: () => Promise<Int>;
-  countExam: () => Promise<Int>;
-  countExamDetails: () => Promise<Int>;
-  countExamPrepYes: () => Promise<Int>;
-  countExamPrepNo: () => Promise<Int>;
-  countExamOpenbookYes: () => Promise<Int>;
-  countExamOpenbookNo: () => Promise<Int>;
-  countExamOldquestionYes: () => Promise<Int>;
-  countExamOldquestionNo: () => Promise<Int>;
-  countExamEasymarkYes: () => Promise<Int>;
-  countExamEasymarkNo: () => Promise<Int>;
-}
-
-export interface CoursePreviousValuesSubscription
-  extends Promise<AsyncIterator<CoursePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  professional: () => Promise<AsyncIterator<Float>>;
-  expressive: () => Promise<AsyncIterator<Float>>;
-  kind: () => Promise<AsyncIterator<Float>>;
-  scoreOverall: () => Promise<AsyncIterator<Float>>;
-  scoreHot: () => Promise<AsyncIterator<Float>>;
-  scoreRepute: () => Promise<AsyncIterator<Float>>;
-  scoreBirdy: () => Promise<AsyncIterator<Float>>;
-  scoreAttend: () => Promise<AsyncIterator<Float>>;
-  scoreExam: () => Promise<AsyncIterator<Float>>;
-  scoreHomework: () => Promise<AsyncIterator<Float>>;
-  meanHomework: () => Promise<AsyncIterator<Float>>;
-  meanAttend: () => Promise<AsyncIterator<Float>>;
-  meanBirdy: () => Promise<AsyncIterator<Float>>;
-  meanExam: () => Promise<AsyncIterator<Float>>;
-  countReview: () => Promise<AsyncIterator<Int>>;
-  countGoodReview: () => Promise<AsyncIterator<Int>>;
-  countAverageReview: () => Promise<AsyncIterator<Int>>;
-  countBadReview: () => Promise<AsyncIterator<Int>>;
-  countHomework: () => Promise<AsyncIterator<Int>>;
-  countAttend: () => Promise<AsyncIterator<Int>>;
-  countBirdy: () => Promise<AsyncIterator<Int>>;
-  countExam: () => Promise<AsyncIterator<Int>>;
-  countExamDetails: () => Promise<AsyncIterator<Int>>;
-  countExamPrepYes: () => Promise<AsyncIterator<Int>>;
-  countExamPrepNo: () => Promise<AsyncIterator<Int>>;
-  countExamOpenbookYes: () => Promise<AsyncIterator<Int>>;
-  countExamOpenbookNo: () => Promise<AsyncIterator<Int>>;
-  countExamOldquestionYes: () => Promise<AsyncIterator<Int>>;
-  countExamOldquestionNo: () => Promise<AsyncIterator<Int>>;
-  countExamEasymarkYes: () => Promise<AsyncIterator<Int>>;
-  countExamEasymarkNo: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface ProfConnection {
-  pageInfo: PageInfo;
-  edges: ProfEdge[];
-}
-
-export interface ProfConnectionPromise
-  extends Promise<ProfConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ProfEdge>>() => T;
-  aggregate: <T = AggregateProfPromise>() => T;
-}
-
-export interface ProfConnectionSubscription
-  extends Promise<AsyncIterator<ProfConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ProfEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateProfSubscription>() => T;
-}
-
-export interface CourseConnection {
-  pageInfo: PageInfo;
-  edges: CourseEdge[];
-}
-
-export interface CourseConnectionPromise
-  extends Promise<CourseConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<CourseEdge>>() => T;
-  aggregate: <T = AggregateCoursePromise>() => T;
-}
-
-export interface CourseConnectionSubscription
-  extends Promise<AsyncIterator<CourseConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<CourseEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateCourseSubscription>() => T;
-}
-
-export interface PositionEdge {
-  node: Position;
-  cursor: String;
-}
-
-export interface PositionEdgePromise
-  extends Promise<PositionEdge>,
-    Fragmentable {
-  node: <T = PositionPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PositionEdgeSubscription
-  extends Promise<AsyncIterator<PositionEdge>>,
-    Fragmentable {
-  node: <T = PositionSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface DeptSubscriptionPayload {
-  mutation: MutationType;
-  node: Dept;
-  updatedFields: String[];
-  previousValues: DeptPreviousValues;
-}
-
-export interface DeptSubscriptionPayloadPromise
-  extends Promise<DeptSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = DeptPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = DeptPreviousValuesPromise>() => T;
-}
-
-export interface DeptSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<DeptSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = DeptSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = DeptPreviousValuesSubscription>() => T;
-}
-
-export interface Dept {
-  id: ID_Output;
-  shortname: String;
-  longname: String;
-  alias?: String;
-  icon?: String;
-}
-
-export interface DeptPromise extends Promise<Dept>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  shortname: () => Promise<String>;
-  longname: () => Promise<String>;
-  alias: () => Promise<String>;
-  icon: () => Promise<String>;
-  students: <T = FragmentableArray<User>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  profs: <T = FragmentableArray<Prof>>(args?: {
-    where?: ProfWhereInput;
-    orderBy?: ProfOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface DeptSubscription
-  extends Promise<AsyncIterator<Dept>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  shortname: () => Promise<AsyncIterator<String>>;
-  longname: () => Promise<AsyncIterator<String>>;
-  alias: () => Promise<AsyncIterator<String>>;
-  icon: () => Promise<AsyncIterator<String>>;
-  students: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  profs: <T = Promise<AsyncIterator<ProfSubscription>>>(args?: {
-    where?: ProfWhereInput;
-    orderBy?: ProfOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface DeptNullablePromise
-  extends Promise<Dept | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  shortname: () => Promise<String>;
-  longname: () => Promise<String>;
-  alias: () => Promise<String>;
-  icon: () => Promise<String>;
-  students: <T = FragmentableArray<User>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  profs: <T = FragmentableArray<Prof>>(args?: {
-    where?: ProfWhereInput;
-    orderBy?: ProfOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface DeptPreviousValues {
-  id: ID_Output;
-  shortname: String;
-  longname: String;
-  alias?: String;
-  icon?: String;
-}
-
-export interface DeptPreviousValuesPromise
-  extends Promise<DeptPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  shortname: () => Promise<String>;
-  longname: () => Promise<String>;
-  alias: () => Promise<String>;
-  icon: () => Promise<String>;
-}
-
-export interface DeptPreviousValuesSubscription
-  extends Promise<AsyncIterator<DeptPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  shortname: () => Promise<AsyncIterator<String>>;
-  longname: () => Promise<AsyncIterator<String>>;
-  alias: () => Promise<AsyncIterator<String>>;
-  icon: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateUser {
-  count: Int;
-}
-
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface User {
@@ -4363,6 +4095,275 @@ export interface UserNullablePromise
   }) => T;
 }
 
+export interface AggregateDept {
+  count: Int;
+}
+
+export interface AggregateDeptPromise
+  extends Promise<AggregateDept>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateDeptSubscription
+  extends Promise<AsyncIterator<AggregateDept>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ReviewPreviousValues {
+  id: ID_Output;
+  text: String;
+  upVote: Int;
+  downVote: Int;
+}
+
+export interface ReviewPreviousValuesPromise
+  extends Promise<ReviewPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  text: () => Promise<String>;
+  upVote: () => Promise<Int>;
+  downVote: () => Promise<Int>;
+}
+
+export interface ReviewPreviousValuesSubscription
+  extends Promise<AsyncIterator<ReviewPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  text: () => Promise<AsyncIterator<String>>;
+  upVote: () => Promise<AsyncIterator<Int>>;
+  downVote: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface DeptEdge {
+  node: Dept;
+  cursor: String;
+}
+
+export interface DeptEdgePromise extends Promise<DeptEdge>, Fragmentable {
+  node: <T = DeptPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface DeptEdgeSubscription
+  extends Promise<AsyncIterator<DeptEdge>>,
+    Fragmentable {
+  node: <T = DeptSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Dept {
+  id: ID_Output;
+  shortname: String;
+  longname: String;
+  alias?: String;
+  icon?: String;
+}
+
+export interface DeptPromise extends Promise<Dept>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  shortname: () => Promise<String>;
+  longname: () => Promise<String>;
+  alias: () => Promise<String>;
+  icon: () => Promise<String>;
+  students: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  profs: <T = FragmentableArray<Prof>>(args?: {
+    where?: ProfWhereInput;
+    orderBy?: ProfOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  courses: <T = FragmentableArray<Course>>(args?: {
+    where?: CourseWhereInput;
+    orderBy?: CourseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface DeptSubscription
+  extends Promise<AsyncIterator<Dept>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  shortname: () => Promise<AsyncIterator<String>>;
+  longname: () => Promise<AsyncIterator<String>>;
+  alias: () => Promise<AsyncIterator<String>>;
+  icon: () => Promise<AsyncIterator<String>>;
+  students: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  profs: <T = Promise<AsyncIterator<ProfSubscription>>>(args?: {
+    where?: ProfWhereInput;
+    orderBy?: ProfOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  courses: <T = Promise<AsyncIterator<CourseSubscription>>>(args?: {
+    where?: CourseWhereInput;
+    orderBy?: CourseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface DeptNullablePromise
+  extends Promise<Dept | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  shortname: () => Promise<String>;
+  longname: () => Promise<String>;
+  alias: () => Promise<String>;
+  icon: () => Promise<String>;
+  students: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  profs: <T = FragmentableArray<Prof>>(args?: {
+    where?: ProfWhereInput;
+    orderBy?: ProfOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  courses: <T = FragmentableArray<Course>>(args?: {
+    where?: CourseWhereInput;
+    orderBy?: CourseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface TagSubscriptionPayload {
+  mutation: MutationType;
+  node: Tag;
+  updatedFields: String[];
+  previousValues: TagPreviousValues;
+}
+
+export interface TagSubscriptionPayloadPromise
+  extends Promise<TagSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TagPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TagPreviousValuesPromise>() => T;
+}
+
+export interface TagSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TagSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TagSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TagPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateUser {
+  count: Int;
+}
+
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface UserConnection {
+  pageInfo: PageInfo;
+  edges: UserEdge[];
+}
+
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
+}
+
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface AggregateCourse {
+  count: Int;
+}
+
+export interface AggregateCoursePromise
+  extends Promise<AggregateCourse>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCourseSubscription
+  extends Promise<AsyncIterator<AggregateCourse>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface TagEdge {
   node: Tag;
   cursor: String;
@@ -4380,29 +4381,214 @@ export interface TagEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface PositionSubscriptionPayload {
-  mutation: MutationType;
-  node: Position;
-  updatedFields: String[];
-  previousValues: PositionPreviousValues;
+export interface CourseEdge {
+  node: Course;
+  cursor: String;
 }
 
-export interface PositionSubscriptionPayloadPromise
-  extends Promise<PositionSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PositionPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PositionPreviousValuesPromise>() => T;
+export interface CourseEdgePromise extends Promise<CourseEdge>, Fragmentable {
+  node: <T = CoursePromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface PositionSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PositionSubscriptionPayload>>,
+export interface CourseEdgeSubscription
+  extends Promise<AsyncIterator<CourseEdge>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PositionSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PositionPreviousValuesSubscription>() => T;
+  node: <T = CourseSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Review {
+  id: ID_Output;
+  text: String;
+  upVote: Int;
+  downVote: Int;
+}
+
+export interface ReviewPromise extends Promise<Review>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  text: () => Promise<String>;
+  upVote: () => Promise<Int>;
+  downVote: () => Promise<Int>;
+  author: <T = UserPromise>() => T;
+}
+
+export interface ReviewSubscription
+  extends Promise<AsyncIterator<Review>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  text: () => Promise<AsyncIterator<String>>;
+  upVote: () => Promise<AsyncIterator<Int>>;
+  downVote: () => Promise<AsyncIterator<Int>>;
+  author: <T = UserSubscription>() => T;
+}
+
+export interface ReviewNullablePromise
+  extends Promise<Review | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  text: () => Promise<String>;
+  upVote: () => Promise<Int>;
+  downVote: () => Promise<Int>;
+  author: <T = UserPromise>() => T;
+}
+
+export interface Course {
+  id: ID_Output;
+  name: String;
+  likedCount?: Int;
+  professional?: Float;
+  expressive?: Float;
+  kind?: Float;
+  scoreOverall?: Float;
+  scoreHot?: Float;
+  scoreRepute?: Float;
+  scoreBirdy?: Float;
+  scoreAttend?: Float;
+  scoreExam?: Float;
+  scoreHomework?: Float;
+  meanHomework?: Float;
+  meanAttend?: Float;
+  meanBirdy?: Float;
+  meanExam?: Float;
+  countReview?: Int;
+  countGoodReview?: Int;
+  countAverageReview?: Int;
+  countBadReview?: Int;
+  countHomework?: Int;
+  countAttend?: Int;
+  countBirdy?: Int;
+  countExam?: Int;
+  countExamDetails?: Int;
+  countExamPrepYes?: Int;
+  countExamPrepNo?: Int;
+  countExamOpenbookYes?: Int;
+  countExamOpenbookNo?: Int;
+  countExamOldquestionYes?: Int;
+  countExamOldquestionNo?: Int;
+  countExamEasymarkYes?: Int;
+  countExamEasymarkNo?: Int;
+}
+
+export interface CoursePromise extends Promise<Course>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  likedCount: () => Promise<Int>;
+  dept: <T = DeptPromise>() => T;
+  prof: <T = ProfPromise>() => T;
+  professional: () => Promise<Float>;
+  expressive: () => Promise<Float>;
+  kind: () => Promise<Float>;
+  scoreOverall: () => Promise<Float>;
+  scoreHot: () => Promise<Float>;
+  scoreRepute: () => Promise<Float>;
+  scoreBirdy: () => Promise<Float>;
+  scoreAttend: () => Promise<Float>;
+  scoreExam: () => Promise<Float>;
+  scoreHomework: () => Promise<Float>;
+  meanHomework: () => Promise<Float>;
+  meanAttend: () => Promise<Float>;
+  meanBirdy: () => Promise<Float>;
+  meanExam: () => Promise<Float>;
+  countReview: () => Promise<Int>;
+  countGoodReview: () => Promise<Int>;
+  countAverageReview: () => Promise<Int>;
+  countBadReview: () => Promise<Int>;
+  countHomework: () => Promise<Int>;
+  countAttend: () => Promise<Int>;
+  countBirdy: () => Promise<Int>;
+  countExam: () => Promise<Int>;
+  countExamDetails: () => Promise<Int>;
+  countExamPrepYes: () => Promise<Int>;
+  countExamPrepNo: () => Promise<Int>;
+  countExamOpenbookYes: () => Promise<Int>;
+  countExamOpenbookNo: () => Promise<Int>;
+  countExamOldquestionYes: () => Promise<Int>;
+  countExamOldquestionNo: () => Promise<Int>;
+  countExamEasymarkYes: () => Promise<Int>;
+  countExamEasymarkNo: () => Promise<Int>;
+}
+
+export interface CourseSubscription
+  extends Promise<AsyncIterator<Course>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  likedCount: () => Promise<AsyncIterator<Int>>;
+  dept: <T = DeptSubscription>() => T;
+  prof: <T = ProfSubscription>() => T;
+  professional: () => Promise<AsyncIterator<Float>>;
+  expressive: () => Promise<AsyncIterator<Float>>;
+  kind: () => Promise<AsyncIterator<Float>>;
+  scoreOverall: () => Promise<AsyncIterator<Float>>;
+  scoreHot: () => Promise<AsyncIterator<Float>>;
+  scoreRepute: () => Promise<AsyncIterator<Float>>;
+  scoreBirdy: () => Promise<AsyncIterator<Float>>;
+  scoreAttend: () => Promise<AsyncIterator<Float>>;
+  scoreExam: () => Promise<AsyncIterator<Float>>;
+  scoreHomework: () => Promise<AsyncIterator<Float>>;
+  meanHomework: () => Promise<AsyncIterator<Float>>;
+  meanAttend: () => Promise<AsyncIterator<Float>>;
+  meanBirdy: () => Promise<AsyncIterator<Float>>;
+  meanExam: () => Promise<AsyncIterator<Float>>;
+  countReview: () => Promise<AsyncIterator<Int>>;
+  countGoodReview: () => Promise<AsyncIterator<Int>>;
+  countAverageReview: () => Promise<AsyncIterator<Int>>;
+  countBadReview: () => Promise<AsyncIterator<Int>>;
+  countHomework: () => Promise<AsyncIterator<Int>>;
+  countAttend: () => Promise<AsyncIterator<Int>>;
+  countBirdy: () => Promise<AsyncIterator<Int>>;
+  countExam: () => Promise<AsyncIterator<Int>>;
+  countExamDetails: () => Promise<AsyncIterator<Int>>;
+  countExamPrepYes: () => Promise<AsyncIterator<Int>>;
+  countExamPrepNo: () => Promise<AsyncIterator<Int>>;
+  countExamOpenbookYes: () => Promise<AsyncIterator<Int>>;
+  countExamOpenbookNo: () => Promise<AsyncIterator<Int>>;
+  countExamOldquestionYes: () => Promise<AsyncIterator<Int>>;
+  countExamOldquestionNo: () => Promise<AsyncIterator<Int>>;
+  countExamEasymarkYes: () => Promise<AsyncIterator<Int>>;
+  countExamEasymarkNo: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CourseNullablePromise
+  extends Promise<Course | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  likedCount: () => Promise<Int>;
+  dept: <T = DeptPromise>() => T;
+  prof: <T = ProfPromise>() => T;
+  professional: () => Promise<Float>;
+  expressive: () => Promise<Float>;
+  kind: () => Promise<Float>;
+  scoreOverall: () => Promise<Float>;
+  scoreHot: () => Promise<Float>;
+  scoreRepute: () => Promise<Float>;
+  scoreBirdy: () => Promise<Float>;
+  scoreAttend: () => Promise<Float>;
+  scoreExam: () => Promise<Float>;
+  scoreHomework: () => Promise<Float>;
+  meanHomework: () => Promise<Float>;
+  meanAttend: () => Promise<Float>;
+  meanBirdy: () => Promise<Float>;
+  meanExam: () => Promise<Float>;
+  countReview: () => Promise<Int>;
+  countGoodReview: () => Promise<Int>;
+  countAverageReview: () => Promise<Int>;
+  countBadReview: () => Promise<Int>;
+  countHomework: () => Promise<Int>;
+  countAttend: () => Promise<Int>;
+  countBirdy: () => Promise<Int>;
+  countExam: () => Promise<Int>;
+  countExamDetails: () => Promise<Int>;
+  countExamPrepYes: () => Promise<Int>;
+  countExamPrepNo: () => Promise<Int>;
+  countExamOpenbookYes: () => Promise<Int>;
+  countExamOpenbookNo: () => Promise<Int>;
+  countExamOldquestionYes: () => Promise<Int>;
+  countExamOldquestionNo: () => Promise<Int>;
+  countExamEasymarkYes: () => Promise<Int>;
+  countExamEasymarkNo: () => Promise<Int>;
 }
 
 export interface AggregateReview {
@@ -4421,23 +4607,165 @@ export interface AggregateReviewSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface PositionPreviousValues {
-  id: ID_Output;
-  name: String;
+export interface CourseSubscriptionPayload {
+  mutation: MutationType;
+  node: Course;
+  updatedFields: String[];
+  previousValues: CoursePreviousValues;
 }
 
-export interface PositionPreviousValuesPromise
-  extends Promise<PositionPreviousValues>,
+export interface CourseSubscriptionPayloadPromise
+  extends Promise<CourseSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CoursePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CoursePreviousValuesPromise>() => T;
+}
+
+export interface CourseSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CourseSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CourseSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CoursePreviousValuesSubscription>() => T;
+}
+
+export interface ReviewConnection {
+  pageInfo: PageInfo;
+  edges: ReviewEdge[];
+}
+
+export interface ReviewConnectionPromise
+  extends Promise<ReviewConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ReviewEdge>>() => T;
+  aggregate: <T = AggregateReviewPromise>() => T;
+}
+
+export interface ReviewConnectionSubscription
+  extends Promise<AsyncIterator<ReviewConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ReviewEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateReviewSubscription>() => T;
+}
+
+export interface CoursePreviousValues {
+  id: ID_Output;
+  name: String;
+  likedCount?: Int;
+  professional?: Float;
+  expressive?: Float;
+  kind?: Float;
+  scoreOverall?: Float;
+  scoreHot?: Float;
+  scoreRepute?: Float;
+  scoreBirdy?: Float;
+  scoreAttend?: Float;
+  scoreExam?: Float;
+  scoreHomework?: Float;
+  meanHomework?: Float;
+  meanAttend?: Float;
+  meanBirdy?: Float;
+  meanExam?: Float;
+  countReview?: Int;
+  countGoodReview?: Int;
+  countAverageReview?: Int;
+  countBadReview?: Int;
+  countHomework?: Int;
+  countAttend?: Int;
+  countBirdy?: Int;
+  countExam?: Int;
+  countExamDetails?: Int;
+  countExamPrepYes?: Int;
+  countExamPrepNo?: Int;
+  countExamOpenbookYes?: Int;
+  countExamOpenbookNo?: Int;
+  countExamOldquestionYes?: Int;
+  countExamOldquestionNo?: Int;
+  countExamEasymarkYes?: Int;
+  countExamEasymarkNo?: Int;
+}
+
+export interface CoursePreviousValuesPromise
+  extends Promise<CoursePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
+  likedCount: () => Promise<Int>;
+  professional: () => Promise<Float>;
+  expressive: () => Promise<Float>;
+  kind: () => Promise<Float>;
+  scoreOverall: () => Promise<Float>;
+  scoreHot: () => Promise<Float>;
+  scoreRepute: () => Promise<Float>;
+  scoreBirdy: () => Promise<Float>;
+  scoreAttend: () => Promise<Float>;
+  scoreExam: () => Promise<Float>;
+  scoreHomework: () => Promise<Float>;
+  meanHomework: () => Promise<Float>;
+  meanAttend: () => Promise<Float>;
+  meanBirdy: () => Promise<Float>;
+  meanExam: () => Promise<Float>;
+  countReview: () => Promise<Int>;
+  countGoodReview: () => Promise<Int>;
+  countAverageReview: () => Promise<Int>;
+  countBadReview: () => Promise<Int>;
+  countHomework: () => Promise<Int>;
+  countAttend: () => Promise<Int>;
+  countBirdy: () => Promise<Int>;
+  countExam: () => Promise<Int>;
+  countExamDetails: () => Promise<Int>;
+  countExamPrepYes: () => Promise<Int>;
+  countExamPrepNo: () => Promise<Int>;
+  countExamOpenbookYes: () => Promise<Int>;
+  countExamOpenbookNo: () => Promise<Int>;
+  countExamOldquestionYes: () => Promise<Int>;
+  countExamOldquestionNo: () => Promise<Int>;
+  countExamEasymarkYes: () => Promise<Int>;
+  countExamEasymarkNo: () => Promise<Int>;
 }
 
-export interface PositionPreviousValuesSubscription
-  extends Promise<AsyncIterator<PositionPreviousValues>>,
+export interface CoursePreviousValuesSubscription
+  extends Promise<AsyncIterator<CoursePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
+  likedCount: () => Promise<AsyncIterator<Int>>;
+  professional: () => Promise<AsyncIterator<Float>>;
+  expressive: () => Promise<AsyncIterator<Float>>;
+  kind: () => Promise<AsyncIterator<Float>>;
+  scoreOverall: () => Promise<AsyncIterator<Float>>;
+  scoreHot: () => Promise<AsyncIterator<Float>>;
+  scoreRepute: () => Promise<AsyncIterator<Float>>;
+  scoreBirdy: () => Promise<AsyncIterator<Float>>;
+  scoreAttend: () => Promise<AsyncIterator<Float>>;
+  scoreExam: () => Promise<AsyncIterator<Float>>;
+  scoreHomework: () => Promise<AsyncIterator<Float>>;
+  meanHomework: () => Promise<AsyncIterator<Float>>;
+  meanAttend: () => Promise<AsyncIterator<Float>>;
+  meanBirdy: () => Promise<AsyncIterator<Float>>;
+  meanExam: () => Promise<AsyncIterator<Float>>;
+  countReview: () => Promise<AsyncIterator<Int>>;
+  countGoodReview: () => Promise<AsyncIterator<Int>>;
+  countAverageReview: () => Promise<AsyncIterator<Int>>;
+  countBadReview: () => Promise<AsyncIterator<Int>>;
+  countHomework: () => Promise<AsyncIterator<Int>>;
+  countAttend: () => Promise<AsyncIterator<Int>>;
+  countBirdy: () => Promise<AsyncIterator<Int>>;
+  countExam: () => Promise<AsyncIterator<Int>>;
+  countExamDetails: () => Promise<AsyncIterator<Int>>;
+  countExamPrepYes: () => Promise<AsyncIterator<Int>>;
+  countExamPrepNo: () => Promise<AsyncIterator<Int>>;
+  countExamOpenbookYes: () => Promise<AsyncIterator<Int>>;
+  countExamOpenbookNo: () => Promise<AsyncIterator<Int>>;
+  countExamOldquestionYes: () => Promise<AsyncIterator<Int>>;
+  countExamOldquestionNo: () => Promise<AsyncIterator<Int>>;
+  countExamEasymarkYes: () => Promise<AsyncIterator<Int>>;
+  countExamEasymarkNo: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface ProfEdge {
@@ -4480,6 +4808,47 @@ export interface PageInfoSubscription
   endCursor: () => Promise<AsyncIterator<String>>;
 }
 
+export interface AggregatePosition {
+  count: Int;
+}
+
+export interface AggregatePositionPromise
+  extends Promise<AggregatePosition>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePositionSubscription
+  extends Promise<AsyncIterator<AggregatePosition>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface DeptSubscriptionPayload {
+  mutation: MutationType;
+  node: Dept;
+  updatedFields: String[];
+  previousValues: DeptPreviousValues;
+}
+
+export interface DeptSubscriptionPayloadPromise
+  extends Promise<DeptSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = DeptPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = DeptPreviousValuesPromise>() => T;
+}
+
+export interface DeptSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<DeptSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = DeptSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = DeptPreviousValuesSubscription>() => T;
+}
+
 export interface PositionConnection {
   pageInfo: PageInfo;
   edges: PositionEdge[];
@@ -4501,25 +4870,271 @@ export interface PositionConnectionSubscription
   aggregate: <T = AggregatePositionSubscription>() => T;
 }
 
-export interface UserConnection {
-  pageInfo: PageInfo;
-  edges: UserEdge[];
+export interface DeptPreviousValues {
+  id: ID_Output;
+  shortname: String;
+  longname: String;
+  alias?: String;
+  icon?: String;
 }
 
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
+export interface DeptPreviousValuesPromise
+  extends Promise<DeptPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  shortname: () => Promise<String>;
+  longname: () => Promise<String>;
+  alias: () => Promise<String>;
+  icon: () => Promise<String>;
+}
+
+export interface DeptPreviousValuesSubscription
+  extends Promise<AsyncIterator<DeptPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  shortname: () => Promise<AsyncIterator<String>>;
+  longname: () => Promise<AsyncIterator<String>>;
+  alias: () => Promise<AsyncIterator<String>>;
+  icon: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserSubscriptionPayload {
+  mutation: MutationType;
+  node: User;
+  updatedFields: String[];
+  previousValues: UserPreviousValues;
+}
+
+export interface UserSubscriptionPayloadPromise
+  extends Promise<UserSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = UserPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValuesPromise>() => T;
+}
+
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
+}
+
+export interface CourseConnection {
+  pageInfo: PageInfo;
+  edges: CourseEdge[];
+}
+
+export interface CourseConnectionPromise
+  extends Promise<CourseConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
+  edges: <T = FragmentableArray<CourseEdge>>() => T;
+  aggregate: <T = AggregateCoursePromise>() => T;
 }
 
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
+export interface CourseConnectionSubscription
+  extends Promise<AsyncIterator<CourseConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CourseEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCourseSubscription>() => T;
+}
+
+export interface AggregateTag {
+  count: Int;
+}
+
+export interface AggregateTagPromise
+  extends Promise<AggregateTag>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTagSubscription
+  extends Promise<AsyncIterator<AggregateTag>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PositionSubscriptionPayload {
+  mutation: MutationType;
+  node: Position;
+  updatedFields: String[];
+  previousValues: PositionPreviousValues;
+}
+
+export interface PositionSubscriptionPayloadPromise
+  extends Promise<PositionSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PositionPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PositionPreviousValuesPromise>() => T;
+}
+
+export interface PositionSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PositionSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PositionSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PositionPreviousValuesSubscription>() => T;
+}
+
+export interface Tag {
+  id: ID_Output;
+  name: String;
+  isPositive: Boolean;
+  category?: String;
+}
+
+export interface TagPromise extends Promise<Tag>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  isPositive: () => Promise<Boolean>;
+  category: () => Promise<String>;
+}
+
+export interface TagSubscription
+  extends Promise<AsyncIterator<Tag>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  isPositive: () => Promise<AsyncIterator<Boolean>>;
+  category: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TagNullablePromise extends Promise<Tag | null>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  isPositive: () => Promise<Boolean>;
+  category: () => Promise<String>;
+}
+
+export interface PositionPreviousValues {
+  id: ID_Output;
+  name: String;
+}
+
+export interface PositionPreviousValuesPromise
+  extends Promise<PositionPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+}
+
+export interface PositionPreviousValuesSubscription
+  extends Promise<AsyncIterator<PositionPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateProf {
+  count: Int;
+}
+
+export interface AggregateProfPromise
+  extends Promise<AggregateProf>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateProfSubscription
+  extends Promise<AsyncIterator<AggregateProf>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface Position {
+  id: ID_Output;
+  name: String;
+}
+
+export interface PositionPromise extends Promise<Position>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  profs: <T = FragmentableArray<Prof>>(args?: {
+    where?: ProfWhereInput;
+    orderBy?: ProfOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface PositionSubscription
+  extends Promise<AsyncIterator<Position>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  profs: <T = Promise<AsyncIterator<ProfSubscription>>>(args?: {
+    where?: ProfWhereInput;
+    orderBy?: ProfOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface PositionNullablePromise
+  extends Promise<Position | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  profs: <T = FragmentableArray<Prof>>(args?: {
+    where?: ProfWhereInput;
+    orderBy?: ProfOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface PositionEdge {
+  node: Position;
+  cursor: String;
+}
+
+export interface PositionEdgePromise
+  extends Promise<PositionEdge>,
+    Fragmentable {
+  node: <T = PositionPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PositionEdgeSubscription
+  extends Promise<AsyncIterator<PositionEdge>>,
+    Fragmentable {
+  node: <T = PositionSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserEdge {
+  node: User;
+  cursor: String;
+}
+
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface ReviewSubscriptionPayload {
@@ -4547,29 +5162,213 @@ export interface ReviewSubscriptionPayloadSubscription
   previousValues: <T = ReviewPreviousValuesSubscription>() => T;
 }
 
-export interface TagSubscriptionPayload {
-  mutation: MutationType;
-  node: Tag;
-  updatedFields: String[];
-  previousValues: TagPreviousValues;
+export interface Prof {
+  id: ID_Output;
+  name: String;
+  code?: String;
+  gender?: Sex;
+  birth?: Int;
+  hometown?: String;
+  motto?: String;
+  email?: String;
+  phone?: String;
+  exp?: Int;
+  group?: String;
+  intro?: String;
+  education?: String;
+  research?: String;
+  achievement?: String;
+  scoreOverall?: Float;
+  scoreProfessional?: Float;
+  scoreExpressive?: Float;
+  scoreKind?: Float;
+  meanHomework?: Float;
+  meanAttend?: Float;
+  meanBirdy?: Float;
+  meanExam?: Float;
+  countReview?: Int;
+  countGoodReview?: Int;
+  countAverageReview?: Int;
+  countBadReview?: Int;
+  countHomework?: Int;
+  countAttend?: Int;
+  countBirdy?: Int;
+  countExam?: Int;
+  countExamDetails?: Int;
+  countExamPrepYes?: Int;
+  countExamPrepNo?: Int;
+  countExamOpenbookYes?: Int;
+  countExamOpenbookNo?: Int;
+  countExamOldquestionYes?: Int;
+  countExamOldquestionNo?: Int;
+  countExamEasyYes?: Int;
+  countExamEasyNo?: Int;
 }
 
-export interface TagSubscriptionPayloadPromise
-  extends Promise<TagSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = TagPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = TagPreviousValuesPromise>() => T;
+export interface ProfPromise extends Promise<Prof>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  code: () => Promise<String>;
+  gender: () => Promise<Sex>;
+  birth: () => Promise<Int>;
+  hometown: () => Promise<String>;
+  motto: () => Promise<String>;
+  email: () => Promise<String>;
+  phone: () => Promise<String>;
+  exp: () => Promise<Int>;
+  group: () => Promise<String>;
+  intro: () => Promise<String>;
+  education: () => Promise<String>;
+  research: () => Promise<String>;
+  achievement: () => Promise<String>;
+  dept: <T = DeptPromise>() => T;
+  position: <T = PositionPromise>() => T;
+  courses: <T = FragmentableArray<Course>>(args?: {
+    where?: CourseWhereInput;
+    orderBy?: CourseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  scoreOverall: () => Promise<Float>;
+  scoreProfessional: () => Promise<Float>;
+  scoreExpressive: () => Promise<Float>;
+  scoreKind: () => Promise<Float>;
+  meanHomework: () => Promise<Float>;
+  meanAttend: () => Promise<Float>;
+  meanBirdy: () => Promise<Float>;
+  meanExam: () => Promise<Float>;
+  countReview: () => Promise<Int>;
+  countGoodReview: () => Promise<Int>;
+  countAverageReview: () => Promise<Int>;
+  countBadReview: () => Promise<Int>;
+  countHomework: () => Promise<Int>;
+  countAttend: () => Promise<Int>;
+  countBirdy: () => Promise<Int>;
+  countExam: () => Promise<Int>;
+  countExamDetails: () => Promise<Int>;
+  countExamPrepYes: () => Promise<Int>;
+  countExamPrepNo: () => Promise<Int>;
+  countExamOpenbookYes: () => Promise<Int>;
+  countExamOpenbookNo: () => Promise<Int>;
+  countExamOldquestionYes: () => Promise<Int>;
+  countExamOldquestionNo: () => Promise<Int>;
+  countExamEasyYes: () => Promise<Int>;
+  countExamEasyNo: () => Promise<Int>;
 }
 
-export interface TagSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<TagSubscriptionPayload>>,
+export interface ProfSubscription
+  extends Promise<AsyncIterator<Prof>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = TagSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = TagPreviousValuesSubscription>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  code: () => Promise<AsyncIterator<String>>;
+  gender: () => Promise<AsyncIterator<Sex>>;
+  birth: () => Promise<AsyncIterator<Int>>;
+  hometown: () => Promise<AsyncIterator<String>>;
+  motto: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
+  phone: () => Promise<AsyncIterator<String>>;
+  exp: () => Promise<AsyncIterator<Int>>;
+  group: () => Promise<AsyncIterator<String>>;
+  intro: () => Promise<AsyncIterator<String>>;
+  education: () => Promise<AsyncIterator<String>>;
+  research: () => Promise<AsyncIterator<String>>;
+  achievement: () => Promise<AsyncIterator<String>>;
+  dept: <T = DeptSubscription>() => T;
+  position: <T = PositionSubscription>() => T;
+  courses: <T = Promise<AsyncIterator<CourseSubscription>>>(args?: {
+    where?: CourseWhereInput;
+    orderBy?: CourseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  scoreOverall: () => Promise<AsyncIterator<Float>>;
+  scoreProfessional: () => Promise<AsyncIterator<Float>>;
+  scoreExpressive: () => Promise<AsyncIterator<Float>>;
+  scoreKind: () => Promise<AsyncIterator<Float>>;
+  meanHomework: () => Promise<AsyncIterator<Float>>;
+  meanAttend: () => Promise<AsyncIterator<Float>>;
+  meanBirdy: () => Promise<AsyncIterator<Float>>;
+  meanExam: () => Promise<AsyncIterator<Float>>;
+  countReview: () => Promise<AsyncIterator<Int>>;
+  countGoodReview: () => Promise<AsyncIterator<Int>>;
+  countAverageReview: () => Promise<AsyncIterator<Int>>;
+  countBadReview: () => Promise<AsyncIterator<Int>>;
+  countHomework: () => Promise<AsyncIterator<Int>>;
+  countAttend: () => Promise<AsyncIterator<Int>>;
+  countBirdy: () => Promise<AsyncIterator<Int>>;
+  countExam: () => Promise<AsyncIterator<Int>>;
+  countExamDetails: () => Promise<AsyncIterator<Int>>;
+  countExamPrepYes: () => Promise<AsyncIterator<Int>>;
+  countExamPrepNo: () => Promise<AsyncIterator<Int>>;
+  countExamOpenbookYes: () => Promise<AsyncIterator<Int>>;
+  countExamOpenbookNo: () => Promise<AsyncIterator<Int>>;
+  countExamOldquestionYes: () => Promise<AsyncIterator<Int>>;
+  countExamOldquestionNo: () => Promise<AsyncIterator<Int>>;
+  countExamEasyYes: () => Promise<AsyncIterator<Int>>;
+  countExamEasyNo: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ProfNullablePromise
+  extends Promise<Prof | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  code: () => Promise<String>;
+  gender: () => Promise<Sex>;
+  birth: () => Promise<Int>;
+  hometown: () => Promise<String>;
+  motto: () => Promise<String>;
+  email: () => Promise<String>;
+  phone: () => Promise<String>;
+  exp: () => Promise<Int>;
+  group: () => Promise<String>;
+  intro: () => Promise<String>;
+  education: () => Promise<String>;
+  research: () => Promise<String>;
+  achievement: () => Promise<String>;
+  dept: <T = DeptPromise>() => T;
+  position: <T = PositionPromise>() => T;
+  courses: <T = FragmentableArray<Course>>(args?: {
+    where?: CourseWhereInput;
+    orderBy?: CourseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  scoreOverall: () => Promise<Float>;
+  scoreProfessional: () => Promise<Float>;
+  scoreExpressive: () => Promise<Float>;
+  scoreKind: () => Promise<Float>;
+  meanHomework: () => Promise<Float>;
+  meanAttend: () => Promise<Float>;
+  meanBirdy: () => Promise<Float>;
+  meanExam: () => Promise<Float>;
+  countReview: () => Promise<Int>;
+  countGoodReview: () => Promise<Int>;
+  countAverageReview: () => Promise<Int>;
+  countBadReview: () => Promise<Int>;
+  countHomework: () => Promise<Int>;
+  countAttend: () => Promise<Int>;
+  countBirdy: () => Promise<Int>;
+  countExam: () => Promise<Int>;
+  countExamDetails: () => Promise<Int>;
+  countExamPrepYes: () => Promise<Int>;
+  countExamPrepNo: () => Promise<Int>;
+  countExamOpenbookYes: () => Promise<Int>;
+  countExamOpenbookNo: () => Promise<Int>;
+  countExamOldquestionYes: () => Promise<Int>;
+  countExamOldquestionNo: () => Promise<Int>;
+  countExamEasyYes: () => Promise<Int>;
+  countExamEasyNo: () => Promise<Int>;
 }
 
 export interface ProfPreviousValues {
@@ -4730,111 +5529,89 @@ export interface ProfSubscriptionPayloadSubscription
   previousValues: <T = ProfPreviousValuesSubscription>() => T;
 }
 
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
-}
-
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
-}
-
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
-}
-
-export interface AggregateDept {
-  count: Int;
-}
-
-export interface AggregateDeptPromise
-  extends Promise<AggregateDept>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateDeptSubscription
-  extends Promise<AsyncIterator<AggregateDept>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AggregatePosition {
-  count: Int;
-}
-
-export interface AggregatePositionPromise
-  extends Promise<AggregatePosition>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePositionSubscription
-  extends Promise<AsyncIterator<AggregatePosition>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface ReviewConnection {
+export interface TagConnection {
   pageInfo: PageInfo;
-  edges: ReviewEdge[];
+  edges: TagEdge[];
 }
 
-export interface ReviewConnectionPromise
-  extends Promise<ReviewConnection>,
+export interface TagConnectionPromise
+  extends Promise<TagConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ReviewEdge>>() => T;
-  aggregate: <T = AggregateReviewPromise>() => T;
+  edges: <T = FragmentableArray<TagEdge>>() => T;
+  aggregate: <T = AggregateTagPromise>() => T;
 }
 
-export interface ReviewConnectionSubscription
-  extends Promise<AsyncIterator<ReviewConnection>>,
+export interface TagConnectionSubscription
+  extends Promise<AsyncIterator<TagConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ReviewEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateReviewSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TagEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTagSubscription>() => T;
 }
 
-/*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
-*/
-export type Int = number;
+export interface TagPreviousValues {
+  id: ID_Output;
+  name: String;
+  isPositive: Boolean;
+  category?: String;
+}
 
-export type Long = string;
+export interface TagPreviousValuesPromise
+  extends Promise<TagPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  isPositive: () => Promise<Boolean>;
+  category: () => Promise<String>;
+}
 
-/*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
-*/
-export type String = string;
+export interface TagPreviousValuesSubscription
+  extends Promise<AsyncIterator<TagPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  isPositive: () => Promise<AsyncIterator<Boolean>>;
+  category: () => Promise<AsyncIterator<String>>;
+}
 
-/*
-The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
-*/
-export type Float = number;
+export interface ProfConnection {
+  pageInfo: PageInfo;
+  edges: ProfEdge[];
+}
 
-/*
-The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
-*/
-export type ID_Input = string | number;
-export type ID_Output = string;
+export interface ProfConnectionPromise
+  extends Promise<ProfConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ProfEdge>>() => T;
+  aggregate: <T = AggregateProfPromise>() => T;
+}
 
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
+export interface ProfConnectionSubscription
+  extends Promise<AsyncIterator<ProfConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ProfEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateProfSubscription>() => T;
+}
+
+export interface ReviewEdge {
+  node: Review;
+  cursor: String;
+}
+
+export interface ReviewEdgePromise extends Promise<ReviewEdge>, Fragmentable {
+  node: <T = ReviewPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ReviewEdgeSubscription
+  extends Promise<AsyncIterator<ReviewEdge>>,
+    Fragmentable {
+  node: <T = ReviewSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
 
 /*
 DateTime scalar input type, allowing Date
@@ -4845,6 +5622,34 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
+
+/*
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+*/
+export type ID_Input = string | number;
+export type ID_Output = string;
+
+export type Long = string;
+
+/*
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+*/
+export type String = string;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+*/
+export type Int = number;
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
+*/
+export type Float = number;
+
+/*
+The `Boolean` scalar type represents `true` or `false`.
+*/
+export type Boolean = boolean;
 
 /**
  * Model Metadata

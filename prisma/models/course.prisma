@@ -1,6 +1,10 @@
 type Course {
   id: ID! @id
   name: String!
+  likedCount: Int @default(value: 0)
+  dept: Dept @relation(name: "CourseDept")
+  prof: Prof @relation(name: "CourseProf")
+
   "专业"
   professional: Float
   "表达"
@@ -32,7 +36,7 @@ type Course {
   "考试难度，越高越难"
   meanExam: Float
   "总评论次数"
-  
+
   countReview: Int
   "好评次数"
   countGoodReview: Int

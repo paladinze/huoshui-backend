@@ -38,6 +38,9 @@ type BatchPayload {
 type Course {
   id: ID!
   name: String!
+  likedCount: Int
+  dept: Dept
+  prof: Prof
   professional: Float
   expressive: Float
   kind: Float
@@ -80,6 +83,95 @@ type CourseConnection {
 input CourseCreateInput {
   id: ID
   name: String!
+  likedCount: Int
+  dept: DeptCreateOneWithoutCoursesInput
+  prof: ProfCreateOneWithoutCoursesInput
+  professional: Float
+  expressive: Float
+  kind: Float
+  scoreOverall: Float
+  scoreHot: Float
+  scoreRepute: Float
+  scoreBirdy: Float
+  scoreAttend: Float
+  scoreExam: Float
+  scoreHomework: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasymarkYes: Int
+  countExamEasymarkNo: Int
+}
+
+input CourseCreateManyWithoutDeptInput {
+  create: [CourseCreateWithoutDeptInput!]
+  connect: [CourseWhereUniqueInput!]
+}
+
+input CourseCreateManyWithoutProfInput {
+  create: [CourseCreateWithoutProfInput!]
+  connect: [CourseWhereUniqueInput!]
+}
+
+input CourseCreateWithoutDeptInput {
+  id: ID
+  name: String!
+  likedCount: Int
+  prof: ProfCreateOneWithoutCoursesInput
+  professional: Float
+  expressive: Float
+  kind: Float
+  scoreOverall: Float
+  scoreHot: Float
+  scoreRepute: Float
+  scoreBirdy: Float
+  scoreAttend: Float
+  scoreExam: Float
+  scoreHomework: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasymarkYes: Int
+  countExamEasymarkNo: Int
+}
+
+input CourseCreateWithoutProfInput {
+  id: ID
+  name: String!
+  likedCount: Int
+  dept: DeptCreateOneWithoutCoursesInput
   professional: Float
   expressive: Float
   kind: Float
@@ -123,6 +215,8 @@ enum CourseOrderByInput {
   id_DESC
   name_ASC
   name_DESC
+  likedCount_ASC
+  likedCount_DESC
   professional_ASC
   professional_DESC
   expressive_ASC
@@ -190,6 +284,7 @@ enum CourseOrderByInput {
 type CoursePreviousValues {
   id: ID!
   name: String!
+  likedCount: Int
   professional: Float
   expressive: Float
   kind: Float
@@ -223,6 +318,296 @@ type CoursePreviousValues {
   countExamEasymarkNo: Int
 }
 
+input CourseScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  likedCount: Int
+  likedCount_not: Int
+  likedCount_in: [Int!]
+  likedCount_not_in: [Int!]
+  likedCount_lt: Int
+  likedCount_lte: Int
+  likedCount_gt: Int
+  likedCount_gte: Int
+  professional: Float
+  professional_not: Float
+  professional_in: [Float!]
+  professional_not_in: [Float!]
+  professional_lt: Float
+  professional_lte: Float
+  professional_gt: Float
+  professional_gte: Float
+  expressive: Float
+  expressive_not: Float
+  expressive_in: [Float!]
+  expressive_not_in: [Float!]
+  expressive_lt: Float
+  expressive_lte: Float
+  expressive_gt: Float
+  expressive_gte: Float
+  kind: Float
+  kind_not: Float
+  kind_in: [Float!]
+  kind_not_in: [Float!]
+  kind_lt: Float
+  kind_lte: Float
+  kind_gt: Float
+  kind_gte: Float
+  scoreOverall: Float
+  scoreOverall_not: Float
+  scoreOverall_in: [Float!]
+  scoreOverall_not_in: [Float!]
+  scoreOverall_lt: Float
+  scoreOverall_lte: Float
+  scoreOverall_gt: Float
+  scoreOverall_gte: Float
+  scoreHot: Float
+  scoreHot_not: Float
+  scoreHot_in: [Float!]
+  scoreHot_not_in: [Float!]
+  scoreHot_lt: Float
+  scoreHot_lte: Float
+  scoreHot_gt: Float
+  scoreHot_gte: Float
+  scoreRepute: Float
+  scoreRepute_not: Float
+  scoreRepute_in: [Float!]
+  scoreRepute_not_in: [Float!]
+  scoreRepute_lt: Float
+  scoreRepute_lte: Float
+  scoreRepute_gt: Float
+  scoreRepute_gte: Float
+  scoreBirdy: Float
+  scoreBirdy_not: Float
+  scoreBirdy_in: [Float!]
+  scoreBirdy_not_in: [Float!]
+  scoreBirdy_lt: Float
+  scoreBirdy_lte: Float
+  scoreBirdy_gt: Float
+  scoreBirdy_gte: Float
+  scoreAttend: Float
+  scoreAttend_not: Float
+  scoreAttend_in: [Float!]
+  scoreAttend_not_in: [Float!]
+  scoreAttend_lt: Float
+  scoreAttend_lte: Float
+  scoreAttend_gt: Float
+  scoreAttend_gte: Float
+  scoreExam: Float
+  scoreExam_not: Float
+  scoreExam_in: [Float!]
+  scoreExam_not_in: [Float!]
+  scoreExam_lt: Float
+  scoreExam_lte: Float
+  scoreExam_gt: Float
+  scoreExam_gte: Float
+  scoreHomework: Float
+  scoreHomework_not: Float
+  scoreHomework_in: [Float!]
+  scoreHomework_not_in: [Float!]
+  scoreHomework_lt: Float
+  scoreHomework_lte: Float
+  scoreHomework_gt: Float
+  scoreHomework_gte: Float
+  meanHomework: Float
+  meanHomework_not: Float
+  meanHomework_in: [Float!]
+  meanHomework_not_in: [Float!]
+  meanHomework_lt: Float
+  meanHomework_lte: Float
+  meanHomework_gt: Float
+  meanHomework_gte: Float
+  meanAttend: Float
+  meanAttend_not: Float
+  meanAttend_in: [Float!]
+  meanAttend_not_in: [Float!]
+  meanAttend_lt: Float
+  meanAttend_lte: Float
+  meanAttend_gt: Float
+  meanAttend_gte: Float
+  meanBirdy: Float
+  meanBirdy_not: Float
+  meanBirdy_in: [Float!]
+  meanBirdy_not_in: [Float!]
+  meanBirdy_lt: Float
+  meanBirdy_lte: Float
+  meanBirdy_gt: Float
+  meanBirdy_gte: Float
+  meanExam: Float
+  meanExam_not: Float
+  meanExam_in: [Float!]
+  meanExam_not_in: [Float!]
+  meanExam_lt: Float
+  meanExam_lte: Float
+  meanExam_gt: Float
+  meanExam_gte: Float
+  countReview: Int
+  countReview_not: Int
+  countReview_in: [Int!]
+  countReview_not_in: [Int!]
+  countReview_lt: Int
+  countReview_lte: Int
+  countReview_gt: Int
+  countReview_gte: Int
+  countGoodReview: Int
+  countGoodReview_not: Int
+  countGoodReview_in: [Int!]
+  countGoodReview_not_in: [Int!]
+  countGoodReview_lt: Int
+  countGoodReview_lte: Int
+  countGoodReview_gt: Int
+  countGoodReview_gte: Int
+  countAverageReview: Int
+  countAverageReview_not: Int
+  countAverageReview_in: [Int!]
+  countAverageReview_not_in: [Int!]
+  countAverageReview_lt: Int
+  countAverageReview_lte: Int
+  countAverageReview_gt: Int
+  countAverageReview_gte: Int
+  countBadReview: Int
+  countBadReview_not: Int
+  countBadReview_in: [Int!]
+  countBadReview_not_in: [Int!]
+  countBadReview_lt: Int
+  countBadReview_lte: Int
+  countBadReview_gt: Int
+  countBadReview_gte: Int
+  countHomework: Int
+  countHomework_not: Int
+  countHomework_in: [Int!]
+  countHomework_not_in: [Int!]
+  countHomework_lt: Int
+  countHomework_lte: Int
+  countHomework_gt: Int
+  countHomework_gte: Int
+  countAttend: Int
+  countAttend_not: Int
+  countAttend_in: [Int!]
+  countAttend_not_in: [Int!]
+  countAttend_lt: Int
+  countAttend_lte: Int
+  countAttend_gt: Int
+  countAttend_gte: Int
+  countBirdy: Int
+  countBirdy_not: Int
+  countBirdy_in: [Int!]
+  countBirdy_not_in: [Int!]
+  countBirdy_lt: Int
+  countBirdy_lte: Int
+  countBirdy_gt: Int
+  countBirdy_gte: Int
+  countExam: Int
+  countExam_not: Int
+  countExam_in: [Int!]
+  countExam_not_in: [Int!]
+  countExam_lt: Int
+  countExam_lte: Int
+  countExam_gt: Int
+  countExam_gte: Int
+  countExamDetails: Int
+  countExamDetails_not: Int
+  countExamDetails_in: [Int!]
+  countExamDetails_not_in: [Int!]
+  countExamDetails_lt: Int
+  countExamDetails_lte: Int
+  countExamDetails_gt: Int
+  countExamDetails_gte: Int
+  countExamPrepYes: Int
+  countExamPrepYes_not: Int
+  countExamPrepYes_in: [Int!]
+  countExamPrepYes_not_in: [Int!]
+  countExamPrepYes_lt: Int
+  countExamPrepYes_lte: Int
+  countExamPrepYes_gt: Int
+  countExamPrepYes_gte: Int
+  countExamPrepNo: Int
+  countExamPrepNo_not: Int
+  countExamPrepNo_in: [Int!]
+  countExamPrepNo_not_in: [Int!]
+  countExamPrepNo_lt: Int
+  countExamPrepNo_lte: Int
+  countExamPrepNo_gt: Int
+  countExamPrepNo_gte: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookYes_not: Int
+  countExamOpenbookYes_in: [Int!]
+  countExamOpenbookYes_not_in: [Int!]
+  countExamOpenbookYes_lt: Int
+  countExamOpenbookYes_lte: Int
+  countExamOpenbookYes_gt: Int
+  countExamOpenbookYes_gte: Int
+  countExamOpenbookNo: Int
+  countExamOpenbookNo_not: Int
+  countExamOpenbookNo_in: [Int!]
+  countExamOpenbookNo_not_in: [Int!]
+  countExamOpenbookNo_lt: Int
+  countExamOpenbookNo_lte: Int
+  countExamOpenbookNo_gt: Int
+  countExamOpenbookNo_gte: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionYes_not: Int
+  countExamOldquestionYes_in: [Int!]
+  countExamOldquestionYes_not_in: [Int!]
+  countExamOldquestionYes_lt: Int
+  countExamOldquestionYes_lte: Int
+  countExamOldquestionYes_gt: Int
+  countExamOldquestionYes_gte: Int
+  countExamOldquestionNo: Int
+  countExamOldquestionNo_not: Int
+  countExamOldquestionNo_in: [Int!]
+  countExamOldquestionNo_not_in: [Int!]
+  countExamOldquestionNo_lt: Int
+  countExamOldquestionNo_lte: Int
+  countExamOldquestionNo_gt: Int
+  countExamOldquestionNo_gte: Int
+  countExamEasymarkYes: Int
+  countExamEasymarkYes_not: Int
+  countExamEasymarkYes_in: [Int!]
+  countExamEasymarkYes_not_in: [Int!]
+  countExamEasymarkYes_lt: Int
+  countExamEasymarkYes_lte: Int
+  countExamEasymarkYes_gt: Int
+  countExamEasymarkYes_gte: Int
+  countExamEasymarkNo: Int
+  countExamEasymarkNo_not: Int
+  countExamEasymarkNo_in: [Int!]
+  countExamEasymarkNo_not_in: [Int!]
+  countExamEasymarkNo_lt: Int
+  countExamEasymarkNo_lte: Int
+  countExamEasymarkNo_gt: Int
+  countExamEasymarkNo_gte: Int
+  AND: [CourseScalarWhereInput!]
+  OR: [CourseScalarWhereInput!]
+  NOT: [CourseScalarWhereInput!]
+}
+
 type CourseSubscriptionPayload {
   mutation: MutationType!
   node: Course
@@ -243,6 +628,45 @@ input CourseSubscriptionWhereInput {
 
 input CourseUpdateInput {
   name: String
+  likedCount: Int
+  dept: DeptUpdateOneWithoutCoursesInput
+  prof: ProfUpdateOneWithoutCoursesInput
+  professional: Float
+  expressive: Float
+  kind: Float
+  scoreOverall: Float
+  scoreHot: Float
+  scoreRepute: Float
+  scoreBirdy: Float
+  scoreAttend: Float
+  scoreExam: Float
+  scoreHomework: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasymarkYes: Int
+  countExamEasymarkNo: Int
+}
+
+input CourseUpdateManyDataInput {
+  name: String
+  likedCount: Int
   professional: Float
   expressive: Float
   kind: Float
@@ -278,6 +702,7 @@ input CourseUpdateInput {
 
 input CourseUpdateManyMutationInput {
   name: String
+  likedCount: Int
   professional: Float
   expressive: Float
   kind: Float
@@ -311,6 +736,131 @@ input CourseUpdateManyMutationInput {
   countExamEasymarkNo: Int
 }
 
+input CourseUpdateManyWithoutDeptInput {
+  create: [CourseCreateWithoutDeptInput!]
+  delete: [CourseWhereUniqueInput!]
+  connect: [CourseWhereUniqueInput!]
+  set: [CourseWhereUniqueInput!]
+  disconnect: [CourseWhereUniqueInput!]
+  update: [CourseUpdateWithWhereUniqueWithoutDeptInput!]
+  upsert: [CourseUpsertWithWhereUniqueWithoutDeptInput!]
+  deleteMany: [CourseScalarWhereInput!]
+  updateMany: [CourseUpdateManyWithWhereNestedInput!]
+}
+
+input CourseUpdateManyWithoutProfInput {
+  create: [CourseCreateWithoutProfInput!]
+  delete: [CourseWhereUniqueInput!]
+  connect: [CourseWhereUniqueInput!]
+  set: [CourseWhereUniqueInput!]
+  disconnect: [CourseWhereUniqueInput!]
+  update: [CourseUpdateWithWhereUniqueWithoutProfInput!]
+  upsert: [CourseUpsertWithWhereUniqueWithoutProfInput!]
+  deleteMany: [CourseScalarWhereInput!]
+  updateMany: [CourseUpdateManyWithWhereNestedInput!]
+}
+
+input CourseUpdateManyWithWhereNestedInput {
+  where: CourseScalarWhereInput!
+  data: CourseUpdateManyDataInput!
+}
+
+input CourseUpdateWithoutDeptDataInput {
+  name: String
+  likedCount: Int
+  prof: ProfUpdateOneWithoutCoursesInput
+  professional: Float
+  expressive: Float
+  kind: Float
+  scoreOverall: Float
+  scoreHot: Float
+  scoreRepute: Float
+  scoreBirdy: Float
+  scoreAttend: Float
+  scoreExam: Float
+  scoreHomework: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasymarkYes: Int
+  countExamEasymarkNo: Int
+}
+
+input CourseUpdateWithoutProfDataInput {
+  name: String
+  likedCount: Int
+  dept: DeptUpdateOneWithoutCoursesInput
+  professional: Float
+  expressive: Float
+  kind: Float
+  scoreOverall: Float
+  scoreHot: Float
+  scoreRepute: Float
+  scoreBirdy: Float
+  scoreAttend: Float
+  scoreExam: Float
+  scoreHomework: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasymarkYes: Int
+  countExamEasymarkNo: Int
+}
+
+input CourseUpdateWithWhereUniqueWithoutDeptInput {
+  where: CourseWhereUniqueInput!
+  data: CourseUpdateWithoutDeptDataInput!
+}
+
+input CourseUpdateWithWhereUniqueWithoutProfInput {
+  where: CourseWhereUniqueInput!
+  data: CourseUpdateWithoutProfDataInput!
+}
+
+input CourseUpsertWithWhereUniqueWithoutDeptInput {
+  where: CourseWhereUniqueInput!
+  update: CourseUpdateWithoutDeptDataInput!
+  create: CourseCreateWithoutDeptInput!
+}
+
+input CourseUpsertWithWhereUniqueWithoutProfInput {
+  where: CourseWhereUniqueInput!
+  update: CourseUpdateWithoutProfDataInput!
+  create: CourseCreateWithoutProfInput!
+}
+
 input CourseWhereInput {
   id: ID
   id_not: ID
@@ -340,6 +890,16 @@ input CourseWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  likedCount: Int
+  likedCount_not: Int
+  likedCount_in: [Int!]
+  likedCount_not_in: [Int!]
+  likedCount_lt: Int
+  likedCount_lte: Int
+  likedCount_gt: Int
+  likedCount_gte: Int
+  dept: DeptWhereInput
+  prof: ProfWhereInput
   professional: Float
   professional_not: Float
   professional_in: [Float!]
@@ -607,6 +1167,7 @@ type Dept {
   icon: String
   students(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   profs(where: ProfWhereInput, orderBy: ProfOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Prof!]
+  courses(where: CourseWhereInput, orderBy: CourseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Course!]
 }
 
 type DeptConnection {
@@ -623,6 +1184,12 @@ input DeptCreateInput {
   icon: String
   students: UserCreateManyWithoutDeptInput
   profs: ProfCreateManyWithoutDeptInput
+  courses: CourseCreateManyWithoutDeptInput
+}
+
+input DeptCreateOneWithoutCoursesInput {
+  create: DeptCreateWithoutCoursesInput
+  connect: DeptWhereUniqueInput
 }
 
 input DeptCreateOneWithoutProfsInput {
@@ -635,6 +1202,16 @@ input DeptCreateOneWithoutStudentsInput {
   connect: DeptWhereUniqueInput
 }
 
+input DeptCreateWithoutCoursesInput {
+  id: ID
+  shortname: String!
+  longname: String!
+  alias: String
+  icon: String
+  students: UserCreateManyWithoutDeptInput
+  profs: ProfCreateManyWithoutDeptInput
+}
+
 input DeptCreateWithoutProfsInput {
   id: ID
   shortname: String!
@@ -642,6 +1219,7 @@ input DeptCreateWithoutProfsInput {
   alias: String
   icon: String
   students: UserCreateManyWithoutDeptInput
+  courses: CourseCreateManyWithoutDeptInput
 }
 
 input DeptCreateWithoutStudentsInput {
@@ -651,6 +1229,7 @@ input DeptCreateWithoutStudentsInput {
   alias: String
   icon: String
   profs: ProfCreateManyWithoutDeptInput
+  courses: CourseCreateManyWithoutDeptInput
 }
 
 type DeptEdge {
@@ -704,6 +1283,7 @@ input DeptUpdateInput {
   icon: String
   students: UserUpdateManyWithoutDeptInput
   profs: ProfUpdateManyWithoutDeptInput
+  courses: CourseUpdateManyWithoutDeptInput
 }
 
 input DeptUpdateManyMutationInput {
@@ -720,6 +1300,15 @@ input DeptUpdateOneRequiredWithoutStudentsInput {
   connect: DeptWhereUniqueInput
 }
 
+input DeptUpdateOneWithoutCoursesInput {
+  create: DeptCreateWithoutCoursesInput
+  update: DeptUpdateWithoutCoursesDataInput
+  upsert: DeptUpsertWithoutCoursesInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: DeptWhereUniqueInput
+}
+
 input DeptUpdateOneWithoutProfsInput {
   create: DeptCreateWithoutProfsInput
   update: DeptUpdateWithoutProfsDataInput
@@ -729,12 +1318,22 @@ input DeptUpdateOneWithoutProfsInput {
   connect: DeptWhereUniqueInput
 }
 
+input DeptUpdateWithoutCoursesDataInput {
+  shortname: String
+  longname: String
+  alias: String
+  icon: String
+  students: UserUpdateManyWithoutDeptInput
+  profs: ProfUpdateManyWithoutDeptInput
+}
+
 input DeptUpdateWithoutProfsDataInput {
   shortname: String
   longname: String
   alias: String
   icon: String
   students: UserUpdateManyWithoutDeptInput
+  courses: CourseUpdateManyWithoutDeptInput
 }
 
 input DeptUpdateWithoutStudentsDataInput {
@@ -743,6 +1342,12 @@ input DeptUpdateWithoutStudentsDataInput {
   alias: String
   icon: String
   profs: ProfUpdateManyWithoutDeptInput
+  courses: CourseUpdateManyWithoutDeptInput
+}
+
+input DeptUpsertWithoutCoursesInput {
+  update: DeptUpdateWithoutCoursesDataInput!
+  create: DeptCreateWithoutCoursesInput!
 }
 
 input DeptUpsertWithoutProfsInput {
@@ -832,6 +1437,9 @@ input DeptWhereInput {
   profs_every: ProfWhereInput
   profs_some: ProfWhereInput
   profs_none: ProfWhereInput
+  courses_every: CourseWhereInput
+  courses_some: CourseWhereInput
+  courses_none: CourseWhereInput
   AND: [DeptWhereInput!]
   OR: [DeptWhereInput!]
   NOT: [DeptWhereInput!]
@@ -1057,6 +1665,7 @@ type Prof {
   achievement: String
   dept: Dept
   position: Position
+  courses(where: CourseWhereInput, orderBy: CourseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Course!]
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -1108,6 +1717,7 @@ input ProfCreateInput {
   achievement: String
   dept: DeptCreateOneWithoutProfsInput
   position: PositionCreateOneWithoutProfsInput
+  courses: CourseCreateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -1145,6 +1755,56 @@ input ProfCreateManyWithoutPositionInput {
   connect: [ProfWhereUniqueInput!]
 }
 
+input ProfCreateOneWithoutCoursesInput {
+  create: ProfCreateWithoutCoursesInput
+  connect: ProfWhereUniqueInput
+}
+
+input ProfCreateWithoutCoursesInput {
+  id: ID
+  name: String!
+  code: String
+  gender: Sex
+  birth: Int
+  hometown: String
+  motto: String
+  email: String
+  phone: String
+  exp: Int
+  group: String
+  intro: String
+  education: String
+  research: String
+  achievement: String
+  dept: DeptCreateOneWithoutProfsInput
+  position: PositionCreateOneWithoutProfsInput
+  scoreOverall: Float
+  scoreProfessional: Float
+  scoreExpressive: Float
+  scoreKind: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasyYes: Int
+  countExamEasyNo: Int
+}
+
 input ProfCreateWithoutDeptInput {
   id: ID
   name: String!
@@ -1162,6 +1822,7 @@ input ProfCreateWithoutDeptInput {
   research: String
   achievement: String
   position: PositionCreateOneWithoutProfsInput
+  courses: CourseCreateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -1206,6 +1867,7 @@ input ProfCreateWithoutPositionInput {
   research: String
   achievement: String
   dept: DeptCreateOneWithoutProfsInput
+  courses: CourseCreateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -1793,6 +2455,7 @@ input ProfUpdateInput {
   achievement: String
   dept: DeptUpdateOneWithoutProfsInput
   position: PositionUpdateOneWithoutProfsInput
+  courses: CourseUpdateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -1933,6 +2596,59 @@ input ProfUpdateManyWithWhereNestedInput {
   data: ProfUpdateManyDataInput!
 }
 
+input ProfUpdateOneWithoutCoursesInput {
+  create: ProfCreateWithoutCoursesInput
+  update: ProfUpdateWithoutCoursesDataInput
+  upsert: ProfUpsertWithoutCoursesInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: ProfWhereUniqueInput
+}
+
+input ProfUpdateWithoutCoursesDataInput {
+  name: String
+  code: String
+  gender: Sex
+  birth: Int
+  hometown: String
+  motto: String
+  email: String
+  phone: String
+  exp: Int
+  group: String
+  intro: String
+  education: String
+  research: String
+  achievement: String
+  dept: DeptUpdateOneWithoutProfsInput
+  position: PositionUpdateOneWithoutProfsInput
+  scoreOverall: Float
+  scoreProfessional: Float
+  scoreExpressive: Float
+  scoreKind: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasyYes: Int
+  countExamEasyNo: Int
+}
+
 input ProfUpdateWithoutDeptDataInput {
   name: String
   code: String
@@ -1949,6 +2665,7 @@ input ProfUpdateWithoutDeptDataInput {
   research: String
   achievement: String
   position: PositionUpdateOneWithoutProfsInput
+  courses: CourseUpdateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -1992,6 +2709,7 @@ input ProfUpdateWithoutPositionDataInput {
   research: String
   achievement: String
   dept: DeptUpdateOneWithoutProfsInput
+  courses: CourseUpdateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -2027,6 +2745,11 @@ input ProfUpdateWithWhereUniqueWithoutDeptInput {
 input ProfUpdateWithWhereUniqueWithoutPositionInput {
   where: ProfWhereUniqueInput!
   data: ProfUpdateWithoutPositionDataInput!
+}
+
+input ProfUpsertWithoutCoursesInput {
+  update: ProfUpdateWithoutCoursesDataInput!
+  create: ProfCreateWithoutCoursesInput!
 }
 
 input ProfUpsertWithWhereUniqueWithoutDeptInput {
@@ -2232,6 +2955,9 @@ input ProfWhereInput {
   achievement_not_ends_with: String
   dept: DeptWhereInput
   position: PositionWhereInput
+  courses_every: CourseWhereInput
+  courses_some: CourseWhereInput
+  courses_none: CourseWhereInput
   scoreOverall: Float
   scoreOverall_not: Float
   scoreOverall_in: [Float!]
