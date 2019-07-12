@@ -16,36 +16,59 @@ type Prof {
   achievement: String
   dept: Dept @relation(name: "ProfDept")
   position: Position @relation(name: "ProfPosition")
-
+  
   "core stats"
   scoreOverall: Float
+  "专业"
   scoreProfessional: Float
+  "表达"
   scoreExpressive: Float
+  "友好"
   scoreKind: Float
+  "作业多少，分高作业多"
 
-  "secondary stats"
   meanHomework: Float
+  "点名多少，分高点名多"
   meanAttend: Float
+  "课程水分，越高越水"
   meanBirdy: Float
+  "考试难度，越高越难"
   meanExam: Float
-  countReview: Int
-  countGoodReview: Int
-  countAverageReview: Int
-  countBadReview: Int
-  countHomework: Int
-  countAttend: Int
-  countBirdy: Int
-  countExam: Int
-  countExamDetails: Int
-  countExamPrepYes: Int
-  countExamPrepNo: Int
-  countExamOpenbookYes: Int
-  countExamOpenbookNo: Int
-  countExamOldquestionYes: Int
-  countExamOldquestionNo: Int
-  countExamEasyYes: Int
-  countExamEasyNo: Int
+  "总评论次数"
 
+  countReview: Int
+  "好评次数"
+  countGoodReview: Int
+  "average review count"
+  countAverageReview: Int
+  "bad review count"
+  countBadReview: Int
+  "作业评论次数"
+  countHomework: Int
+  "点名评论次数"
+  countAttend: Int
+  "水课评论次数"
+  countBirdy: Int
+  "考试评论次数"
+  countExam: Int
+  "考试细节（开卷，原题，划重点，题目容易）评论次数"
+  countExamDetails: Int
+  "划重点 次数"
+  countExamPrepYes: Int
+  "不 划重点 次数"
+  countExamPrepNo: Int
+  "开卷 次数"
+  countExamOpenbookYes: Int
+  "不 开卷 次数"
+  countExamOpenbookNo: Int
+  "原题 次数"
+  countExamOldquestionYes: Int
+  "不是 原题 次数"
+  countExamOldquestionNo: Int
+  "题目容易 次数"
+  countExamEasyYes: Int
+  "非 题目容易 次数"
+  countExamEasyNo: Int
 }
 
 

@@ -1,6 +1,69 @@
 type Course {
   id: ID! @id
   name: String!
-  isElective: Boolean
-  audience: String
+  "专业"
+  professional: Float
+  "表达"
+  expressive: Float
+  "友好"
+  kind: Float
+  "综合评分"
+  scoreOverall: Float
+
+  "热门评分"
+  scoreHot: Float
+  "声誉评分"
+  scoreRepute: Float
+  "水课评分"
+  scoreBirdy: Float
+  "点名频繁评分"
+  scoreAttend: Float
+  "考试评分"
+  scoreExam: Float
+  "作业评分"
+  scoreHomework: Float
+  "作业多少，分高作业多"
+
+  meanHomework: Float
+  "点名多少，分高点名多"
+  meanAttend: Float
+  "课程水分，越高越水"
+  meanBirdy: Float
+  "考试难度，越高越难"
+  meanExam: Float
+  "总评论次数"
+  
+  countReview: Int
+  "好评次数"
+  countGoodReview: Int
+  "average review count"
+  countAverageReview: Int
+  "bad review count"
+  countBadReview: Int
+  "作业评论次数"
+  countHomework: Int
+  "点名评论次数"
+  countAttend: Int
+  "水课评论次数"
+  countBirdy: Int
+  "考试评论次数"
+  countExam: Int
+  "考试细节（开卷，原题，划重点，题目容易）评论次数"
+  countExamDetails: Int
+  "划重点 次数"
+  countExamPrepYes: Int
+  "不 划重点 次数"
+  countExamPrepNo: Int
+  "开卷 次数"
+  countExamOpenbookYes: Int
+  "不 开卷 次数"
+  countExamOpenbookNo: Int
+  "原题 次数"
+  countExamOldquestionYes: Int
+  "不是 原题 次数"
+  countExamOldquestionNo: Int
+  "题目容易 次数"
+  countExamEasymarkYes: Int
+  "非 题目容易 次数"
+  countExamEasymarkNo: Int
 }

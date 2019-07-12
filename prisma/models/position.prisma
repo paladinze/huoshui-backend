@@ -1,5 +1,5 @@
 type Position {
   id: ID! @id
   name: String! @unique
-  profs: [Prof!]! @relation(name: "ProfPosition")
+  profs: [Prof!] @relation(name: "ProfPosition")
 }
