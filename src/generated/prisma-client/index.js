@@ -17,15 +17,23 @@ var models = [
     embedded: false
   },
   {
+    name: "Sex",
+    embedded: false
+  },
+  {
     name: "Review",
     embedded: false
   },
   {
-    name: "position",
+    name: "Position",
     embedded: false
   },
   {
     name: "Tag",
+    embedded: false
+  },
+  {
+    name: "Dept",
     embedded: false
   }
 ];

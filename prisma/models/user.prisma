@@ -2,9 +2,13 @@ type User {
   id: ID! @id
   username: String! @unique
   email: String! @unique
+  isLcUser: Boolean @default(value: false)
+  lcSalt: String
   password: String!
+  firstYear: Int!
   updatedAt: DateTime! @updatedAt
   createdAt: DateTime! @createdAt
+  dept: Dept! @relation(name: "UserDept")
   reviews: [Review!]! @relation(name: "OwnReviews", onDelete: CASCADE)
   likedReviews: [Review!]! @relation(name: "LikedReviews", onDelete: CASCADE)
 }

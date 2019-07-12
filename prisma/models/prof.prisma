@@ -1,18 +1,21 @@
 type Prof {
-  name: ID! @id
-  code: String!
-  gender: Boolean
+  id: ID! @id
+  name: String!
+  code: String
+  gender: Sex
   birth: Int
   hometown: String
   motto: String
   email: String
   phone: String
   exp: Int
-  researchGroup: String
+  group: String
   intro: String
   education: String
   research: String
   achievement: String
+  dept: Dept @relation(name: "ProfDept")
+  position: Position @relation(name: "ProfPosition")
 
   "core stats"
   scoreOverall: Float
@@ -43,4 +46,10 @@ type Prof {
   countExamEasyYes: Int
   countExamEasyNo: Int
 
+}
+
+
+enum Sex {
+  MALE
+  FEMALE
 }

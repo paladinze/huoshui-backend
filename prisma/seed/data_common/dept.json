@@ -1,133 +1,148 @@
-[{
-  "name": "西南交通大学",
-  "campus": "犀浦",
-  "depts": [{
+[
+  {
     "shortname": "土木",
     "longname": "土木工程学院",
     "image": "/images/dept/full/civil.jpeg",
     "icon": "/images/dept/icons/civil.png"
-  }, {
+  },
+  {
     "shortname": "机械",
     "longname": "机械工程学院",
     "image": "/images/dept/full/mechanical.jpeg",
     "icon": "/images/dept/icons/mechanical.png"
-  }, {
+  },
+  {
     "shortname": "力学",
     "longname": "力学与工程学院",
     "image": "/images/dept/full/force.jpeg",
     "icon": "/images/dept/icons/force.png"
-  }, {
+  },
+  {
     "shortname": "物理",
     "longname": "物理科学与技术学院",
     "image": "/images/dept/full/physics.jpeg",
     "icon": "/images/dept/icons/physics.png"
-  }, {
+  },
+  {
     "shortname": "运输",
     "longname": "交通运输与物流学院",
     "alias": ["交运"],
     "image": "/images/dept/full/transportation.jpeg",
     "icon": "/images/dept/icons/transportation.png"
-  }, {
+  },
+  {
     "shortname": "地学",
     "longname": "地球科学与环境工程学院",
     "image": "/images/dept/full/earth_science.jpeg",
     "icon": "/images/dept/icons/earth_science.png"
-  }, {
+  },
+  {
     "shortname": "建筑",
     "longname": "建筑与设计学院",
     "image": "/images/dept/full/architecture.jpeg",
     "icon": "/images/dept/icons/architecture.png"
-  }, {
+  },
+  {
     "shortname": "材料",
     "longname": "材料科学与工程学院",
     "image": "/images/dept/full/material.jpeg",
     "icon": "/images/dept/icons/material.png"
-  }, {
+  },
+  {
     "shortname": "信息",
     "longname": "信息科学与技术学院",
     "image": "/images/dept/full/infotech.jpeg",
     "icon": "/images/dept/icons/infotech.png"
-  }, {
+  },
+  {
     "shortname": "电气",
     "longname": "电气工程学院",
     "image": "/images/dept/full/electrical.jpeg",
     "icon": "/images/dept/icons/electrical.png"
-  }, {
+  },
+  {
     "shortname": "数学",
     "longname": "数学学院",
     "image": "/images/dept/full/math.jpeg",
     "icon": "/images/dept/icons/math.png"
-  }, {
+  },
+  {
     "shortname": "图书馆",
     "longname": "图书馆",
     "image": "/images/dept/full/library.jpeg",
     "icon": "/images/dept/icons/library.png"
-  }, {
+  },
+  {
     "shortname": "经管",
     "longname": "经济管理学院",
     "image": "/images/dept/full/economics.jpeg",
     "icon": "/images/dept/icons/economics.png"
-  }, {
+  },
+  {
     "shortname": "公共",
     "longname": "公共管理与政法学院",
     "image": "/images/dept/full/law.jpeg",
     "icon": "/images/dept/icons/law.png"
-  }, {
+  },
+  {
     "shortname": "人文",
     "longname": "人文学院",
     "image": "/images/dept/full/liberal_art.jpeg",
     "icon": "/images/dept/icons/liberal_art.png"
-  }, {
+  },
+  {
     "shortname": "外语",
     "longname": "外国语学院",
     "alias": ["外院"],
     "image": "/images/dept/full/language.jpeg",
     "icon": "/images/dept/icons/language.png"
-  }, {
+  },
+  {
     "shortname": "工业",
     "longname": "工业设计",
     "image": "/images/dept/full/industrial_design.jpeg",
     "icon": "/images/dept/icons/industrial_design.png"
-  }, {
+  },
+  {
     "shortname": "生命",
     "longname": "生命科学与工程学院",
     "image": "/images/dept/full/dna.jpeg",
     "icon": "/images/dept/icons/dna.png"
-  }, {
+  },
+  {
     "shortname": "心理",
     "longname": "心理教育系",
     "image": "/images/dept/full/pychology.jpeg",
     "icon": "/images/dept/icons/pychology.png"
-  }, {
+  },
+  {
     "shortname": "艺术",
     "longname": "艺术",
     "image": "/images/dept/full/art.jpeg",
     "icon": "/images/dept/icons/art.png"
-  },{
+  },
+  {
     "shortname": "思政",
     "longname": "思想政治研究部",
     "image": "/images/dept/full/socialism.jpeg",
     "icon": "/images/dept/icons/socialism.png"
-  }, {
+  },
+  {
     "shortname": "马院",
     "longname": "马克思主义学院",
     "image": "/images/dept/full/marxism.jpeg",
     "icon": "/images/dept/icons/marxism.png"
-  }, {
+  },
+  {
     "shortname": "体育",
     "longname": "体育部",
     "image": "/images/dept/full/sport.jpeg",
     "icon": "/images/dept/icons/sport.png"
-  }, {
+  },
+  {
     "shortname": "武装部",
     "longname": "武装部 | 军事教研室",
     "image": "/images/dept/full/army.jpeg",
     "icon": "/images/dept/icons/army.png"
-  }]
-}, {
-  "name": "四川大学"
-}, {
-  "name": "电子科技大学"
-}, {
-  "name": "西南财经大学"
-}]
+  }
+]

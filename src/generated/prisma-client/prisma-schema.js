@@ -7,7 +7,11 @@ module.exports = {
   count: Int!
 }
 
-type Aggregateposition {
+type AggregateDept {
+  count: Int!
+}
+
+type AggregatePosition {
   count: Int!
 }
 
@@ -160,6 +164,250 @@ input CourseWhereUniqueInput {
 
 scalar DateTime
 
+type Dept {
+  id: ID!
+  shortname: String!
+  longname: String!
+  alias: String
+  icon: String
+  students(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+  profs(where: ProfWhereInput, orderBy: ProfOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Prof!]
+}
+
+type DeptConnection {
+  pageInfo: PageInfo!
+  edges: [DeptEdge]!
+  aggregate: AggregateDept!
+}
+
+input DeptCreateInput {
+  id: ID
+  shortname: String!
+  longname: String!
+  alias: String
+  icon: String
+  students: UserCreateManyWithoutDeptInput
+  profs: ProfCreateManyWithoutDeptInput
+}
+
+input DeptCreateOneWithoutProfsInput {
+  create: DeptCreateWithoutProfsInput
+  connect: DeptWhereUniqueInput
+}
+
+input DeptCreateOneWithoutStudentsInput {
+  create: DeptCreateWithoutStudentsInput
+  connect: DeptWhereUniqueInput
+}
+
+input DeptCreateWithoutProfsInput {
+  id: ID
+  shortname: String!
+  longname: String!
+  alias: String
+  icon: String
+  students: UserCreateManyWithoutDeptInput
+}
+
+input DeptCreateWithoutStudentsInput {
+  id: ID
+  shortname: String!
+  longname: String!
+  alias: String
+  icon: String
+  profs: ProfCreateManyWithoutDeptInput
+}
+
+type DeptEdge {
+  node: Dept!
+  cursor: String!
+}
+
+enum DeptOrderByInput {
+  id_ASC
+  id_DESC
+  shortname_ASC
+  shortname_DESC
+  longname_ASC
+  longname_DESC
+  alias_ASC
+  alias_DESC
+  icon_ASC
+  icon_DESC
+}
+
+type DeptPreviousValues {
+  id: ID!
+  shortname: String!
+  longname: String!
+  alias: String
+  icon: String
+}
+
+type DeptSubscriptionPayload {
+  mutation: MutationType!
+  node: Dept
+  updatedFields: [String!]
+  previousValues: DeptPreviousValues
+}
+
+input DeptSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: DeptWhereInput
+  AND: [DeptSubscriptionWhereInput!]
+  OR: [DeptSubscriptionWhereInput!]
+  NOT: [DeptSubscriptionWhereInput!]
+}
+
+input DeptUpdateInput {
+  shortname: String
+  longname: String
+  alias: String
+  icon: String
+  students: UserUpdateManyWithoutDeptInput
+  profs: ProfUpdateManyWithoutDeptInput
+}
+
+input DeptUpdateManyMutationInput {
+  shortname: String
+  longname: String
+  alias: String
+  icon: String
+}
+
+input DeptUpdateOneRequiredWithoutStudentsInput {
+  create: DeptCreateWithoutStudentsInput
+  update: DeptUpdateWithoutStudentsDataInput
+  upsert: DeptUpsertWithoutStudentsInput
+  connect: DeptWhereUniqueInput
+}
+
+input DeptUpdateOneWithoutProfsInput {
+  create: DeptCreateWithoutProfsInput
+  update: DeptUpdateWithoutProfsDataInput
+  upsert: DeptUpsertWithoutProfsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: DeptWhereUniqueInput
+}
+
+input DeptUpdateWithoutProfsDataInput {
+  shortname: String
+  longname: String
+  alias: String
+  icon: String
+  students: UserUpdateManyWithoutDeptInput
+}
+
+input DeptUpdateWithoutStudentsDataInput {
+  shortname: String
+  longname: String
+  alias: String
+  icon: String
+  profs: ProfUpdateManyWithoutDeptInput
+}
+
+input DeptUpsertWithoutProfsInput {
+  update: DeptUpdateWithoutProfsDataInput!
+  create: DeptCreateWithoutProfsInput!
+}
+
+input DeptUpsertWithoutStudentsInput {
+  update: DeptUpdateWithoutStudentsDataInput!
+  create: DeptCreateWithoutStudentsInput!
+}
+
+input DeptWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  shortname: String
+  shortname_not: String
+  shortname_in: [String!]
+  shortname_not_in: [String!]
+  shortname_lt: String
+  shortname_lte: String
+  shortname_gt: String
+  shortname_gte: String
+  shortname_contains: String
+  shortname_not_contains: String
+  shortname_starts_with: String
+  shortname_not_starts_with: String
+  shortname_ends_with: String
+  shortname_not_ends_with: String
+  longname: String
+  longname_not: String
+  longname_in: [String!]
+  longname_not_in: [String!]
+  longname_lt: String
+  longname_lte: String
+  longname_gt: String
+  longname_gte: String
+  longname_contains: String
+  longname_not_contains: String
+  longname_starts_with: String
+  longname_not_starts_with: String
+  longname_ends_with: String
+  longname_not_ends_with: String
+  alias: String
+  alias_not: String
+  alias_in: [String!]
+  alias_not_in: [String!]
+  alias_lt: String
+  alias_lte: String
+  alias_gt: String
+  alias_gte: String
+  alias_contains: String
+  alias_not_contains: String
+  alias_starts_with: String
+  alias_not_starts_with: String
+  alias_ends_with: String
+  alias_not_ends_with: String
+  icon: String
+  icon_not: String
+  icon_in: [String!]
+  icon_not_in: [String!]
+  icon_lt: String
+  icon_lte: String
+  icon_gt: String
+  icon_gte: String
+  icon_contains: String
+  icon_not_contains: String
+  icon_starts_with: String
+  icon_not_starts_with: String
+  icon_ends_with: String
+  icon_not_ends_with: String
+  students_every: UserWhereInput
+  students_some: UserWhereInput
+  students_none: UserWhereInput
+  profs_every: ProfWhereInput
+  profs_some: ProfWhereInput
+  profs_none: ProfWhereInput
+  AND: [DeptWhereInput!]
+  OR: [DeptWhereInput!]
+  NOT: [DeptWhereInput!]
+}
+
+input DeptWhereUniqueInput {
+  id: ID
+  shortname: String
+  longname: String
+}
+
 scalar Long
 
 type Mutation {
@@ -169,6 +417,18 @@ type Mutation {
   upsertCourse(where: CourseWhereUniqueInput!, create: CourseCreateInput!, update: CourseUpdateInput!): Course!
   deleteCourse(where: CourseWhereUniqueInput!): Course
   deleteManyCourses(where: CourseWhereInput): BatchPayload!
+  createDept(data: DeptCreateInput!): Dept!
+  updateDept(data: DeptUpdateInput!, where: DeptWhereUniqueInput!): Dept
+  updateManyDepts(data: DeptUpdateManyMutationInput!, where: DeptWhereInput): BatchPayload!
+  upsertDept(where: DeptWhereUniqueInput!, create: DeptCreateInput!, update: DeptUpdateInput!): Dept!
+  deleteDept(where: DeptWhereUniqueInput!): Dept
+  deleteManyDepts(where: DeptWhereInput): BatchPayload!
+  createPosition(data: PositionCreateInput!): Position!
+  updatePosition(data: PositionUpdateInput!, where: PositionWhereUniqueInput!): Position
+  updateManyPositions(data: PositionUpdateManyMutationInput!, where: PositionWhereInput): BatchPayload!
+  upsertPosition(where: PositionWhereUniqueInput!, create: PositionCreateInput!, update: PositionUpdateInput!): Position!
+  deletePosition(where: PositionWhereUniqueInput!): Position
+  deleteManyPositions(where: PositionWhereInput): BatchPayload!
   createProf(data: ProfCreateInput!): Prof!
   updateProf(data: ProfUpdateInput!, where: ProfWhereUniqueInput!): Prof
   updateManyProfs(data: ProfUpdateManyMutationInput!, where: ProfWhereInput): BatchPayload!
@@ -193,12 +453,6 @@ type Mutation {
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   deleteUser(where: UserWhereUniqueInput!): User
   deleteManyUsers(where: UserWhereInput): BatchPayload!
-  createposition(data: positionCreateInput!): position!
-  updateposition(data: positionUpdateInput!, where: positionWhereUniqueInput!): position
-  updateManypositions(data: positionUpdateManyMutationInput!, where: positionWhereInput): BatchPayload!
-  upsertposition(where: positionWhereUniqueInput!, create: positionCreateInput!, update: positionUpdateInput!): position!
-  deleteposition(where: positionWhereUniqueInput!): position
-  deleteManypositions(where: positionWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -218,66 +472,97 @@ type PageInfo {
   endCursor: String
 }
 
-type position {
+type Position {
   id: ID!
   name: String!
+  profs(where: ProfWhereInput, orderBy: ProfOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Prof!]
 }
 
-type positionConnection {
+type PositionConnection {
   pageInfo: PageInfo!
-  edges: [positionEdge]!
-  aggregate: Aggregateposition!
+  edges: [PositionEdge]!
+  aggregate: AggregatePosition!
 }
 
-input positionCreateInput {
+input PositionCreateInput {
+  id: ID
+  name: String!
+  profs: ProfCreateManyWithoutPositionInput
+}
+
+input PositionCreateOneWithoutProfsInput {
+  create: PositionCreateWithoutProfsInput
+  connect: PositionWhereUniqueInput
+}
+
+input PositionCreateWithoutProfsInput {
   id: ID
   name: String!
 }
 
-type positionEdge {
-  node: position!
+type PositionEdge {
+  node: Position!
   cursor: String!
 }
 
-enum positionOrderByInput {
+enum PositionOrderByInput {
   id_ASC
   id_DESC
   name_ASC
   name_DESC
 }
 
-type positionPreviousValues {
+type PositionPreviousValues {
   id: ID!
   name: String!
 }
 
-type positionSubscriptionPayload {
+type PositionSubscriptionPayload {
   mutation: MutationType!
-  node: position
+  node: Position
   updatedFields: [String!]
-  previousValues: positionPreviousValues
+  previousValues: PositionPreviousValues
 }
 
-input positionSubscriptionWhereInput {
+input PositionSubscriptionWhereInput {
   mutation_in: [MutationType!]
   updatedFields_contains: String
   updatedFields_contains_every: [String!]
   updatedFields_contains_some: [String!]
-  node: positionWhereInput
-  AND: [positionSubscriptionWhereInput!]
-  OR: [positionSubscriptionWhereInput!]
-  NOT: [positionSubscriptionWhereInput!]
+  node: PositionWhereInput
+  AND: [PositionSubscriptionWhereInput!]
+  OR: [PositionSubscriptionWhereInput!]
+  NOT: [PositionSubscriptionWhereInput!]
 }
 
-input positionUpdateInput {
+input PositionUpdateInput {
+  name: String
+  profs: ProfUpdateManyWithoutPositionInput
+}
+
+input PositionUpdateManyMutationInput {
   name: String
 }
 
-input positionUpdateManyMutationInput {
+input PositionUpdateOneWithoutProfsInput {
+  create: PositionCreateWithoutProfsInput
+  update: PositionUpdateWithoutProfsDataInput
+  upsert: PositionUpsertWithoutProfsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: PositionWhereUniqueInput
+}
+
+input PositionUpdateWithoutProfsDataInput {
   name: String
 }
 
-input positionWhereInput {
+input PositionUpsertWithoutProfsInput {
+  update: PositionUpdateWithoutProfsDataInput!
+  create: PositionCreateWithoutProfsInput!
+}
+
+input PositionWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -306,30 +591,37 @@ input positionWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
-  AND: [positionWhereInput!]
-  OR: [positionWhereInput!]
-  NOT: [positionWhereInput!]
+  profs_every: ProfWhereInput
+  profs_some: ProfWhereInput
+  profs_none: ProfWhereInput
+  AND: [PositionWhereInput!]
+  OR: [PositionWhereInput!]
+  NOT: [PositionWhereInput!]
 }
 
-input positionWhereUniqueInput {
+input PositionWhereUniqueInput {
   id: ID
+  name: String
 }
 
 type Prof {
-  name: ID!
-  code: String!
-  gender: Boolean
+  id: ID!
+  name: String!
+  code: String
+  gender: Sex
   birth: Int
   hometown: String
   motto: String
   email: String
   phone: String
   exp: Int
-  researchGroup: String
+  group: String
   intro: String
   education: String
   research: String
   achievement: String
+  dept: Dept
+  position: Position
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -364,20 +656,121 @@ type ProfConnection {
 }
 
 input ProfCreateInput {
-  name: ID
-  code: String!
-  gender: Boolean
+  id: ID
+  name: String!
+  code: String
+  gender: Sex
   birth: Int
   hometown: String
   motto: String
   email: String
   phone: String
   exp: Int
-  researchGroup: String
+  group: String
   intro: String
   education: String
   research: String
   achievement: String
+  dept: DeptCreateOneWithoutProfsInput
+  position: PositionCreateOneWithoutProfsInput
+  scoreOverall: Float
+  scoreProfessional: Float
+  scoreExpressive: Float
+  scoreKind: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasyYes: Int
+  countExamEasyNo: Int
+}
+
+input ProfCreateManyWithoutDeptInput {
+  create: [ProfCreateWithoutDeptInput!]
+  connect: [ProfWhereUniqueInput!]
+}
+
+input ProfCreateManyWithoutPositionInput {
+  create: [ProfCreateWithoutPositionInput!]
+  connect: [ProfWhereUniqueInput!]
+}
+
+input ProfCreateWithoutDeptInput {
+  id: ID
+  name: String!
+  code: String
+  gender: Sex
+  birth: Int
+  hometown: String
+  motto: String
+  email: String
+  phone: String
+  exp: Int
+  group: String
+  intro: String
+  education: String
+  research: String
+  achievement: String
+  position: PositionCreateOneWithoutProfsInput
+  scoreOverall: Float
+  scoreProfessional: Float
+  scoreExpressive: Float
+  scoreKind: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasyYes: Int
+  countExamEasyNo: Int
+}
+
+input ProfCreateWithoutPositionInput {
+  id: ID
+  name: String!
+  code: String
+  gender: Sex
+  birth: Int
+  hometown: String
+  motto: String
+  email: String
+  phone: String
+  exp: Int
+  group: String
+  intro: String
+  education: String
+  research: String
+  achievement: String
+  dept: DeptCreateOneWithoutProfsInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -411,6 +804,8 @@ type ProfEdge {
 }
 
 enum ProfOrderByInput {
+  id_ASC
+  id_DESC
   name_ASC
   name_DESC
   code_ASC
@@ -429,8 +824,8 @@ enum ProfOrderByInput {
   phone_DESC
   exp_ASC
   exp_DESC
-  researchGroup_ASC
-  researchGroup_DESC
+  group_ASC
+  group_DESC
   intro_ASC
   intro_DESC
   education_ASC
@@ -492,75 +887,17 @@ enum ProfOrderByInput {
 }
 
 type ProfPreviousValues {
-  name: ID!
-  code: String!
-  gender: Boolean
-  birth: Int
-  hometown: String
-  motto: String
-  email: String
-  phone: String
-  exp: Int
-  researchGroup: String
-  intro: String
-  education: String
-  research: String
-  achievement: String
-  scoreOverall: Float
-  scoreProfessional: Float
-  scoreExpressive: Float
-  scoreKind: Float
-  meanHomework: Float
-  meanAttend: Float
-  meanBirdy: Float
-  meanExam: Float
-  countReview: Int
-  countGoodReview: Int
-  countAverageReview: Int
-  countBadReview: Int
-  countHomework: Int
-  countAttend: Int
-  countBirdy: Int
-  countExam: Int
-  countExamDetails: Int
-  countExamPrepYes: Int
-  countExamPrepNo: Int
-  countExamOpenbookYes: Int
-  countExamOpenbookNo: Int
-  countExamOldquestionYes: Int
-  countExamOldquestionNo: Int
-  countExamEasyYes: Int
-  countExamEasyNo: Int
-}
-
-type ProfSubscriptionPayload {
-  mutation: MutationType!
-  node: Prof
-  updatedFields: [String!]
-  previousValues: ProfPreviousValues
-}
-
-input ProfSubscriptionWhereInput {
-  mutation_in: [MutationType!]
-  updatedFields_contains: String
-  updatedFields_contains_every: [String!]
-  updatedFields_contains_some: [String!]
-  node: ProfWhereInput
-  AND: [ProfSubscriptionWhereInput!]
-  OR: [ProfSubscriptionWhereInput!]
-  NOT: [ProfSubscriptionWhereInput!]
-}
-
-input ProfUpdateInput {
+  id: ID!
+  name: String!
   code: String
-  gender: Boolean
+  gender: Sex
   birth: Int
   hometown: String
   motto: String
   email: String
   phone: String
   exp: Int
-  researchGroup: String
+  group: String
   intro: String
   education: String
   research: String
@@ -592,62 +929,35 @@ input ProfUpdateInput {
   countExamEasyNo: Int
 }
 
-input ProfUpdateManyMutationInput {
-  code: String
-  gender: Boolean
-  birth: Int
-  hometown: String
-  motto: String
-  email: String
-  phone: String
-  exp: Int
-  researchGroup: String
-  intro: String
-  education: String
-  research: String
-  achievement: String
-  scoreOverall: Float
-  scoreProfessional: Float
-  scoreExpressive: Float
-  scoreKind: Float
-  meanHomework: Float
-  meanAttend: Float
-  meanBirdy: Float
-  meanExam: Float
-  countReview: Int
-  countGoodReview: Int
-  countAverageReview: Int
-  countBadReview: Int
-  countHomework: Int
-  countAttend: Int
-  countBirdy: Int
-  countExam: Int
-  countExamDetails: Int
-  countExamPrepYes: Int
-  countExamPrepNo: Int
-  countExamOpenbookYes: Int
-  countExamOpenbookNo: Int
-  countExamOldquestionYes: Int
-  countExamOldquestionNo: Int
-  countExamEasyYes: Int
-  countExamEasyNo: Int
-}
-
-input ProfWhereInput {
-  name: ID
-  name_not: ID
-  name_in: [ID!]
-  name_not_in: [ID!]
-  name_lt: ID
-  name_lte: ID
-  name_gt: ID
-  name_gte: ID
-  name_contains: ID
-  name_not_contains: ID
-  name_starts_with: ID
-  name_not_starts_with: ID
-  name_ends_with: ID
-  name_not_ends_with: ID
+input ProfScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
   code: String
   code_not: String
   code_in: [String!]
@@ -662,8 +972,10 @@ input ProfWhereInput {
   code_not_starts_with: String
   code_ends_with: String
   code_not_ends_with: String
-  gender: Boolean
-  gender_not: Boolean
+  gender: Sex
+  gender_not: Sex
+  gender_in: [Sex!]
+  gender_not_in: [Sex!]
   birth: Int
   birth_not: Int
   birth_in: [Int!]
@@ -736,20 +1048,20 @@ input ProfWhereInput {
   exp_lte: Int
   exp_gt: Int
   exp_gte: Int
-  researchGroup: String
-  researchGroup_not: String
-  researchGroup_in: [String!]
-  researchGroup_not_in: [String!]
-  researchGroup_lt: String
-  researchGroup_lte: String
-  researchGroup_gt: String
-  researchGroup_gte: String
-  researchGroup_contains: String
-  researchGroup_not_contains: String
-  researchGroup_starts_with: String
-  researchGroup_not_starts_with: String
-  researchGroup_ends_with: String
-  researchGroup_not_ends_with: String
+  group: String
+  group_not: String
+  group_in: [String!]
+  group_not_in: [String!]
+  group_lt: String
+  group_lte: String
+  group_gt: String
+  group_gte: String
+  group_contains: String
+  group_not_contains: String
+  group_starts_with: String
+  group_not_starts_with: String
+  group_ends_with: String
+  group_not_ends_with: String
   intro: String
   intro_not: String
   intro_in: [String!]
@@ -1006,19 +1318,704 @@ input ProfWhereInput {
   countExamEasyNo_lte: Int
   countExamEasyNo_gt: Int
   countExamEasyNo_gte: Int
+  AND: [ProfScalarWhereInput!]
+  OR: [ProfScalarWhereInput!]
+  NOT: [ProfScalarWhereInput!]
+}
+
+type ProfSubscriptionPayload {
+  mutation: MutationType!
+  node: Prof
+  updatedFields: [String!]
+  previousValues: ProfPreviousValues
+}
+
+input ProfSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ProfWhereInput
+  AND: [ProfSubscriptionWhereInput!]
+  OR: [ProfSubscriptionWhereInput!]
+  NOT: [ProfSubscriptionWhereInput!]
+}
+
+input ProfUpdateInput {
+  name: String
+  code: String
+  gender: Sex
+  birth: Int
+  hometown: String
+  motto: String
+  email: String
+  phone: String
+  exp: Int
+  group: String
+  intro: String
+  education: String
+  research: String
+  achievement: String
+  dept: DeptUpdateOneWithoutProfsInput
+  position: PositionUpdateOneWithoutProfsInput
+  scoreOverall: Float
+  scoreProfessional: Float
+  scoreExpressive: Float
+  scoreKind: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasyYes: Int
+  countExamEasyNo: Int
+}
+
+input ProfUpdateManyDataInput {
+  name: String
+  code: String
+  gender: Sex
+  birth: Int
+  hometown: String
+  motto: String
+  email: String
+  phone: String
+  exp: Int
+  group: String
+  intro: String
+  education: String
+  research: String
+  achievement: String
+  scoreOverall: Float
+  scoreProfessional: Float
+  scoreExpressive: Float
+  scoreKind: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasyYes: Int
+  countExamEasyNo: Int
+}
+
+input ProfUpdateManyMutationInput {
+  name: String
+  code: String
+  gender: Sex
+  birth: Int
+  hometown: String
+  motto: String
+  email: String
+  phone: String
+  exp: Int
+  group: String
+  intro: String
+  education: String
+  research: String
+  achievement: String
+  scoreOverall: Float
+  scoreProfessional: Float
+  scoreExpressive: Float
+  scoreKind: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasyYes: Int
+  countExamEasyNo: Int
+}
+
+input ProfUpdateManyWithoutDeptInput {
+  create: [ProfCreateWithoutDeptInput!]
+  delete: [ProfWhereUniqueInput!]
+  connect: [ProfWhereUniqueInput!]
+  set: [ProfWhereUniqueInput!]
+  disconnect: [ProfWhereUniqueInput!]
+  update: [ProfUpdateWithWhereUniqueWithoutDeptInput!]
+  upsert: [ProfUpsertWithWhereUniqueWithoutDeptInput!]
+  deleteMany: [ProfScalarWhereInput!]
+  updateMany: [ProfUpdateManyWithWhereNestedInput!]
+}
+
+input ProfUpdateManyWithoutPositionInput {
+  create: [ProfCreateWithoutPositionInput!]
+  delete: [ProfWhereUniqueInput!]
+  connect: [ProfWhereUniqueInput!]
+  set: [ProfWhereUniqueInput!]
+  disconnect: [ProfWhereUniqueInput!]
+  update: [ProfUpdateWithWhereUniqueWithoutPositionInput!]
+  upsert: [ProfUpsertWithWhereUniqueWithoutPositionInput!]
+  deleteMany: [ProfScalarWhereInput!]
+  updateMany: [ProfUpdateManyWithWhereNestedInput!]
+}
+
+input ProfUpdateManyWithWhereNestedInput {
+  where: ProfScalarWhereInput!
+  data: ProfUpdateManyDataInput!
+}
+
+input ProfUpdateWithoutDeptDataInput {
+  name: String
+  code: String
+  gender: Sex
+  birth: Int
+  hometown: String
+  motto: String
+  email: String
+  phone: String
+  exp: Int
+  group: String
+  intro: String
+  education: String
+  research: String
+  achievement: String
+  position: PositionUpdateOneWithoutProfsInput
+  scoreOverall: Float
+  scoreProfessional: Float
+  scoreExpressive: Float
+  scoreKind: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasyYes: Int
+  countExamEasyNo: Int
+}
+
+input ProfUpdateWithoutPositionDataInput {
+  name: String
+  code: String
+  gender: Sex
+  birth: Int
+  hometown: String
+  motto: String
+  email: String
+  phone: String
+  exp: Int
+  group: String
+  intro: String
+  education: String
+  research: String
+  achievement: String
+  dept: DeptUpdateOneWithoutProfsInput
+  scoreOverall: Float
+  scoreProfessional: Float
+  scoreExpressive: Float
+  scoreKind: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasyYes: Int
+  countExamEasyNo: Int
+}
+
+input ProfUpdateWithWhereUniqueWithoutDeptInput {
+  where: ProfWhereUniqueInput!
+  data: ProfUpdateWithoutDeptDataInput!
+}
+
+input ProfUpdateWithWhereUniqueWithoutPositionInput {
+  where: ProfWhereUniqueInput!
+  data: ProfUpdateWithoutPositionDataInput!
+}
+
+input ProfUpsertWithWhereUniqueWithoutDeptInput {
+  where: ProfWhereUniqueInput!
+  update: ProfUpdateWithoutDeptDataInput!
+  create: ProfCreateWithoutDeptInput!
+}
+
+input ProfUpsertWithWhereUniqueWithoutPositionInput {
+  where: ProfWhereUniqueInput!
+  update: ProfUpdateWithoutPositionDataInput!
+  create: ProfCreateWithoutPositionInput!
+}
+
+input ProfWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  code: String
+  code_not: String
+  code_in: [String!]
+  code_not_in: [String!]
+  code_lt: String
+  code_lte: String
+  code_gt: String
+  code_gte: String
+  code_contains: String
+  code_not_contains: String
+  code_starts_with: String
+  code_not_starts_with: String
+  code_ends_with: String
+  code_not_ends_with: String
+  gender: Sex
+  gender_not: Sex
+  gender_in: [Sex!]
+  gender_not_in: [Sex!]
+  birth: Int
+  birth_not: Int
+  birth_in: [Int!]
+  birth_not_in: [Int!]
+  birth_lt: Int
+  birth_lte: Int
+  birth_gt: Int
+  birth_gte: Int
+  hometown: String
+  hometown_not: String
+  hometown_in: [String!]
+  hometown_not_in: [String!]
+  hometown_lt: String
+  hometown_lte: String
+  hometown_gt: String
+  hometown_gte: String
+  hometown_contains: String
+  hometown_not_contains: String
+  hometown_starts_with: String
+  hometown_not_starts_with: String
+  hometown_ends_with: String
+  hometown_not_ends_with: String
+  motto: String
+  motto_not: String
+  motto_in: [String!]
+  motto_not_in: [String!]
+  motto_lt: String
+  motto_lte: String
+  motto_gt: String
+  motto_gte: String
+  motto_contains: String
+  motto_not_contains: String
+  motto_starts_with: String
+  motto_not_starts_with: String
+  motto_ends_with: String
+  motto_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  phone: String
+  phone_not: String
+  phone_in: [String!]
+  phone_not_in: [String!]
+  phone_lt: String
+  phone_lte: String
+  phone_gt: String
+  phone_gte: String
+  phone_contains: String
+  phone_not_contains: String
+  phone_starts_with: String
+  phone_not_starts_with: String
+  phone_ends_with: String
+  phone_not_ends_with: String
+  exp: Int
+  exp_not: Int
+  exp_in: [Int!]
+  exp_not_in: [Int!]
+  exp_lt: Int
+  exp_lte: Int
+  exp_gt: Int
+  exp_gte: Int
+  group: String
+  group_not: String
+  group_in: [String!]
+  group_not_in: [String!]
+  group_lt: String
+  group_lte: String
+  group_gt: String
+  group_gte: String
+  group_contains: String
+  group_not_contains: String
+  group_starts_with: String
+  group_not_starts_with: String
+  group_ends_with: String
+  group_not_ends_with: String
+  intro: String
+  intro_not: String
+  intro_in: [String!]
+  intro_not_in: [String!]
+  intro_lt: String
+  intro_lte: String
+  intro_gt: String
+  intro_gte: String
+  intro_contains: String
+  intro_not_contains: String
+  intro_starts_with: String
+  intro_not_starts_with: String
+  intro_ends_with: String
+  intro_not_ends_with: String
+  education: String
+  education_not: String
+  education_in: [String!]
+  education_not_in: [String!]
+  education_lt: String
+  education_lte: String
+  education_gt: String
+  education_gte: String
+  education_contains: String
+  education_not_contains: String
+  education_starts_with: String
+  education_not_starts_with: String
+  education_ends_with: String
+  education_not_ends_with: String
+  research: String
+  research_not: String
+  research_in: [String!]
+  research_not_in: [String!]
+  research_lt: String
+  research_lte: String
+  research_gt: String
+  research_gte: String
+  research_contains: String
+  research_not_contains: String
+  research_starts_with: String
+  research_not_starts_with: String
+  research_ends_with: String
+  research_not_ends_with: String
+  achievement: String
+  achievement_not: String
+  achievement_in: [String!]
+  achievement_not_in: [String!]
+  achievement_lt: String
+  achievement_lte: String
+  achievement_gt: String
+  achievement_gte: String
+  achievement_contains: String
+  achievement_not_contains: String
+  achievement_starts_with: String
+  achievement_not_starts_with: String
+  achievement_ends_with: String
+  achievement_not_ends_with: String
+  dept: DeptWhereInput
+  position: PositionWhereInput
+  scoreOverall: Float
+  scoreOverall_not: Float
+  scoreOverall_in: [Float!]
+  scoreOverall_not_in: [Float!]
+  scoreOverall_lt: Float
+  scoreOverall_lte: Float
+  scoreOverall_gt: Float
+  scoreOverall_gte: Float
+  scoreProfessional: Float
+  scoreProfessional_not: Float
+  scoreProfessional_in: [Float!]
+  scoreProfessional_not_in: [Float!]
+  scoreProfessional_lt: Float
+  scoreProfessional_lte: Float
+  scoreProfessional_gt: Float
+  scoreProfessional_gte: Float
+  scoreExpressive: Float
+  scoreExpressive_not: Float
+  scoreExpressive_in: [Float!]
+  scoreExpressive_not_in: [Float!]
+  scoreExpressive_lt: Float
+  scoreExpressive_lte: Float
+  scoreExpressive_gt: Float
+  scoreExpressive_gte: Float
+  scoreKind: Float
+  scoreKind_not: Float
+  scoreKind_in: [Float!]
+  scoreKind_not_in: [Float!]
+  scoreKind_lt: Float
+  scoreKind_lte: Float
+  scoreKind_gt: Float
+  scoreKind_gte: Float
+  meanHomework: Float
+  meanHomework_not: Float
+  meanHomework_in: [Float!]
+  meanHomework_not_in: [Float!]
+  meanHomework_lt: Float
+  meanHomework_lte: Float
+  meanHomework_gt: Float
+  meanHomework_gte: Float
+  meanAttend: Float
+  meanAttend_not: Float
+  meanAttend_in: [Float!]
+  meanAttend_not_in: [Float!]
+  meanAttend_lt: Float
+  meanAttend_lte: Float
+  meanAttend_gt: Float
+  meanAttend_gte: Float
+  meanBirdy: Float
+  meanBirdy_not: Float
+  meanBirdy_in: [Float!]
+  meanBirdy_not_in: [Float!]
+  meanBirdy_lt: Float
+  meanBirdy_lte: Float
+  meanBirdy_gt: Float
+  meanBirdy_gte: Float
+  meanExam: Float
+  meanExam_not: Float
+  meanExam_in: [Float!]
+  meanExam_not_in: [Float!]
+  meanExam_lt: Float
+  meanExam_lte: Float
+  meanExam_gt: Float
+  meanExam_gte: Float
+  countReview: Int
+  countReview_not: Int
+  countReview_in: [Int!]
+  countReview_not_in: [Int!]
+  countReview_lt: Int
+  countReview_lte: Int
+  countReview_gt: Int
+  countReview_gte: Int
+  countGoodReview: Int
+  countGoodReview_not: Int
+  countGoodReview_in: [Int!]
+  countGoodReview_not_in: [Int!]
+  countGoodReview_lt: Int
+  countGoodReview_lte: Int
+  countGoodReview_gt: Int
+  countGoodReview_gte: Int
+  countAverageReview: Int
+  countAverageReview_not: Int
+  countAverageReview_in: [Int!]
+  countAverageReview_not_in: [Int!]
+  countAverageReview_lt: Int
+  countAverageReview_lte: Int
+  countAverageReview_gt: Int
+  countAverageReview_gte: Int
+  countBadReview: Int
+  countBadReview_not: Int
+  countBadReview_in: [Int!]
+  countBadReview_not_in: [Int!]
+  countBadReview_lt: Int
+  countBadReview_lte: Int
+  countBadReview_gt: Int
+  countBadReview_gte: Int
+  countHomework: Int
+  countHomework_not: Int
+  countHomework_in: [Int!]
+  countHomework_not_in: [Int!]
+  countHomework_lt: Int
+  countHomework_lte: Int
+  countHomework_gt: Int
+  countHomework_gte: Int
+  countAttend: Int
+  countAttend_not: Int
+  countAttend_in: [Int!]
+  countAttend_not_in: [Int!]
+  countAttend_lt: Int
+  countAttend_lte: Int
+  countAttend_gt: Int
+  countAttend_gte: Int
+  countBirdy: Int
+  countBirdy_not: Int
+  countBirdy_in: [Int!]
+  countBirdy_not_in: [Int!]
+  countBirdy_lt: Int
+  countBirdy_lte: Int
+  countBirdy_gt: Int
+  countBirdy_gte: Int
+  countExam: Int
+  countExam_not: Int
+  countExam_in: [Int!]
+  countExam_not_in: [Int!]
+  countExam_lt: Int
+  countExam_lte: Int
+  countExam_gt: Int
+  countExam_gte: Int
+  countExamDetails: Int
+  countExamDetails_not: Int
+  countExamDetails_in: [Int!]
+  countExamDetails_not_in: [Int!]
+  countExamDetails_lt: Int
+  countExamDetails_lte: Int
+  countExamDetails_gt: Int
+  countExamDetails_gte: Int
+  countExamPrepYes: Int
+  countExamPrepYes_not: Int
+  countExamPrepYes_in: [Int!]
+  countExamPrepYes_not_in: [Int!]
+  countExamPrepYes_lt: Int
+  countExamPrepYes_lte: Int
+  countExamPrepYes_gt: Int
+  countExamPrepYes_gte: Int
+  countExamPrepNo: Int
+  countExamPrepNo_not: Int
+  countExamPrepNo_in: [Int!]
+  countExamPrepNo_not_in: [Int!]
+  countExamPrepNo_lt: Int
+  countExamPrepNo_lte: Int
+  countExamPrepNo_gt: Int
+  countExamPrepNo_gte: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookYes_not: Int
+  countExamOpenbookYes_in: [Int!]
+  countExamOpenbookYes_not_in: [Int!]
+  countExamOpenbookYes_lt: Int
+  countExamOpenbookYes_lte: Int
+  countExamOpenbookYes_gt: Int
+  countExamOpenbookYes_gte: Int
+  countExamOpenbookNo: Int
+  countExamOpenbookNo_not: Int
+  countExamOpenbookNo_in: [Int!]
+  countExamOpenbookNo_not_in: [Int!]
+  countExamOpenbookNo_lt: Int
+  countExamOpenbookNo_lte: Int
+  countExamOpenbookNo_gt: Int
+  countExamOpenbookNo_gte: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionYes_not: Int
+  countExamOldquestionYes_in: [Int!]
+  countExamOldquestionYes_not_in: [Int!]
+  countExamOldquestionYes_lt: Int
+  countExamOldquestionYes_lte: Int
+  countExamOldquestionYes_gt: Int
+  countExamOldquestionYes_gte: Int
+  countExamOldquestionNo: Int
+  countExamOldquestionNo_not: Int
+  countExamOldquestionNo_in: [Int!]
+  countExamOldquestionNo_not_in: [Int!]
+  countExamOldquestionNo_lt: Int
+  countExamOldquestionNo_lte: Int
+  countExamOldquestionNo_gt: Int
+  countExamOldquestionNo_gte: Int
+  countExamEasyYes: Int
+  countExamEasyYes_not: Int
+  countExamEasyYes_in: [Int!]
+  countExamEasyYes_not_in: [Int!]
+  countExamEasyYes_lt: Int
+  countExamEasyYes_lte: Int
+  countExamEasyYes_gt: Int
+  countExamEasyYes_gte: Int
+  countExamEasyNo: Int
+  countExamEasyNo_not: Int
+  countExamEasyNo_in: [Int!]
+  countExamEasyNo_not_in: [Int!]
+  countExamEasyNo_lt: Int
+  countExamEasyNo_lte: Int
+  countExamEasyNo_gt: Int
+  countExamEasyNo_gte: Int
   AND: [ProfWhereInput!]
   OR: [ProfWhereInput!]
   NOT: [ProfWhereInput!]
 }
 
 input ProfWhereUniqueInput {
-  name: ID
+  id: ID
 }
 
 type Query {
   course(where: CourseWhereUniqueInput!): Course
   courses(where: CourseWhereInput, orderBy: CourseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Course]!
   coursesConnection(where: CourseWhereInput, orderBy: CourseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CourseConnection!
+  dept(where: DeptWhereUniqueInput!): Dept
+  depts(where: DeptWhereInput, orderBy: DeptOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Dept]!
+  deptsConnection(where: DeptWhereInput, orderBy: DeptOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DeptConnection!
+  position(where: PositionWhereUniqueInput!): Position
+  positions(where: PositionWhereInput, orderBy: PositionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Position]!
+  positionsConnection(where: PositionWhereInput, orderBy: PositionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PositionConnection!
   prof(where: ProfWhereUniqueInput!): Prof
   profs(where: ProfWhereInput, orderBy: ProfOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Prof]!
   profsConnection(where: ProfWhereInput, orderBy: ProfOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProfConnection!
@@ -1031,9 +2028,6 @@ type Query {
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  position(where: positionWhereUniqueInput!): position
-  positions(where: positionWhereInput, orderBy: positionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [position]!
-  positionsConnection(where: positionWhereInput, orderBy: positionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): positionConnection!
   node(id: ID!): Node
 }
 
@@ -1305,13 +2299,19 @@ input ReviewWhereUniqueInput {
   id: ID
 }
 
+enum Sex {
+  MALE
+  FEMALE
+}
+
 type Subscription {
   course(where: CourseSubscriptionWhereInput): CourseSubscriptionPayload
+  dept(where: DeptSubscriptionWhereInput): DeptSubscriptionPayload
+  position(where: PositionSubscriptionWhereInput): PositionSubscriptionPayload
   prof(where: ProfSubscriptionWhereInput): ProfSubscriptionPayload
   review(where: ReviewSubscriptionWhereInput): ReviewSubscriptionPayload
   tag(where: TagSubscriptionWhereInput): TagSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-  position(where: positionSubscriptionWhereInput): positionSubscriptionPayload
 }
 
 type Tag {
@@ -1445,9 +2445,13 @@ type User {
   id: ID!
   username: String!
   email: String!
+  isLcUser: Boolean
+  lcSalt: String
   password: String!
+  firstYear: Int!
   updatedAt: DateTime!
   createdAt: DateTime!
+  dept: Dept!
   reviews(where: ReviewWhereInput, orderBy: ReviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Review!]
   likedReviews(where: ReviewWhereInput, orderBy: ReviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Review!]
 }
@@ -1462,9 +2466,18 @@ input UserCreateInput {
   id: ID
   username: String!
   email: String!
+  isLcUser: Boolean
+  lcSalt: String
   password: String!
+  firstYear: Int!
+  dept: DeptCreateOneWithoutStudentsInput!
   reviews: ReviewCreateManyWithoutAuthorInput
   likedReviews: ReviewCreateManyInput
+}
+
+input UserCreateManyWithoutDeptInput {
+  create: [UserCreateWithoutDeptInput!]
+  connect: [UserWhereUniqueInput!]
 }
 
 input UserCreateOneWithoutReviewsInput {
@@ -1472,11 +2485,27 @@ input UserCreateOneWithoutReviewsInput {
   connect: UserWhereUniqueInput
 }
 
+input UserCreateWithoutDeptInput {
+  id: ID
+  username: String!
+  email: String!
+  isLcUser: Boolean
+  lcSalt: String
+  password: String!
+  firstYear: Int!
+  reviews: ReviewCreateManyWithoutAuthorInput
+  likedReviews: ReviewCreateManyInput
+}
+
 input UserCreateWithoutReviewsInput {
   id: ID
   username: String!
   email: String!
+  isLcUser: Boolean
+  lcSalt: String
   password: String!
+  firstYear: Int!
+  dept: DeptCreateOneWithoutStudentsInput!
   likedReviews: ReviewCreateManyInput
 }
 
@@ -1492,8 +2521,14 @@ enum UserOrderByInput {
   username_DESC
   email_ASC
   email_DESC
+  isLcUser_ASC
+  isLcUser_DESC
+  lcSalt_ASC
+  lcSalt_DESC
   password_ASC
   password_DESC
+  firstYear_ASC
+  firstYear_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -1504,9 +2539,114 @@ type UserPreviousValues {
   id: ID!
   username: String!
   email: String!
+  isLcUser: Boolean
+  lcSalt: String
   password: String!
+  firstYear: Int!
   updatedAt: DateTime!
   createdAt: DateTime!
+}
+
+input UserScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  username: String
+  username_not: String
+  username_in: [String!]
+  username_not_in: [String!]
+  username_lt: String
+  username_lte: String
+  username_gt: String
+  username_gte: String
+  username_contains: String
+  username_not_contains: String
+  username_starts_with: String
+  username_not_starts_with: String
+  username_ends_with: String
+  username_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  isLcUser: Boolean
+  isLcUser_not: Boolean
+  lcSalt: String
+  lcSalt_not: String
+  lcSalt_in: [String!]
+  lcSalt_not_in: [String!]
+  lcSalt_lt: String
+  lcSalt_lte: String
+  lcSalt_gt: String
+  lcSalt_gte: String
+  lcSalt_contains: String
+  lcSalt_not_contains: String
+  lcSalt_starts_with: String
+  lcSalt_not_starts_with: String
+  lcSalt_ends_with: String
+  lcSalt_not_ends_with: String
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
+  firstYear: Int
+  firstYear_not: Int
+  firstYear_in: [Int!]
+  firstYear_not_in: [Int!]
+  firstYear_lt: Int
+  firstYear_lte: Int
+  firstYear_gt: Int
+  firstYear_gte: Int
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [UserScalarWhereInput!]
+  OR: [UserScalarWhereInput!]
+  NOT: [UserScalarWhereInput!]
 }
 
 type UserSubscriptionPayload {
@@ -1530,15 +2670,48 @@ input UserSubscriptionWhereInput {
 input UserUpdateInput {
   username: String
   email: String
+  isLcUser: Boolean
+  lcSalt: String
   password: String
+  firstYear: Int
+  dept: DeptUpdateOneRequiredWithoutStudentsInput
   reviews: ReviewUpdateManyWithoutAuthorInput
   likedReviews: ReviewUpdateManyInput
+}
+
+input UserUpdateManyDataInput {
+  username: String
+  email: String
+  isLcUser: Boolean
+  lcSalt: String
+  password: String
+  firstYear: Int
 }
 
 input UserUpdateManyMutationInput {
   username: String
   email: String
+  isLcUser: Boolean
+  lcSalt: String
   password: String
+  firstYear: Int
+}
+
+input UserUpdateManyWithoutDeptInput {
+  create: [UserCreateWithoutDeptInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutDeptInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutDeptInput!]
+  deleteMany: [UserScalarWhereInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
+}
+
+input UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput!
+  data: UserUpdateManyDataInput!
 }
 
 input UserUpdateOneRequiredWithoutReviewsInput {
@@ -1548,16 +2721,42 @@ input UserUpdateOneRequiredWithoutReviewsInput {
   connect: UserWhereUniqueInput
 }
 
+input UserUpdateWithoutDeptDataInput {
+  username: String
+  email: String
+  isLcUser: Boolean
+  lcSalt: String
+  password: String
+  firstYear: Int
+  reviews: ReviewUpdateManyWithoutAuthorInput
+  likedReviews: ReviewUpdateManyInput
+}
+
 input UserUpdateWithoutReviewsDataInput {
   username: String
   email: String
+  isLcUser: Boolean
+  lcSalt: String
   password: String
+  firstYear: Int
+  dept: DeptUpdateOneRequiredWithoutStudentsInput
   likedReviews: ReviewUpdateManyInput
+}
+
+input UserUpdateWithWhereUniqueWithoutDeptInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutDeptDataInput!
 }
 
 input UserUpsertWithoutReviewsInput {
   update: UserUpdateWithoutReviewsDataInput!
   create: UserCreateWithoutReviewsInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutDeptInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutDeptDataInput!
+  create: UserCreateWithoutDeptInput!
 }
 
 input UserWhereInput {
@@ -1603,6 +2802,22 @@ input UserWhereInput {
   email_not_starts_with: String
   email_ends_with: String
   email_not_ends_with: String
+  isLcUser: Boolean
+  isLcUser_not: Boolean
+  lcSalt: String
+  lcSalt_not: String
+  lcSalt_in: [String!]
+  lcSalt_not_in: [String!]
+  lcSalt_lt: String
+  lcSalt_lte: String
+  lcSalt_gt: String
+  lcSalt_gte: String
+  lcSalt_contains: String
+  lcSalt_not_contains: String
+  lcSalt_starts_with: String
+  lcSalt_not_starts_with: String
+  lcSalt_ends_with: String
+  lcSalt_not_ends_with: String
   password: String
   password_not: String
   password_in: [String!]
@@ -1617,6 +2832,14 @@ input UserWhereInput {
   password_not_starts_with: String
   password_ends_with: String
   password_not_ends_with: String
+  firstYear: Int
+  firstYear_not: Int
+  firstYear_in: [Int!]
+  firstYear_not_in: [Int!]
+  firstYear_lt: Int
+  firstYear_lte: Int
+  firstYear_gt: Int
+  firstYear_gte: Int
   updatedAt: DateTime
   updatedAt_not: DateTime
   updatedAt_in: [DateTime!]
@@ -1633,6 +2856,7 @@ input UserWhereInput {
   createdAt_lte: DateTime
   createdAt_gt: DateTime
   createdAt_gte: DateTime
+  dept: DeptWhereInput
   reviews_every: ReviewWhereInput
   reviews_some: ReviewWhereInput
   reviews_none: ReviewWhereInput

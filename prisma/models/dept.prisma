@@ -1,8 +1,9 @@
 type Dept {
   id: ID! @id
-  shortname: String!
-  longname: String!
+  shortname: String! @unique
+  longname: String! @unique
   alias: String
   icon: String
-
+  students: [User!]! @relation(name: "UserDept")
+  profs: [Prof!]! @relation(name: "ProfDept")
 }
