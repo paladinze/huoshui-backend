@@ -361,17 +361,194 @@ const createReviews = async () => {
   console.log("seeding reviews: Done!");
 };
 
+const createLikedReviews = async () => {
+  console.log("seeding liked reviews...");
+  const datapath = path.resolve(
+    __dirname,
+    "./leancloud/_Join:Reviews:likedReviews:_User.json"
+  );
+  const lcLikedReviews = JSON.parse(fs.readFileSync(datapath)).results;
+  const lcUsers = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "./leancloud/_User.json"))
+  ).results;
+  const lcReviews = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "./leancloud/Reviews.json"))
+  ).results;
+
+  for (const likedReview of lcLikedReviews) {
+    const { relatedId: lcReviewId, owningId: lcUserId } = likedReview;
+
+    // find the user
+    let lcUser = lcUsers.find(user => {
+      return user.objectId == lcUserId;
+    });
+    const user = await prisma.user({ username: lcUser.username });
+
+    // find the review
+    let lcReview = lcReviews.find(review => {
+      return review.objectId == lcReviewId;
+    });
+    let review = await prisma.reviews({
+      where: {
+        author: {
+          id: user.id
+        },
+        course: {
+          name: lcReview.courseName
+        },
+        prof: {
+          name: lcReview.profName
+        }
+      }
+    });
+    if (review.length) {
+      review = review[0];
+      await prisma.updateUser({
+        data: {
+          likedReviews: {
+            connect: {
+              id: review.id
+            }
+          }
+        },
+        where: {
+          id: user.id
+        }
+      });
+    }
+  }
+  console.log("seeding likedReviews: Done!");
+};
+
+const createDislikedReviews = async () => {
+  console.log("seeding disliked reviews...");
+  const datapath = path.resolve(
+    __dirname,
+    "./leancloud/_Join:Reviews:dislikedReviews:_User.json"
+  );
+  const lcDislikedReviews = JSON.parse(fs.readFileSync(datapath)).results;
+  const lcUsers = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "./leancloud/_User.json"))
+  ).results;
+  const lcReviews = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "./leancloud/Reviews.json"))
+  ).results;
+
+  for (const dislikedReview of lcDislikedReviews) {
+    const { relatedId: lcReviewId, owningId: lcUserId } = dislikedReview;
+
+    // find the user
+    let lcUser = lcUsers.find(user => {
+      return user.objectId == lcUserId;
+    });
+    const user = await prisma.user({ username: lcUser.username });
+
+    // find the review
+    let lcReview = lcReviews.find(review => {
+      return review.objectId == lcReviewId;
+    });
+    let review = await prisma.reviews({
+      where: {
+        author: {
+          id: user.id
+        },
+        course: {
+          name: lcReview.courseName
+        },
+        prof: {
+          name: lcReview.profName
+        }
+      }
+    });
+    if (review.length) {
+      review = review[0];
+      await prisma.updateUser({
+        data: {
+          dislikedReviews: {
+            connect: {
+              id: review.id
+            }
+          }
+        },
+        where: {
+          id: user.id
+        }
+      });
+    }
+  }
+  console.log("seeding dislikedReviews: Done!");
+};
+
+const createLikedCourses = async () => {
+  console.log("seeding liked courses...");
+  const lcLikedCourses = JSON.parse(
+    fs.readFileSync(
+      path.resolve(
+        __dirname,
+        "./leancloud/_Join:Courses:likedCourses:_User.json"
+      )
+    )
+  ).results;
+  const lcUsers = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "./leancloud/_User.json"))
+  ).results;
+  const lcCourses = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "./leancloud/Courses.json"))
+  ).results;
+
+  for (const likedCourse of lcLikedCourses) {
+    const { relatedId: lcCourseId, owningId: lcUserId } = likedCourse;
+
+    // find the user
+    let lcUser = lcUsers.find(user => {
+      return user.objectId == lcUserId;
+    });
+    const user = await prisma.user({ username: lcUser.username });
+
+    // find the course
+    let lcCourse = lcCourses.find(course => {
+      return course.objectId == lcCourseId;
+    });
+    let course = await prisma.courses({
+      where: {
+        name: lcCourse.name,
+        prof: {
+          name: lcCourse.prof
+        }
+      }
+    });
+    if (course.length) {
+      course = course[0];
+      await prisma.updateUser({
+        data: {
+          likedCourses: {
+            connect: {
+              id: course.id
+            }
+          }
+        },
+        where: {
+          id: user.id
+        }
+      });
+    }
+  }
+  console.log("seeding likedCourses: Done!");
+};
+
 async function main() {
   console.log("starts seeding!");
 
-  // await createDepts();
-  // await createPositions();
-  // await createTags();
-  // await createProfs();
-  // await createCourses();
-  // await createUsers();
-
-  // await createReviews();
+  await createDepts();
+  await createPositions();
+  await createTags();
+  await createProfs();
+  await createCourses();
+  await createUsers();
+  await createReviews();
+  await createLikedReviews();
+  await createDislikedReviews();
+  await createLikedCourses();
 
   console.log("All Done!");
 }

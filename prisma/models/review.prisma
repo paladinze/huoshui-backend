@@ -9,6 +9,8 @@ type Review {
   prof: Prof @relation(name: "ReviewProf", onDelete: SET_NULL)
   course: Course @relation(name: "ReviewCourse", onDelete: SET_NULL)
   tags: [Tag!] @relation(name: "ReviewTags")
+  likedBy: [User!] @relation(name: "LikedReviews")
+  dislikedBy: [User!] @relation(name: "DislikedReviews")
 
   "专业"
   professional: Int!

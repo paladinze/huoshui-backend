@@ -11,4 +11,6 @@ type User {
   dept: Dept! @relation(name: "UserDept")
   reviews: [Review!] @relation(name: "ReviewAuthor", onDelete: CASCADE)
   likedReviews: [Review!] @relation(name: "LikedReviews", onDelete: CASCADE)
+  dislikedReviews: [Review!] @relation(name: "DislikedReviews", onDelete: CASCADE)
+  likedCourses: [Course!] @relation(name: "LikedCourses", onDelete: CASCADE)
 }

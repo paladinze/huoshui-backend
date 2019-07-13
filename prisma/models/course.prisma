@@ -6,6 +6,7 @@ type Course {
   createdAt: DateTime! @createdAt
   dept: Dept @relation(name: "CourseDept")
   prof: Prof @relation(name: "CourseProf")
+  likedBy: [User!] @relation(name: "LikedCourses")
 
   "专业"
   professional: Float
