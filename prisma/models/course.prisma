@@ -2,6 +2,8 @@ type Course {
   id: ID! @id
   name: String!
   likedCount: Int @default(value: 0)
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
   dept: Dept @relation(name: "CourseDept")
   prof: Prof @relation(name: "CourseProf")
 

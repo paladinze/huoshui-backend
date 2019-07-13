@@ -4,6 +4,8 @@ type Dept {
   longname: String! @unique
   alias: String
   icon: String
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
   students: [User!] @relation(name: "UserDept")
   profs: [Prof!] @relation(name: "ProfDept")
   courses: [Course!] @relation(name: "CourseDept")

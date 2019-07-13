@@ -9,6 +9,6 @@ type User {
   updatedAt: DateTime! @updatedAt
   createdAt: DateTime! @createdAt
   dept: Dept! @relation(name: "UserDept")
-  reviews: [Review!]! @relation(name: "OwnReviews", onDelete: CASCADE)
-  likedReviews: [Review!]! @relation(name: "LikedReviews", onDelete: CASCADE)
+  reviews: [Review!] @relation(name: "ReviewAuthor", onDelete: CASCADE)
+  likedReviews: [Review!] @relation(name: "LikedReviews", onDelete: CASCADE)
 }

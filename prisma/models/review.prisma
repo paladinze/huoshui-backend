@@ -1,7 +1,37 @@
 type Review {
   id: ID! @id
   text: String!
-  upVote: Int!
-  downVote: Int!
-  author: User! @relation(name: "OwnReviews", onDelete: SET_NULL)
+  upVote: Int @default(value: 0)
+  downVote: Int @default(value: 0)
+  updatedAt: DateTime! 
+  createdAt: DateTime!
+  author: User @relation(name: "ReviewAuthor", onDelete: SET_NULL)
+  prof: Prof @relation(name: "ReviewProf", onDelete: SET_NULL)
+  course: Course @relation(name: "ReviewCourse", onDelete: SET_NULL)
+  tags: [Tag!] @relation(name: "ReviewTags")
+
+  "专业"
+  professional: Int!
+  "表达"
+  expressive: Int!
+  "友好"
+  kind: Int!
+
+  "作业多少，分高作业多"
+  rateHomework: Int
+  "点名多少，分高点名多"
+  rateAttend: Int
+  "课程水分，越高越水"
+  rateBirdy: Int
+
+  "是否有考试"
+  hasExam: Boolean
+  "划重点"
+  examprep: Boolean
+  "开卷考"
+  openbook: Boolean
+  "原题多"
+  oldquestion: Boolean
+  "给分松"
+  easymark: Boolean
 }

@@ -39,6 +39,8 @@ type Course {
   id: ID!
   name: String!
   likedCount: Int
+  updatedAt: DateTime!
+  createdAt: DateTime!
   dept: Dept
   prof: Prof
   professional: Float
@@ -129,6 +131,11 @@ input CourseCreateManyWithoutProfInput {
   connect: [CourseWhereUniqueInput!]
 }
 
+input CourseCreateOneInput {
+  create: CourseCreateInput
+  connect: CourseWhereUniqueInput
+}
+
 input CourseCreateWithoutDeptInput {
   id: ID
   name: String!
@@ -217,6 +224,10 @@ enum CourseOrderByInput {
   name_DESC
   likedCount_ASC
   likedCount_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
   professional_ASC
   professional_DESC
   expressive_ASC
@@ -285,6 +296,8 @@ type CoursePreviousValues {
   id: ID!
   name: String!
   likedCount: Int
+  updatedAt: DateTime!
+  createdAt: DateTime!
   professional: Float
   expressive: Float
   kind: Float
@@ -355,6 +368,22 @@ input CourseScalarWhereInput {
   likedCount_lte: Int
   likedCount_gt: Int
   likedCount_gte: Int
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
   professional: Float
   professional_not: Float
   professional_in: [Float!]
@@ -626,6 +655,44 @@ input CourseSubscriptionWhereInput {
   NOT: [CourseSubscriptionWhereInput!]
 }
 
+input CourseUpdateDataInput {
+  name: String
+  likedCount: Int
+  dept: DeptUpdateOneWithoutCoursesInput
+  prof: ProfUpdateOneWithoutCoursesInput
+  professional: Float
+  expressive: Float
+  kind: Float
+  scoreOverall: Float
+  scoreHot: Float
+  scoreRepute: Float
+  scoreBirdy: Float
+  scoreAttend: Float
+  scoreExam: Float
+  scoreHomework: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasymarkYes: Int
+  countExamEasymarkNo: Int
+}
+
 input CourseUpdateInput {
   name: String
   likedCount: Int
@@ -765,6 +832,15 @@ input CourseUpdateManyWithWhereNestedInput {
   data: CourseUpdateManyDataInput!
 }
 
+input CourseUpdateOneInput {
+  create: CourseCreateInput
+  update: CourseUpdateDataInput
+  upsert: CourseUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: CourseWhereUniqueInput
+}
+
 input CourseUpdateWithoutDeptDataInput {
   name: String
   likedCount: Int
@@ -849,6 +925,11 @@ input CourseUpdateWithWhereUniqueWithoutProfInput {
   data: CourseUpdateWithoutProfDataInput!
 }
 
+input CourseUpsertNestedInput {
+  update: CourseUpdateDataInput!
+  create: CourseCreateInput!
+}
+
 input CourseUpsertWithWhereUniqueWithoutDeptInput {
   where: CourseWhereUniqueInput!
   update: CourseUpdateWithoutDeptDataInput!
@@ -898,6 +979,22 @@ input CourseWhereInput {
   likedCount_lte: Int
   likedCount_gt: Int
   likedCount_gte: Int
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
   dept: DeptWhereInput
   prof: ProfWhereInput
   professional: Float
@@ -1165,6 +1262,8 @@ type Dept {
   longname: String!
   alias: String
   icon: String
+  updatedAt: DateTime!
+  createdAt: DateTime!
   students(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   profs(where: ProfWhereInput, orderBy: ProfOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Prof!]
   courses(where: CourseWhereInput, orderBy: CourseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Course!]
@@ -1248,6 +1347,10 @@ enum DeptOrderByInput {
   alias_DESC
   icon_ASC
   icon_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
 }
 
 type DeptPreviousValues {
@@ -1256,6 +1359,8 @@ type DeptPreviousValues {
   longname: String!
   alias: String
   icon: String
+  updatedAt: DateTime!
+  createdAt: DateTime!
 }
 
 type DeptSubscriptionPayload {
@@ -1431,6 +1536,22 @@ input DeptWhereInput {
   icon_not_starts_with: String
   icon_ends_with: String
   icon_not_ends_with: String
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
   students_every: UserWhereInput
   students_some: UserWhereInput
   students_none: UserWhereInput
@@ -1518,6 +1639,8 @@ type PageInfo {
 type Position {
   id: ID!
   name: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
   profs(where: ProfWhereInput, orderBy: ProfOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Prof!]
 }
 
@@ -1553,11 +1676,17 @@ enum PositionOrderByInput {
   id_DESC
   name_ASC
   name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
 }
 
 type PositionPreviousValues {
   id: ID!
   name: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
 }
 
 type PositionSubscriptionPayload {
@@ -1634,6 +1763,22 @@ input PositionWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
   profs_every: ProfWhereInput
   profs_some: ProfWhereInput
   profs_none: ProfWhereInput
@@ -1663,9 +1808,12 @@ type Prof {
   education: String
   research: String
   achievement: String
+  updatedAt: DateTime!
+  createdAt: DateTime!
   dept: Dept
   position: Position
   courses(where: CourseWhereInput, orderBy: CourseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Course!]
+  reviews(where: ReviewWhereInput, orderBy: ReviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Review!]
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -1718,6 +1866,7 @@ input ProfCreateInput {
   dept: DeptCreateOneWithoutProfsInput
   position: PositionCreateOneWithoutProfsInput
   courses: CourseCreateManyWithoutProfInput
+  reviews: ReviewCreateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -1760,6 +1909,11 @@ input ProfCreateOneWithoutCoursesInput {
   connect: ProfWhereUniqueInput
 }
 
+input ProfCreateOneWithoutReviewsInput {
+  create: ProfCreateWithoutReviewsInput
+  connect: ProfWhereUniqueInput
+}
+
 input ProfCreateWithoutCoursesInput {
   id: ID
   name: String!
@@ -1778,6 +1932,7 @@ input ProfCreateWithoutCoursesInput {
   achievement: String
   dept: DeptCreateOneWithoutProfsInput
   position: PositionCreateOneWithoutProfsInput
+  reviews: ReviewCreateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -1823,6 +1978,7 @@ input ProfCreateWithoutDeptInput {
   achievement: String
   position: PositionCreateOneWithoutProfsInput
   courses: CourseCreateManyWithoutProfInput
+  reviews: ReviewCreateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -1867,6 +2023,53 @@ input ProfCreateWithoutPositionInput {
   research: String
   achievement: String
   dept: DeptCreateOneWithoutProfsInput
+  courses: CourseCreateManyWithoutProfInput
+  reviews: ReviewCreateManyWithoutProfInput
+  scoreOverall: Float
+  scoreProfessional: Float
+  scoreExpressive: Float
+  scoreKind: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasyYes: Int
+  countExamEasyNo: Int
+}
+
+input ProfCreateWithoutReviewsInput {
+  id: ID
+  name: String!
+  code: String
+  gender: Sex
+  birth: Int
+  hometown: String
+  motto: String
+  email: String
+  phone: String
+  exp: Int
+  group: String
+  intro: String
+  education: String
+  research: String
+  achievement: String
+  dept: DeptCreateOneWithoutProfsInput
+  position: PositionCreateOneWithoutProfsInput
   courses: CourseCreateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
@@ -1931,6 +2134,10 @@ enum ProfOrderByInput {
   research_DESC
   achievement_ASC
   achievement_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
   scoreOverall_ASC
   scoreOverall_DESC
   scoreProfessional_ASC
@@ -1999,6 +2206,8 @@ type ProfPreviousValues {
   education: String
   research: String
   achievement: String
+  updatedAt: DateTime!
+  createdAt: DateTime!
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -2215,6 +2424,22 @@ input ProfScalarWhereInput {
   achievement_not_starts_with: String
   achievement_ends_with: String
   achievement_not_ends_with: String
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
   scoreOverall: Float
   scoreOverall_not: Float
   scoreOverall_in: [Float!]
@@ -2456,6 +2681,7 @@ input ProfUpdateInput {
   dept: DeptUpdateOneWithoutProfsInput
   position: PositionUpdateOneWithoutProfsInput
   courses: CourseUpdateManyWithoutProfInput
+  reviews: ReviewUpdateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -2605,6 +2831,15 @@ input ProfUpdateOneWithoutCoursesInput {
   connect: ProfWhereUniqueInput
 }
 
+input ProfUpdateOneWithoutReviewsInput {
+  create: ProfCreateWithoutReviewsInput
+  update: ProfUpdateWithoutReviewsDataInput
+  upsert: ProfUpsertWithoutReviewsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: ProfWhereUniqueInput
+}
+
 input ProfUpdateWithoutCoursesDataInput {
   name: String
   code: String
@@ -2622,6 +2857,7 @@ input ProfUpdateWithoutCoursesDataInput {
   achievement: String
   dept: DeptUpdateOneWithoutProfsInput
   position: PositionUpdateOneWithoutProfsInput
+  reviews: ReviewUpdateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -2666,6 +2902,7 @@ input ProfUpdateWithoutDeptDataInput {
   achievement: String
   position: PositionUpdateOneWithoutProfsInput
   courses: CourseUpdateManyWithoutProfInput
+  reviews: ReviewUpdateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -2710,6 +2947,52 @@ input ProfUpdateWithoutPositionDataInput {
   achievement: String
   dept: DeptUpdateOneWithoutProfsInput
   courses: CourseUpdateManyWithoutProfInput
+  reviews: ReviewUpdateManyWithoutProfInput
+  scoreOverall: Float
+  scoreProfessional: Float
+  scoreExpressive: Float
+  scoreKind: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasyYes: Int
+  countExamEasyNo: Int
+}
+
+input ProfUpdateWithoutReviewsDataInput {
+  name: String
+  code: String
+  gender: Sex
+  birth: Int
+  hometown: String
+  motto: String
+  email: String
+  phone: String
+  exp: Int
+  group: String
+  intro: String
+  education: String
+  research: String
+  achievement: String
+  dept: DeptUpdateOneWithoutProfsInput
+  position: PositionUpdateOneWithoutProfsInput
+  courses: CourseUpdateManyWithoutProfInput
   scoreOverall: Float
   scoreProfessional: Float
   scoreExpressive: Float
@@ -2750,6 +3033,11 @@ input ProfUpdateWithWhereUniqueWithoutPositionInput {
 input ProfUpsertWithoutCoursesInput {
   update: ProfUpdateWithoutCoursesDataInput!
   create: ProfCreateWithoutCoursesInput!
+}
+
+input ProfUpsertWithoutReviewsInput {
+  update: ProfUpdateWithoutReviewsDataInput!
+  create: ProfCreateWithoutReviewsInput!
 }
 
 input ProfUpsertWithWhereUniqueWithoutDeptInput {
@@ -2953,11 +3241,30 @@ input ProfWhereInput {
   achievement_not_starts_with: String
   achievement_ends_with: String
   achievement_not_ends_with: String
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
   dept: DeptWhereInput
   position: PositionWhereInput
   courses_every: CourseWhereInput
   courses_some: CourseWhereInput
   courses_none: CourseWhereInput
+  reviews_every: ReviewWhereInput
+  reviews_some: ReviewWhereInput
+  reviews_none: ReviewWhereInput
   scoreOverall: Float
   scoreOverall_not: Float
   scoreOverall_in: [Float!]
@@ -3195,9 +3502,25 @@ type Query {
 type Review {
   id: ID!
   text: String!
-  upVote: Int!
-  downVote: Int!
-  author: User!
+  upVote: Int
+  downVote: Int
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  author: User
+  prof: Prof
+  course: Course
+  tags(where: TagWhereInput, orderBy: TagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Tag!]
+  professional: Int!
+  expressive: Int!
+  kind: Int!
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
 }
 
 type ReviewConnection {
@@ -3209,9 +3532,23 @@ type ReviewConnection {
 input ReviewCreateInput {
   id: ID
   text: String!
-  upVote: Int!
-  downVote: Int!
-  author: UserCreateOneWithoutReviewsInput!
+  upVote: Int
+  downVote: Int
+  author: UserCreateOneWithoutReviewsInput
+  prof: ProfCreateOneWithoutReviewsInput
+  course: CourseCreateOneInput
+  tags: TagCreateManyWithoutReviewsInput
+  professional: Int!
+  expressive: Int!
+  kind: Int!
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
 }
 
 input ReviewCreateManyInput {
@@ -3224,11 +3561,77 @@ input ReviewCreateManyWithoutAuthorInput {
   connect: [ReviewWhereUniqueInput!]
 }
 
+input ReviewCreateManyWithoutProfInput {
+  create: [ReviewCreateWithoutProfInput!]
+  connect: [ReviewWhereUniqueInput!]
+}
+
+input ReviewCreateManyWithoutTagsInput {
+  create: [ReviewCreateWithoutTagsInput!]
+  connect: [ReviewWhereUniqueInput!]
+}
+
 input ReviewCreateWithoutAuthorInput {
   id: ID
   text: String!
-  upVote: Int!
-  downVote: Int!
+  upVote: Int
+  downVote: Int
+  prof: ProfCreateOneWithoutReviewsInput
+  course: CourseCreateOneInput
+  tags: TagCreateManyWithoutReviewsInput
+  professional: Int!
+  expressive: Int!
+  kind: Int!
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
+}
+
+input ReviewCreateWithoutProfInput {
+  id: ID
+  text: String!
+  upVote: Int
+  downVote: Int
+  author: UserCreateOneWithoutReviewsInput
+  course: CourseCreateOneInput
+  tags: TagCreateManyWithoutReviewsInput
+  professional: Int!
+  expressive: Int!
+  kind: Int!
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
+}
+
+input ReviewCreateWithoutTagsInput {
+  id: ID
+  text: String!
+  upVote: Int
+  downVote: Int
+  author: UserCreateOneWithoutReviewsInput
+  prof: ProfCreateOneWithoutReviewsInput
+  course: CourseCreateOneInput
+  professional: Int!
+  expressive: Int!
+  kind: Int!
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
 }
 
 type ReviewEdge {
@@ -3245,13 +3648,52 @@ enum ReviewOrderByInput {
   upVote_DESC
   downVote_ASC
   downVote_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+  professional_ASC
+  professional_DESC
+  expressive_ASC
+  expressive_DESC
+  kind_ASC
+  kind_DESC
+  rateHomework_ASC
+  rateHomework_DESC
+  rateAttend_ASC
+  rateAttend_DESC
+  rateBirdy_ASC
+  rateBirdy_DESC
+  hasExam_ASC
+  hasExam_DESC
+  examprep_ASC
+  examprep_DESC
+  openbook_ASC
+  openbook_DESC
+  oldquestion_ASC
+  oldquestion_DESC
+  easymark_ASC
+  easymark_DESC
 }
 
 type ReviewPreviousValues {
   id: ID!
   text: String!
-  upVote: Int!
-  downVote: Int!
+  upVote: Int
+  downVote: Int
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  professional: Int!
+  expressive: Int!
+  kind: Int!
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
 }
 
 input ReviewScalarWhereInput {
@@ -3299,6 +3741,80 @@ input ReviewScalarWhereInput {
   downVote_lte: Int
   downVote_gt: Int
   downVote_gte: Int
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  professional: Int
+  professional_not: Int
+  professional_in: [Int!]
+  professional_not_in: [Int!]
+  professional_lt: Int
+  professional_lte: Int
+  professional_gt: Int
+  professional_gte: Int
+  expressive: Int
+  expressive_not: Int
+  expressive_in: [Int!]
+  expressive_not_in: [Int!]
+  expressive_lt: Int
+  expressive_lte: Int
+  expressive_gt: Int
+  expressive_gte: Int
+  kind: Int
+  kind_not: Int
+  kind_in: [Int!]
+  kind_not_in: [Int!]
+  kind_lt: Int
+  kind_lte: Int
+  kind_gt: Int
+  kind_gte: Int
+  rateHomework: Int
+  rateHomework_not: Int
+  rateHomework_in: [Int!]
+  rateHomework_not_in: [Int!]
+  rateHomework_lt: Int
+  rateHomework_lte: Int
+  rateHomework_gt: Int
+  rateHomework_gte: Int
+  rateAttend: Int
+  rateAttend_not: Int
+  rateAttend_in: [Int!]
+  rateAttend_not_in: [Int!]
+  rateAttend_lt: Int
+  rateAttend_lte: Int
+  rateAttend_gt: Int
+  rateAttend_gte: Int
+  rateBirdy: Int
+  rateBirdy_not: Int
+  rateBirdy_in: [Int!]
+  rateBirdy_not_in: [Int!]
+  rateBirdy_lt: Int
+  rateBirdy_lte: Int
+  rateBirdy_gt: Int
+  rateBirdy_gte: Int
+  hasExam: Boolean
+  hasExam_not: Boolean
+  examprep: Boolean
+  examprep_not: Boolean
+  openbook: Boolean
+  openbook_not: Boolean
+  oldquestion: Boolean
+  oldquestion_not: Boolean
+  easymark: Boolean
+  easymark_not: Boolean
   AND: [ReviewScalarWhereInput!]
   OR: [ReviewScalarWhereInput!]
   NOT: [ReviewScalarWhereInput!]
@@ -3326,20 +3842,59 @@ input ReviewUpdateDataInput {
   text: String
   upVote: Int
   downVote: Int
-  author: UserUpdateOneRequiredWithoutReviewsInput
+  author: UserUpdateOneWithoutReviewsInput
+  prof: ProfUpdateOneWithoutReviewsInput
+  course: CourseUpdateOneInput
+  tags: TagUpdateManyWithoutReviewsInput
+  professional: Int
+  expressive: Int
+  kind: Int
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
 }
 
 input ReviewUpdateInput {
   text: String
   upVote: Int
   downVote: Int
-  author: UserUpdateOneRequiredWithoutReviewsInput
+  author: UserUpdateOneWithoutReviewsInput
+  prof: ProfUpdateOneWithoutReviewsInput
+  course: CourseUpdateOneInput
+  tags: TagUpdateManyWithoutReviewsInput
+  professional: Int
+  expressive: Int
+  kind: Int
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
 }
 
 input ReviewUpdateManyDataInput {
   text: String
   upVote: Int
   downVote: Int
+  professional: Int
+  expressive: Int
+  kind: Int
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
 }
 
 input ReviewUpdateManyInput {
@@ -3358,6 +3913,17 @@ input ReviewUpdateManyMutationInput {
   text: String
   upVote: Int
   downVote: Int
+  professional: Int
+  expressive: Int
+  kind: Int
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
 }
 
 input ReviewUpdateManyWithoutAuthorInput {
@@ -3372,6 +3938,30 @@ input ReviewUpdateManyWithoutAuthorInput {
   updateMany: [ReviewUpdateManyWithWhereNestedInput!]
 }
 
+input ReviewUpdateManyWithoutProfInput {
+  create: [ReviewCreateWithoutProfInput!]
+  delete: [ReviewWhereUniqueInput!]
+  connect: [ReviewWhereUniqueInput!]
+  set: [ReviewWhereUniqueInput!]
+  disconnect: [ReviewWhereUniqueInput!]
+  update: [ReviewUpdateWithWhereUniqueWithoutProfInput!]
+  upsert: [ReviewUpsertWithWhereUniqueWithoutProfInput!]
+  deleteMany: [ReviewScalarWhereInput!]
+  updateMany: [ReviewUpdateManyWithWhereNestedInput!]
+}
+
+input ReviewUpdateManyWithoutTagsInput {
+  create: [ReviewCreateWithoutTagsInput!]
+  delete: [ReviewWhereUniqueInput!]
+  connect: [ReviewWhereUniqueInput!]
+  set: [ReviewWhereUniqueInput!]
+  disconnect: [ReviewWhereUniqueInput!]
+  update: [ReviewUpdateWithWhereUniqueWithoutTagsInput!]
+  upsert: [ReviewUpsertWithWhereUniqueWithoutTagsInput!]
+  deleteMany: [ReviewScalarWhereInput!]
+  updateMany: [ReviewUpdateManyWithWhereNestedInput!]
+}
+
 input ReviewUpdateManyWithWhereNestedInput {
   where: ReviewScalarWhereInput!
   data: ReviewUpdateManyDataInput!
@@ -3381,6 +3971,60 @@ input ReviewUpdateWithoutAuthorDataInput {
   text: String
   upVote: Int
   downVote: Int
+  prof: ProfUpdateOneWithoutReviewsInput
+  course: CourseUpdateOneInput
+  tags: TagUpdateManyWithoutReviewsInput
+  professional: Int
+  expressive: Int
+  kind: Int
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
+}
+
+input ReviewUpdateWithoutProfDataInput {
+  text: String
+  upVote: Int
+  downVote: Int
+  author: UserUpdateOneWithoutReviewsInput
+  course: CourseUpdateOneInput
+  tags: TagUpdateManyWithoutReviewsInput
+  professional: Int
+  expressive: Int
+  kind: Int
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
+}
+
+input ReviewUpdateWithoutTagsDataInput {
+  text: String
+  upVote: Int
+  downVote: Int
+  author: UserUpdateOneWithoutReviewsInput
+  prof: ProfUpdateOneWithoutReviewsInput
+  course: CourseUpdateOneInput
+  professional: Int
+  expressive: Int
+  kind: Int
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
 }
 
 input ReviewUpdateWithWhereUniqueNestedInput {
@@ -3393,6 +4037,16 @@ input ReviewUpdateWithWhereUniqueWithoutAuthorInput {
   data: ReviewUpdateWithoutAuthorDataInput!
 }
 
+input ReviewUpdateWithWhereUniqueWithoutProfInput {
+  where: ReviewWhereUniqueInput!
+  data: ReviewUpdateWithoutProfDataInput!
+}
+
+input ReviewUpdateWithWhereUniqueWithoutTagsInput {
+  where: ReviewWhereUniqueInput!
+  data: ReviewUpdateWithoutTagsDataInput!
+}
+
 input ReviewUpsertWithWhereUniqueNestedInput {
   where: ReviewWhereUniqueInput!
   update: ReviewUpdateDataInput!
@@ -3403,6 +4057,18 @@ input ReviewUpsertWithWhereUniqueWithoutAuthorInput {
   where: ReviewWhereUniqueInput!
   update: ReviewUpdateWithoutAuthorDataInput!
   create: ReviewCreateWithoutAuthorInput!
+}
+
+input ReviewUpsertWithWhereUniqueWithoutProfInput {
+  where: ReviewWhereUniqueInput!
+  update: ReviewUpdateWithoutProfDataInput!
+  create: ReviewCreateWithoutProfInput!
+}
+
+input ReviewUpsertWithWhereUniqueWithoutTagsInput {
+  where: ReviewWhereUniqueInput!
+  update: ReviewUpdateWithoutTagsDataInput!
+  create: ReviewCreateWithoutTagsInput!
 }
 
 input ReviewWhereInput {
@@ -3450,7 +4116,86 @@ input ReviewWhereInput {
   downVote_lte: Int
   downVote_gt: Int
   downVote_gte: Int
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
   author: UserWhereInput
+  prof: ProfWhereInput
+  course: CourseWhereInput
+  tags_every: TagWhereInput
+  tags_some: TagWhereInput
+  tags_none: TagWhereInput
+  professional: Int
+  professional_not: Int
+  professional_in: [Int!]
+  professional_not_in: [Int!]
+  professional_lt: Int
+  professional_lte: Int
+  professional_gt: Int
+  professional_gte: Int
+  expressive: Int
+  expressive_not: Int
+  expressive_in: [Int!]
+  expressive_not_in: [Int!]
+  expressive_lt: Int
+  expressive_lte: Int
+  expressive_gt: Int
+  expressive_gte: Int
+  kind: Int
+  kind_not: Int
+  kind_in: [Int!]
+  kind_not_in: [Int!]
+  kind_lt: Int
+  kind_lte: Int
+  kind_gt: Int
+  kind_gte: Int
+  rateHomework: Int
+  rateHomework_not: Int
+  rateHomework_in: [Int!]
+  rateHomework_not_in: [Int!]
+  rateHomework_lt: Int
+  rateHomework_lte: Int
+  rateHomework_gt: Int
+  rateHomework_gte: Int
+  rateAttend: Int
+  rateAttend_not: Int
+  rateAttend_in: [Int!]
+  rateAttend_not_in: [Int!]
+  rateAttend_lt: Int
+  rateAttend_lte: Int
+  rateAttend_gt: Int
+  rateAttend_gte: Int
+  rateBirdy: Int
+  rateBirdy_not: Int
+  rateBirdy_in: [Int!]
+  rateBirdy_not_in: [Int!]
+  rateBirdy_lt: Int
+  rateBirdy_lte: Int
+  rateBirdy_gt: Int
+  rateBirdy_gte: Int
+  hasExam: Boolean
+  hasExam_not: Boolean
+  examprep: Boolean
+  examprep_not: Boolean
+  openbook: Boolean
+  openbook_not: Boolean
+  oldquestion: Boolean
+  oldquestion_not: Boolean
+  easymark: Boolean
+  easymark_not: Boolean
   AND: [ReviewWhereInput!]
   OR: [ReviewWhereInput!]
   NOT: [ReviewWhereInput!]
@@ -3480,6 +4225,9 @@ type Tag {
   name: String!
   isPositive: Boolean!
   category: String
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  reviews(where: ReviewWhereInput, orderBy: ReviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Review!]
 }
 
 type TagConnection {
@@ -3489,6 +4237,19 @@ type TagConnection {
 }
 
 input TagCreateInput {
+  id: ID
+  name: String!
+  isPositive: Boolean!
+  category: String
+  reviews: ReviewCreateManyWithoutTagsInput
+}
+
+input TagCreateManyWithoutReviewsInput {
+  create: [TagCreateWithoutReviewsInput!]
+  connect: [TagWhereUniqueInput!]
+}
+
+input TagCreateWithoutReviewsInput {
   id: ID
   name: String!
   isPositive: Boolean!
@@ -3509,6 +4270,10 @@ enum TagOrderByInput {
   isPositive_DESC
   category_ASC
   category_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
 }
 
 type TagPreviousValues {
@@ -3516,6 +4281,74 @@ type TagPreviousValues {
   name: String!
   isPositive: Boolean!
   category: String
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+input TagScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  isPositive: Boolean
+  isPositive_not: Boolean
+  category: String
+  category_not: String
+  category_in: [String!]
+  category_not_in: [String!]
+  category_lt: String
+  category_lte: String
+  category_gt: String
+  category_gte: String
+  category_contains: String
+  category_not_contains: String
+  category_starts_with: String
+  category_not_starts_with: String
+  category_ends_with: String
+  category_not_ends_with: String
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [TagScalarWhereInput!]
+  OR: [TagScalarWhereInput!]
+  NOT: [TagScalarWhereInput!]
 }
 
 type TagSubscriptionPayload {
@@ -3540,12 +4373,53 @@ input TagUpdateInput {
   name: String
   isPositive: Boolean
   category: String
+  reviews: ReviewUpdateManyWithoutTagsInput
+}
+
+input TagUpdateManyDataInput {
+  name: String
+  isPositive: Boolean
+  category: String
 }
 
 input TagUpdateManyMutationInput {
   name: String
   isPositive: Boolean
   category: String
+}
+
+input TagUpdateManyWithoutReviewsInput {
+  create: [TagCreateWithoutReviewsInput!]
+  delete: [TagWhereUniqueInput!]
+  connect: [TagWhereUniqueInput!]
+  set: [TagWhereUniqueInput!]
+  disconnect: [TagWhereUniqueInput!]
+  update: [TagUpdateWithWhereUniqueWithoutReviewsInput!]
+  upsert: [TagUpsertWithWhereUniqueWithoutReviewsInput!]
+  deleteMany: [TagScalarWhereInput!]
+  updateMany: [TagUpdateManyWithWhereNestedInput!]
+}
+
+input TagUpdateManyWithWhereNestedInput {
+  where: TagScalarWhereInput!
+  data: TagUpdateManyDataInput!
+}
+
+input TagUpdateWithoutReviewsDataInput {
+  name: String
+  isPositive: Boolean
+  category: String
+}
+
+input TagUpdateWithWhereUniqueWithoutReviewsInput {
+  where: TagWhereUniqueInput!
+  data: TagUpdateWithoutReviewsDataInput!
+}
+
+input TagUpsertWithWhereUniqueWithoutReviewsInput {
+  where: TagWhereUniqueInput!
+  update: TagUpdateWithoutReviewsDataInput!
+  create: TagCreateWithoutReviewsInput!
 }
 
 input TagWhereInput {
@@ -3593,6 +4467,25 @@ input TagWhereInput {
   category_not_starts_with: String
   category_ends_with: String
   category_not_ends_with: String
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  reviews_every: ReviewWhereInput
+  reviews_some: ReviewWhereInput
+  reviews_none: ReviewWhereInput
   AND: [TagWhereInput!]
   OR: [TagWhereInput!]
   NOT: [TagWhereInput!]
@@ -3600,6 +4493,7 @@ input TagWhereInput {
 
 input TagWhereUniqueInput {
   id: ID
+  name: String
 }
 
 type User {
@@ -3875,10 +4769,12 @@ input UserUpdateManyWithWhereNestedInput {
   data: UserUpdateManyDataInput!
 }
 
-input UserUpdateOneRequiredWithoutReviewsInput {
+input UserUpdateOneWithoutReviewsInput {
   create: UserCreateWithoutReviewsInput
   update: UserUpdateWithoutReviewsDataInput
   upsert: UserUpsertWithoutReviewsInput
+  delete: Boolean
+  disconnect: Boolean
   connect: UserWhereUniqueInput
 }
 

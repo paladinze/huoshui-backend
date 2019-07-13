@@ -148,7 +148,7 @@ const createProfs = async () => {
           }
         };
       } else {
-        console.log("dept not found for: " + name + " : " + dept);
+        // console.log("dept not found for: " + name + " : " + dept);
       }
     }
 
@@ -162,7 +162,7 @@ const createProfs = async () => {
           }
         };
       } else {
-        console.log("position no found for: " + name + " : " + position);
+        console.log("position not found for: " + name + " : " + position);
       }
     }
 
@@ -240,15 +240,138 @@ const createCourses = async () => {
   console.log("seeding courses: Done!");
 };
 
+const createReviews = async () => {
+  console.log("seeding reviews...");
+  const datapath = path.resolve(__dirname, "./leancloud/Reviews.json");
+  const lc_reviews = JSON.parse(fs.readFileSync(datapath)).results;
+  const userDatapath = path.resolve(__dirname, "./leancloud/_User.json");
+  const lc_users = JSON.parse(fs.readFileSync(userDatapath)).results;
+  for (const lc_review of lc_reviews) {
+    let {
+      // must data
+      comment: text,
+      rating: { rate1: professional = 0 },
+      rating: { rate2: expressive = 0 },
+      rating: { rate3: kind = 0 },
+      attendance: { value: rateAttend = 0 },
+      bird: { value: rateBirdy = 0 },
+      homework: { value: rateHomework = 0 },
+      authorId: { objectId: lcAuthorId },
+      profName: prof,
+      courseName: course,
+      tags,
+      downVote,
+      upVote,
+      // optional: exam data
+      exam: { touched: hasExam },
+      createdAt,
+      updatedAt
+    } = lc_review;
+
+    let args = {
+      text,
+      professional,
+      expressive,
+      kind,
+      downVote,
+      upVote,
+      hasExam,
+      rateHomework: rateHomework++,
+      rateBirdy: rateBirdy++,
+      rateAttend: rateAttend++,
+      createdAt,
+      updatedAt
+    };
+
+    //optional: exam data
+    if (hasExam) {
+      args.examprep = lc_review.exam.examprep.checked;
+      args.openbook = lc_review.exam.openbook.checked;
+      args.oldquestion = lc_review.exam.oldquestion.checked;
+      args.easymark = lc_review.exam.easiness.checked;
+    }
+
+    // connect to user
+    let lcUser = lc_users.find(user => {
+      return user.objectId == lcAuthorId;
+    });
+    args.author = {
+      connect: {
+        username: lcUser.username
+      }
+    };
+
+    // connect to prof
+    let profFound = null;
+    if (prof) {
+      profFound = await prisma.profs({
+        where: {
+          name: prof
+        }
+      });
+      if (profFound.length) {
+        profFound = profFound[0];
+        args.prof = {
+          connect: {
+            id: profFound.id
+          }
+        };
+      } else {
+        const newProf = await prisma.createProf({ name: prof });
+        args.prof = {
+          connect: {
+            id: newProf.id
+          }
+        };
+      }
+    }
+
+    // connect to course
+    if (profFound) {
+      let courseFound = null;
+      courseFound = await prisma.prof({ id: profFound.id }).courses({
+        where: {
+          name: course
+        }
+      });
+      if (courseFound.length) {
+        courseFound = courseFound[0];
+        args.course = {
+          connect: {
+            id: courseFound.id
+          }
+        };
+      } else {
+        console.log("course not found for: " + prof + " : " + course);
+      }
+    }
+
+    // connect tags
+    args.tags = {
+      connect: []
+    };
+    for (const tag of tags) {
+      const tagName = tag.value;
+      const tagFound = await prisma.tag({ name: tagName });
+      args.tags.connect.push({ id: tagFound.id });
+    }
+
+    const newReview = await prisma.createReview(args);
+  }
+  console.log("seeding reviews: Done!");
+};
+
 async function main() {
   console.log("starts seeding!");
 
-  await createDepts();
-  await createPositions();
-  await createTags();
-  await createProfs();
-  await createCourses();
-  await createUsers();
+  // await createDepts();
+  // await createPositions();
+  // await createTags();
+  // await createProfs();
+  // await createCourses();
+  // await createUsers();
+
+  // await createReviews();
 
   console.log("All Done!");
 }

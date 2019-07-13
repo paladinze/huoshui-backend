@@ -1,5 +1,7 @@
 type Position {
   id: ID! @id
   name: String! @unique
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
   profs: [Prof!] @relation(name: "ProfPosition")
 }

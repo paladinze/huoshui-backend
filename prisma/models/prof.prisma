@@ -14,9 +14,13 @@ type Prof {
   education: String
   research: String
   achievement: String
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
   dept: Dept @relation(name: "ProfDept")
   position: Position @relation(name: "ProfPosition")
   courses: [Course!] @relation(name: "CourseProf")
+  reviews: [Review!] @relation(name: "ReviewProf")
+
 
   "core stats"
   scoreOverall: Float

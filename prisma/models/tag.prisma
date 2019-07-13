@@ -1,6 +1,9 @@
 type Tag {
   id: ID! @id
-  name: String!
+  name: String! @unique
   isPositive: Boolean!
   category: String
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
+  reviews: [Review!] @relation(name: "ReviewTags")
 }
