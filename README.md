@@ -23,8 +23,6 @@ npm install
 
 在 staging server 和 production server 安装 [Docker](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/)
 
-```
-
 ## 主要功能
 
 - [x] 课程信息 （课名，教师，作业，考试，标签等）
@@ -37,11 +35,14 @@ npm install
 - [ ] 评论功能 （对点评进行评论）
 
 ## 次要功能
+
 - [ ] 邮件系统（密码重置，群发信息）
 - [x] 自动数据接口文档生成
 
 ## 主要技术
 
+- Apollo Client - graphql 客户端
+- Apollo Server - graphql 服务端
 - Prisma - ORM 对象关系映射
 - PosgreSQL - SQL 结构化储存
 - Nginx - 负载均衡 / 伺服
@@ -51,4 +52,3 @@ npm install
 ## 维护人员
 
 - **游侠** - [paladinze github](https://github.com/paladinze)
-```
