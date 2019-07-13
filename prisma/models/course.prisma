@@ -7,70 +7,71 @@ type Course {
   dept: Dept @relation(name: "CourseDept")
   prof: Prof @relation(name: "CourseProf")
   likedBy: [User!] @relation(name: "LikedCourses")
+  reviews: [Review!] @relation(name: "ReviewCourse")
 
   "专业"
-  professional: Float
+  professional: Float @default(value: 0)
   "表达"
-  expressive: Float
+  expressive: Float @default(value: 0)
   "友好"
-  kind: Float
+  kind: Float @default(value: 0)
   "综合评分"
-  scoreOverall: Float
+  scoreOverall: Float @default(value: 0)
 
   "热门评分"
-  scoreHot: Float
+  scoreHot: Float @default(value: 0)
   "声誉评分"
-  scoreRepute: Float
+  scoreRepute: Float @default(value: 0)
   "水课评分"
-  scoreBirdy: Float
+  scoreBirdy: Float @default(value: 0)
   "点名频繁评分"
-  scoreAttend: Float
+  scoreAttend: Float @default(value: 0)
   "考试评分"
-  scoreExam: Float
+  scoreExam: Float @default(value: 0)
   "作业评分"
-  scoreHomework: Float
+  scoreHomework: Float @default(value: 0)
   "作业多少，分高作业多"
 
-  meanHomework: Float
+  meanHomework: Float @default(value: 0)
   "点名多少，分高点名多"
-  meanAttend: Float
+  meanAttend: Float @default(value: 0)
   "课程水分，越高越水"
-  meanBirdy: Float
+  meanBirdy: Float @default(value: 0)
   "考试难度，越高越难"
-  meanExam: Float
+  meanExam: Float @default(value: 0)
   "总评论次数"
 
-  countReview: Int
+  countReview: Int @default(value: 0)
   "好评次数"
-  countGoodReview: Int
+  countGoodReview: Int @default(value: 0)
   "average review count"
-  countAverageReview: Int
+  countAverageReview: Int @default(value: 0)
   "bad review count"
-  countBadReview: Int
+  countBadReview: Int @default(value: 0)
   "作业评论次数"
-  countHomework: Int
+  countHomework: Int @default(value: 0)
   "点名评论次数"
-  countAttend: Int
+  countAttend: Int @default(value: 0)
   "水课评论次数"
-  countBirdy: Int
+  countBirdy: Int @default(value: 0)
   "考试评论次数"
-  countExam: Int
+  countExam: Int @default(value: 0)
   "考试细节（开卷，原题，划重点，题目容易）评论次数"
-  countExamDetails: Int
+  countExamDetails: Int @default(value: 0)
   "划重点 次数"
-  countExamPrepYes: Int
+  countExamPrepYes: Int @default(value: 0)
   "不 划重点 次数"
-  countExamPrepNo: Int
+  countExamPrepNo: Int @default(value: 0)
   "开卷 次数"
-  countExamOpenbookYes: Int
+  countExamOpenbookYes: Int @default(value: 0)
   "不 开卷 次数"
-  countExamOpenbookNo: Int
+  countExamOpenbookNo: Int @default(value: 0)
   "原题 次数"
-  countExamOldquestionYes: Int
+  countExamOldquestionYes: Int @default(value: 0)
   "不是 原题 次数"
-  countExamOldquestionNo: Int
+  countExamOldquestionNo: Int @default(value: 0)
   "题目容易 次数"
-  countExamEasymarkYes: Int
+  countExamEasymarkYes: Int @default(value: 0)
   "非 题目容易 次数"
-  countExamEasymarkNo: Int
+  countExamEasymarkNo: Int @default(value: 0)
 }

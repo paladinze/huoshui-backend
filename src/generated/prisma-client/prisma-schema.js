@@ -44,6 +44,7 @@ type Course {
   dept: Dept
   prof: Prof
   likedBy(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+  reviews(where: ReviewWhereInput, orderBy: ReviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Review!]
   professional: Float
   expressive: Float
   kind: Float
@@ -90,6 +91,7 @@ input CourseCreateInput {
   dept: DeptCreateOneWithoutCoursesInput
   prof: ProfCreateOneWithoutCoursesInput
   likedBy: UserCreateManyWithoutLikedCoursesInput
+  reviews: ReviewCreateManyWithoutCourseInput
   professional: Float
   expressive: Float
   kind: Float
@@ -138,8 +140,8 @@ input CourseCreateManyWithoutProfInput {
   connect: [CourseWhereUniqueInput!]
 }
 
-input CourseCreateOneInput {
-  create: CourseCreateInput
+input CourseCreateOneWithoutReviewsInput {
+  create: CourseCreateWithoutReviewsInput
   connect: CourseWhereUniqueInput
 }
 
@@ -149,6 +151,7 @@ input CourseCreateWithoutDeptInput {
   likedCount: Int
   prof: ProfCreateOneWithoutCoursesInput
   likedBy: UserCreateManyWithoutLikedCoursesInput
+  reviews: ReviewCreateManyWithoutCourseInput
   professional: Float
   expressive: Float
   kind: Float
@@ -188,6 +191,7 @@ input CourseCreateWithoutLikedByInput {
   likedCount: Int
   dept: DeptCreateOneWithoutCoursesInput
   prof: ProfCreateOneWithoutCoursesInput
+  reviews: ReviewCreateManyWithoutCourseInput
   professional: Float
   expressive: Float
   kind: Float
@@ -226,6 +230,47 @@ input CourseCreateWithoutProfInput {
   name: String!
   likedCount: Int
   dept: DeptCreateOneWithoutCoursesInput
+  likedBy: UserCreateManyWithoutLikedCoursesInput
+  reviews: ReviewCreateManyWithoutCourseInput
+  professional: Float
+  expressive: Float
+  kind: Float
+  scoreOverall: Float
+  scoreHot: Float
+  scoreRepute: Float
+  scoreBirdy: Float
+  scoreAttend: Float
+  scoreExam: Float
+  scoreHomework: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasymarkYes: Int
+  countExamEasymarkNo: Int
+}
+
+input CourseCreateWithoutReviewsInput {
+  id: ID
+  name: String!
+  likedCount: Int
+  dept: DeptCreateOneWithoutCoursesInput
+  prof: ProfCreateOneWithoutCoursesInput
   likedBy: UserCreateManyWithoutLikedCoursesInput
   professional: Float
   expressive: Float
@@ -703,51 +748,13 @@ input CourseSubscriptionWhereInput {
   NOT: [CourseSubscriptionWhereInput!]
 }
 
-input CourseUpdateDataInput {
-  name: String
-  likedCount: Int
-  dept: DeptUpdateOneWithoutCoursesInput
-  prof: ProfUpdateOneWithoutCoursesInput
-  likedBy: UserUpdateManyWithoutLikedCoursesInput
-  professional: Float
-  expressive: Float
-  kind: Float
-  scoreOverall: Float
-  scoreHot: Float
-  scoreRepute: Float
-  scoreBirdy: Float
-  scoreAttend: Float
-  scoreExam: Float
-  scoreHomework: Float
-  meanHomework: Float
-  meanAttend: Float
-  meanBirdy: Float
-  meanExam: Float
-  countReview: Int
-  countGoodReview: Int
-  countAverageReview: Int
-  countBadReview: Int
-  countHomework: Int
-  countAttend: Int
-  countBirdy: Int
-  countExam: Int
-  countExamDetails: Int
-  countExamPrepYes: Int
-  countExamPrepNo: Int
-  countExamOpenbookYes: Int
-  countExamOpenbookNo: Int
-  countExamOldquestionYes: Int
-  countExamOldquestionNo: Int
-  countExamEasymarkYes: Int
-  countExamEasymarkNo: Int
-}
-
 input CourseUpdateInput {
   name: String
   likedCount: Int
   dept: DeptUpdateOneWithoutCoursesInput
   prof: ProfUpdateOneWithoutCoursesInput
   likedBy: UserUpdateManyWithoutLikedCoursesInput
+  reviews: ReviewUpdateManyWithoutCourseInput
   professional: Float
   expressive: Float
   kind: Float
@@ -894,10 +901,10 @@ input CourseUpdateManyWithWhereNestedInput {
   data: CourseUpdateManyDataInput!
 }
 
-input CourseUpdateOneInput {
-  create: CourseCreateInput
-  update: CourseUpdateDataInput
-  upsert: CourseUpsertNestedInput
+input CourseUpdateOneWithoutReviewsInput {
+  create: CourseCreateWithoutReviewsInput
+  update: CourseUpdateWithoutReviewsDataInput
+  upsert: CourseUpsertWithoutReviewsInput
   delete: Boolean
   disconnect: Boolean
   connect: CourseWhereUniqueInput
@@ -908,6 +915,7 @@ input CourseUpdateWithoutDeptDataInput {
   likedCount: Int
   prof: ProfUpdateOneWithoutCoursesInput
   likedBy: UserUpdateManyWithoutLikedCoursesInput
+  reviews: ReviewUpdateManyWithoutCourseInput
   professional: Float
   expressive: Float
   kind: Float
@@ -946,6 +954,7 @@ input CourseUpdateWithoutLikedByDataInput {
   likedCount: Int
   dept: DeptUpdateOneWithoutCoursesInput
   prof: ProfUpdateOneWithoutCoursesInput
+  reviews: ReviewUpdateManyWithoutCourseInput
   professional: Float
   expressive: Float
   kind: Float
@@ -983,6 +992,46 @@ input CourseUpdateWithoutProfDataInput {
   name: String
   likedCount: Int
   dept: DeptUpdateOneWithoutCoursesInput
+  likedBy: UserUpdateManyWithoutLikedCoursesInput
+  reviews: ReviewUpdateManyWithoutCourseInput
+  professional: Float
+  expressive: Float
+  kind: Float
+  scoreOverall: Float
+  scoreHot: Float
+  scoreRepute: Float
+  scoreBirdy: Float
+  scoreAttend: Float
+  scoreExam: Float
+  scoreHomework: Float
+  meanHomework: Float
+  meanAttend: Float
+  meanBirdy: Float
+  meanExam: Float
+  countReview: Int
+  countGoodReview: Int
+  countAverageReview: Int
+  countBadReview: Int
+  countHomework: Int
+  countAttend: Int
+  countBirdy: Int
+  countExam: Int
+  countExamDetails: Int
+  countExamPrepYes: Int
+  countExamPrepNo: Int
+  countExamOpenbookYes: Int
+  countExamOpenbookNo: Int
+  countExamOldquestionYes: Int
+  countExamOldquestionNo: Int
+  countExamEasymarkYes: Int
+  countExamEasymarkNo: Int
+}
+
+input CourseUpdateWithoutReviewsDataInput {
+  name: String
+  likedCount: Int
+  dept: DeptUpdateOneWithoutCoursesInput
+  prof: ProfUpdateOneWithoutCoursesInput
   likedBy: UserUpdateManyWithoutLikedCoursesInput
   professional: Float
   expressive: Float
@@ -1032,9 +1081,9 @@ input CourseUpdateWithWhereUniqueWithoutProfInput {
   data: CourseUpdateWithoutProfDataInput!
 }
 
-input CourseUpsertNestedInput {
-  update: CourseUpdateDataInput!
-  create: CourseCreateInput!
+input CourseUpsertWithoutReviewsInput {
+  update: CourseUpdateWithoutReviewsDataInput!
+  create: CourseCreateWithoutReviewsInput!
 }
 
 input CourseUpsertWithWhereUniqueWithoutDeptInput {
@@ -1113,6 +1162,9 @@ input CourseWhereInput {
   likedBy_every: UserWhereInput
   likedBy_some: UserWhereInput
   likedBy_none: UserWhereInput
+  reviews_every: ReviewWhereInput
+  reviews_some: ReviewWhereInput
+  reviews_none: ReviewWhereInput
   professional: Float
   professional_not: Float
   professional_in: [Float!]
@@ -3654,13 +3706,13 @@ input ReviewCreateInput {
   downVote: Int
   author: UserCreateOneWithoutReviewsInput
   prof: ProfCreateOneWithoutReviewsInput
-  course: CourseCreateOneInput
+  course: CourseCreateOneWithoutReviewsInput
   tags: TagCreateManyWithoutReviewsInput
   likedBy: UserCreateManyWithoutLikedReviewsInput
   dislikedBy: UserCreateManyWithoutDislikedReviewsInput
-  professional: Int!
-  expressive: Int!
-  kind: Int!
+  professional: Int
+  expressive: Int
+  kind: Int
   rateHomework: Int
   rateAttend: Int
   rateBirdy: Int
@@ -3673,6 +3725,11 @@ input ReviewCreateInput {
 
 input ReviewCreateManyWithoutAuthorInput {
   create: [ReviewCreateWithoutAuthorInput!]
+  connect: [ReviewWhereUniqueInput!]
+}
+
+input ReviewCreateManyWithoutCourseInput {
+  create: [ReviewCreateWithoutCourseInput!]
   connect: [ReviewWhereUniqueInput!]
 }
 
@@ -3702,13 +3759,36 @@ input ReviewCreateWithoutAuthorInput {
   upVote: Int
   downVote: Int
   prof: ProfCreateOneWithoutReviewsInput
-  course: CourseCreateOneInput
+  course: CourseCreateOneWithoutReviewsInput
   tags: TagCreateManyWithoutReviewsInput
   likedBy: UserCreateManyWithoutLikedReviewsInput
   dislikedBy: UserCreateManyWithoutDislikedReviewsInput
-  professional: Int!
-  expressive: Int!
-  kind: Int!
+  professional: Int
+  expressive: Int
+  kind: Int
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
+}
+
+input ReviewCreateWithoutCourseInput {
+  id: ID
+  text: String!
+  upVote: Int
+  downVote: Int
+  author: UserCreateOneWithoutReviewsInput
+  prof: ProfCreateOneWithoutReviewsInput
+  tags: TagCreateManyWithoutReviewsInput
+  likedBy: UserCreateManyWithoutLikedReviewsInput
+  dislikedBy: UserCreateManyWithoutDislikedReviewsInput
+  professional: Int
+  expressive: Int
+  kind: Int
   rateHomework: Int
   rateAttend: Int
   rateBirdy: Int
@@ -3726,12 +3806,12 @@ input ReviewCreateWithoutDislikedByInput {
   downVote: Int
   author: UserCreateOneWithoutReviewsInput
   prof: ProfCreateOneWithoutReviewsInput
-  course: CourseCreateOneInput
+  course: CourseCreateOneWithoutReviewsInput
   tags: TagCreateManyWithoutReviewsInput
   likedBy: UserCreateManyWithoutLikedReviewsInput
-  professional: Int!
-  expressive: Int!
-  kind: Int!
+  professional: Int
+  expressive: Int
+  kind: Int
   rateHomework: Int
   rateAttend: Int
   rateBirdy: Int
@@ -3749,12 +3829,12 @@ input ReviewCreateWithoutLikedByInput {
   downVote: Int
   author: UserCreateOneWithoutReviewsInput
   prof: ProfCreateOneWithoutReviewsInput
-  course: CourseCreateOneInput
+  course: CourseCreateOneWithoutReviewsInput
   tags: TagCreateManyWithoutReviewsInput
   dislikedBy: UserCreateManyWithoutDislikedReviewsInput
-  professional: Int!
-  expressive: Int!
-  kind: Int!
+  professional: Int
+  expressive: Int
+  kind: Int
   rateHomework: Int
   rateAttend: Int
   rateBirdy: Int
@@ -3771,13 +3851,13 @@ input ReviewCreateWithoutProfInput {
   upVote: Int
   downVote: Int
   author: UserCreateOneWithoutReviewsInput
-  course: CourseCreateOneInput
+  course: CourseCreateOneWithoutReviewsInput
   tags: TagCreateManyWithoutReviewsInput
   likedBy: UserCreateManyWithoutLikedReviewsInput
   dislikedBy: UserCreateManyWithoutDislikedReviewsInput
-  professional: Int!
-  expressive: Int!
-  kind: Int!
+  professional: Int
+  expressive: Int
+  kind: Int
   rateHomework: Int
   rateAttend: Int
   rateBirdy: Int
@@ -3795,12 +3875,12 @@ input ReviewCreateWithoutTagsInput {
   downVote: Int
   author: UserCreateOneWithoutReviewsInput
   prof: ProfCreateOneWithoutReviewsInput
-  course: CourseCreateOneInput
+  course: CourseCreateOneWithoutReviewsInput
   likedBy: UserCreateManyWithoutLikedReviewsInput
   dislikedBy: UserCreateManyWithoutDislikedReviewsInput
-  professional: Int!
-  expressive: Int!
-  kind: Int!
+  professional: Int
+  expressive: Int
+  kind: Int
   rateHomework: Int
   rateAttend: Int
   rateBirdy: Int
@@ -4021,7 +4101,7 @@ input ReviewUpdateInput {
   downVote: Int
   author: UserUpdateOneWithoutReviewsInput
   prof: ProfUpdateOneWithoutReviewsInput
-  course: CourseUpdateOneInput
+  course: CourseUpdateOneWithoutReviewsInput
   tags: TagUpdateManyWithoutReviewsInput
   likedBy: UserUpdateManyWithoutLikedReviewsInput
   dislikedBy: UserUpdateManyWithoutDislikedReviewsInput
@@ -4084,6 +4164,18 @@ input ReviewUpdateManyWithoutAuthorInput {
   updateMany: [ReviewUpdateManyWithWhereNestedInput!]
 }
 
+input ReviewUpdateManyWithoutCourseInput {
+  create: [ReviewCreateWithoutCourseInput!]
+  delete: [ReviewWhereUniqueInput!]
+  connect: [ReviewWhereUniqueInput!]
+  set: [ReviewWhereUniqueInput!]
+  disconnect: [ReviewWhereUniqueInput!]
+  update: [ReviewUpdateWithWhereUniqueWithoutCourseInput!]
+  upsert: [ReviewUpsertWithWhereUniqueWithoutCourseInput!]
+  deleteMany: [ReviewScalarWhereInput!]
+  updateMany: [ReviewUpdateManyWithWhereNestedInput!]
+}
+
 input ReviewUpdateManyWithoutDislikedByInput {
   create: [ReviewCreateWithoutDislikedByInput!]
   delete: [ReviewWhereUniqueInput!]
@@ -4142,7 +4234,29 @@ input ReviewUpdateWithoutAuthorDataInput {
   upVote: Int
   downVote: Int
   prof: ProfUpdateOneWithoutReviewsInput
-  course: CourseUpdateOneInput
+  course: CourseUpdateOneWithoutReviewsInput
+  tags: TagUpdateManyWithoutReviewsInput
+  likedBy: UserUpdateManyWithoutLikedReviewsInput
+  dislikedBy: UserUpdateManyWithoutDislikedReviewsInput
+  professional: Int
+  expressive: Int
+  kind: Int
+  rateHomework: Int
+  rateAttend: Int
+  rateBirdy: Int
+  hasExam: Boolean
+  examprep: Boolean
+  openbook: Boolean
+  oldquestion: Boolean
+  easymark: Boolean
+}
+
+input ReviewUpdateWithoutCourseDataInput {
+  text: String
+  upVote: Int
+  downVote: Int
+  author: UserUpdateOneWithoutReviewsInput
+  prof: ProfUpdateOneWithoutReviewsInput
   tags: TagUpdateManyWithoutReviewsInput
   likedBy: UserUpdateManyWithoutLikedReviewsInput
   dislikedBy: UserUpdateManyWithoutDislikedReviewsInput
@@ -4165,7 +4279,7 @@ input ReviewUpdateWithoutDislikedByDataInput {
   downVote: Int
   author: UserUpdateOneWithoutReviewsInput
   prof: ProfUpdateOneWithoutReviewsInput
-  course: CourseUpdateOneInput
+  course: CourseUpdateOneWithoutReviewsInput
   tags: TagUpdateManyWithoutReviewsInput
   likedBy: UserUpdateManyWithoutLikedReviewsInput
   professional: Int
@@ -4187,7 +4301,7 @@ input ReviewUpdateWithoutLikedByDataInput {
   downVote: Int
   author: UserUpdateOneWithoutReviewsInput
   prof: ProfUpdateOneWithoutReviewsInput
-  course: CourseUpdateOneInput
+  course: CourseUpdateOneWithoutReviewsInput
   tags: TagUpdateManyWithoutReviewsInput
   dislikedBy: UserUpdateManyWithoutDislikedReviewsInput
   professional: Int
@@ -4208,7 +4322,7 @@ input ReviewUpdateWithoutProfDataInput {
   upVote: Int
   downVote: Int
   author: UserUpdateOneWithoutReviewsInput
-  course: CourseUpdateOneInput
+  course: CourseUpdateOneWithoutReviewsInput
   tags: TagUpdateManyWithoutReviewsInput
   likedBy: UserUpdateManyWithoutLikedReviewsInput
   dislikedBy: UserUpdateManyWithoutDislikedReviewsInput
@@ -4231,7 +4345,7 @@ input ReviewUpdateWithoutTagsDataInput {
   downVote: Int
   author: UserUpdateOneWithoutReviewsInput
   prof: ProfUpdateOneWithoutReviewsInput
-  course: CourseUpdateOneInput
+  course: CourseUpdateOneWithoutReviewsInput
   likedBy: UserUpdateManyWithoutLikedReviewsInput
   dislikedBy: UserUpdateManyWithoutDislikedReviewsInput
   professional: Int
@@ -4250,6 +4364,11 @@ input ReviewUpdateWithoutTagsDataInput {
 input ReviewUpdateWithWhereUniqueWithoutAuthorInput {
   where: ReviewWhereUniqueInput!
   data: ReviewUpdateWithoutAuthorDataInput!
+}
+
+input ReviewUpdateWithWhereUniqueWithoutCourseInput {
+  where: ReviewWhereUniqueInput!
+  data: ReviewUpdateWithoutCourseDataInput!
 }
 
 input ReviewUpdateWithWhereUniqueWithoutDislikedByInput {
@@ -4276,6 +4395,12 @@ input ReviewUpsertWithWhereUniqueWithoutAuthorInput {
   where: ReviewWhereUniqueInput!
   update: ReviewUpdateWithoutAuthorDataInput!
   create: ReviewCreateWithoutAuthorInput!
+}
+
+input ReviewUpsertWithWhereUniqueWithoutCourseInput {
+  where: ReviewWhereUniqueInput!
+  update: ReviewUpdateWithoutCourseDataInput!
+  create: ReviewCreateWithoutCourseInput!
 }
 
 input ReviewUpsertWithWhereUniqueWithoutDislikedByInput {

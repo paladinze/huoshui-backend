@@ -595,26 +595,13 @@ export type PositionOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface ReviewUpdateWithoutProfDataInput {
-  text?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  author?: Maybe<UserUpdateOneWithoutReviewsInput>;
-  course?: Maybe<CourseUpdateOneInput>;
-  tags?: Maybe<TagUpdateManyWithoutReviewsInput>;
-  likedBy?: Maybe<UserUpdateManyWithoutLikedReviewsInput>;
-  dislikedBy?: Maybe<UserUpdateManyWithoutDislikedReviewsInput>;
-  professional?: Maybe<Int>;
-  expressive?: Maybe<Int>;
-  kind?: Maybe<Int>;
-  rateHomework?: Maybe<Int>;
-  rateAttend?: Maybe<Int>;
-  rateBirdy?: Maybe<Int>;
-  hasExam?: Maybe<Boolean>;
-  examprep?: Maybe<Boolean>;
-  openbook?: Maybe<Boolean>;
-  oldquestion?: Maybe<Boolean>;
-  easymark?: Maybe<Boolean>;
+export interface UserUpdateOneWithoutReviewsInput {
+  create?: Maybe<UserCreateWithoutReviewsInput>;
+  update?: Maybe<UserUpdateWithoutReviewsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutReviewsInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<UserWhereUniqueInput>;
 }
 
 export type CourseWhereUniqueInput = AtLeastOne<{
@@ -1147,6 +1134,9 @@ export interface CourseWhereInput {
   likedBy_every?: Maybe<UserWhereInput>;
   likedBy_some?: Maybe<UserWhereInput>;
   likedBy_none?: Maybe<UserWhereInput>;
+  reviews_every?: Maybe<ReviewWhereInput>;
+  reviews_some?: Maybe<ReviewWhereInput>;
+  reviews_none?: Maybe<ReviewWhereInput>;
   professional?: Maybe<Float>;
   professional_not?: Maybe<Float>;
   professional_in?: Maybe<Float[] | Float>;
@@ -1421,6 +1411,932 @@ export interface CourseUpdateManyWithoutProfInput {
   >;
 }
 
+export interface TagWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  isPositive?: Maybe<Boolean>;
+  isPositive_not?: Maybe<Boolean>;
+  category?: Maybe<String>;
+  category_not?: Maybe<String>;
+  category_in?: Maybe<String[] | String>;
+  category_not_in?: Maybe<String[] | String>;
+  category_lt?: Maybe<String>;
+  category_lte?: Maybe<String>;
+  category_gt?: Maybe<String>;
+  category_gte?: Maybe<String>;
+  category_contains?: Maybe<String>;
+  category_not_contains?: Maybe<String>;
+  category_starts_with?: Maybe<String>;
+  category_not_starts_with?: Maybe<String>;
+  category_ends_with?: Maybe<String>;
+  category_not_ends_with?: Maybe<String>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  reviews_every?: Maybe<ReviewWhereInput>;
+  reviews_some?: Maybe<ReviewWhereInput>;
+  reviews_none?: Maybe<ReviewWhereInput>;
+  AND?: Maybe<TagWhereInput[] | TagWhereInput>;
+  OR?: Maybe<TagWhereInput[] | TagWhereInput>;
+  NOT?: Maybe<TagWhereInput[] | TagWhereInput>;
+}
+
+export interface CourseUpdateWithWhereUniqueWithoutProfInput {
+  where: CourseWhereUniqueInput;
+  data: CourseUpdateWithoutProfDataInput;
+}
+
+export interface DeptWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  shortname?: Maybe<String>;
+  shortname_not?: Maybe<String>;
+  shortname_in?: Maybe<String[] | String>;
+  shortname_not_in?: Maybe<String[] | String>;
+  shortname_lt?: Maybe<String>;
+  shortname_lte?: Maybe<String>;
+  shortname_gt?: Maybe<String>;
+  shortname_gte?: Maybe<String>;
+  shortname_contains?: Maybe<String>;
+  shortname_not_contains?: Maybe<String>;
+  shortname_starts_with?: Maybe<String>;
+  shortname_not_starts_with?: Maybe<String>;
+  shortname_ends_with?: Maybe<String>;
+  shortname_not_ends_with?: Maybe<String>;
+  longname?: Maybe<String>;
+  longname_not?: Maybe<String>;
+  longname_in?: Maybe<String[] | String>;
+  longname_not_in?: Maybe<String[] | String>;
+  longname_lt?: Maybe<String>;
+  longname_lte?: Maybe<String>;
+  longname_gt?: Maybe<String>;
+  longname_gte?: Maybe<String>;
+  longname_contains?: Maybe<String>;
+  longname_not_contains?: Maybe<String>;
+  longname_starts_with?: Maybe<String>;
+  longname_not_starts_with?: Maybe<String>;
+  longname_ends_with?: Maybe<String>;
+  longname_not_ends_with?: Maybe<String>;
+  alias?: Maybe<String>;
+  alias_not?: Maybe<String>;
+  alias_in?: Maybe<String[] | String>;
+  alias_not_in?: Maybe<String[] | String>;
+  alias_lt?: Maybe<String>;
+  alias_lte?: Maybe<String>;
+  alias_gt?: Maybe<String>;
+  alias_gte?: Maybe<String>;
+  alias_contains?: Maybe<String>;
+  alias_not_contains?: Maybe<String>;
+  alias_starts_with?: Maybe<String>;
+  alias_not_starts_with?: Maybe<String>;
+  alias_ends_with?: Maybe<String>;
+  alias_not_ends_with?: Maybe<String>;
+  icon?: Maybe<String>;
+  icon_not?: Maybe<String>;
+  icon_in?: Maybe<String[] | String>;
+  icon_not_in?: Maybe<String[] | String>;
+  icon_lt?: Maybe<String>;
+  icon_lte?: Maybe<String>;
+  icon_gt?: Maybe<String>;
+  icon_gte?: Maybe<String>;
+  icon_contains?: Maybe<String>;
+  icon_not_contains?: Maybe<String>;
+  icon_starts_with?: Maybe<String>;
+  icon_not_starts_with?: Maybe<String>;
+  icon_ends_with?: Maybe<String>;
+  icon_not_ends_with?: Maybe<String>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  students_every?: Maybe<UserWhereInput>;
+  students_some?: Maybe<UserWhereInput>;
+  students_none?: Maybe<UserWhereInput>;
+  profs_every?: Maybe<ProfWhereInput>;
+  profs_some?: Maybe<ProfWhereInput>;
+  profs_none?: Maybe<ProfWhereInput>;
+  courses_every?: Maybe<CourseWhereInput>;
+  courses_some?: Maybe<CourseWhereInput>;
+  courses_none?: Maybe<CourseWhereInput>;
+  AND?: Maybe<DeptWhereInput[] | DeptWhereInput>;
+  OR?: Maybe<DeptWhereInput[] | DeptWhereInput>;
+  NOT?: Maybe<DeptWhereInput[] | DeptWhereInput>;
+}
+
+export interface ProfUpdateOneWithoutReviewsInput {
+  create?: Maybe<ProfCreateWithoutReviewsInput>;
+  update?: Maybe<ProfUpdateWithoutReviewsDataInput>;
+  upsert?: Maybe<ProfUpsertWithoutReviewsInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<ProfWhereUniqueInput>;
+}
+
+export interface DeptUpdateInput {
+  shortname?: Maybe<String>;
+  longname?: Maybe<String>;
+  alias?: Maybe<String>;
+  icon?: Maybe<String>;
+  students?: Maybe<UserUpdateManyWithoutDeptInput>;
+  profs?: Maybe<ProfUpdateManyWithoutDeptInput>;
+  courses?: Maybe<CourseUpdateManyWithoutDeptInput>;
+}
+
+export interface ProfUpdateWithoutReviewsDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  gender?: Maybe<Sex>;
+  birth?: Maybe<Int>;
+  hometown?: Maybe<String>;
+  motto?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  exp?: Maybe<Int>;
+  group?: Maybe<String>;
+  intro?: Maybe<String>;
+  education?: Maybe<String>;
+  research?: Maybe<String>;
+  achievement?: Maybe<String>;
+  dept?: Maybe<DeptUpdateOneWithoutProfsInput>;
+  position?: Maybe<PositionUpdateOneWithoutProfsInput>;
+  courses?: Maybe<CourseUpdateManyWithoutProfInput>;
+  scoreOverall?: Maybe<Float>;
+  scoreProfessional?: Maybe<Float>;
+  scoreExpressive?: Maybe<Float>;
+  scoreKind?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasyYes?: Maybe<Int>;
+  countExamEasyNo?: Maybe<Int>;
+}
+
+export interface CourseUpdateWithoutProfDataInput {
+  name?: Maybe<String>;
+  likedCount?: Maybe<Int>;
+  dept?: Maybe<DeptUpdateOneWithoutCoursesInput>;
+  likedBy?: Maybe<UserUpdateManyWithoutLikedCoursesInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutCourseInput>;
+  professional?: Maybe<Float>;
+  expressive?: Maybe<Float>;
+  kind?: Maybe<Float>;
+  scoreOverall?: Maybe<Float>;
+  scoreHot?: Maybe<Float>;
+  scoreRepute?: Maybe<Float>;
+  scoreBirdy?: Maybe<Float>;
+  scoreAttend?: Maybe<Float>;
+  scoreExam?: Maybe<Float>;
+  scoreHomework?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasymarkYes?: Maybe<Int>;
+  countExamEasymarkNo?: Maybe<Int>;
+}
+
+export interface DeptUpdateOneWithoutProfsInput {
+  create?: Maybe<DeptCreateWithoutProfsInput>;
+  update?: Maybe<DeptUpdateWithoutProfsDataInput>;
+  upsert?: Maybe<DeptUpsertWithoutProfsInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<DeptWhereUniqueInput>;
+}
+
+export interface TagSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TagWhereInput>;
+  AND?: Maybe<TagSubscriptionWhereInput[] | TagSubscriptionWhereInput>;
+  OR?: Maybe<TagSubscriptionWhereInput[] | TagSubscriptionWhereInput>;
+  NOT?: Maybe<TagSubscriptionWhereInput[] | TagSubscriptionWhereInput>;
+}
+
+export interface DeptUpdateWithoutProfsDataInput {
+  shortname?: Maybe<String>;
+  longname?: Maybe<String>;
+  alias?: Maybe<String>;
+  icon?: Maybe<String>;
+  students?: Maybe<UserUpdateManyWithoutDeptInput>;
+  courses?: Maybe<CourseUpdateManyWithoutDeptInput>;
+}
+
+export interface ReviewSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<ReviewWhereInput>;
+  AND?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
+  OR?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
+  NOT?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
+}
+
+export interface CourseUpdateManyWithoutDeptInput {
+  create?: Maybe<CourseCreateWithoutDeptInput[] | CourseCreateWithoutDeptInput>;
+  delete?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+  connect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+  set?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+  disconnect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+  update?: Maybe<
+    | CourseUpdateWithWhereUniqueWithoutDeptInput[]
+    | CourseUpdateWithWhereUniqueWithoutDeptInput
+  >;
+  upsert?: Maybe<
+    | CourseUpsertWithWhereUniqueWithoutDeptInput[]
+    | CourseUpsertWithWhereUniqueWithoutDeptInput
+  >;
+  deleteMany?: Maybe<CourseScalarWhereInput[] | CourseScalarWhereInput>;
+  updateMany?: Maybe<
+    | CourseUpdateManyWithWhereNestedInput[]
+    | CourseUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface PositionSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PositionWhereInput>;
+  AND?: Maybe<
+    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
+  >;
+  OR?: Maybe<PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput>;
+  NOT?: Maybe<
+    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
+  >;
+}
+
+export interface CourseUpdateWithWhereUniqueWithoutDeptInput {
+  where: CourseWhereUniqueInput;
+  data: CourseUpdateWithoutDeptDataInput;
+}
+
+export interface CourseSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CourseWhereInput>;
+  AND?: Maybe<CourseSubscriptionWhereInput[] | CourseSubscriptionWhereInput>;
+  OR?: Maybe<CourseSubscriptionWhereInput[] | CourseSubscriptionWhereInput>;
+  NOT?: Maybe<CourseSubscriptionWhereInput[] | CourseSubscriptionWhereInput>;
+}
+
+export interface CourseUpdateWithoutDeptDataInput {
+  name?: Maybe<String>;
+  likedCount?: Maybe<Int>;
+  prof?: Maybe<ProfUpdateOneWithoutCoursesInput>;
+  likedBy?: Maybe<UserUpdateManyWithoutLikedCoursesInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutCourseInput>;
+  professional?: Maybe<Float>;
+  expressive?: Maybe<Float>;
+  kind?: Maybe<Float>;
+  scoreOverall?: Maybe<Float>;
+  scoreHot?: Maybe<Float>;
+  scoreRepute?: Maybe<Float>;
+  scoreBirdy?: Maybe<Float>;
+  scoreAttend?: Maybe<Float>;
+  scoreExam?: Maybe<Float>;
+  scoreHomework?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasymarkYes?: Maybe<Int>;
+  countExamEasymarkNo?: Maybe<Int>;
+}
+
+export interface UserUpdateInput {
+  username?: Maybe<String>;
+  email?: Maybe<String>;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password?: Maybe<String>;
+  firstYear?: Maybe<Int>;
+  dept?: Maybe<DeptUpdateOneRequiredWithoutStudentsInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutAuthorInput>;
+  likedReviews?: Maybe<ReviewUpdateManyWithoutLikedByInput>;
+  dislikedReviews?: Maybe<ReviewUpdateManyWithoutDislikedByInput>;
+  likedCourses?: Maybe<CourseUpdateManyWithoutLikedByInput>;
+}
+
+export interface ProfUpdateOneWithoutCoursesInput {
+  create?: Maybe<ProfCreateWithoutCoursesInput>;
+  update?: Maybe<ProfUpdateWithoutCoursesDataInput>;
+  upsert?: Maybe<ProfUpsertWithoutCoursesInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<ProfWhereUniqueInput>;
+}
+
+export interface UserCreateInput {
+  id?: Maybe<ID_Input>;
+  username: String;
+  email: String;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password: String;
+  firstYear: Int;
+  dept: DeptCreateOneWithoutStudentsInput;
+  reviews?: Maybe<ReviewCreateManyWithoutAuthorInput>;
+  likedReviews?: Maybe<ReviewCreateManyWithoutLikedByInput>;
+  dislikedReviews?: Maybe<ReviewCreateManyWithoutDislikedByInput>;
+  likedCourses?: Maybe<CourseCreateManyWithoutLikedByInput>;
+}
+
+export interface ProfUpdateWithoutCoursesDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  gender?: Maybe<Sex>;
+  birth?: Maybe<Int>;
+  hometown?: Maybe<String>;
+  motto?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  exp?: Maybe<Int>;
+  group?: Maybe<String>;
+  intro?: Maybe<String>;
+  education?: Maybe<String>;
+  research?: Maybe<String>;
+  achievement?: Maybe<String>;
+  dept?: Maybe<DeptUpdateOneWithoutProfsInput>;
+  position?: Maybe<PositionUpdateOneWithoutProfsInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutProfInput>;
+  scoreOverall?: Maybe<Float>;
+  scoreProfessional?: Maybe<Float>;
+  scoreExpressive?: Maybe<Float>;
+  scoreKind?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasyYes?: Maybe<Int>;
+  countExamEasyNo?: Maybe<Int>;
+}
+
+export interface ReviewUpsertWithWhereUniqueWithoutTagsInput {
+  where: ReviewWhereUniqueInput;
+  update: ReviewUpdateWithoutTagsDataInput;
+  create: ReviewCreateWithoutTagsInput;
+}
+
+export interface PositionUpdateOneWithoutProfsInput {
+  create?: Maybe<PositionCreateWithoutProfsInput>;
+  update?: Maybe<PositionUpdateWithoutProfsDataInput>;
+  upsert?: Maybe<PositionUpsertWithoutProfsInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<PositionWhereUniqueInput>;
+}
+
+export type PositionWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  name?: Maybe<String>;
+}>;
+
+export interface PositionUpdateWithoutProfsDataInput {
+  name?: Maybe<String>;
+}
+
+export interface ReviewUpdateManyWithoutTagsInput {
+  create?: Maybe<ReviewCreateWithoutTagsInput[] | ReviewCreateWithoutTagsInput>;
+  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  update?: Maybe<
+    | ReviewUpdateWithWhereUniqueWithoutTagsInput[]
+    | ReviewUpdateWithWhereUniqueWithoutTagsInput
+  >;
+  upsert?: Maybe<
+    | ReviewUpsertWithWhereUniqueWithoutTagsInput[]
+    | ReviewUpsertWithWhereUniqueWithoutTagsInput
+  >;
+  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  updateMany?: Maybe<
+    | ReviewUpdateManyWithWhereNestedInput[]
+    | ReviewUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface PositionUpsertWithoutProfsInput {
+  update: PositionUpdateWithoutProfsDataInput;
+  create: PositionCreateWithoutProfsInput;
+}
+
+export interface ReviewCreateWithoutTagsInput {
+  id?: Maybe<ID_Input>;
+  text: String;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  author?: Maybe<UserCreateOneWithoutReviewsInput>;
+  prof?: Maybe<ProfCreateOneWithoutReviewsInput>;
+  course?: Maybe<CourseCreateOneWithoutReviewsInput>;
+  likedBy?: Maybe<UserCreateManyWithoutLikedReviewsInput>;
+  dislikedBy?: Maybe<UserCreateManyWithoutDislikedReviewsInput>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
+}
+
+export interface ReviewUpdateManyWithoutProfInput {
+  create?: Maybe<ReviewCreateWithoutProfInput[] | ReviewCreateWithoutProfInput>;
+  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  update?: Maybe<
+    | ReviewUpdateWithWhereUniqueWithoutProfInput[]
+    | ReviewUpdateWithWhereUniqueWithoutProfInput
+  >;
+  upsert?: Maybe<
+    | ReviewUpsertWithWhereUniqueWithoutProfInput[]
+    | ReviewUpsertWithWhereUniqueWithoutProfInput
+  >;
+  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  updateMany?: Maybe<
+    | ReviewUpdateManyWithWhereNestedInput[]
+    | ReviewUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ReviewCreateManyWithoutTagsInput {
+  create?: Maybe<ReviewCreateWithoutTagsInput[] | ReviewCreateWithoutTagsInput>;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+}
+
+export interface ReviewUpdateWithWhereUniqueWithoutProfInput {
+  where: ReviewWhereUniqueInput;
+  data: ReviewUpdateWithoutProfDataInput;
+}
+
+export interface ReviewUpdateManyMutationInput {
+  text?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
+}
+
+export interface ReviewUpdateWithoutProfDataInput {
+  text?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  author?: Maybe<UserUpdateOneWithoutReviewsInput>;
+  course?: Maybe<CourseUpdateOneWithoutReviewsInput>;
+  tags?: Maybe<TagUpdateManyWithoutReviewsInput>;
+  likedBy?: Maybe<UserUpdateManyWithoutLikedReviewsInput>;
+  dislikedBy?: Maybe<UserUpdateManyWithoutDislikedReviewsInput>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
+}
+
+export interface ReviewUpdateInput {
+  text?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  author?: Maybe<UserUpdateOneWithoutReviewsInput>;
+  prof?: Maybe<ProfUpdateOneWithoutReviewsInput>;
+  course?: Maybe<CourseUpdateOneWithoutReviewsInput>;
+  tags?: Maybe<TagUpdateManyWithoutReviewsInput>;
+  likedBy?: Maybe<UserUpdateManyWithoutLikedReviewsInput>;
+  dislikedBy?: Maybe<UserUpdateManyWithoutDislikedReviewsInput>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
+}
+
+export interface ProfUpdateManyWithoutPositionInput {
+  create?: Maybe<
+    ProfCreateWithoutPositionInput[] | ProfCreateWithoutPositionInput
+  >;
+  delete?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  set?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  disconnect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  update?: Maybe<
+    | ProfUpdateWithWhereUniqueWithoutPositionInput[]
+    | ProfUpdateWithWhereUniqueWithoutPositionInput
+  >;
+  upsert?: Maybe<
+    | ProfUpsertWithWhereUniqueWithoutPositionInput[]
+    | ProfUpsertWithWhereUniqueWithoutPositionInput
+  >;
+  deleteMany?: Maybe<ProfScalarWhereInput[] | ProfScalarWhereInput>;
+  updateMany?: Maybe<
+    ProfUpdateManyWithWhereNestedInput[] | ProfUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ProfUpdateManyMutationInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  gender?: Maybe<Sex>;
+  birth?: Maybe<Int>;
+  hometown?: Maybe<String>;
+  motto?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  exp?: Maybe<Int>;
+  group?: Maybe<String>;
+  intro?: Maybe<String>;
+  education?: Maybe<String>;
+  research?: Maybe<String>;
+  achievement?: Maybe<String>;
+  scoreOverall?: Maybe<Float>;
+  scoreProfessional?: Maybe<Float>;
+  scoreExpressive?: Maybe<Float>;
+  scoreKind?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasyYes?: Maybe<Int>;
+  countExamEasyNo?: Maybe<Int>;
+}
+
+export interface UserUpdateWithoutReviewsDataInput {
+  username?: Maybe<String>;
+  email?: Maybe<String>;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password?: Maybe<String>;
+  firstYear?: Maybe<Int>;
+  dept?: Maybe<DeptUpdateOneRequiredWithoutStudentsInput>;
+  likedReviews?: Maybe<ReviewUpdateManyWithoutLikedByInput>;
+  dislikedReviews?: Maybe<ReviewUpdateManyWithoutDislikedByInput>;
+  likedCourses?: Maybe<CourseUpdateManyWithoutLikedByInput>;
+}
+
+export interface ProfUpdateInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  gender?: Maybe<Sex>;
+  birth?: Maybe<Int>;
+  hometown?: Maybe<String>;
+  motto?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  exp?: Maybe<Int>;
+  group?: Maybe<String>;
+  intro?: Maybe<String>;
+  education?: Maybe<String>;
+  research?: Maybe<String>;
+  achievement?: Maybe<String>;
+  dept?: Maybe<DeptUpdateOneWithoutProfsInput>;
+  position?: Maybe<PositionUpdateOneWithoutProfsInput>;
+  courses?: Maybe<CourseUpdateManyWithoutProfInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutProfInput>;
+  scoreOverall?: Maybe<Float>;
+  scoreProfessional?: Maybe<Float>;
+  scoreExpressive?: Maybe<Float>;
+  scoreKind?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasyYes?: Maybe<Int>;
+  countExamEasyNo?: Maybe<Int>;
+}
+
+export interface DeptUpdateOneRequiredWithoutStudentsInput {
+  create?: Maybe<DeptCreateWithoutStudentsInput>;
+  update?: Maybe<DeptUpdateWithoutStudentsDataInput>;
+  upsert?: Maybe<DeptUpsertWithoutStudentsInput>;
+  connect?: Maybe<DeptWhereUniqueInput>;
+}
+
+export interface PositionUpdateManyMutationInput {
+  name?: Maybe<String>;
+}
+
+export interface DeptUpdateWithoutStudentsDataInput {
+  shortname?: Maybe<String>;
+  longname?: Maybe<String>;
+  alias?: Maybe<String>;
+  icon?: Maybe<String>;
+  profs?: Maybe<ProfUpdateManyWithoutDeptInput>;
+  courses?: Maybe<CourseUpdateManyWithoutDeptInput>;
+}
+
+export interface ProfUpsertWithWhereUniqueWithoutPositionInput {
+  where: ProfWhereUniqueInput;
+  update: ProfUpdateWithoutPositionDataInput;
+  create: ProfCreateWithoutPositionInput;
+}
+
+export interface ProfUpdateManyWithoutDeptInput {
+  create?: Maybe<ProfCreateWithoutDeptInput[] | ProfCreateWithoutDeptInput>;
+  delete?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  set?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  disconnect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+  update?: Maybe<
+    | ProfUpdateWithWhereUniqueWithoutDeptInput[]
+    | ProfUpdateWithWhereUniqueWithoutDeptInput
+  >;
+  upsert?: Maybe<
+    | ProfUpsertWithWhereUniqueWithoutDeptInput[]
+    | ProfUpsertWithWhereUniqueWithoutDeptInput
+  >;
+  deleteMany?: Maybe<ProfScalarWhereInput[] | ProfScalarWhereInput>;
+  updateMany?: Maybe<
+    ProfUpdateManyWithWhereNestedInput[] | ProfUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ProfUpdateWithWhereUniqueWithoutPositionInput {
+  where: ProfWhereUniqueInput;
+  data: ProfUpdateWithoutPositionDataInput;
+}
+
+export interface PositionWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  profs_every?: Maybe<ProfWhereInput>;
+  profs_some?: Maybe<ProfWhereInput>;
+  profs_none?: Maybe<ProfWhereInput>;
+  AND?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+  OR?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+  NOT?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+}
+
+export interface CourseCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  likedCount?: Maybe<Int>;
+  dept?: Maybe<DeptCreateOneWithoutCoursesInput>;
+  prof?: Maybe<ProfCreateOneWithoutCoursesInput>;
+  likedBy?: Maybe<UserCreateManyWithoutLikedCoursesInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutCourseInput>;
+  professional?: Maybe<Float>;
+  expressive?: Maybe<Float>;
+  kind?: Maybe<Float>;
+  scoreOverall?: Maybe<Float>;
+  scoreHot?: Maybe<Float>;
+  scoreRepute?: Maybe<Float>;
+  scoreBirdy?: Maybe<Float>;
+  scoreAttend?: Maybe<Float>;
+  scoreExam?: Maybe<Float>;
+  scoreHomework?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasymarkYes?: Maybe<Int>;
+  countExamEasymarkNo?: Maybe<Int>;
+}
+
 export interface ReviewWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
@@ -1557,869 +2473,6 @@ export interface ReviewWhereInput {
   NOT?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
 }
 
-export interface CourseUpdateWithWhereUniqueWithoutProfInput {
-  where: CourseWhereUniqueInput;
-  data: CourseUpdateWithoutProfDataInput;
-}
-
-export interface DeptWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  shortname?: Maybe<String>;
-  shortname_not?: Maybe<String>;
-  shortname_in?: Maybe<String[] | String>;
-  shortname_not_in?: Maybe<String[] | String>;
-  shortname_lt?: Maybe<String>;
-  shortname_lte?: Maybe<String>;
-  shortname_gt?: Maybe<String>;
-  shortname_gte?: Maybe<String>;
-  shortname_contains?: Maybe<String>;
-  shortname_not_contains?: Maybe<String>;
-  shortname_starts_with?: Maybe<String>;
-  shortname_not_starts_with?: Maybe<String>;
-  shortname_ends_with?: Maybe<String>;
-  shortname_not_ends_with?: Maybe<String>;
-  longname?: Maybe<String>;
-  longname_not?: Maybe<String>;
-  longname_in?: Maybe<String[] | String>;
-  longname_not_in?: Maybe<String[] | String>;
-  longname_lt?: Maybe<String>;
-  longname_lte?: Maybe<String>;
-  longname_gt?: Maybe<String>;
-  longname_gte?: Maybe<String>;
-  longname_contains?: Maybe<String>;
-  longname_not_contains?: Maybe<String>;
-  longname_starts_with?: Maybe<String>;
-  longname_not_starts_with?: Maybe<String>;
-  longname_ends_with?: Maybe<String>;
-  longname_not_ends_with?: Maybe<String>;
-  alias?: Maybe<String>;
-  alias_not?: Maybe<String>;
-  alias_in?: Maybe<String[] | String>;
-  alias_not_in?: Maybe<String[] | String>;
-  alias_lt?: Maybe<String>;
-  alias_lte?: Maybe<String>;
-  alias_gt?: Maybe<String>;
-  alias_gte?: Maybe<String>;
-  alias_contains?: Maybe<String>;
-  alias_not_contains?: Maybe<String>;
-  alias_starts_with?: Maybe<String>;
-  alias_not_starts_with?: Maybe<String>;
-  alias_ends_with?: Maybe<String>;
-  alias_not_ends_with?: Maybe<String>;
-  icon?: Maybe<String>;
-  icon_not?: Maybe<String>;
-  icon_in?: Maybe<String[] | String>;
-  icon_not_in?: Maybe<String[] | String>;
-  icon_lt?: Maybe<String>;
-  icon_lte?: Maybe<String>;
-  icon_gt?: Maybe<String>;
-  icon_gte?: Maybe<String>;
-  icon_contains?: Maybe<String>;
-  icon_not_contains?: Maybe<String>;
-  icon_starts_with?: Maybe<String>;
-  icon_not_starts_with?: Maybe<String>;
-  icon_ends_with?: Maybe<String>;
-  icon_not_ends_with?: Maybe<String>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  students_every?: Maybe<UserWhereInput>;
-  students_some?: Maybe<UserWhereInput>;
-  students_none?: Maybe<UserWhereInput>;
-  profs_every?: Maybe<ProfWhereInput>;
-  profs_some?: Maybe<ProfWhereInput>;
-  profs_none?: Maybe<ProfWhereInput>;
-  courses_every?: Maybe<CourseWhereInput>;
-  courses_some?: Maybe<CourseWhereInput>;
-  courses_none?: Maybe<CourseWhereInput>;
-  AND?: Maybe<DeptWhereInput[] | DeptWhereInput>;
-  OR?: Maybe<DeptWhereInput[] | DeptWhereInput>;
-  NOT?: Maybe<DeptWhereInput[] | DeptWhereInput>;
-}
-
-export interface ReviewUpdateWithoutAuthorDataInput {
-  text?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  prof?: Maybe<ProfUpdateOneWithoutReviewsInput>;
-  course?: Maybe<CourseUpdateOneInput>;
-  tags?: Maybe<TagUpdateManyWithoutReviewsInput>;
-  likedBy?: Maybe<UserUpdateManyWithoutLikedReviewsInput>;
-  dislikedBy?: Maybe<UserUpdateManyWithoutDislikedReviewsInput>;
-  professional?: Maybe<Int>;
-  expressive?: Maybe<Int>;
-  kind?: Maybe<Int>;
-  rateHomework?: Maybe<Int>;
-  rateAttend?: Maybe<Int>;
-  rateBirdy?: Maybe<Int>;
-  hasExam?: Maybe<Boolean>;
-  examprep?: Maybe<Boolean>;
-  openbook?: Maybe<Boolean>;
-  oldquestion?: Maybe<Boolean>;
-  easymark?: Maybe<Boolean>;
-}
-
-export interface DeptUpdateInput {
-  shortname?: Maybe<String>;
-  longname?: Maybe<String>;
-  alias?: Maybe<String>;
-  icon?: Maybe<String>;
-  students?: Maybe<UserUpdateManyWithoutDeptInput>;
-  profs?: Maybe<ProfUpdateManyWithoutDeptInput>;
-  courses?: Maybe<CourseUpdateManyWithoutDeptInput>;
-}
-
-export interface ProfUpdateOneWithoutReviewsInput {
-  create?: Maybe<ProfCreateWithoutReviewsInput>;
-  update?: Maybe<ProfUpdateWithoutReviewsDataInput>;
-  upsert?: Maybe<ProfUpsertWithoutReviewsInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<ProfWhereUniqueInput>;
-}
-
-export interface CourseUpdateWithoutProfDataInput {
-  name?: Maybe<String>;
-  likedCount?: Maybe<Int>;
-  dept?: Maybe<DeptUpdateOneWithoutCoursesInput>;
-  likedBy?: Maybe<UserUpdateManyWithoutLikedCoursesInput>;
-  professional?: Maybe<Float>;
-  expressive?: Maybe<Float>;
-  kind?: Maybe<Float>;
-  scoreOverall?: Maybe<Float>;
-  scoreHot?: Maybe<Float>;
-  scoreRepute?: Maybe<Float>;
-  scoreBirdy?: Maybe<Float>;
-  scoreAttend?: Maybe<Float>;
-  scoreExam?: Maybe<Float>;
-  scoreHomework?: Maybe<Float>;
-  meanHomework?: Maybe<Float>;
-  meanAttend?: Maybe<Float>;
-  meanBirdy?: Maybe<Float>;
-  meanExam?: Maybe<Float>;
-  countReview?: Maybe<Int>;
-  countGoodReview?: Maybe<Int>;
-  countAverageReview?: Maybe<Int>;
-  countBadReview?: Maybe<Int>;
-  countHomework?: Maybe<Int>;
-  countAttend?: Maybe<Int>;
-  countBirdy?: Maybe<Int>;
-  countExam?: Maybe<Int>;
-  countExamDetails?: Maybe<Int>;
-  countExamPrepYes?: Maybe<Int>;
-  countExamPrepNo?: Maybe<Int>;
-  countExamOpenbookYes?: Maybe<Int>;
-  countExamOpenbookNo?: Maybe<Int>;
-  countExamOldquestionYes?: Maybe<Int>;
-  countExamOldquestionNo?: Maybe<Int>;
-  countExamEasymarkYes?: Maybe<Int>;
-  countExamEasymarkNo?: Maybe<Int>;
-}
-
-export interface ProfUpdateWithoutReviewsDataInput {
-  name?: Maybe<String>;
-  code?: Maybe<String>;
-  gender?: Maybe<Sex>;
-  birth?: Maybe<Int>;
-  hometown?: Maybe<String>;
-  motto?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  exp?: Maybe<Int>;
-  group?: Maybe<String>;
-  intro?: Maybe<String>;
-  education?: Maybe<String>;
-  research?: Maybe<String>;
-  achievement?: Maybe<String>;
-  dept?: Maybe<DeptUpdateOneWithoutProfsInput>;
-  position?: Maybe<PositionUpdateOneWithoutProfsInput>;
-  courses?: Maybe<CourseUpdateManyWithoutProfInput>;
-  scoreOverall?: Maybe<Float>;
-  scoreProfessional?: Maybe<Float>;
-  scoreExpressive?: Maybe<Float>;
-  scoreKind?: Maybe<Float>;
-  meanHomework?: Maybe<Float>;
-  meanAttend?: Maybe<Float>;
-  meanBirdy?: Maybe<Float>;
-  meanExam?: Maybe<Float>;
-  countReview?: Maybe<Int>;
-  countGoodReview?: Maybe<Int>;
-  countAverageReview?: Maybe<Int>;
-  countBadReview?: Maybe<Int>;
-  countHomework?: Maybe<Int>;
-  countAttend?: Maybe<Int>;
-  countBirdy?: Maybe<Int>;
-  countExam?: Maybe<Int>;
-  countExamDetails?: Maybe<Int>;
-  countExamPrepYes?: Maybe<Int>;
-  countExamPrepNo?: Maybe<Int>;
-  countExamOpenbookYes?: Maybe<Int>;
-  countExamOpenbookNo?: Maybe<Int>;
-  countExamOldquestionYes?: Maybe<Int>;
-  countExamOldquestionNo?: Maybe<Int>;
-  countExamEasyYes?: Maybe<Int>;
-  countExamEasyNo?: Maybe<Int>;
-}
-
-export interface TagSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<TagWhereInput>;
-  AND?: Maybe<TagSubscriptionWhereInput[] | TagSubscriptionWhereInput>;
-  OR?: Maybe<TagSubscriptionWhereInput[] | TagSubscriptionWhereInput>;
-  NOT?: Maybe<TagSubscriptionWhereInput[] | TagSubscriptionWhereInput>;
-}
-
-export interface DeptUpdateOneWithoutProfsInput {
-  create?: Maybe<DeptCreateWithoutProfsInput>;
-  update?: Maybe<DeptUpdateWithoutProfsDataInput>;
-  upsert?: Maybe<DeptUpsertWithoutProfsInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<DeptWhereUniqueInput>;
-}
-
-export interface ReviewSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<ReviewWhereInput>;
-  AND?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
-  OR?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
-  NOT?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
-}
-
-export interface DeptUpdateWithoutProfsDataInput {
-  shortname?: Maybe<String>;
-  longname?: Maybe<String>;
-  alias?: Maybe<String>;
-  icon?: Maybe<String>;
-  students?: Maybe<UserUpdateManyWithoutDeptInput>;
-  courses?: Maybe<CourseUpdateManyWithoutDeptInput>;
-}
-
-export interface PositionSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PositionWhereInput>;
-  AND?: Maybe<
-    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
-  >;
-  OR?: Maybe<PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput>;
-  NOT?: Maybe<
-    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
-  >;
-}
-
-export interface CourseUpdateManyWithoutDeptInput {
-  create?: Maybe<CourseCreateWithoutDeptInput[] | CourseCreateWithoutDeptInput>;
-  delete?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
-  connect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
-  set?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
-  disconnect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
-  update?: Maybe<
-    | CourseUpdateWithWhereUniqueWithoutDeptInput[]
-    | CourseUpdateWithWhereUniqueWithoutDeptInput
-  >;
-  upsert?: Maybe<
-    | CourseUpsertWithWhereUniqueWithoutDeptInput[]
-    | CourseUpsertWithWhereUniqueWithoutDeptInput
-  >;
-  deleteMany?: Maybe<CourseScalarWhereInput[] | CourseScalarWhereInput>;
-  updateMany?: Maybe<
-    | CourseUpdateManyWithWhereNestedInput[]
-    | CourseUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface CourseSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<CourseWhereInput>;
-  AND?: Maybe<CourseSubscriptionWhereInput[] | CourseSubscriptionWhereInput>;
-  OR?: Maybe<CourseSubscriptionWhereInput[] | CourseSubscriptionWhereInput>;
-  NOT?: Maybe<CourseSubscriptionWhereInput[] | CourseSubscriptionWhereInput>;
-}
-
-export interface CourseUpdateWithWhereUniqueWithoutDeptInput {
-  where: CourseWhereUniqueInput;
-  data: CourseUpdateWithoutDeptDataInput;
-}
-
-export interface UserUpdateInput {
-  username?: Maybe<String>;
-  email?: Maybe<String>;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password?: Maybe<String>;
-  firstYear?: Maybe<Int>;
-  dept?: Maybe<DeptUpdateOneRequiredWithoutStudentsInput>;
-  reviews?: Maybe<ReviewUpdateManyWithoutAuthorInput>;
-  likedReviews?: Maybe<ReviewUpdateManyWithoutLikedByInput>;
-  dislikedReviews?: Maybe<ReviewUpdateManyWithoutDislikedByInput>;
-  likedCourses?: Maybe<CourseUpdateManyWithoutLikedByInput>;
-}
-
-export interface CourseUpdateWithoutDeptDataInput {
-  name?: Maybe<String>;
-  likedCount?: Maybe<Int>;
-  prof?: Maybe<ProfUpdateOneWithoutCoursesInput>;
-  likedBy?: Maybe<UserUpdateManyWithoutLikedCoursesInput>;
-  professional?: Maybe<Float>;
-  expressive?: Maybe<Float>;
-  kind?: Maybe<Float>;
-  scoreOverall?: Maybe<Float>;
-  scoreHot?: Maybe<Float>;
-  scoreRepute?: Maybe<Float>;
-  scoreBirdy?: Maybe<Float>;
-  scoreAttend?: Maybe<Float>;
-  scoreExam?: Maybe<Float>;
-  scoreHomework?: Maybe<Float>;
-  meanHomework?: Maybe<Float>;
-  meanAttend?: Maybe<Float>;
-  meanBirdy?: Maybe<Float>;
-  meanExam?: Maybe<Float>;
-  countReview?: Maybe<Int>;
-  countGoodReview?: Maybe<Int>;
-  countAverageReview?: Maybe<Int>;
-  countBadReview?: Maybe<Int>;
-  countHomework?: Maybe<Int>;
-  countAttend?: Maybe<Int>;
-  countBirdy?: Maybe<Int>;
-  countExam?: Maybe<Int>;
-  countExamDetails?: Maybe<Int>;
-  countExamPrepYes?: Maybe<Int>;
-  countExamPrepNo?: Maybe<Int>;
-  countExamOpenbookYes?: Maybe<Int>;
-  countExamOpenbookNo?: Maybe<Int>;
-  countExamOldquestionYes?: Maybe<Int>;
-  countExamOldquestionNo?: Maybe<Int>;
-  countExamEasymarkYes?: Maybe<Int>;
-  countExamEasymarkNo?: Maybe<Int>;
-}
-
-export interface UserCreateInput {
-  id?: Maybe<ID_Input>;
-  username: String;
-  email: String;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password: String;
-  firstYear: Int;
-  dept: DeptCreateOneWithoutStudentsInput;
-  reviews?: Maybe<ReviewCreateManyWithoutAuthorInput>;
-  likedReviews?: Maybe<ReviewCreateManyWithoutLikedByInput>;
-  dislikedReviews?: Maybe<ReviewCreateManyWithoutDislikedByInput>;
-  likedCourses?: Maybe<CourseCreateManyWithoutLikedByInput>;
-}
-
-export interface ProfUpdateOneWithoutCoursesInput {
-  create?: Maybe<ProfCreateWithoutCoursesInput>;
-  update?: Maybe<ProfUpdateWithoutCoursesDataInput>;
-  upsert?: Maybe<ProfUpsertWithoutCoursesInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<ProfWhereUniqueInput>;
-}
-
-export interface ReviewUpsertWithWhereUniqueWithoutTagsInput {
-  where: ReviewWhereUniqueInput;
-  update: ReviewUpdateWithoutTagsDataInput;
-  create: ReviewCreateWithoutTagsInput;
-}
-
-export interface ProfUpdateWithoutCoursesDataInput {
-  name?: Maybe<String>;
-  code?: Maybe<String>;
-  gender?: Maybe<Sex>;
-  birth?: Maybe<Int>;
-  hometown?: Maybe<String>;
-  motto?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  exp?: Maybe<Int>;
-  group?: Maybe<String>;
-  intro?: Maybe<String>;
-  education?: Maybe<String>;
-  research?: Maybe<String>;
-  achievement?: Maybe<String>;
-  dept?: Maybe<DeptUpdateOneWithoutProfsInput>;
-  position?: Maybe<PositionUpdateOneWithoutProfsInput>;
-  reviews?: Maybe<ReviewUpdateManyWithoutProfInput>;
-  scoreOverall?: Maybe<Float>;
-  scoreProfessional?: Maybe<Float>;
-  scoreExpressive?: Maybe<Float>;
-  scoreKind?: Maybe<Float>;
-  meanHomework?: Maybe<Float>;
-  meanAttend?: Maybe<Float>;
-  meanBirdy?: Maybe<Float>;
-  meanExam?: Maybe<Float>;
-  countReview?: Maybe<Int>;
-  countGoodReview?: Maybe<Int>;
-  countAverageReview?: Maybe<Int>;
-  countBadReview?: Maybe<Int>;
-  countHomework?: Maybe<Int>;
-  countAttend?: Maybe<Int>;
-  countBirdy?: Maybe<Int>;
-  countExam?: Maybe<Int>;
-  countExamDetails?: Maybe<Int>;
-  countExamPrepYes?: Maybe<Int>;
-  countExamPrepNo?: Maybe<Int>;
-  countExamOpenbookYes?: Maybe<Int>;
-  countExamOpenbookNo?: Maybe<Int>;
-  countExamOldquestionYes?: Maybe<Int>;
-  countExamOldquestionNo?: Maybe<Int>;
-  countExamEasyYes?: Maybe<Int>;
-  countExamEasyNo?: Maybe<Int>;
-}
-
-export type PositionWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  name?: Maybe<String>;
-}>;
-
-export interface PositionUpdateOneWithoutProfsInput {
-  create?: Maybe<PositionCreateWithoutProfsInput>;
-  update?: Maybe<PositionUpdateWithoutProfsDataInput>;
-  upsert?: Maybe<PositionUpsertWithoutProfsInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<PositionWhereUniqueInput>;
-}
-
-export interface ReviewUpdateManyWithoutTagsInput {
-  create?: Maybe<ReviewCreateWithoutTagsInput[] | ReviewCreateWithoutTagsInput>;
-  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  update?: Maybe<
-    | ReviewUpdateWithWhereUniqueWithoutTagsInput[]
-    | ReviewUpdateWithWhereUniqueWithoutTagsInput
-  >;
-  upsert?: Maybe<
-    | ReviewUpsertWithWhereUniqueWithoutTagsInput[]
-    | ReviewUpsertWithWhereUniqueWithoutTagsInput
-  >;
-  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-  updateMany?: Maybe<
-    | ReviewUpdateManyWithWhereNestedInput[]
-    | ReviewUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface PositionUpdateWithoutProfsDataInput {
-  name?: Maybe<String>;
-}
-
-export interface ReviewCreateWithoutTagsInput {
-  id?: Maybe<ID_Input>;
-  text: String;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  author?: Maybe<UserCreateOneWithoutReviewsInput>;
-  prof?: Maybe<ProfCreateOneWithoutReviewsInput>;
-  course?: Maybe<CourseCreateOneInput>;
-  likedBy?: Maybe<UserCreateManyWithoutLikedReviewsInput>;
-  dislikedBy?: Maybe<UserCreateManyWithoutDislikedReviewsInput>;
-  professional: Int;
-  expressive: Int;
-  kind: Int;
-  rateHomework?: Maybe<Int>;
-  rateAttend?: Maybe<Int>;
-  rateBirdy?: Maybe<Int>;
-  hasExam?: Maybe<Boolean>;
-  examprep?: Maybe<Boolean>;
-  openbook?: Maybe<Boolean>;
-  oldquestion?: Maybe<Boolean>;
-  easymark?: Maybe<Boolean>;
-}
-
-export interface PositionUpsertWithoutProfsInput {
-  update: PositionUpdateWithoutProfsDataInput;
-  create: PositionCreateWithoutProfsInput;
-}
-
-export interface ReviewCreateManyWithoutTagsInput {
-  create?: Maybe<ReviewCreateWithoutTagsInput[] | ReviewCreateWithoutTagsInput>;
-  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-}
-
-export interface ReviewUpdateManyWithoutProfInput {
-  create?: Maybe<ReviewCreateWithoutProfInput[] | ReviewCreateWithoutProfInput>;
-  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  update?: Maybe<
-    | ReviewUpdateWithWhereUniqueWithoutProfInput[]
-    | ReviewUpdateWithWhereUniqueWithoutProfInput
-  >;
-  upsert?: Maybe<
-    | ReviewUpsertWithWhereUniqueWithoutProfInput[]
-    | ReviewUpsertWithWhereUniqueWithoutProfInput
-  >;
-  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-  updateMany?: Maybe<
-    | ReviewUpdateManyWithWhereNestedInput[]
-    | ReviewUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface ReviewUpdateManyMutationInput {
-  text?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  professional?: Maybe<Int>;
-  expressive?: Maybe<Int>;
-  kind?: Maybe<Int>;
-  rateHomework?: Maybe<Int>;
-  rateAttend?: Maybe<Int>;
-  rateBirdy?: Maybe<Int>;
-  hasExam?: Maybe<Boolean>;
-  examprep?: Maybe<Boolean>;
-  openbook?: Maybe<Boolean>;
-  oldquestion?: Maybe<Boolean>;
-  easymark?: Maybe<Boolean>;
-}
-
-export interface ReviewUpdateWithWhereUniqueWithoutProfInput {
-  where: ReviewWhereUniqueInput;
-  data: ReviewUpdateWithoutProfDataInput;
-}
-
-export interface ReviewUpdateInput {
-  text?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  author?: Maybe<UserUpdateOneWithoutReviewsInput>;
-  prof?: Maybe<ProfUpdateOneWithoutReviewsInput>;
-  course?: Maybe<CourseUpdateOneInput>;
-  tags?: Maybe<TagUpdateManyWithoutReviewsInput>;
-  likedBy?: Maybe<UserUpdateManyWithoutLikedReviewsInput>;
-  dislikedBy?: Maybe<UserUpdateManyWithoutDislikedReviewsInput>;
-  professional?: Maybe<Int>;
-  expressive?: Maybe<Int>;
-  kind?: Maybe<Int>;
-  rateHomework?: Maybe<Int>;
-  rateAttend?: Maybe<Int>;
-  rateBirdy?: Maybe<Int>;
-  hasExam?: Maybe<Boolean>;
-  examprep?: Maybe<Boolean>;
-  openbook?: Maybe<Boolean>;
-  oldquestion?: Maybe<Boolean>;
-  easymark?: Maybe<Boolean>;
-}
-
-export interface ProfUpdateManyWithoutPositionInput {
-  create?: Maybe<
-    ProfCreateWithoutPositionInput[] | ProfCreateWithoutPositionInput
-  >;
-  delete?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  set?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  disconnect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  update?: Maybe<
-    | ProfUpdateWithWhereUniqueWithoutPositionInput[]
-    | ProfUpdateWithWhereUniqueWithoutPositionInput
-  >;
-  upsert?: Maybe<
-    | ProfUpsertWithWhereUniqueWithoutPositionInput[]
-    | ProfUpsertWithWhereUniqueWithoutPositionInput
-  >;
-  deleteMany?: Maybe<ProfScalarWhereInput[] | ProfScalarWhereInput>;
-  updateMany?: Maybe<
-    ProfUpdateManyWithWhereNestedInput[] | ProfUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface ProfUpdateManyMutationInput {
-  name?: Maybe<String>;
-  code?: Maybe<String>;
-  gender?: Maybe<Sex>;
-  birth?: Maybe<Int>;
-  hometown?: Maybe<String>;
-  motto?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  exp?: Maybe<Int>;
-  group?: Maybe<String>;
-  intro?: Maybe<String>;
-  education?: Maybe<String>;
-  research?: Maybe<String>;
-  achievement?: Maybe<String>;
-  scoreOverall?: Maybe<Float>;
-  scoreProfessional?: Maybe<Float>;
-  scoreExpressive?: Maybe<Float>;
-  scoreKind?: Maybe<Float>;
-  meanHomework?: Maybe<Float>;
-  meanAttend?: Maybe<Float>;
-  meanBirdy?: Maybe<Float>;
-  meanExam?: Maybe<Float>;
-  countReview?: Maybe<Int>;
-  countGoodReview?: Maybe<Int>;
-  countAverageReview?: Maybe<Int>;
-  countBadReview?: Maybe<Int>;
-  countHomework?: Maybe<Int>;
-  countAttend?: Maybe<Int>;
-  countBirdy?: Maybe<Int>;
-  countExam?: Maybe<Int>;
-  countExamDetails?: Maybe<Int>;
-  countExamPrepYes?: Maybe<Int>;
-  countExamPrepNo?: Maybe<Int>;
-  countExamOpenbookYes?: Maybe<Int>;
-  countExamOpenbookNo?: Maybe<Int>;
-  countExamOldquestionYes?: Maybe<Int>;
-  countExamOldquestionNo?: Maybe<Int>;
-  countExamEasyYes?: Maybe<Int>;
-  countExamEasyNo?: Maybe<Int>;
-}
-
-export interface UserUpdateOneWithoutReviewsInput {
-  create?: Maybe<UserCreateWithoutReviewsInput>;
-  update?: Maybe<UserUpdateWithoutReviewsDataInput>;
-  upsert?: Maybe<UserUpsertWithoutReviewsInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface ProfUpdateInput {
-  name?: Maybe<String>;
-  code?: Maybe<String>;
-  gender?: Maybe<Sex>;
-  birth?: Maybe<Int>;
-  hometown?: Maybe<String>;
-  motto?: Maybe<String>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  exp?: Maybe<Int>;
-  group?: Maybe<String>;
-  intro?: Maybe<String>;
-  education?: Maybe<String>;
-  research?: Maybe<String>;
-  achievement?: Maybe<String>;
-  dept?: Maybe<DeptUpdateOneWithoutProfsInput>;
-  position?: Maybe<PositionUpdateOneWithoutProfsInput>;
-  courses?: Maybe<CourseUpdateManyWithoutProfInput>;
-  reviews?: Maybe<ReviewUpdateManyWithoutProfInput>;
-  scoreOverall?: Maybe<Float>;
-  scoreProfessional?: Maybe<Float>;
-  scoreExpressive?: Maybe<Float>;
-  scoreKind?: Maybe<Float>;
-  meanHomework?: Maybe<Float>;
-  meanAttend?: Maybe<Float>;
-  meanBirdy?: Maybe<Float>;
-  meanExam?: Maybe<Float>;
-  countReview?: Maybe<Int>;
-  countGoodReview?: Maybe<Int>;
-  countAverageReview?: Maybe<Int>;
-  countBadReview?: Maybe<Int>;
-  countHomework?: Maybe<Int>;
-  countAttend?: Maybe<Int>;
-  countBirdy?: Maybe<Int>;
-  countExam?: Maybe<Int>;
-  countExamDetails?: Maybe<Int>;
-  countExamPrepYes?: Maybe<Int>;
-  countExamPrepNo?: Maybe<Int>;
-  countExamOpenbookYes?: Maybe<Int>;
-  countExamOpenbookNo?: Maybe<Int>;
-  countExamOldquestionYes?: Maybe<Int>;
-  countExamOldquestionNo?: Maybe<Int>;
-  countExamEasyYes?: Maybe<Int>;
-  countExamEasyNo?: Maybe<Int>;
-}
-
-export interface UserUpdateWithoutReviewsDataInput {
-  username?: Maybe<String>;
-  email?: Maybe<String>;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password?: Maybe<String>;
-  firstYear?: Maybe<Int>;
-  dept?: Maybe<DeptUpdateOneRequiredWithoutStudentsInput>;
-  likedReviews?: Maybe<ReviewUpdateManyWithoutLikedByInput>;
-  dislikedReviews?: Maybe<ReviewUpdateManyWithoutDislikedByInput>;
-  likedCourses?: Maybe<CourseUpdateManyWithoutLikedByInput>;
-}
-
-export interface PositionUpdateManyMutationInput {
-  name?: Maybe<String>;
-}
-
-export interface DeptUpdateOneRequiredWithoutStudentsInput {
-  create?: Maybe<DeptCreateWithoutStudentsInput>;
-  update?: Maybe<DeptUpdateWithoutStudentsDataInput>;
-  upsert?: Maybe<DeptUpsertWithoutStudentsInput>;
-  connect?: Maybe<DeptWhereUniqueInput>;
-}
-
-export interface ProfUpsertWithWhereUniqueWithoutPositionInput {
-  where: ProfWhereUniqueInput;
-  update: ProfUpdateWithoutPositionDataInput;
-  create: ProfCreateWithoutPositionInput;
-}
-
-export interface DeptUpdateWithoutStudentsDataInput {
-  shortname?: Maybe<String>;
-  longname?: Maybe<String>;
-  alias?: Maybe<String>;
-  icon?: Maybe<String>;
-  profs?: Maybe<ProfUpdateManyWithoutDeptInput>;
-  courses?: Maybe<CourseUpdateManyWithoutDeptInput>;
-}
-
-export interface ProfUpdateWithWhereUniqueWithoutPositionInput {
-  where: ProfWhereUniqueInput;
-  data: ProfUpdateWithoutPositionDataInput;
-}
-
-export interface ProfUpdateManyWithoutDeptInput {
-  create?: Maybe<ProfCreateWithoutDeptInput[] | ProfCreateWithoutDeptInput>;
-  delete?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  set?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  disconnect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-  update?: Maybe<
-    | ProfUpdateWithWhereUniqueWithoutDeptInput[]
-    | ProfUpdateWithWhereUniqueWithoutDeptInput
-  >;
-  upsert?: Maybe<
-    | ProfUpsertWithWhereUniqueWithoutDeptInput[]
-    | ProfUpsertWithWhereUniqueWithoutDeptInput
-  >;
-  deleteMany?: Maybe<ProfScalarWhereInput[] | ProfScalarWhereInput>;
-  updateMany?: Maybe<
-    ProfUpdateManyWithWhereNestedInput[] | ProfUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface CourseCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  likedCount?: Maybe<Int>;
-  dept?: Maybe<DeptCreateOneWithoutCoursesInput>;
-  prof?: Maybe<ProfCreateOneWithoutCoursesInput>;
-  likedBy?: Maybe<UserCreateManyWithoutLikedCoursesInput>;
-  professional?: Maybe<Float>;
-  expressive?: Maybe<Float>;
-  kind?: Maybe<Float>;
-  scoreOverall?: Maybe<Float>;
-  scoreHot?: Maybe<Float>;
-  scoreRepute?: Maybe<Float>;
-  scoreBirdy?: Maybe<Float>;
-  scoreAttend?: Maybe<Float>;
-  scoreExam?: Maybe<Float>;
-  scoreHomework?: Maybe<Float>;
-  meanHomework?: Maybe<Float>;
-  meanAttend?: Maybe<Float>;
-  meanBirdy?: Maybe<Float>;
-  meanExam?: Maybe<Float>;
-  countReview?: Maybe<Int>;
-  countGoodReview?: Maybe<Int>;
-  countAverageReview?: Maybe<Int>;
-  countBadReview?: Maybe<Int>;
-  countHomework?: Maybe<Int>;
-  countAttend?: Maybe<Int>;
-  countBirdy?: Maybe<Int>;
-  countExam?: Maybe<Int>;
-  countExamDetails?: Maybe<Int>;
-  countExamPrepYes?: Maybe<Int>;
-  countExamPrepNo?: Maybe<Int>;
-  countExamOpenbookYes?: Maybe<Int>;
-  countExamOpenbookNo?: Maybe<Int>;
-  countExamOldquestionYes?: Maybe<Int>;
-  countExamOldquestionNo?: Maybe<Int>;
-  countExamEasymarkYes?: Maybe<Int>;
-  countExamEasymarkNo?: Maybe<Int>;
-}
-
-export interface PositionWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  profs_every?: Maybe<ProfWhereInput>;
-  profs_some?: Maybe<ProfWhereInput>;
-  profs_none?: Maybe<ProfWhereInput>;
-  AND?: Maybe<PositionWhereInput[] | PositionWhereInput>;
-  OR?: Maybe<PositionWhereInput[] | PositionWhereInput>;
-  NOT?: Maybe<PositionWhereInput[] | PositionWhereInput>;
-}
-
 export interface DeptCreateWithoutCoursesInput {
   id?: Maybe<ID_Input>;
   shortname: String;
@@ -2447,98 +2500,6 @@ export interface UserCreateWithoutDeptInput {
   likedReviews?: Maybe<ReviewCreateManyWithoutLikedByInput>;
   dislikedReviews?: Maybe<ReviewCreateManyWithoutDislikedByInput>;
   likedCourses?: Maybe<CourseCreateManyWithoutLikedByInput>;
-}
-
-export interface TagWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  isPositive?: Maybe<Boolean>;
-  isPositive_not?: Maybe<Boolean>;
-  category?: Maybe<String>;
-  category_not?: Maybe<String>;
-  category_in?: Maybe<String[] | String>;
-  category_not_in?: Maybe<String[] | String>;
-  category_lt?: Maybe<String>;
-  category_lte?: Maybe<String>;
-  category_gt?: Maybe<String>;
-  category_gte?: Maybe<String>;
-  category_contains?: Maybe<String>;
-  category_not_contains?: Maybe<String>;
-  category_starts_with?: Maybe<String>;
-  category_not_starts_with?: Maybe<String>;
-  category_ends_with?: Maybe<String>;
-  category_not_ends_with?: Maybe<String>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  reviews_every?: Maybe<ReviewWhereInput>;
-  reviews_some?: Maybe<ReviewWhereInput>;
-  reviews_none?: Maybe<ReviewWhereInput>;
-  AND?: Maybe<TagWhereInput[] | TagWhereInput>;
-  OR?: Maybe<TagWhereInput[] | TagWhereInput>;
-  NOT?: Maybe<TagWhereInput[] | TagWhereInput>;
-}
-
-export interface ReviewCreateWithoutAuthorInput {
-  id?: Maybe<ID_Input>;
-  text: String;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  prof?: Maybe<ProfCreateOneWithoutReviewsInput>;
-  course?: Maybe<CourseCreateOneInput>;
-  tags?: Maybe<TagCreateManyWithoutReviewsInput>;
-  likedBy?: Maybe<UserCreateManyWithoutLikedReviewsInput>;
-  dislikedBy?: Maybe<UserCreateManyWithoutDislikedReviewsInput>;
-  professional: Int;
-  expressive: Int;
-  kind: Int;
-  rateHomework?: Maybe<Int>;
-  rateAttend?: Maybe<Int>;
-  rateBirdy?: Maybe<Int>;
-  hasExam?: Maybe<Boolean>;
-  examprep?: Maybe<Boolean>;
-  openbook?: Maybe<Boolean>;
-  oldquestion?: Maybe<Boolean>;
-  easymark?: Maybe<Boolean>;
 }
 
 export interface ProfCreateWithoutPositionInput {
@@ -2587,6 +2548,36 @@ export interface ProfCreateWithoutPositionInput {
   countExamEasyNo?: Maybe<Int>;
 }
 
+export interface ReviewCreateWithoutAuthorInput {
+  id?: Maybe<ID_Input>;
+  text: String;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  prof?: Maybe<ProfCreateOneWithoutReviewsInput>;
+  course?: Maybe<CourseCreateOneWithoutReviewsInput>;
+  tags?: Maybe<TagCreateManyWithoutReviewsInput>;
+  likedBy?: Maybe<UserCreateManyWithoutLikedReviewsInput>;
+  dislikedBy?: Maybe<UserCreateManyWithoutDislikedReviewsInput>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
+}
+
+export interface ProfCreateManyWithoutPositionInput {
+  create?: Maybe<
+    ProfCreateWithoutPositionInput[] | ProfCreateWithoutPositionInput
+  >;
+  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+}
+
 export interface ProfCreateWithoutReviewsInput {
   id?: Maybe<ID_Input>;
   name: String;
@@ -2633,23 +2624,6 @@ export interface ProfCreateWithoutReviewsInput {
   countExamEasyNo?: Maybe<Int>;
 }
 
-export interface ProfCreateManyWithoutPositionInput {
-  create?: Maybe<
-    ProfCreateWithoutPositionInput[] | ProfCreateWithoutPositionInput
-  >;
-  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-}
-
-export interface DeptCreateWithoutProfsInput {
-  id?: Maybe<ID_Input>;
-  shortname: String;
-  longname: String;
-  alias?: Maybe<String>;
-  icon?: Maybe<String>;
-  students?: Maybe<UserCreateManyWithoutDeptInput>;
-  courses?: Maybe<CourseCreateManyWithoutDeptInput>;
-}
-
 export interface UserUpdateManyWithoutLikedCoursesInput {
   create?: Maybe<
     UserCreateWithoutLikedCoursesInput[] | UserCreateWithoutLikedCoursesInput
@@ -2672,12 +2646,28 @@ export interface UserUpdateManyWithoutLikedCoursesInput {
   >;
 }
 
+export interface DeptCreateWithoutProfsInput {
+  id?: Maybe<ID_Input>;
+  shortname: String;
+  longname: String;
+  alias?: Maybe<String>;
+  icon?: Maybe<String>;
+  students?: Maybe<UserCreateManyWithoutDeptInput>;
+  courses?: Maybe<CourseCreateManyWithoutDeptInput>;
+}
+
+export interface UserUpdateWithWhereUniqueWithoutLikedCoursesInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateWithoutLikedCoursesDataInput;
+}
+
 export interface CourseCreateWithoutDeptInput {
   id?: Maybe<ID_Input>;
   name: String;
   likedCount?: Maybe<Int>;
   prof?: Maybe<ProfCreateOneWithoutCoursesInput>;
   likedBy?: Maybe<UserCreateManyWithoutLikedCoursesInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutCourseInput>;
   professional?: Maybe<Float>;
   expressive?: Maybe<Float>;
   kind?: Maybe<Float>;
@@ -2711,9 +2701,17 @@ export interface CourseCreateWithoutDeptInput {
   countExamEasymarkNo?: Maybe<Int>;
 }
 
-export interface UserUpdateWithWhereUniqueWithoutLikedCoursesInput {
-  where: UserWhereUniqueInput;
-  data: UserUpdateWithoutLikedCoursesDataInput;
+export interface UserUpdateWithoutLikedCoursesDataInput {
+  username?: Maybe<String>;
+  email?: Maybe<String>;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password?: Maybe<String>;
+  firstYear?: Maybe<Int>;
+  dept?: Maybe<DeptUpdateOneRequiredWithoutStudentsInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutAuthorInput>;
+  likedReviews?: Maybe<ReviewUpdateManyWithoutLikedByInput>;
+  dislikedReviews?: Maybe<ReviewUpdateManyWithoutDislikedByInput>;
 }
 
 export interface ProfCreateWithoutCoursesInput {
@@ -2762,24 +2760,6 @@ export interface ProfCreateWithoutCoursesInput {
   countExamEasyNo?: Maybe<Int>;
 }
 
-export interface UserUpdateWithoutLikedCoursesDataInput {
-  username?: Maybe<String>;
-  email?: Maybe<String>;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password?: Maybe<String>;
-  firstYear?: Maybe<Int>;
-  dept?: Maybe<DeptUpdateOneRequiredWithoutStudentsInput>;
-  reviews?: Maybe<ReviewUpdateManyWithoutAuthorInput>;
-  likedReviews?: Maybe<ReviewUpdateManyWithoutLikedByInput>;
-  dislikedReviews?: Maybe<ReviewUpdateManyWithoutDislikedByInput>;
-}
-
-export interface PositionCreateWithoutProfsInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-}
-
 export interface ReviewUpdateManyWithoutLikedByInput {
   create?: Maybe<
     ReviewCreateWithoutLikedByInput[] | ReviewCreateWithoutLikedByInput
@@ -2803,19 +2783,29 @@ export interface ReviewUpdateManyWithoutLikedByInput {
   >;
 }
 
+export interface PositionCreateWithoutProfsInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+}
+
+export interface ReviewUpdateWithWhereUniqueWithoutLikedByInput {
+  where: ReviewWhereUniqueInput;
+  data: ReviewUpdateWithoutLikedByDataInput;
+}
+
 export interface ReviewCreateWithoutProfInput {
   id?: Maybe<ID_Input>;
   text: String;
   upVote?: Maybe<Int>;
   downVote?: Maybe<Int>;
   author?: Maybe<UserCreateOneWithoutReviewsInput>;
-  course?: Maybe<CourseCreateOneInput>;
+  course?: Maybe<CourseCreateOneWithoutReviewsInput>;
   tags?: Maybe<TagCreateManyWithoutReviewsInput>;
   likedBy?: Maybe<UserCreateManyWithoutLikedReviewsInput>;
   dislikedBy?: Maybe<UserCreateManyWithoutDislikedReviewsInput>;
-  professional: Int;
-  expressive: Int;
-  kind: Int;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
   rateHomework?: Maybe<Int>;
   rateAttend?: Maybe<Int>;
   rateBirdy?: Maybe<Int>;
@@ -2826,9 +2816,26 @@ export interface ReviewCreateWithoutProfInput {
   easymark?: Maybe<Boolean>;
 }
 
-export interface ReviewUpdateWithWhereUniqueWithoutLikedByInput {
-  where: ReviewWhereUniqueInput;
-  data: ReviewUpdateWithoutLikedByDataInput;
+export interface ReviewUpdateWithoutLikedByDataInput {
+  text?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  author?: Maybe<UserUpdateOneWithoutReviewsInput>;
+  prof?: Maybe<ProfUpdateOneWithoutReviewsInput>;
+  course?: Maybe<CourseUpdateOneWithoutReviewsInput>;
+  tags?: Maybe<TagUpdateManyWithoutReviewsInput>;
+  dislikedBy?: Maybe<UserUpdateManyWithoutDislikedReviewsInput>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
 }
 
 export interface UserCreateWithoutReviewsInput {
@@ -2845,26 +2852,13 @@ export interface UserCreateWithoutReviewsInput {
   likedCourses?: Maybe<CourseCreateManyWithoutLikedByInput>;
 }
 
-export interface ReviewUpdateWithoutLikedByDataInput {
-  text?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  author?: Maybe<UserUpdateOneWithoutReviewsInput>;
-  prof?: Maybe<ProfUpdateOneWithoutReviewsInput>;
-  course?: Maybe<CourseUpdateOneInput>;
-  tags?: Maybe<TagUpdateManyWithoutReviewsInput>;
-  dislikedBy?: Maybe<UserUpdateManyWithoutDislikedReviewsInput>;
-  professional?: Maybe<Int>;
-  expressive?: Maybe<Int>;
-  kind?: Maybe<Int>;
-  rateHomework?: Maybe<Int>;
-  rateAttend?: Maybe<Int>;
-  rateBirdy?: Maybe<Int>;
-  hasExam?: Maybe<Boolean>;
-  examprep?: Maybe<Boolean>;
-  openbook?: Maybe<Boolean>;
-  oldquestion?: Maybe<Boolean>;
-  easymark?: Maybe<Boolean>;
+export interface CourseUpdateOneWithoutReviewsInput {
+  create?: Maybe<CourseCreateWithoutReviewsInput>;
+  update?: Maybe<CourseUpdateWithoutReviewsDataInput>;
+  upsert?: Maybe<CourseUpsertWithoutReviewsInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<CourseWhereUniqueInput>;
 }
 
 export interface DeptCreateWithoutStudentsInput {
@@ -2877,13 +2871,43 @@ export interface DeptCreateWithoutStudentsInput {
   courses?: Maybe<CourseCreateManyWithoutDeptInput>;
 }
 
-export interface CourseUpdateOneInput {
-  create?: Maybe<CourseCreateInput>;
-  update?: Maybe<CourseUpdateDataInput>;
-  upsert?: Maybe<CourseUpsertNestedInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<CourseWhereUniqueInput>;
+export interface CourseUpdateWithoutReviewsDataInput {
+  name?: Maybe<String>;
+  likedCount?: Maybe<Int>;
+  dept?: Maybe<DeptUpdateOneWithoutCoursesInput>;
+  prof?: Maybe<ProfUpdateOneWithoutCoursesInput>;
+  likedBy?: Maybe<UserUpdateManyWithoutLikedCoursesInput>;
+  professional?: Maybe<Float>;
+  expressive?: Maybe<Float>;
+  kind?: Maybe<Float>;
+  scoreOverall?: Maybe<Float>;
+  scoreHot?: Maybe<Float>;
+  scoreRepute?: Maybe<Float>;
+  scoreBirdy?: Maybe<Float>;
+  scoreAttend?: Maybe<Float>;
+  scoreExam?: Maybe<Float>;
+  scoreHomework?: Maybe<Float>;
+  meanHomework?: Maybe<Float>;
+  meanAttend?: Maybe<Float>;
+  meanBirdy?: Maybe<Float>;
+  meanExam?: Maybe<Float>;
+  countReview?: Maybe<Int>;
+  countGoodReview?: Maybe<Int>;
+  countAverageReview?: Maybe<Int>;
+  countBadReview?: Maybe<Int>;
+  countHomework?: Maybe<Int>;
+  countAttend?: Maybe<Int>;
+  countBirdy?: Maybe<Int>;
+  countExam?: Maybe<Int>;
+  countExamDetails?: Maybe<Int>;
+  countExamPrepYes?: Maybe<Int>;
+  countExamPrepNo?: Maybe<Int>;
+  countExamOpenbookYes?: Maybe<Int>;
+  countExamOpenbookNo?: Maybe<Int>;
+  countExamOldquestionYes?: Maybe<Int>;
+  countExamOldquestionNo?: Maybe<Int>;
+  countExamEasymarkYes?: Maybe<Int>;
+  countExamEasymarkNo?: Maybe<Int>;
 }
 
 export interface ProfCreateWithoutDeptInput {
@@ -2932,12 +2956,18 @@ export interface ProfCreateWithoutDeptInput {
   countExamEasyNo?: Maybe<Int>;
 }
 
-export interface CourseUpdateDataInput {
-  name?: Maybe<String>;
+export interface CourseUpsertWithoutReviewsInput {
+  update: CourseUpdateWithoutReviewsDataInput;
+  create: CourseCreateWithoutReviewsInput;
+}
+
+export interface CourseCreateWithoutProfInput {
+  id?: Maybe<ID_Input>;
+  name: String;
   likedCount?: Maybe<Int>;
-  dept?: Maybe<DeptUpdateOneWithoutCoursesInput>;
-  prof?: Maybe<ProfUpdateOneWithoutCoursesInput>;
-  likedBy?: Maybe<UserUpdateManyWithoutLikedCoursesInput>;
+  dept?: Maybe<DeptCreateOneWithoutCoursesInput>;
+  likedBy?: Maybe<UserCreateManyWithoutLikedCoursesInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutCourseInput>;
   professional?: Maybe<Float>;
   expressive?: Maybe<Float>;
   kind?: Maybe<Float>;
@@ -2971,11 +3001,80 @@ export interface CourseUpdateDataInput {
   countExamEasymarkNo?: Maybe<Int>;
 }
 
-export interface CourseCreateWithoutProfInput {
+export interface TagUpdateManyWithoutReviewsInput {
+  create?: Maybe<TagCreateWithoutReviewsInput[] | TagCreateWithoutReviewsInput>;
+  delete?: Maybe<TagWhereUniqueInput[] | TagWhereUniqueInput>;
+  connect?: Maybe<TagWhereUniqueInput[] | TagWhereUniqueInput>;
+  set?: Maybe<TagWhereUniqueInput[] | TagWhereUniqueInput>;
+  disconnect?: Maybe<TagWhereUniqueInput[] | TagWhereUniqueInput>;
+  update?: Maybe<
+    | TagUpdateWithWhereUniqueWithoutReviewsInput[]
+    | TagUpdateWithWhereUniqueWithoutReviewsInput
+  >;
+  upsert?: Maybe<
+    | TagUpsertWithWhereUniqueWithoutReviewsInput[]
+    | TagUpsertWithWhereUniqueWithoutReviewsInput
+  >;
+  deleteMany?: Maybe<TagScalarWhereInput[] | TagScalarWhereInput>;
+  updateMany?: Maybe<
+    TagUpdateManyWithWhereNestedInput[] | TagUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface UserCreateWithoutLikedCoursesInput {
+  id?: Maybe<ID_Input>;
+  username: String;
+  email: String;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password: String;
+  firstYear: Int;
+  dept: DeptCreateOneWithoutStudentsInput;
+  reviews?: Maybe<ReviewCreateManyWithoutAuthorInput>;
+  likedReviews?: Maybe<ReviewCreateManyWithoutLikedByInput>;
+  dislikedReviews?: Maybe<ReviewCreateManyWithoutDislikedByInput>;
+}
+
+export interface TagUpdateWithWhereUniqueWithoutReviewsInput {
+  where: TagWhereUniqueInput;
+  data: TagUpdateWithoutReviewsDataInput;
+}
+
+export interface ReviewCreateWithoutLikedByInput {
+  id?: Maybe<ID_Input>;
+  text: String;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  author?: Maybe<UserCreateOneWithoutReviewsInput>;
+  prof?: Maybe<ProfCreateOneWithoutReviewsInput>;
+  course?: Maybe<CourseCreateOneWithoutReviewsInput>;
+  tags?: Maybe<TagCreateManyWithoutReviewsInput>;
+  dislikedBy?: Maybe<UserCreateManyWithoutDislikedReviewsInput>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
+}
+
+export interface TagUpdateWithoutReviewsDataInput {
+  name?: Maybe<String>;
+  isPositive?: Maybe<Boolean>;
+  category?: Maybe<String>;
+}
+
+export interface CourseCreateWithoutReviewsInput {
   id?: Maybe<ID_Input>;
   name: String;
   likedCount?: Maybe<Int>;
   dept?: Maybe<DeptCreateOneWithoutCoursesInput>;
+  prof?: Maybe<ProfCreateOneWithoutCoursesInput>;
   likedBy?: Maybe<UserCreateManyWithoutLikedCoursesInput>;
   professional?: Maybe<Float>;
   expressive?: Maybe<Float>;
@@ -3010,103 +3109,17 @@ export interface CourseCreateWithoutProfInput {
   countExamEasymarkNo?: Maybe<Int>;
 }
 
-export interface CourseUpsertNestedInput {
-  update: CourseUpdateDataInput;
-  create: CourseCreateInput;
-}
-
-export interface UserCreateWithoutLikedCoursesInput {
-  id?: Maybe<ID_Input>;
-  username: String;
-  email: String;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password: String;
-  firstYear: Int;
-  dept: DeptCreateOneWithoutStudentsInput;
-  reviews?: Maybe<ReviewCreateManyWithoutAuthorInput>;
-  likedReviews?: Maybe<ReviewCreateManyWithoutLikedByInput>;
-  dislikedReviews?: Maybe<ReviewCreateManyWithoutDislikedByInput>;
-}
-
-export interface TagUpdateManyWithoutReviewsInput {
-  create?: Maybe<TagCreateWithoutReviewsInput[] | TagCreateWithoutReviewsInput>;
-  delete?: Maybe<TagWhereUniqueInput[] | TagWhereUniqueInput>;
-  connect?: Maybe<TagWhereUniqueInput[] | TagWhereUniqueInput>;
-  set?: Maybe<TagWhereUniqueInput[] | TagWhereUniqueInput>;
-  disconnect?: Maybe<TagWhereUniqueInput[] | TagWhereUniqueInput>;
-  update?: Maybe<
-    | TagUpdateWithWhereUniqueWithoutReviewsInput[]
-    | TagUpdateWithWhereUniqueWithoutReviewsInput
-  >;
-  upsert?: Maybe<
-    | TagUpsertWithWhereUniqueWithoutReviewsInput[]
-    | TagUpsertWithWhereUniqueWithoutReviewsInput
-  >;
-  deleteMany?: Maybe<TagScalarWhereInput[] | TagScalarWhereInput>;
-  updateMany?: Maybe<
-    TagUpdateManyWithWhereNestedInput[] | TagUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface ReviewCreateWithoutLikedByInput {
-  id?: Maybe<ID_Input>;
-  text: String;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  author?: Maybe<UserCreateOneWithoutReviewsInput>;
-  prof?: Maybe<ProfCreateOneWithoutReviewsInput>;
-  course?: Maybe<CourseCreateOneInput>;
-  tags?: Maybe<TagCreateManyWithoutReviewsInput>;
-  dislikedBy?: Maybe<UserCreateManyWithoutDislikedReviewsInput>;
-  professional: Int;
-  expressive: Int;
-  kind: Int;
-  rateHomework?: Maybe<Int>;
-  rateAttend?: Maybe<Int>;
-  rateBirdy?: Maybe<Int>;
-  hasExam?: Maybe<Boolean>;
-  examprep?: Maybe<Boolean>;
-  openbook?: Maybe<Boolean>;
-  oldquestion?: Maybe<Boolean>;
-  easymark?: Maybe<Boolean>;
-}
-
-export interface TagUpdateWithWhereUniqueWithoutReviewsInput {
-  where: TagWhereUniqueInput;
-  data: TagUpdateWithoutReviewsDataInput;
-}
-
-export interface TagCreateManyWithoutReviewsInput {
-  create?: Maybe<TagCreateWithoutReviewsInput[] | TagCreateWithoutReviewsInput>;
-  connect?: Maybe<TagWhereUniqueInput[] | TagWhereUniqueInput>;
-}
-
-export interface TagUpdateWithoutReviewsDataInput {
-  name?: Maybe<String>;
-  isPositive?: Maybe<Boolean>;
-  category?: Maybe<String>;
-}
-
-export interface UserCreateManyWithoutDislikedReviewsInput {
-  create?: Maybe<
-    | UserCreateWithoutDislikedReviewsInput[]
-    | UserCreateWithoutDislikedReviewsInput
-  >;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-}
-
 export interface TagUpsertWithWhereUniqueWithoutReviewsInput {
   where: TagWhereUniqueInput;
   update: TagUpdateWithoutReviewsDataInput;
   create: TagCreateWithoutReviewsInput;
 }
 
-export interface CourseCreateManyWithoutLikedByInput {
-  create?: Maybe<
-    CourseCreateWithoutLikedByInput[] | CourseCreateWithoutLikedByInput
-  >;
-  connect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+export interface TagCreateWithoutReviewsInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  isPositive: Boolean;
+  category?: Maybe<String>;
 }
 
 export interface TagScalarWhereInput {
@@ -3175,11 +3188,18 @@ export interface TagScalarWhereInput {
   NOT?: Maybe<TagScalarWhereInput[] | TagScalarWhereInput>;
 }
 
-export interface ReviewCreateManyWithoutDislikedByInput {
-  create?: Maybe<
-    ReviewCreateWithoutDislikedByInput[] | ReviewCreateWithoutDislikedByInput
-  >;
-  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+export interface UserCreateWithoutDislikedReviewsInput {
+  id?: Maybe<ID_Input>;
+  username: String;
+  email: String;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password: String;
+  firstYear: Int;
+  dept: DeptCreateOneWithoutStudentsInput;
+  reviews?: Maybe<ReviewCreateManyWithoutAuthorInput>;
+  likedReviews?: Maybe<ReviewCreateManyWithoutLikedByInput>;
+  likedCourses?: Maybe<CourseCreateManyWithoutLikedByInput>;
 }
 
 export interface TagUpdateManyWithWhereNestedInput {
@@ -3187,25 +3207,13 @@ export interface TagUpdateManyWithWhereNestedInput {
   data: TagUpdateManyDataInput;
 }
 
-export interface UserCreateManyWithoutLikedReviewsInput {
-  create?: Maybe<
-    UserCreateWithoutLikedReviewsInput[] | UserCreateWithoutLikedReviewsInput
-  >;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-}
-
-export interface TagUpdateManyDataInput {
-  name?: Maybe<String>;
-  isPositive?: Maybe<Boolean>;
-  category?: Maybe<String>;
-}
-
-export interface CourseUpdateInput {
-  name?: Maybe<String>;
+export interface CourseCreateWithoutLikedByInput {
+  id?: Maybe<ID_Input>;
+  name: String;
   likedCount?: Maybe<Int>;
-  dept?: Maybe<DeptUpdateOneWithoutCoursesInput>;
-  prof?: Maybe<ProfUpdateOneWithoutCoursesInput>;
-  likedBy?: Maybe<UserUpdateManyWithoutLikedCoursesInput>;
+  dept?: Maybe<DeptCreateOneWithoutCoursesInput>;
+  prof?: Maybe<ProfCreateOneWithoutCoursesInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutCourseInput>;
   professional?: Maybe<Float>;
   expressive?: Maybe<Float>;
   kind?: Maybe<Float>;
@@ -3237,6 +3245,35 @@ export interface CourseUpdateInput {
   countExamOldquestionNo?: Maybe<Int>;
   countExamEasymarkYes?: Maybe<Int>;
   countExamEasymarkNo?: Maybe<Int>;
+}
+
+export interface TagUpdateManyDataInput {
+  name?: Maybe<String>;
+  isPositive?: Maybe<Boolean>;
+  category?: Maybe<String>;
+}
+
+export interface ReviewCreateWithoutCourseInput {
+  id?: Maybe<ID_Input>;
+  text: String;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  author?: Maybe<UserCreateOneWithoutReviewsInput>;
+  prof?: Maybe<ProfCreateOneWithoutReviewsInput>;
+  tags?: Maybe<TagCreateManyWithoutReviewsInput>;
+  likedBy?: Maybe<UserCreateManyWithoutLikedReviewsInput>;
+  dislikedBy?: Maybe<UserCreateManyWithoutDislikedReviewsInput>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
 }
 
 export interface UserUpdateManyWithoutDislikedReviewsInput {
@@ -3262,13 +3299,18 @@ export interface UserUpdateManyWithoutDislikedReviewsInput {
   >;
 }
 
-export interface DeptUpdateWithoutCoursesDataInput {
-  shortname?: Maybe<String>;
-  longname?: Maybe<String>;
-  alias?: Maybe<String>;
-  icon?: Maybe<String>;
-  students?: Maybe<UserUpdateManyWithoutDeptInput>;
-  profs?: Maybe<ProfUpdateManyWithoutDeptInput>;
+export interface UserCreateWithoutLikedReviewsInput {
+  id?: Maybe<ID_Input>;
+  username: String;
+  email: String;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password: String;
+  firstYear: Int;
+  dept: DeptCreateOneWithoutStudentsInput;
+  reviews?: Maybe<ReviewCreateManyWithoutAuthorInput>;
+  dislikedReviews?: Maybe<ReviewCreateManyWithoutDislikedByInput>;
+  likedCourses?: Maybe<CourseCreateManyWithoutLikedByInput>;
 }
 
 export interface UserUpdateWithWhereUniqueWithoutDislikedReviewsInput {
@@ -3276,9 +3318,27 @@ export interface UserUpdateWithWhereUniqueWithoutDislikedReviewsInput {
   data: UserUpdateWithoutDislikedReviewsDataInput;
 }
 
-export interface UserUpdateWithWhereUniqueWithoutDeptInput {
-  where: UserWhereUniqueInput;
-  data: UserUpdateWithoutDeptDataInput;
+export interface ReviewCreateWithoutDislikedByInput {
+  id?: Maybe<ID_Input>;
+  text: String;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  author?: Maybe<UserCreateOneWithoutReviewsInput>;
+  prof?: Maybe<ProfCreateOneWithoutReviewsInput>;
+  course?: Maybe<CourseCreateOneWithoutReviewsInput>;
+  tags?: Maybe<TagCreateManyWithoutReviewsInput>;
+  likedBy?: Maybe<UserCreateManyWithoutLikedReviewsInput>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
 }
 
 export interface UserUpdateWithoutDislikedReviewsDataInput {
@@ -3294,27 +3354,13 @@ export interface UserUpdateWithoutDislikedReviewsDataInput {
   likedCourses?: Maybe<CourseUpdateManyWithoutLikedByInput>;
 }
 
-export interface ReviewUpdateManyWithoutAuthorInput {
-  create?: Maybe<
-    ReviewCreateWithoutAuthorInput[] | ReviewCreateWithoutAuthorInput
-  >;
-  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  update?: Maybe<
-    | ReviewUpdateWithWhereUniqueWithoutAuthorInput[]
-    | ReviewUpdateWithWhereUniqueWithoutAuthorInput
-  >;
-  upsert?: Maybe<
-    | ReviewUpsertWithWhereUniqueWithoutAuthorInput[]
-    | ReviewUpsertWithWhereUniqueWithoutAuthorInput
-  >;
-  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-  updateMany?: Maybe<
-    | ReviewUpdateManyWithWhereNestedInput[]
-    | ReviewUpdateManyWithWhereNestedInput
-  >;
+export interface DeptUpdateOneWithoutCoursesInput {
+  create?: Maybe<DeptCreateWithoutCoursesInput>;
+  update?: Maybe<DeptUpdateWithoutCoursesDataInput>;
+  upsert?: Maybe<DeptUpsertWithoutCoursesInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<DeptWhereUniqueInput>;
 }
 
 export interface CourseUpdateManyWithoutLikedByInput {
@@ -3340,15 +3386,24 @@ export interface CourseUpdateManyWithoutLikedByInput {
   >;
 }
 
-export interface UserSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserWhereInput>;
-  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+export interface UserUpdateManyWithoutDeptInput {
+  create?: Maybe<UserCreateWithoutDeptInput[] | UserCreateWithoutDeptInput>;
+  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  update?: Maybe<
+    | UserUpdateWithWhereUniqueWithoutDeptInput[]
+    | UserUpdateWithWhereUniqueWithoutDeptInput
+  >;
+  upsert?: Maybe<
+    | UserUpsertWithWhereUniqueWithoutDeptInput[]
+    | UserUpsertWithWhereUniqueWithoutDeptInput
+  >;
+  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  updateMany?: Maybe<
+    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
+  >;
 }
 
 export interface CourseUpdateWithWhereUniqueWithoutLikedByInput {
@@ -3356,15 +3411,17 @@ export interface CourseUpdateWithWhereUniqueWithoutLikedByInput {
   data: CourseUpdateWithoutLikedByDataInput;
 }
 
-export interface ProfSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<ProfWhereInput>;
-  AND?: Maybe<ProfSubscriptionWhereInput[] | ProfSubscriptionWhereInput>;
-  OR?: Maybe<ProfSubscriptionWhereInput[] | ProfSubscriptionWhereInput>;
-  NOT?: Maybe<ProfSubscriptionWhereInput[] | ProfSubscriptionWhereInput>;
+export interface UserUpdateWithoutDeptDataInput {
+  username?: Maybe<String>;
+  email?: Maybe<String>;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password?: Maybe<String>;
+  firstYear?: Maybe<Int>;
+  reviews?: Maybe<ReviewUpdateManyWithoutAuthorInput>;
+  likedReviews?: Maybe<ReviewUpdateManyWithoutLikedByInput>;
+  dislikedReviews?: Maybe<ReviewUpdateManyWithoutDislikedByInput>;
+  likedCourses?: Maybe<CourseUpdateManyWithoutLikedByInput>;
 }
 
 export interface CourseUpdateWithoutLikedByDataInput {
@@ -3372,6 +3429,7 @@ export interface CourseUpdateWithoutLikedByDataInput {
   likedCount?: Maybe<Int>;
   dept?: Maybe<DeptUpdateOneWithoutCoursesInput>;
   prof?: Maybe<ProfUpdateOneWithoutCoursesInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutCourseInput>;
   professional?: Maybe<Float>;
   expressive?: Maybe<Float>;
   kind?: Maybe<Float>;
@@ -3405,6 +3463,83 @@ export interface CourseUpdateWithoutLikedByDataInput {
   countExamEasymarkNo?: Maybe<Int>;
 }
 
+export interface ReviewUpdateWithWhereUniqueWithoutAuthorInput {
+  where: ReviewWhereUniqueInput;
+  data: ReviewUpdateWithoutAuthorDataInput;
+}
+
+export interface ReviewUpdateManyWithoutCourseInput {
+  create?: Maybe<
+    ReviewCreateWithoutCourseInput[] | ReviewCreateWithoutCourseInput
+  >;
+  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  update?: Maybe<
+    | ReviewUpdateWithWhereUniqueWithoutCourseInput[]
+    | ReviewUpdateWithWhereUniqueWithoutCourseInput
+  >;
+  upsert?: Maybe<
+    | ReviewUpsertWithWhereUniqueWithoutCourseInput[]
+    | ReviewUpsertWithWhereUniqueWithoutCourseInput
+  >;
+  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  updateMany?: Maybe<
+    | ReviewUpdateManyWithWhereNestedInput[]
+    | ReviewUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface UserSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserWhereInput>;
+  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+}
+
+export interface ReviewUpdateWithWhereUniqueWithoutCourseInput {
+  where: ReviewWhereUniqueInput;
+  data: ReviewUpdateWithoutCourseDataInput;
+}
+
+export interface ProfSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<ProfWhereInput>;
+  AND?: Maybe<ProfSubscriptionWhereInput[] | ProfSubscriptionWhereInput>;
+  OR?: Maybe<ProfSubscriptionWhereInput[] | ProfSubscriptionWhereInput>;
+  NOT?: Maybe<ProfSubscriptionWhereInput[] | ProfSubscriptionWhereInput>;
+}
+
+export interface ReviewUpdateWithoutCourseDataInput {
+  text?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  author?: Maybe<UserUpdateOneWithoutReviewsInput>;
+  prof?: Maybe<ProfUpdateOneWithoutReviewsInput>;
+  tags?: Maybe<TagUpdateManyWithoutReviewsInput>;
+  likedBy?: Maybe<UserUpdateManyWithoutLikedReviewsInput>;
+  dislikedBy?: Maybe<UserUpdateManyWithoutDislikedReviewsInput>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
+}
+
 export interface UserUpdateManyMutationInput {
   username?: Maybe<String>;
   email?: Maybe<String>;
@@ -3414,16 +3549,467 @@ export interface UserUpdateManyMutationInput {
   firstYear?: Maybe<Int>;
 }
 
-export interface CourseUpsertWithWhereUniqueWithoutLikedByInput {
-  where: CourseWhereUniqueInput;
-  update: CourseUpdateWithoutLikedByDataInput;
-  create: CourseCreateWithoutLikedByInput;
+export interface UserUpdateManyWithoutLikedReviewsInput {
+  create?: Maybe<
+    UserCreateWithoutLikedReviewsInput[] | UserCreateWithoutLikedReviewsInput
+  >;
+  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  update?: Maybe<
+    | UserUpdateWithWhereUniqueWithoutLikedReviewsInput[]
+    | UserUpdateWithWhereUniqueWithoutLikedReviewsInput
+  >;
+  upsert?: Maybe<
+    | UserUpsertWithWhereUniqueWithoutLikedReviewsInput[]
+    | UserUpsertWithWhereUniqueWithoutLikedReviewsInput
+  >;
+  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  updateMany?: Maybe<
+    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
+  >;
 }
 
 export interface TagUpdateManyMutationInput {
   name?: Maybe<String>;
   isPositive?: Maybe<Boolean>;
   category?: Maybe<String>;
+}
+
+export interface UserUpdateWithWhereUniqueWithoutLikedReviewsInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateWithoutLikedReviewsDataInput;
+}
+
+export interface ReviewUpdateWithWhereUniqueWithoutTagsInput {
+  where: ReviewWhereUniqueInput;
+  data: ReviewUpdateWithoutTagsDataInput;
+}
+
+export interface UserUpdateWithoutLikedReviewsDataInput {
+  username?: Maybe<String>;
+  email?: Maybe<String>;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password?: Maybe<String>;
+  firstYear?: Maybe<Int>;
+  dept?: Maybe<DeptUpdateOneRequiredWithoutStudentsInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutAuthorInput>;
+  dislikedReviews?: Maybe<ReviewUpdateManyWithoutDislikedByInput>;
+  likedCourses?: Maybe<CourseUpdateManyWithoutLikedByInput>;
+}
+
+export type ProfWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ReviewUpdateManyWithoutDislikedByInput {
+  create?: Maybe<
+    ReviewCreateWithoutDislikedByInput[] | ReviewCreateWithoutDislikedByInput
+  >;
+  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  update?: Maybe<
+    | ReviewUpdateWithWhereUniqueWithoutDislikedByInput[]
+    | ReviewUpdateWithWhereUniqueWithoutDislikedByInput
+  >;
+  upsert?: Maybe<
+    | ReviewUpsertWithWhereUniqueWithoutDislikedByInput[]
+    | ReviewUpsertWithWhereUniqueWithoutDislikedByInput
+  >;
+  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  updateMany?: Maybe<
+    | ReviewUpdateManyWithWhereNestedInput[]
+    | ReviewUpdateManyWithWhereNestedInput
+  >;
+}
+
+export type ReviewWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ReviewUpdateWithWhereUniqueWithoutDislikedByInput {
+  where: ReviewWhereUniqueInput;
+  data: ReviewUpdateWithoutDislikedByDataInput;
+}
+
+export type TagWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  name?: Maybe<String>;
+}>;
+
+export interface ReviewUpdateWithoutDislikedByDataInput {
+  text?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  author?: Maybe<UserUpdateOneWithoutReviewsInput>;
+  prof?: Maybe<ProfUpdateOneWithoutReviewsInput>;
+  course?: Maybe<CourseUpdateOneWithoutReviewsInput>;
+  tags?: Maybe<TagUpdateManyWithoutReviewsInput>;
+  likedBy?: Maybe<UserUpdateManyWithoutLikedReviewsInput>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
+}
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  username?: Maybe<String>;
+  email?: Maybe<String>;
+}>;
+
+export interface ReviewUpsertWithWhereUniqueWithoutDislikedByInput {
+  where: ReviewWhereUniqueInput;
+  update: ReviewUpdateWithoutDislikedByDataInput;
+  create: ReviewCreateWithoutDislikedByInput;
+}
+
+export interface UserCreateManyWithoutDeptInput {
+  create?: Maybe<UserCreateWithoutDeptInput[] | UserCreateWithoutDeptInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+}
+
+export interface ReviewScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  text?: Maybe<String>;
+  text_not?: Maybe<String>;
+  text_in?: Maybe<String[] | String>;
+  text_not_in?: Maybe<String[] | String>;
+  text_lt?: Maybe<String>;
+  text_lte?: Maybe<String>;
+  text_gt?: Maybe<String>;
+  text_gte?: Maybe<String>;
+  text_contains?: Maybe<String>;
+  text_not_contains?: Maybe<String>;
+  text_starts_with?: Maybe<String>;
+  text_not_starts_with?: Maybe<String>;
+  text_ends_with?: Maybe<String>;
+  text_not_ends_with?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  upVote_not?: Maybe<Int>;
+  upVote_in?: Maybe<Int[] | Int>;
+  upVote_not_in?: Maybe<Int[] | Int>;
+  upVote_lt?: Maybe<Int>;
+  upVote_lte?: Maybe<Int>;
+  upVote_gt?: Maybe<Int>;
+  upVote_gte?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  downVote_not?: Maybe<Int>;
+  downVote_in?: Maybe<Int[] | Int>;
+  downVote_not_in?: Maybe<Int[] | Int>;
+  downVote_lt?: Maybe<Int>;
+  downVote_lte?: Maybe<Int>;
+  downVote_gt?: Maybe<Int>;
+  downVote_gte?: Maybe<Int>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  professional?: Maybe<Int>;
+  professional_not?: Maybe<Int>;
+  professional_in?: Maybe<Int[] | Int>;
+  professional_not_in?: Maybe<Int[] | Int>;
+  professional_lt?: Maybe<Int>;
+  professional_lte?: Maybe<Int>;
+  professional_gt?: Maybe<Int>;
+  professional_gte?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  expressive_not?: Maybe<Int>;
+  expressive_in?: Maybe<Int[] | Int>;
+  expressive_not_in?: Maybe<Int[] | Int>;
+  expressive_lt?: Maybe<Int>;
+  expressive_lte?: Maybe<Int>;
+  expressive_gt?: Maybe<Int>;
+  expressive_gte?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  kind_not?: Maybe<Int>;
+  kind_in?: Maybe<Int[] | Int>;
+  kind_not_in?: Maybe<Int[] | Int>;
+  kind_lt?: Maybe<Int>;
+  kind_lte?: Maybe<Int>;
+  kind_gt?: Maybe<Int>;
+  kind_gte?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateHomework_not?: Maybe<Int>;
+  rateHomework_in?: Maybe<Int[] | Int>;
+  rateHomework_not_in?: Maybe<Int[] | Int>;
+  rateHomework_lt?: Maybe<Int>;
+  rateHomework_lte?: Maybe<Int>;
+  rateHomework_gt?: Maybe<Int>;
+  rateHomework_gte?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateAttend_not?: Maybe<Int>;
+  rateAttend_in?: Maybe<Int[] | Int>;
+  rateAttend_not_in?: Maybe<Int[] | Int>;
+  rateAttend_lt?: Maybe<Int>;
+  rateAttend_lte?: Maybe<Int>;
+  rateAttend_gt?: Maybe<Int>;
+  rateAttend_gte?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  rateBirdy_not?: Maybe<Int>;
+  rateBirdy_in?: Maybe<Int[] | Int>;
+  rateBirdy_not_in?: Maybe<Int[] | Int>;
+  rateBirdy_lt?: Maybe<Int>;
+  rateBirdy_lte?: Maybe<Int>;
+  rateBirdy_gt?: Maybe<Int>;
+  rateBirdy_gte?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  hasExam_not?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  examprep_not?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  openbook_not?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  oldquestion_not?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
+  easymark_not?: Maybe<Boolean>;
+  AND?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  OR?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  NOT?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+}
+
+export interface ProfCreateOneWithoutReviewsInput {
+  create?: Maybe<ProfCreateWithoutReviewsInput>;
+  connect?: Maybe<ProfWhereUniqueInput>;
+}
+
+export interface ReviewUpdateManyWithWhereNestedInput {
+  where: ReviewScalarWhereInput;
+  data: ReviewUpdateManyDataInput;
+}
+
+export interface CourseCreateManyWithoutDeptInput {
+  create?: Maybe<CourseCreateWithoutDeptInput[] | CourseCreateWithoutDeptInput>;
+  connect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+}
+
+export interface ReviewUpdateManyDataInput {
+  text?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
+}
+
+export interface PositionCreateOneWithoutProfsInput {
+  create?: Maybe<PositionCreateWithoutProfsInput>;
+  connect?: Maybe<PositionWhereUniqueInput>;
+}
+
+export interface UserUpsertWithWhereUniqueWithoutLikedReviewsInput {
+  where: UserWhereUniqueInput;
+  update: UserUpdateWithoutLikedReviewsDataInput;
+  create: UserCreateWithoutLikedReviewsInput;
+}
+
+export interface UserCreateOneWithoutReviewsInput {
+  create?: Maybe<UserCreateWithoutReviewsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  username?: Maybe<String>;
+  username_not?: Maybe<String>;
+  username_in?: Maybe<String[] | String>;
+  username_not_in?: Maybe<String[] | String>;
+  username_lt?: Maybe<String>;
+  username_lte?: Maybe<String>;
+  username_gt?: Maybe<String>;
+  username_gte?: Maybe<String>;
+  username_contains?: Maybe<String>;
+  username_not_contains?: Maybe<String>;
+  username_starts_with?: Maybe<String>;
+  username_not_starts_with?: Maybe<String>;
+  username_ends_with?: Maybe<String>;
+  username_not_ends_with?: Maybe<String>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  isLcUser?: Maybe<Boolean>;
+  isLcUser_not?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  lcSalt_not?: Maybe<String>;
+  lcSalt_in?: Maybe<String[] | String>;
+  lcSalt_not_in?: Maybe<String[] | String>;
+  lcSalt_lt?: Maybe<String>;
+  lcSalt_lte?: Maybe<String>;
+  lcSalt_gt?: Maybe<String>;
+  lcSalt_gte?: Maybe<String>;
+  lcSalt_contains?: Maybe<String>;
+  lcSalt_not_contains?: Maybe<String>;
+  lcSalt_starts_with?: Maybe<String>;
+  lcSalt_not_starts_with?: Maybe<String>;
+  lcSalt_ends_with?: Maybe<String>;
+  lcSalt_not_ends_with?: Maybe<String>;
+  password?: Maybe<String>;
+  password_not?: Maybe<String>;
+  password_in?: Maybe<String[] | String>;
+  password_not_in?: Maybe<String[] | String>;
+  password_lt?: Maybe<String>;
+  password_lte?: Maybe<String>;
+  password_gt?: Maybe<String>;
+  password_gte?: Maybe<String>;
+  password_contains?: Maybe<String>;
+  password_not_contains?: Maybe<String>;
+  password_starts_with?: Maybe<String>;
+  password_not_starts_with?: Maybe<String>;
+  password_ends_with?: Maybe<String>;
+  password_not_ends_with?: Maybe<String>;
+  firstYear?: Maybe<Int>;
+  firstYear_not?: Maybe<Int>;
+  firstYear_in?: Maybe<Int[] | Int>;
+  firstYear_not_in?: Maybe<Int[] | Int>;
+  firstYear_lt?: Maybe<Int>;
+  firstYear_lte?: Maybe<Int>;
+  firstYear_gt?: Maybe<Int>;
+  firstYear_gte?: Maybe<Int>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+}
+
+export interface ProfCreateManyWithoutDeptInput {
+  create?: Maybe<ProfCreateWithoutDeptInput[] | ProfCreateWithoutDeptInput>;
+  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
+}
+
+export interface UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput;
+  data: UserUpdateManyDataInput;
+}
+
+export interface UserCreateManyWithoutLikedCoursesInput {
+  create?: Maybe<
+    UserCreateWithoutLikedCoursesInput[] | UserCreateWithoutLikedCoursesInput
+  >;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+}
+
+export interface UserUpdateManyDataInput {
+  username?: Maybe<String>;
+  email?: Maybe<String>;
+  isLcUser?: Maybe<Boolean>;
+  lcSalt?: Maybe<String>;
+  password?: Maybe<String>;
+  firstYear?: Maybe<Int>;
+}
+
+export interface CourseCreateOneWithoutReviewsInput {
+  create?: Maybe<CourseCreateWithoutReviewsInput>;
+  connect?: Maybe<CourseWhereUniqueInput>;
+}
+
+export interface ReviewUpsertWithWhereUniqueWithoutCourseInput {
+  where: ReviewWhereUniqueInput;
+  update: ReviewUpdateWithoutCourseDataInput;
+  create: ReviewCreateWithoutCourseInput;
+}
+
+export interface UserCreateManyWithoutDislikedReviewsInput {
+  create?: Maybe<
+    | UserCreateWithoutDislikedReviewsInput[]
+    | UserCreateWithoutDislikedReviewsInput
+  >;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+}
+
+export interface CourseUpsertWithWhereUniqueWithoutLikedByInput {
+  where: CourseWhereUniqueInput;
+  update: CourseUpdateWithoutLikedByDataInput;
+  create: CourseCreateWithoutLikedByInput;
+}
+
+export interface ReviewCreateManyWithoutCourseInput {
+  create?: Maybe<
+    ReviewCreateWithoutCourseInput[] | ReviewCreateWithoutCourseInput
+  >;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
 }
 
 export interface CourseScalarWhereInput {
@@ -3732,9 +4318,11 @@ export interface CourseScalarWhereInput {
   NOT?: Maybe<CourseScalarWhereInput[] | CourseScalarWhereInput>;
 }
 
-export interface ReviewUpdateWithWhereUniqueWithoutTagsInput {
-  where: ReviewWhereUniqueInput;
-  data: ReviewUpdateWithoutTagsDataInput;
+export interface ReviewCreateManyWithoutDislikedByInput {
+  create?: Maybe<
+    ReviewCreateWithoutDislikedByInput[] | ReviewCreateWithoutDislikedByInput
+  >;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
 }
 
 export interface CourseUpdateManyWithWhereNestedInput {
@@ -3742,9 +4330,14 @@ export interface CourseUpdateManyWithWhereNestedInput {
   data: CourseUpdateManyDataInput;
 }
 
-export type ProfWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
+export interface DeptUpdateWithoutCoursesDataInput {
+  shortname?: Maybe<String>;
+  longname?: Maybe<String>;
+  alias?: Maybe<String>;
+  icon?: Maybe<String>;
+  students?: Maybe<UserUpdateManyWithoutDeptInput>;
+  profs?: Maybe<ProfUpdateManyWithoutDeptInput>;
+}
 
 export interface CourseUpdateManyDataInput {
   name?: Maybe<String>;
@@ -3782,340 +4375,21 @@ export interface CourseUpdateManyDataInput {
   countExamEasymarkNo?: Maybe<Int>;
 }
 
-export type ReviewWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface UserUpsertWithWhereUniqueWithoutDislikedReviewsInput {
-  where: UserWhereUniqueInput;
-  update: UserUpdateWithoutDislikedReviewsDataInput;
-  create: UserCreateWithoutDislikedReviewsInput;
-}
-
-export type TagWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  name?: Maybe<String>;
-}>;
-
-export interface UserScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  username?: Maybe<String>;
-  username_not?: Maybe<String>;
-  username_in?: Maybe<String[] | String>;
-  username_not_in?: Maybe<String[] | String>;
-  username_lt?: Maybe<String>;
-  username_lte?: Maybe<String>;
-  username_gt?: Maybe<String>;
-  username_gte?: Maybe<String>;
-  username_contains?: Maybe<String>;
-  username_not_contains?: Maybe<String>;
-  username_starts_with?: Maybe<String>;
-  username_not_starts_with?: Maybe<String>;
-  username_ends_with?: Maybe<String>;
-  username_not_ends_with?: Maybe<String>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  isLcUser?: Maybe<Boolean>;
-  isLcUser_not?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  lcSalt_not?: Maybe<String>;
-  lcSalt_in?: Maybe<String[] | String>;
-  lcSalt_not_in?: Maybe<String[] | String>;
-  lcSalt_lt?: Maybe<String>;
-  lcSalt_lte?: Maybe<String>;
-  lcSalt_gt?: Maybe<String>;
-  lcSalt_gte?: Maybe<String>;
-  lcSalt_contains?: Maybe<String>;
-  lcSalt_not_contains?: Maybe<String>;
-  lcSalt_starts_with?: Maybe<String>;
-  lcSalt_not_starts_with?: Maybe<String>;
-  lcSalt_ends_with?: Maybe<String>;
-  lcSalt_not_ends_with?: Maybe<String>;
-  password?: Maybe<String>;
-  password_not?: Maybe<String>;
-  password_in?: Maybe<String[] | String>;
-  password_not_in?: Maybe<String[] | String>;
-  password_lt?: Maybe<String>;
-  password_lte?: Maybe<String>;
-  password_gt?: Maybe<String>;
-  password_gte?: Maybe<String>;
-  password_contains?: Maybe<String>;
-  password_not_contains?: Maybe<String>;
-  password_starts_with?: Maybe<String>;
-  password_not_starts_with?: Maybe<String>;
-  password_ends_with?: Maybe<String>;
-  password_not_ends_with?: Maybe<String>;
-  firstYear?: Maybe<Int>;
-  firstYear_not?: Maybe<Int>;
-  firstYear_in?: Maybe<Int[] | Int>;
-  firstYear_not_in?: Maybe<Int[] | Int>;
-  firstYear_lt?: Maybe<Int>;
-  firstYear_lte?: Maybe<Int>;
-  firstYear_gt?: Maybe<Int>;
-  firstYear_gte?: Maybe<Int>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-}
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  username?: Maybe<String>;
-  email?: Maybe<String>;
-}>;
-
-export interface UserUpdateManyWithWhereNestedInput {
-  where: UserScalarWhereInput;
-  data: UserUpdateManyDataInput;
-}
-
-export interface UserCreateManyWithoutDeptInput {
-  create?: Maybe<UserCreateWithoutDeptInput[] | UserCreateWithoutDeptInput>;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-}
-
-export interface UserUpdateManyDataInput {
-  username?: Maybe<String>;
-  email?: Maybe<String>;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password?: Maybe<String>;
-  firstYear?: Maybe<Int>;
-}
-
-export interface ProfCreateOneWithoutReviewsInput {
-  create?: Maybe<ProfCreateWithoutReviewsInput>;
-  connect?: Maybe<ProfWhereUniqueInput>;
-}
-
-export interface ReviewUpsertWithWhereUniqueWithoutLikedByInput {
-  where: ReviewWhereUniqueInput;
-  update: ReviewUpdateWithoutLikedByDataInput;
-  create: ReviewCreateWithoutLikedByInput;
-}
-
-export interface CourseCreateManyWithoutDeptInput {
-  create?: Maybe<CourseCreateWithoutDeptInput[] | CourseCreateWithoutDeptInput>;
-  connect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
-}
-
-export interface ReviewScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  text?: Maybe<String>;
-  text_not?: Maybe<String>;
-  text_in?: Maybe<String[] | String>;
-  text_not_in?: Maybe<String[] | String>;
-  text_lt?: Maybe<String>;
-  text_lte?: Maybe<String>;
-  text_gt?: Maybe<String>;
-  text_gte?: Maybe<String>;
-  text_contains?: Maybe<String>;
-  text_not_contains?: Maybe<String>;
-  text_starts_with?: Maybe<String>;
-  text_not_starts_with?: Maybe<String>;
-  text_ends_with?: Maybe<String>;
-  text_not_ends_with?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  upVote_not?: Maybe<Int>;
-  upVote_in?: Maybe<Int[] | Int>;
-  upVote_not_in?: Maybe<Int[] | Int>;
-  upVote_lt?: Maybe<Int>;
-  upVote_lte?: Maybe<Int>;
-  upVote_gt?: Maybe<Int>;
-  upVote_gte?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  downVote_not?: Maybe<Int>;
-  downVote_in?: Maybe<Int[] | Int>;
-  downVote_not_in?: Maybe<Int[] | Int>;
-  downVote_lt?: Maybe<Int>;
-  downVote_lte?: Maybe<Int>;
-  downVote_gt?: Maybe<Int>;
-  downVote_gte?: Maybe<Int>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  professional?: Maybe<Int>;
-  professional_not?: Maybe<Int>;
-  professional_in?: Maybe<Int[] | Int>;
-  professional_not_in?: Maybe<Int[] | Int>;
-  professional_lt?: Maybe<Int>;
-  professional_lte?: Maybe<Int>;
-  professional_gt?: Maybe<Int>;
-  professional_gte?: Maybe<Int>;
-  expressive?: Maybe<Int>;
-  expressive_not?: Maybe<Int>;
-  expressive_in?: Maybe<Int[] | Int>;
-  expressive_not_in?: Maybe<Int[] | Int>;
-  expressive_lt?: Maybe<Int>;
-  expressive_lte?: Maybe<Int>;
-  expressive_gt?: Maybe<Int>;
-  expressive_gte?: Maybe<Int>;
-  kind?: Maybe<Int>;
-  kind_not?: Maybe<Int>;
-  kind_in?: Maybe<Int[] | Int>;
-  kind_not_in?: Maybe<Int[] | Int>;
-  kind_lt?: Maybe<Int>;
-  kind_lte?: Maybe<Int>;
-  kind_gt?: Maybe<Int>;
-  kind_gte?: Maybe<Int>;
-  rateHomework?: Maybe<Int>;
-  rateHomework_not?: Maybe<Int>;
-  rateHomework_in?: Maybe<Int[] | Int>;
-  rateHomework_not_in?: Maybe<Int[] | Int>;
-  rateHomework_lt?: Maybe<Int>;
-  rateHomework_lte?: Maybe<Int>;
-  rateHomework_gt?: Maybe<Int>;
-  rateHomework_gte?: Maybe<Int>;
-  rateAttend?: Maybe<Int>;
-  rateAttend_not?: Maybe<Int>;
-  rateAttend_in?: Maybe<Int[] | Int>;
-  rateAttend_not_in?: Maybe<Int[] | Int>;
-  rateAttend_lt?: Maybe<Int>;
-  rateAttend_lte?: Maybe<Int>;
-  rateAttend_gt?: Maybe<Int>;
-  rateAttend_gte?: Maybe<Int>;
-  rateBirdy?: Maybe<Int>;
-  rateBirdy_not?: Maybe<Int>;
-  rateBirdy_in?: Maybe<Int[] | Int>;
-  rateBirdy_not_in?: Maybe<Int[] | Int>;
-  rateBirdy_lt?: Maybe<Int>;
-  rateBirdy_lte?: Maybe<Int>;
-  rateBirdy_gt?: Maybe<Int>;
-  rateBirdy_gte?: Maybe<Int>;
-  hasExam?: Maybe<Boolean>;
-  hasExam_not?: Maybe<Boolean>;
-  examprep?: Maybe<Boolean>;
-  examprep_not?: Maybe<Boolean>;
-  openbook?: Maybe<Boolean>;
-  openbook_not?: Maybe<Boolean>;
-  oldquestion?: Maybe<Boolean>;
-  oldquestion_not?: Maybe<Boolean>;
-  easymark?: Maybe<Boolean>;
-  easymark_not?: Maybe<Boolean>;
-  AND?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-  OR?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-  NOT?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-}
-
-export interface PositionCreateOneWithoutProfsInput {
-  create?: Maybe<PositionCreateWithoutProfsInput>;
-  connect?: Maybe<PositionWhereUniqueInput>;
-}
-
-export interface ReviewUpdateManyWithWhereNestedInput {
-  where: ReviewScalarWhereInput;
-  data: ReviewUpdateManyDataInput;
-}
-
-export interface UserCreateOneWithoutReviewsInput {
-  create?: Maybe<UserCreateWithoutReviewsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface ReviewUpdateManyDataInput {
-  text?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  professional?: Maybe<Int>;
-  expressive?: Maybe<Int>;
-  kind?: Maybe<Int>;
-  rateHomework?: Maybe<Int>;
-  rateAttend?: Maybe<Int>;
-  rateBirdy?: Maybe<Int>;
-  hasExam?: Maybe<Boolean>;
-  examprep?: Maybe<Boolean>;
-  openbook?: Maybe<Boolean>;
-  oldquestion?: Maybe<Boolean>;
-  easymark?: Maybe<Boolean>;
-}
-
-export interface ProfCreateManyWithoutDeptInput {
-  create?: Maybe<ProfCreateWithoutDeptInput[] | ProfCreateWithoutDeptInput>;
-  connect?: Maybe<ProfWhereUniqueInput[] | ProfWhereUniqueInput>;
-}
-
-export interface ReviewUpdateManyWithoutDislikedByInput {
+export interface ReviewUpdateManyWithoutAuthorInput {
   create?: Maybe<
-    ReviewCreateWithoutDislikedByInput[] | ReviewCreateWithoutDislikedByInput
+    ReviewCreateWithoutAuthorInput[] | ReviewCreateWithoutAuthorInput
   >;
   delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
   connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
   set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
   disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
   update?: Maybe<
-    | ReviewUpdateWithWhereUniqueWithoutDislikedByInput[]
-    | ReviewUpdateWithWhereUniqueWithoutDislikedByInput
+    | ReviewUpdateWithWhereUniqueWithoutAuthorInput[]
+    | ReviewUpdateWithWhereUniqueWithoutAuthorInput
   >;
   upsert?: Maybe<
-    | ReviewUpsertWithWhereUniqueWithoutDislikedByInput[]
-    | ReviewUpsertWithWhereUniqueWithoutDislikedByInput
+    | ReviewUpsertWithWhereUniqueWithoutAuthorInput[]
+    | ReviewUpsertWithWhereUniqueWithoutAuthorInput
   >;
   deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
   updateMany?: Maybe<
@@ -4124,148 +4398,10 @@ export interface ReviewUpdateManyWithoutDislikedByInput {
   >;
 }
 
-export interface UserCreateManyWithoutLikedCoursesInput {
-  create?: Maybe<
-    UserCreateWithoutLikedCoursesInput[] | UserCreateWithoutLikedCoursesInput
-  >;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-}
-
-export interface ReviewUpdateWithWhereUniqueWithoutDislikedByInput {
-  where: ReviewWhereUniqueInput;
-  data: ReviewUpdateWithoutDislikedByDataInput;
-}
-
-export interface CourseCreateOneInput {
-  create?: Maybe<CourseCreateInput>;
-  connect?: Maybe<CourseWhereUniqueInput>;
-}
-
-export interface ReviewUpdateWithoutDislikedByDataInput {
-  text?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  author?: Maybe<UserUpdateOneWithoutReviewsInput>;
-  prof?: Maybe<ProfUpdateOneWithoutReviewsInput>;
-  course?: Maybe<CourseUpdateOneInput>;
-  tags?: Maybe<TagUpdateManyWithoutReviewsInput>;
-  likedBy?: Maybe<UserUpdateManyWithoutLikedReviewsInput>;
-  professional?: Maybe<Int>;
-  expressive?: Maybe<Int>;
-  kind?: Maybe<Int>;
-  rateHomework?: Maybe<Int>;
-  rateAttend?: Maybe<Int>;
-  rateBirdy?: Maybe<Int>;
-  hasExam?: Maybe<Boolean>;
-  examprep?: Maybe<Boolean>;
-  openbook?: Maybe<Boolean>;
-  oldquestion?: Maybe<Boolean>;
-  easymark?: Maybe<Boolean>;
-}
-
-export interface UserCreateWithoutDislikedReviewsInput {
-  id?: Maybe<ID_Input>;
-  username: String;
-  email: String;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password: String;
-  firstYear: Int;
-  dept: DeptCreateOneWithoutStudentsInput;
-  reviews?: Maybe<ReviewCreateManyWithoutAuthorInput>;
-  likedReviews?: Maybe<ReviewCreateManyWithoutLikedByInput>;
-  likedCourses?: Maybe<CourseCreateManyWithoutLikedByInput>;
-}
-
-export interface UserUpdateManyWithoutLikedReviewsInput {
-  create?: Maybe<
-    UserCreateWithoutLikedReviewsInput[] | UserCreateWithoutLikedReviewsInput
-  >;
-  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  update?: Maybe<
-    | UserUpdateWithWhereUniqueWithoutLikedReviewsInput[]
-    | UserUpdateWithWhereUniqueWithoutLikedReviewsInput
-  >;
-  upsert?: Maybe<
-    | UserUpsertWithWhereUniqueWithoutLikedReviewsInput[]
-    | UserUpsertWithWhereUniqueWithoutLikedReviewsInput
-  >;
-  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  updateMany?: Maybe<
-    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface ReviewCreateWithoutDislikedByInput {
-  id?: Maybe<ID_Input>;
-  text: String;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  author?: Maybe<UserCreateOneWithoutReviewsInput>;
-  prof?: Maybe<ProfCreateOneWithoutReviewsInput>;
-  course?: Maybe<CourseCreateOneInput>;
-  tags?: Maybe<TagCreateManyWithoutReviewsInput>;
-  likedBy?: Maybe<UserCreateManyWithoutLikedReviewsInput>;
-  professional: Int;
-  expressive: Int;
-  kind: Int;
-  rateHomework?: Maybe<Int>;
-  rateAttend?: Maybe<Int>;
-  rateBirdy?: Maybe<Int>;
-  hasExam?: Maybe<Boolean>;
-  examprep?: Maybe<Boolean>;
-  openbook?: Maybe<Boolean>;
-  oldquestion?: Maybe<Boolean>;
-  easymark?: Maybe<Boolean>;
-}
-
-export interface UserUpdateWithWhereUniqueWithoutLikedReviewsInput {
+export interface UserUpsertWithWhereUniqueWithoutDislikedReviewsInput {
   where: UserWhereUniqueInput;
-  data: UserUpdateWithoutLikedReviewsDataInput;
-}
-
-export interface DeptUpdateOneWithoutCoursesInput {
-  create?: Maybe<DeptCreateWithoutCoursesInput>;
-  update?: Maybe<DeptUpdateWithoutCoursesDataInput>;
-  upsert?: Maybe<DeptUpsertWithoutCoursesInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<DeptWhereUniqueInput>;
-}
-
-export interface UserUpdateWithoutLikedReviewsDataInput {
-  username?: Maybe<String>;
-  email?: Maybe<String>;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password?: Maybe<String>;
-  firstYear?: Maybe<Int>;
-  dept?: Maybe<DeptUpdateOneRequiredWithoutStudentsInput>;
-  reviews?: Maybe<ReviewUpdateManyWithoutAuthorInput>;
-  dislikedReviews?: Maybe<ReviewUpdateManyWithoutDislikedByInput>;
-  likedCourses?: Maybe<CourseUpdateManyWithoutLikedByInput>;
-}
-
-export interface UserUpdateWithoutDeptDataInput {
-  username?: Maybe<String>;
-  email?: Maybe<String>;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password?: Maybe<String>;
-  firstYear?: Maybe<Int>;
-  reviews?: Maybe<ReviewUpdateManyWithoutAuthorInput>;
-  likedReviews?: Maybe<ReviewUpdateManyWithoutLikedByInput>;
-  dislikedReviews?: Maybe<ReviewUpdateManyWithoutDislikedByInput>;
-  likedCourses?: Maybe<CourseUpdateManyWithoutLikedByInput>;
-}
-
-export interface UserUpsertWithWhereUniqueWithoutLikedReviewsInput {
-  where: UserWhereUniqueInput;
-  update: UserUpdateWithoutLikedReviewsDataInput;
-  create: UserCreateWithoutLikedReviewsInput;
+  update: UserUpdateWithoutDislikedReviewsDataInput;
+  create: UserCreateWithoutDislikedReviewsInput;
 }
 
 export interface UserWhereInput {
@@ -4383,10 +4519,10 @@ export interface UserWhereInput {
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
 }
 
-export interface ReviewUpsertWithWhereUniqueWithoutDislikedByInput {
+export interface ReviewUpsertWithWhereUniqueWithoutLikedByInput {
   where: ReviewWhereUniqueInput;
-  update: ReviewUpdateWithoutDislikedByDataInput;
-  create: ReviewCreateWithoutDislikedByInput;
+  update: ReviewUpdateWithoutLikedByDataInput;
+  create: ReviewCreateWithoutLikedByInput;
 }
 
 export type DeptWhereUniqueInput = AtLeastOne<{
@@ -4421,13 +4557,13 @@ export interface ReviewCreateInput {
   downVote?: Maybe<Int>;
   author?: Maybe<UserCreateOneWithoutReviewsInput>;
   prof?: Maybe<ProfCreateOneWithoutReviewsInput>;
-  course?: Maybe<CourseCreateOneInput>;
+  course?: Maybe<CourseCreateOneWithoutReviewsInput>;
   tags?: Maybe<TagCreateManyWithoutReviewsInput>;
   likedBy?: Maybe<UserCreateManyWithoutLikedReviewsInput>;
   dislikedBy?: Maybe<UserCreateManyWithoutDislikedReviewsInput>;
-  professional: Int;
-  expressive: Int;
-  kind: Int;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
   rateHomework?: Maybe<Int>;
   rateAttend?: Maybe<Int>;
   rateBirdy?: Maybe<Int>;
@@ -4980,12 +5116,26 @@ export interface UserUpsertWithoutReviewsInput {
   create: UserCreateWithoutReviewsInput;
 }
 
-export interface CourseCreateWithoutLikedByInput {
-  id?: Maybe<ID_Input>;
-  name: String;
+export interface CourseCreateManyWithoutLikedByInput {
+  create?: Maybe<
+    CourseCreateWithoutLikedByInput[] | CourseCreateWithoutLikedByInput
+  >;
+  connect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+}
+
+export interface ReviewUpsertWithWhereUniqueWithoutProfInput {
+  where: ReviewWhereUniqueInput;
+  update: ReviewUpdateWithoutProfDataInput;
+  create: ReviewCreateWithoutProfInput;
+}
+
+export interface CourseUpdateInput {
+  name?: Maybe<String>;
   likedCount?: Maybe<Int>;
-  dept?: Maybe<DeptCreateOneWithoutCoursesInput>;
-  prof?: Maybe<ProfCreateOneWithoutCoursesInput>;
+  dept?: Maybe<DeptUpdateOneWithoutCoursesInput>;
+  prof?: Maybe<ProfUpdateOneWithoutCoursesInput>;
+  likedBy?: Maybe<UserUpdateManyWithoutLikedCoursesInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutCourseInput>;
   professional?: Maybe<Float>;
   expressive?: Maybe<Float>;
   kind?: Maybe<Float>;
@@ -5019,46 +5169,31 @@ export interface CourseCreateWithoutLikedByInput {
   countExamEasymarkNo?: Maybe<Int>;
 }
 
-export interface ReviewUpsertWithWhereUniqueWithoutProfInput {
-  where: ReviewWhereUniqueInput;
-  update: ReviewUpdateWithoutProfDataInput;
-  create: ReviewCreateWithoutProfInput;
-}
-
-export interface UserUpdateManyWithoutDeptInput {
-  create?: Maybe<UserCreateWithoutDeptInput[] | UserCreateWithoutDeptInput>;
-  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  update?: Maybe<
-    | UserUpdateWithWhereUniqueWithoutDeptInput[]
-    | UserUpdateWithWhereUniqueWithoutDeptInput
-  >;
-  upsert?: Maybe<
-    | UserUpsertWithWhereUniqueWithoutDeptInput[]
-    | UserUpsertWithWhereUniqueWithoutDeptInput
-  >;
-  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  updateMany?: Maybe<
-    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
-  >;
-}
-
 export interface ProfUpsertWithoutCoursesInput {
   update: ProfUpdateWithoutCoursesDataInput;
   create: ProfCreateWithoutCoursesInput;
 }
 
-export interface DeptSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<DeptWhereInput>;
-  AND?: Maybe<DeptSubscriptionWhereInput[] | DeptSubscriptionWhereInput>;
-  OR?: Maybe<DeptSubscriptionWhereInput[] | DeptSubscriptionWhereInput>;
-  NOT?: Maybe<DeptSubscriptionWhereInput[] | DeptSubscriptionWhereInput>;
+export interface ReviewUpdateWithoutAuthorDataInput {
+  text?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  prof?: Maybe<ProfUpdateOneWithoutReviewsInput>;
+  course?: Maybe<CourseUpdateOneWithoutReviewsInput>;
+  tags?: Maybe<TagUpdateManyWithoutReviewsInput>;
+  likedBy?: Maybe<UserUpdateManyWithoutLikedReviewsInput>;
+  dislikedBy?: Maybe<UserUpdateManyWithoutDislikedReviewsInput>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
 }
 
 export interface CourseUpsertWithWhereUniqueWithoutDeptInput {
@@ -5067,61 +5202,31 @@ export interface CourseUpsertWithWhereUniqueWithoutDeptInput {
   create: CourseCreateWithoutDeptInput;
 }
 
-export interface TagCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  isPositive: Boolean;
-  category?: Maybe<String>;
-  reviews?: Maybe<ReviewCreateManyWithoutTagsInput>;
+export interface ReviewUpdateWithoutTagsDataInput {
+  text?: Maybe<String>;
+  upVote?: Maybe<Int>;
+  downVote?: Maybe<Int>;
+  author?: Maybe<UserUpdateOneWithoutReviewsInput>;
+  prof?: Maybe<ProfUpdateOneWithoutReviewsInput>;
+  course?: Maybe<CourseUpdateOneWithoutReviewsInput>;
+  likedBy?: Maybe<UserUpdateManyWithoutLikedReviewsInput>;
+  dislikedBy?: Maybe<UserUpdateManyWithoutDislikedReviewsInput>;
+  professional?: Maybe<Int>;
+  expressive?: Maybe<Int>;
+  kind?: Maybe<Int>;
+  rateHomework?: Maybe<Int>;
+  rateAttend?: Maybe<Int>;
+  rateBirdy?: Maybe<Int>;
+  hasExam?: Maybe<Boolean>;
+  examprep?: Maybe<Boolean>;
+  openbook?: Maybe<Boolean>;
+  oldquestion?: Maybe<Boolean>;
+  easymark?: Maybe<Boolean>;
 }
 
 export interface DeptUpsertWithoutProfsInput {
   update: DeptUpdateWithoutProfsDataInput;
   create: DeptCreateWithoutProfsInput;
-}
-
-export interface DeptCreateOneWithoutCoursesInput {
-  create?: Maybe<DeptCreateWithoutCoursesInput>;
-  connect?: Maybe<DeptWhereUniqueInput>;
-}
-
-export interface ProfUpsertWithoutReviewsInput {
-  update: ProfUpdateWithoutReviewsDataInput;
-  create: ProfCreateWithoutReviewsInput;
-}
-
-export interface ReviewCreateManyWithoutProfInput {
-  create?: Maybe<ReviewCreateWithoutProfInput[] | ReviewCreateWithoutProfInput>;
-  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-}
-
-export interface ReviewUpsertWithWhereUniqueWithoutAuthorInput {
-  where: ReviewWhereUniqueInput;
-  update: ReviewUpdateWithoutAuthorDataInput;
-  create: ReviewCreateWithoutAuthorInput;
-}
-
-export interface TagCreateWithoutReviewsInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  isPositive: Boolean;
-  category?: Maybe<String>;
-}
-
-export interface UserUpsertWithWhereUniqueWithoutDeptInput {
-  where: UserWhereUniqueInput;
-  update: UserUpdateWithoutDeptDataInput;
-  create: UserCreateWithoutDeptInput;
-}
-
-export interface ReviewUpdateWithWhereUniqueWithoutAuthorInput {
-  where: ReviewWhereUniqueInput;
-  data: ReviewUpdateWithoutAuthorDataInput;
-}
-
-export interface DeptUpsertWithoutCoursesInput {
-  update: DeptUpdateWithoutCoursesDataInput;
-  create: DeptCreateWithoutCoursesInput;
 }
 
 export interface ProfCreateInput {
@@ -5169,6 +5274,56 @@ export interface ProfCreateInput {
   countExamOldquestionNo?: Maybe<Int>;
   countExamEasyYes?: Maybe<Int>;
   countExamEasyNo?: Maybe<Int>;
+}
+
+export interface ProfUpsertWithoutReviewsInput {
+  update: ProfUpdateWithoutReviewsDataInput;
+  create: ProfCreateWithoutReviewsInput;
+}
+
+export interface DeptCreateOneWithoutProfsInput {
+  create?: Maybe<DeptCreateWithoutProfsInput>;
+  connect?: Maybe<DeptWhereUniqueInput>;
+}
+
+export interface ReviewUpsertWithWhereUniqueWithoutAuthorInput {
+  where: ReviewWhereUniqueInput;
+  update: ReviewUpdateWithoutAuthorDataInput;
+  create: ReviewCreateWithoutAuthorInput;
+}
+
+export interface CourseCreateManyWithoutProfInput {
+  create?: Maybe<CourseCreateWithoutProfInput[] | CourseCreateWithoutProfInput>;
+  connect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+}
+
+export interface UserUpsertWithWhereUniqueWithoutDeptInput {
+  where: UserWhereUniqueInput;
+  update: UserUpdateWithoutDeptDataInput;
+  create: UserCreateWithoutDeptInput;
+}
+
+export interface UserCreateManyWithoutLikedReviewsInput {
+  create?: Maybe<
+    UserCreateWithoutLikedReviewsInput[] | UserCreateWithoutLikedReviewsInput
+  >;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+}
+
+export interface DeptUpsertWithoutCoursesInput {
+  update: DeptUpdateWithoutCoursesDataInput;
+  create: DeptCreateWithoutCoursesInput;
+}
+
+export interface DeptSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<DeptWhereInput>;
+  AND?: Maybe<DeptSubscriptionWhereInput[] | DeptSubscriptionWhereInput>;
+  OR?: Maybe<DeptSubscriptionWhereInput[] | DeptSubscriptionWhereInput>;
+  NOT?: Maybe<DeptSubscriptionWhereInput[] | DeptSubscriptionWhereInput>;
 }
 
 export interface DeptCreateInput {
@@ -5231,50 +5386,32 @@ export interface CourseUpdateManyMutationInput {
   countExamEasymarkNo?: Maybe<Int>;
 }
 
-export interface DeptCreateOneWithoutProfsInput {
-  create?: Maybe<DeptCreateWithoutProfsInput>;
-  connect?: Maybe<DeptWhereUniqueInput>;
-}
-
-export interface ReviewUpdateWithoutTagsDataInput {
-  text?: Maybe<String>;
-  upVote?: Maybe<Int>;
-  downVote?: Maybe<Int>;
-  author?: Maybe<UserUpdateOneWithoutReviewsInput>;
-  prof?: Maybe<ProfUpdateOneWithoutReviewsInput>;
-  course?: Maybe<CourseUpdateOneInput>;
-  likedBy?: Maybe<UserUpdateManyWithoutLikedReviewsInput>;
-  dislikedBy?: Maybe<UserUpdateManyWithoutDislikedReviewsInput>;
-  professional?: Maybe<Int>;
-  expressive?: Maybe<Int>;
-  kind?: Maybe<Int>;
-  rateHomework?: Maybe<Int>;
-  rateAttend?: Maybe<Int>;
-  rateBirdy?: Maybe<Int>;
-  hasExam?: Maybe<Boolean>;
-  examprep?: Maybe<Boolean>;
-  openbook?: Maybe<Boolean>;
-  oldquestion?: Maybe<Boolean>;
-  easymark?: Maybe<Boolean>;
-}
-
-export interface UserCreateWithoutLikedReviewsInput {
+export interface TagCreateInput {
   id?: Maybe<ID_Input>;
-  username: String;
-  email: String;
-  isLcUser?: Maybe<Boolean>;
-  lcSalt?: Maybe<String>;
-  password: String;
-  firstYear: Int;
-  dept: DeptCreateOneWithoutStudentsInput;
-  reviews?: Maybe<ReviewCreateManyWithoutAuthorInput>;
-  dislikedReviews?: Maybe<ReviewCreateManyWithoutDislikedByInput>;
-  likedCourses?: Maybe<CourseCreateManyWithoutLikedByInput>;
+  name: String;
+  isPositive: Boolean;
+  category?: Maybe<String>;
+  reviews?: Maybe<ReviewCreateManyWithoutTagsInput>;
 }
 
-export interface CourseCreateManyWithoutProfInput {
-  create?: Maybe<CourseCreateWithoutProfInput[] | CourseCreateWithoutProfInput>;
-  connect?: Maybe<CourseWhereUniqueInput[] | CourseWhereUniqueInput>;
+export interface UserUpdateWithWhereUniqueWithoutDeptInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateWithoutDeptDataInput;
+}
+
+export interface TagCreateManyWithoutReviewsInput {
+  create?: Maybe<TagCreateWithoutReviewsInput[] | TagCreateWithoutReviewsInput>;
+  connect?: Maybe<TagWhereUniqueInput[] | TagWhereUniqueInput>;
+}
+
+export interface ReviewCreateManyWithoutProfInput {
+  create?: Maybe<ReviewCreateWithoutProfInput[] | ReviewCreateWithoutProfInput>;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+}
+
+export interface DeptCreateOneWithoutCoursesInput {
+  create?: Maybe<DeptCreateWithoutCoursesInput>;
+  connect?: Maybe<DeptWhereUniqueInput>;
 }
 
 export interface NodeNode {
@@ -6007,6 +6144,15 @@ export interface CoursePromise extends Promise<Course>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
+  reviews: <T = FragmentableArray<Review>>(args?: {
+    where?: ReviewWhereInput;
+    orderBy?: ReviewOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   professional: () => Promise<Float>;
   expressive: () => Promise<Float>;
   kind: () => Promise<Float>;
@@ -6059,6 +6205,15 @@ export interface CourseSubscription
     first?: Int;
     last?: Int;
   }) => T;
+  reviews: <T = Promise<AsyncIterator<ReviewSubscription>>>(args?: {
+    where?: ReviewWhereInput;
+    orderBy?: ReviewOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   professional: () => Promise<AsyncIterator<Float>>;
   expressive: () => Promise<AsyncIterator<Float>>;
   kind: () => Promise<AsyncIterator<Float>>;
@@ -6105,6 +6260,15 @@ export interface CourseNullablePromise
   likedBy: <T = FragmentableArray<User>>(args?: {
     where?: UserWhereInput;
     orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviews: <T = FragmentableArray<Review>>(args?: {
+    where?: ReviewWhereInput;
+    orderBy?: ReviewOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
