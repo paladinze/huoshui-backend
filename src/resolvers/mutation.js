@@ -4,6 +4,14 @@ const generateToken = require("../utils/generateToken");
 const hashPassword = require("../utils/hashPassword");
 
 const mutation = {
+  createReview: async (parent, args, { prisma }, info) => {
+    const review = await prisma.createReview({
+      ...args.data,
+      updatedAt: new Date(),
+      createdAt: new Date()
+    });
+    return review;
+  },
   async login(parent, args, { prisma }, info) {
     const user = await prisma.user({
       email: args.data.email

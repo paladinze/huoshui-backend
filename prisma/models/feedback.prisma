@@ -1,0 +1,11 @@
+type Feedback {
+  id: ID! @id
+  "nickname"
+  name: String
+  "contact info (email, phone, qq, wechat)"
+  contact: String
+  "feedback content"
+  content: String!
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
+}

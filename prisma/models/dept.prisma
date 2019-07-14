@@ -2,7 +2,6 @@ type Dept {
   id: ID! @id
   shortname: String! @unique
   longname: String! @unique
-  alias: String
   icon: String
   updatedAt: DateTime! @updatedAt
   createdAt: DateTime! @createdAt

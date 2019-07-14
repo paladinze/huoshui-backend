@@ -1,11 +1,37 @@
+# import  * from './generated/prisma.graphql'
+
 type Query {
-  users(query: String, first: Int, skip: Int, after: Int): [User!]!
+  user(where: UserWhereUniqueInput!): User
+  users(
+    where: UserWhereInput
+    orderBy: UserOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [User]!
+  course(where: CourseWhereUniqueInput!): Course
+  courses(
+    where: CourseWhereInput
+    orderBy: CourseOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Course]!
 }
 
 type Mutation {
   login(data: LoginInput!): AuthPayload!
   createUser(data: CreateUserInput!): AuthPayload!
   updateUser(data: UpdateUserInput!): User!
+  createReview(data: ReviewCreateInput!): Review!
+}
+
+type Subscription {
+  review: Review
 }
 
 type User {

@@ -1,19 +1,15 @@
 const Query = {
-  users(parent, args, { prisma }, info) {
-    const opArgs = {
-      first: args.first,
-      skip: args.skip,
-      after: args.after,
-      orderBy: args.orderBy
-    };
-
-    if (args.query) {
-      opArgs.where = {
-        OR: [{ username_contains: args.query }, { email_contains: args.query }]
-      };
-    }
-
-    return prisma.users(opArgs, info);
+  user: async (parent, args, { prisma }, info) => {
+    return prisma.user(args.where);
+  },
+  users: async (parent, args, { prisma }, info) => {
+    return prisma.users(args, info);
+  },
+  course: async (parent, args, { prisma }, info) => {
+    return prisma.course(args.where);
+  },
+  courses: async (parent, args, { prisma }, info) => {
+    return prisma.courses(args, info);
   }
 };
 

@@ -30,6 +30,22 @@ const createUsers = async () => {
   console.log("seeding users: Done!");
 };
 
+const createFeedbacks = async () => {
+  console.log("seeding feedbacks...");
+  const feedbacks = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "./leancloud/Feedback.json"))
+  ).results;
+  for (const feedback of feedbacks) {
+    const { name, phone: contact, comment: content } = feedback;
+    await prisma.createFeedback({
+      name,
+      contact,
+      content
+    });
+  }
+  console.log("seeding feedbacks: Done!");
+};
+
 const createDepts = async () => {
   console.log("seeding depts...");
   const datapath = path.resolve(__dirname, "./data_common/dept.json");
@@ -549,6 +565,7 @@ async function main() {
   await createLikedReviews();
   await createDislikedReviews();
   await createLikedCourses();
+  await createFeedbacks();
 
   console.log("All Done!");
 }
