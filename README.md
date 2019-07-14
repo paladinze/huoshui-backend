@@ -42,7 +42,7 @@ npm install
 ## 主要技术
 
 - Apollo Client - graphql 客户端
-- Apollo Server - graphql 服务端
+- Apollo Server - graphql 应用层接口
 - Prisma - ORM 对象关系映射
 - PosgreSQL - SQL 结构化储存
 - Nginx - 负载均衡 / 伺服
