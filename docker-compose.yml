@@ -1,0 +1,41 @@
+version: "3.7"
+
+services:
+  prisma:
+    image: prismagraphql/prisma:1.34
+    restart: always
+    ports:
+      - "4466:4466"
+    depends_on:
+      - "db"
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        databases:
+          default:
+            connector: postgres
+            host: host.docker.internal
+            database: huoshui
+            schema: public
+            user: admin
+            password: '921021'
+            ssl: false
+            rawAccess: true
+            port: '5432'
+            migrations: true
+
+  db:
+    image: "postgres:11"
+    container_name: "huoshui_postgres"
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - huoshui_psql_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "921021"
+      POSTGRES_DB: "huoshui"
+volumes:
+  huoshui_psql_data:
+    driver: local
