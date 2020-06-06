@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "apollo-server": "^2.6.9",
+    "apollo-server": "^2.14.2",
     "bcryptjs": "^2.4.3",
     "graphql": "^14.4.2",
     "graphql-import": "^0.7.1",
